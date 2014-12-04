@@ -1,0 +1,9 @@
+C:\Users\AEDM07\Documents\[DS]\macarro\src\back_office\bin\back_office.dll
+C:\Users\AEDM07\Documents\[DS]\macarro\src\back_office\bin\back_office.pdb
+C:\Users\AEDM07\Documents\[DS]\macarro\src\back_office\obj\Debug\back_office.csprojResolveAssemblyReference.cache
+C:\Users\AEDM07\Documents\[DS]\macarro\src\back_office\obj\Debug\back_office.Datos.ConfiguracionPuestosPlaya.RecursosConfiguracionPuestosPlaya.resources
+C:\Users\AEDM07\Documents\[DS]\macarro\src\back_office\obj\Debug\back_office.csproj.GenerateResource.Cache
+C:\Users\AEDM07\Documents\[DS]\macarro\src\back_office\obj\Debug\back_office.dll
+C:\Users\AEDM07\Documents\[DS]\macarro\src\back_office\obj\Debug\back_office.pdb
+C:\Users\AEDM07\Documents\[DS]\macarro\src\back_office\obj\Debug\back_office.Excepciones.ConfiguracionPuestosPlaya.ConfiguracionDePlaya.RecursosExcepcionesPlaya.resources
+C:\Users\AEDM07\Documents\[DS]\macarro\src\back_office\obj\Debug\back_office.Interfaz.web.ConfiguracionPuestosPlaya.RecursosInterfazConfiguracioPuestosPlaya.resources

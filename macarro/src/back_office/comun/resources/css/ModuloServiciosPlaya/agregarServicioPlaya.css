@@ -1,0 +1,253 @@
+﻿.centrado {
+    text-align:center;
+}
+.textbox {
+    height:30px;
+    width:240px;
+}
+.comboEstilo {
+    height:38px;
+    width:250px;
+}
+.listboxEstilo {
+    height:100px;
+    width:250px;
+}
+.notaHorario {
+    font-size:0.8em;
+}
+.fuenteMenos {
+    font-size:1.4em;
+}
+.botonesFormulario {
+    text-align:center;
+    margin-top:530px;
+    padding:20px;
+}
+.categoriaOtroLabel {
+    color:#2980B9;
+    font-size:14px;
+    font-style:italic;
+    display: inline-block;
+    width: 175px;
+    text-align:right;
+
+}
+.categoriaOtroTextbox {
+    font-family: 'Open Sans', sans-serif;
+    color:#2980B9;
+    margin:10px;
+    font-size:14px;
+    padding:5px;
+    height:20px;
+    width:240px;
+}
+.divCategoriaOtro {
+    position:absolute;
+    visibility:hidden;
+}
+
+.tituloHorario {
+    text-align:left;
+    margin-top:5px;
+}
+
+/*--------------------------------------*/
+.subtitulo {
+    color:#2980B9;
+}
+.avisoMensaje {
+    /*background: #c40000;*/
+    /*background: #00c408;*/
+    font-size:xx-large;
+    color:#fff;
+    display:block;
+    padding:5px;
+    padding-left:30px;
+    border-radius:5px;
+    visibility:hidden;
+}
+.imgBotonAgregar {
+    margin-top: -115px;
+    margin-left: 9px;
+    position: absolute;
+    width: 42px;
+}
+.imgBotonAgregar:hover {
+    cursor: pointer;
+}
+.imgBotonAgregar:active {
+    width:40px;  
+}
+.imgBoton {
+    width:70px;
+    margin-bottom: 18px;
+}
+.imgBoton:hover {
+    cursor: pointer;
+}
+.imgBoton:active {
+    width:67px;
+}
+.formulario{
+    margin: 0 auto 0 auto;
+    width: 980px;
+}
+.formulario-izq{
+    width: 52%;
+    float: left;
+    
+}
+.formualrio-der{
+    width: 48%;
+    float: right;  
+}
+.labelsNombres{
+    display: inline-block;
+    width: 175px;
+}
+.inputTextbox {
+    margin-left: 20px;
+    display: inline-block;
+}
+.inputTextarea {
+    resize:none;
+    height:100px;
+}
+.labelDescripcion {
+    margin-top:-50px;  
+    float:left;
+    margin-top:50px;
+    width:180px;  
+}
+.notaHorario {
+    font-size:0.8em;
+    display: inline-block;
+    width: 300px;
+
+}
+.labelHorario {
+    float:left;
+    width:125px;
+}
+.labelHoras {
+    width:100px;
+}
+.horasListbox {
+    height:100px;
+}
+.labelSeleccionarHorario {
+    float:left;
+    margin-top:45px;
+}
+
+
+/*---------------------------------------*/
+.containerCalendario {
+    background-color: #fff;
+    margin-top: -10px;
+    margin-left:120px;
+    font-size: 0.9em;
+    position: absolute;
+    color:#000;
+    content: " ";
+    display: block;   
+    width: 380px;
+    border-radius:3px;
+    border-collapse: separate;
+    color: #D7D7D7;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 2px 2px 0px;
+    z-index: 1;
+}
+.containerCalendario ul {
+    margin-left:-42px;
+    margin-top:-1px;
+}
+.containerCalendario li {    
+    list-style: none;
+    float: left;    
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-align: center;
+    width: 66px;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-color: #D7D7D7;
+    color:#2980B9;
+    margin-left:1px;
+    padding-left:3px;
+}
+.containerCalendario li:hover {        
+    color: #fff;
+    background-color: #2980B9;  
+    cursor: pointer;
+    border-radius: 5px; 
+}
+
+.containerCalendario .tituloHora{
+    display:block;
+    text-align: center;
+    color: #2980B9;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    font-weight:bold;
+}
+
+.timePicker {
+    z-index: 100;
+    padding-left:10px;
+}
+.reloj {
+    margin-top: 20px;
+    margin-left: -36px;
+    position: absolute;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(41, 128, 185, 0.40);
+    border-radius: 10px;
+}
+.reloj:hover {
+    cursor: pointer;
+    background: rgba(41, 128, 185, 0.10)
+}
+
+
+.botonesFormulario {
+  margin-top:0px;
+  padding: 20px;
+  text-align: center;
+}
+
+.formulario {
+  margin: 0 auto;
+  min-height: 520px;
+  width: 980px;
+}
+
+ .summaryValidation {
+  display: block;
+  margin: 1em 25%;
+  
+}
+
+table {
+    margin: 0 auto;
+}
+
+#middle_place_holder_validatorDescripcion, #middle_place_holder_regularExpresionDescripcion {
+    margin-left: 4px;
+    margin-top: 54px;
+    position: absolute;
+}
+#middle_place_holder_validatorListBox, #middle_place_holder_validatorListaHorario {
+    margin-left: -5px;
+    margin-top: 45px;
+    position: absolute;
+}
+#middle_place_holder_regularExpressionCapacidad, #middle_place_holder_regularExpressionCantidad, #middle_place_holder_expresionRegularNombreServicio, #middle_place_holder_regularExpressionLugarRetiro, #middle_place_holder_regularExpressionCategoriaOtro {
+  margin-left: -9px;
+  margin-top: 20px;
+  position: absolute;
+}

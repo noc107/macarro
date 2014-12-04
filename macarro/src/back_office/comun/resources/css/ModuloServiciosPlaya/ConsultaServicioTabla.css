@@ -1,0 +1,26 @@
+﻿.tabla {
+  
+    margin-top:10%;  
+    text-align:center;
+    font-family: 'Open Sans', sans-serif;
+    min-height:500px;
+}
+
+.TablaConsulta {
+    
+    margin:0 auto 0 auto;
+}
+
+.subtitulo {
+    color:#2980B9;
+}
+.centrado {
+    text-align:center;
+}
+
+.imgbuttonEstilo {
+}
+.imgbuttonEstilo:hover{
+}
+.imgbuttonEstilo:active {
+}

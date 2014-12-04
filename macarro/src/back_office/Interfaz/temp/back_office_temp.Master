@@ -1,0 +1,272 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="back_office_temp.master.cs" Inherits="back_office.Interfaz.temp.back_office_temp" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head id="Head1" runat="server">
+
+        <title>
+
+            <asp:ContentPlaceHolder ID="title_place_holder" runat="server">
+
+            </asp:ContentPlaceHolder>
+
+        </title>
+
+        <link href="/comun/resources/css/standards.css" rel="stylesheet" />
+        <link href="/comun/resources/css/loged_in.css" rel="stylesheet" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'/>
+
+        <asp:ContentPlaceHolder ID="css_place_holder" runat="server">
+
+        </asp:ContentPlaceHolder>
+
+        <script src="/comun/resources/js/jquery-1.11.1.js"></script>
+
+        <asp:ContentPlaceHolder ID="libs_place_holder" runat="server">
+
+        </asp:ContentPlaceHolder>
+
+        <script src="/comun/resources/js/menu_manager.js"></script>
+
+        <asp:ContentPlaceHolder ID="js_place_holder" runat="server">
+
+        </asp:ContentPlaceHolder>
+    
+    </head>
+
+    <body>
+        <form id="main_form" runat="server">
+
+            <header class="main_header">
+
+                <div class="header_container">
+
+                    <div class="header_logo">
+                    
+                        <a href="/Interfaz/web/inicio.aspx"><img src="/comun/resources/img/logo-macarro.png" alt="Inicio" /></a>
+
+                    </div>
+                    <div class="title">
+                        <h1>
+                            <asp:ContentPlaceHolder ID="title_shown_place_holder" runat="server"></asp:ContentPlaceHolder>
+                        </h1>
+
+                    </div>
+                    <div class="header_log">
+
+                        <div class="header_log_user_name">
+                        
+                            <asp:ContentPlaceHolder ID="username_place_holder" runat="server"></asp:ContentPlaceHolder>
+
+                        </div>
+
+                        <div class="header_log_icons">
+
+                              <asp:ImageButton CssClass="iconoslogout" OnClientClick="window.location.href='#'; return false;" ImageUrl="/comun/resources/img/User-Profile-128.png" ID="ImageButton1" runat="server" />
+                              <asp:ImageButton CssClass="iconoslogout" OnClientClick="window.location.href='#'; return false;" ImageUrl="/comun/resources/img/Logout-128.png" ID="ImageButton2" runat="server" />
+                           
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </header>
+        
+            <div class="content">
+            
+                <nav class="menu">
+                    <ul class="menu_ul">
+                    
+                        <li class="menu_li">
+                            <a href="#">Roles y Acciones <img src="/comun/resources/img/dropdown.png"/></a>
+                            <ul class="menu_second_ul">
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/RolesSeguridad/web_08_agregarRol.aspx">Agregar Rol</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/RolesSeguridad/web_08_gestionarRoles.aspx">Gestionar Roles</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/RolesSeguridad/web_08_consultarAcciones.aspx">Gestionar Acciones</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu_li">
+                            <a href="#">Gestion de playa <img src="/comun/resources/img/dropdown.png"/></a>
+                            <ul class="menu_second_ul">
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ConfiguracionPuestosPlaya/web_2_configurarPlaya.aspx">Configurar Playa</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ConfiguracionPuestosPlaya/web_2_agregarPuesto.aspx">Agregar Puestos</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ConfiguracionPuestosPlaya/web_2_consultarPuesto.aspx">Consultar Puestos</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ConfiguracionPuestosPlaya/web_2_agregarItem.aspx">Agregar Item de Playa</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ConfiguracionPuestosPlaya/web_2_consultarInventario.aspx">Consultar Item de Playa</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu_li">
+                            <a href="#">Usuarios internos <img src="/comun/resources/img/dropdown.png"/></a>
+                            <ul class="menu_second_ul">
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/UsuariosInternos/web_09_agregarUsuario.aspx">Agregar Usuario</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/UsuariosInternos/web_09_gestionUsuario.aspx">Gestionar Usuarios</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu_li">
+                            <a href="#">Servicios de playa <img src="/comun/resources/img/dropdown.png"/></a>
+                            <ul class="menu_second_ul">
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ConfiguracionServiciosPlaya/web_3_agregarServicio.aspx">Agregar Servicios</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ConfiguracionServiciosPlaya/web_03_consultaServicio.aspx">Gestionar Servicios</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="menu_li">
+                            <a href="#">Proveedores <img src="/comun/resources/img/dropdown.png"/></a>
+                            <ul class="menu_second_ul">
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/Proveedores/web_02_agregarProveedores.aspx">Agregar Proveedor</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/Proveedores/web_02_gestionarProveedores.aspx">Gestionar Proveedores</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="menu_li">
+                            <a href="#">Reservas <img src="/comun/resources/img/dropdown.png"/></a>
+                            <ul class="menu_second_ul">
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ReservasSombrillasServiciosPlaya/web_07_confirmacionReserva.aspx">Confirmar Reserva</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ReservasSombrillasServiciosPlaya/web_07_gestionarReservas.aspx">Gestionar Reservas</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu_li">
+                            <a href="#">Estacionamiento <img src="/comun/resources/img/dropdown.png"/></a>
+                            <ul class="menu_second_ul">
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ConfiguracionEstacionamientos/web_5_agregarEstacionamiento.aspx">Agregar Estacionamiento</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ConfiguracionEstacionamientos/web_5_gestionarEstacionamiento.aspx">Gestionar Estacionamiento</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ConfiguracionEstacionamientos/web_5_consultarTicket.aspx">Consultar Ticket</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu_li">
+                            <a href="#">Menu de restaurante <img src="/comun/resources/img/dropdown.png"/></a>
+                            <ul class="menu_second_ul">
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/MenuRestaurante/web_05_agregarSeccion.aspx">Agregar Seccion</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/MenuRestaurante/web_05_agregarProducto.aspx">Agregar Producto</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/MenuRestaurante/web_05_gestionarSeccion.aspx">Gestionar Seccion</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/MenuRestaurante/web_05_gestionarProducto.aspx">Gestionar Producto</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu_li">
+                            <a href="#">Membresia <img src="/comun/resources/img/dropdown.png"/></a>
+                            <ul class="menu_second_ul">
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/GestionVentaMembresia/web_14_buscarMembresia.aspx">Gestionar Membresia</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu_li">
+                            <a href="#">Gestion de Inventario <img src="/comun/resources/img/dropdown.png"/></a>
+                            <ul class="menu_second_ul">
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/InventarioRestaurante/web_06_agregarItem.aspx">Agregar Item</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/InventarioRestaurante/web_06_gestionarInventario.aspx">Gestionar Inventario</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu_li">
+                            <a href="#">Reportes <img src="/comun/resources/img/dropdown.png"/></a>
+                            <ul class="menu_second_ul">
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ReportesFinancierosExportacion/web_13_ReporteIngresos.aspx">Ingresos</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ReportesFinancierosExportacion/web_13_ReporteProductos.aspx">Productos</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ReportesFinancierosExportacion/web_13_ReporteProveedores.aspx">Proveedores</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ReportesFinancierosExportacion/web_13_ReporteComidaBebida.aspx">Restaurante</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ReportesFinancierosExportacion/web_13_ReporteUsuarios.aspx">Usuarios</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/ReportesFinancierosExportacion/web_13_ReporteMembresias.aspx">Membresia</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu_li">
+                            <a href="#">Cierre de caja <img src="/comun/resources/img/dropdown.png"/></a>
+                            <ul class="menu_second_ul">
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/VentaCierreCaja/web_07_agregarVenta.aspx">Agregar Venta</a>
+                                </li>
+                                <li class="menu_second_li">
+                                    <a href="/Interfaz/web/VentaCierreCaja/web_07_gestionarVenta.aspx">Gestionar Ventas</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+            
+
+                    <div class="content_middle">
+
+                        <asp:ContentPlaceHolder ID="middle_place_holder" runat="server"></asp:ContentPlaceHolder>
+
+                    </div>
+
+            
+            </div>
+            <footer class="main_footer">
+
+                <h3> © Copyright Macarro 2014</h3>
+
+            </footer>
+        </form>
+
+    </body>
+
+</html>
+
+
+

@@ -1,0 +1,3 @@
+En el menu de cierre de caja quitar la opcion imprimir factura, ya que esa ventana es a la que va al darle al boton facturar para ver el detalle de la venta.
+
+el imprimir factura por los momentos se ve vacio ya que eso sera un gridview con una consulta.
