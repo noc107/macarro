@@ -59,6 +59,11 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                     MensajeFallo.Text = "En estos momentos presentamos problemas con la base de datos, por favor intente mas tarde";
                     MensajeFallo.Visible = true;
                 }
+                catch (Exception) 
+                {
+                    MensajeFallo.Text = "Su operacion no pudo ser procesada, por favor contacte con el administrador";
+                    MensajeFallo.Visible = true;
+                }
             }
         }
     }
