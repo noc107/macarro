@@ -16,7 +16,7 @@ margin-right:auto;
 
 .LabelAgregarNombre {
     position:absolute;
-    top: 82px; 
+    top: 84px; 
     left: 135px;
 }
 
@@ -40,14 +40,14 @@ margin-right:auto;
 
 .LabelAgregarDescripcion {
     position:absolute;
-    top: 227px; 
+    top: 230px; 
     left: 134px;
 }
 
 .TextboxAgregarDescripcion {
     position:absolute; 
     top: 211px; 
-    left: 254px;
+    left: 245px;
 }
 
 .LabelAgregarPrecioVenta {
@@ -74,7 +74,7 @@ margin-right:auto;
 .TextboxAgregarPrecioCompra {
     position:absolute;
     top: 208px; 
-    left: 746px;
+    left: 744px;
 }
 
 .LabelAgregarProveedor {
@@ -109,13 +109,13 @@ margin-right:auto;
 
 .BotonAceptarModificar {
     position:absolute;
-    top: 291px; 
+    top: 307px; 
     left: 418px;
 }
 
 .BotonCancelarModificar {
     position:absolute;
-    top: 292px; 
+    top: 307px; 
     left: 609px;
 }
 
@@ -345,5 +345,21 @@ margin-right:auto;
     position:absolute;
     top: 229px;
     left: 517px;
+}
+
+.BotonMas {
+    position: absolute;
+    top: 151px;
+    left: 429px;
+}
+
+.BotonMenos {
+    position: absolute;
+    top: 151px;
+    left: 461px;
+}
+
+.TextBoxModalWindow {
+    width:190px;
 }
 

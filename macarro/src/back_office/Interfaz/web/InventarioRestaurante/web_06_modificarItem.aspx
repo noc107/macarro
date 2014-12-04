@@ -18,6 +18,8 @@
 
 
 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="title_place_holder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="css_place_holder" runat="server">
@@ -43,6 +45,18 @@
         <script src="../../../comun/resources/js/jquery-1.11.1.js"></script>
     <script src="../../../comun/resources/js/ModuloInventarioRestaurante/bootstrap.min.js"></script>
  <link href="../../../comun/resources/css/InventarioRestaurante/modalWindow.css" rel="stylesheet" type="text/css" />
+
+           <span id="error" style="color: Red; display: none"></span>
+    <script type="text/javascript">
+        var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+        function IsNumeric(e) {
+            var keyCode = e.which ? e.which : e.keyCode
+            var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+            document.getElementById("error").style.display = ret ? "none" : "inline";
+            return ret;
+        }
+    </script>
        
        
        <asp:Label ID="lbNombre" CssClass="labels LabelAgregarNombre" runat="server" Text="Nombre (*):" ></asp:Label>
@@ -61,8 +75,10 @@
         <asp:Button ID="Boton2" CssClass="Boton BotonCancelarModificar"  runat="server" Text="Cancelar"  OnClick="Button2_Click" />
        
         <asp:Label ID="Label2" CssClass="labels LabelAgregarCantidad"  runat="server" Text="Cantidad (*):"></asp:Label>
-        <asp:TextBox ID="tbCantidad" CssClass="textbox TextboxAgregarCantidad"  runat="server"  Text="20" maxlength="4"></asp:TextBox>
-         <asp:RequiredFieldValidator CssClass="ValidacionCantidadAgregar" ID="ValidatorReq2" runat="server" 
+        <asp:TextBox ID="tbCantidad" CssClass="textbox TextboxAgregarCantidad"  
+            runat="server"  Text="20" maxlength="4" onblur="javascript: if(this.value==''){this.value='0';}"
+            onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"></asp:TextBox>
+                <asp:RequiredFieldValidator CssClass="ValidacionCantidadAgregar" ID="ValidatorReq2" runat="server" 
                     ControlToValidate="tbCantidad" Text="*" ForeColor="Red" ErrorMessage="Cantidad Requerida">
         </asp:RequiredFieldValidator>
        
@@ -74,7 +90,7 @@
                     ValidationExpression="(^\d+)">
                 </asp:RegularExpressionValidator>
        <asp:RangeValidator ID="Validator11" CssClass="ValidacionCantidadAgregar" runat="server"   
-                           MinimumValue="0" MaximumValue="9999" ControlToValidate="tbCantidad" Text="*" ForeColor="Red" ErrorMessage="La cantidad excede el rango (1-9999)"
+                           MinimumValue="0" MaximumValue="9999" ControlToValidate="tbCantidad" Text="*" ForeColor="Red" ErrorMessage="La cantidad excede el rango (0-9999)"
                            Type="Integer" >
        </asp:RangeValidator>
 
@@ -152,14 +168,14 @@
                 <div class="modal-body">
                 
 
-                    <asp:Label ID="Label1"   runat="server" Text="Agregar:"></asp:Label>
-        <asp:TextBox ID="TextBoxAumentarCantidad"   runat="server" maxlength="4"></asp:TextBox>
+                    <asp:Label ID="Label1" CssClass="labels"  runat="server" Text="Agregar:"></asp:Label>
+        <asp:TextBox ID="TextBoxAumentarCantidad" CssClass="textbox" Width="180" Height="30"  runat="server" maxlength="4"></asp:TextBox>
 
 
                 </div>
                 <div class="modal-footer">
-                     <asp:Button ID="Button1"   runat="server" Text="Aceptar" OnClick="ButtonAceptarModalAumentar_Click"/>
-        <asp:Button ID="Button2"   runat="server" Text="Cancelar" OnClick="ButtonCancelarModalAumentar_Click" />
+                     <asp:Button ID="Button1"   runat="server" CssClass="Boton" Text="Aceptar" OnClick="ButtonAceptarModalAumentar_Click"/>
+        <asp:Button ID="Button2"   runat="server" Text="Cancelar" CssClass="Boton" OnClick="ButtonCancelarModalAumentar_Click" />
        
                 </div>
 
@@ -181,14 +197,14 @@
                 <div class="modal-body">
                 
 
-                    <asp:Label ID="Label5"  runat="server" Text="Restar:"></asp:Label>
-        <asp:TextBox ID="TextBoxRestarCantidad"   runat="server" maxlength="4"></asp:TextBox>
+                    <asp:Label ID="Label5"  runat="server" CssClass="labels" Text="Restar:"></asp:Label>
+        <asp:TextBox ID="TextBoxRestarCantidad" CssClass="textbox" Width="190" Height="30" runat="server" maxlength="4"></asp:TextBox>
 
 
                 </div>
                 <div class="modal-footer">
-                     <asp:Button ID="botonAceptarResta"  runat="server" Text="Aceptar" OnClick="ButtonAceptarModalRestar_Click" />
-        <asp:Button ID="botonCancelarModalRestar"  runat="server" Text="Cancelar"  OnClick="ButtonCancelarModalRestar_Click"/>
+                     <asp:Button ID="botonAceptarResta"  runat="server" CssClass="Boton" Text="Aceptar" OnClick="ButtonAceptarModalRestar_Click" />
+        <asp:Button ID="botonCancelarModalRestar"  runat="server" Text="Cancelar" CssClass="Boton"  OnClick="ButtonCancelarModalRestar_Click"/>
        
                 </div>
 
@@ -199,14 +215,16 @@
     </div>
 
 
-        <asp:ImageButton ID="ImageButton1" runat="server" Text="Show Modal"  data-target="#modalAgregar" cssclass="mas_menos_info"
-              data-toggle="modal" ImageUrl="../../../comun/resources/img/Agregar.png" OnClientClick="javascript:return false;" />
+        <asp:ImageButton id="ImageButton1" runat="server" data-target="#modalAgregar" cssclass="mas_menos_info BotonMas"
+              data-toggle="modal" ImageUrl="../../../comun/resources/img/Agregar.png"  OnClientClick="javascript: return false;"/>
 
-     <asp:ImageButton ID="ImageButton2" runat="server" Text="Show Modal"  data-target="#modalEliminar" cssclass="mas_menos_info"
+     <asp:ImageButton id="ImageButton2" runat="server" data-target="#modalEliminar" cssclass="mas_menos_info BotonMenos"
               data-toggle="modal" ImageUrl="../../../comun/resources/img/menos.png" OnClientClick="javascript:return false;" />
 
 
 
-     
+
+
+
        </div>
 </asp:Content>

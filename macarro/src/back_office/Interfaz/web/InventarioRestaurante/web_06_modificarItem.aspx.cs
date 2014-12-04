@@ -30,8 +30,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void ButtonAceptarModalAumentar_Click(object sender, EventArgs e)
         {
-            
-            int x = Convert.ToInt32(tbCantidad.Text.ToString());
+            int valorAct = valorActual();
             int y = 0;
             if (string.IsNullOrWhiteSpace(TextBoxAumentarCantidad.Text.ToString()))   //No suma null
                 y = 0;
@@ -47,8 +46,10 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 {
                     if (y < 0) //No opera numeros negativos
                         y = 0;
-                    x = x + y;
-                    tbCantidad.Text = x.ToString();
+                    valorAct = valorAct + y;
+                    if (valorAct > 9999)
+                        valorAct = 9999;   //Para que no sobrepase el rango permitido
+                    tbCantidad.Text = valorAct.ToString();
                     TextBoxAumentarCantidad.Text = "";     //Setea el textbox en vacio
                 }
         }
@@ -61,8 +62,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void ButtonAceptarModalRestar_Click(object sender, EventArgs e)
         {
-
-            int x = Convert.ToInt32(tbCantidad.Text.ToString());
+            int valorAct = valorActual();
             int y = 0;
             if (string.IsNullOrWhiteSpace(TextBoxRestarCantidad.Text.ToString()))   //No resta null
                 y = 0;
@@ -78,15 +78,15 @@ namespace back_office.Interfaz.web.InventarioRestaurante
             {
                 if (y < 0) //No opera numeros negativos
                     y = 0;
-                if (y > x)
+                if (y > valorAct)
                 {
                     tbCantidad.Text = "0";
                     TextBoxRestarCantidad.Text = "";
                 }
                 else
                 {
-                    x = x - y;
-                    tbCantidad.Text = x.ToString();
+                    valorAct = valorAct - y;
+                    tbCantidad.Text = valorAct.ToString();
                     TextBoxRestarCantidad.Text = "";     //Setea el textbox en vacio
                 }
             }
@@ -96,5 +96,76 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         {
             TextBoxRestarCantidad.Text = "";     //Setea el textbox en vacio                
         }
+
+        protected int valorActual() //Verifica si el textbox cantidad posee caracteres validos
+        {
+            if (string.IsNullOrWhiteSpace(tbCantidad.Text.ToString()))   //No resta null
+                return (0);
+            try
+            {
+                int valor = Convert.ToInt32(tbCantidad.Text.ToString()); //Intenta convertir (no letras)
+                if (valor < 0)
+                    return (0);
+                else
+                    return (valor);
+            }
+            catch (FormatException)
+            {
+                tbCantidad.Text = "";
+                return (0);
+            }
+        }
+
+
+        protected void ButtonMasoMenos_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tbCantidad.Text.ToString()))   //No resta null
+                tbCantidad.Text = "0";
+            try
+            {
+                int valor = Convert.ToInt32(tbCantidad.Text.ToString()); //Intenta convertir (no letras)
+                if (valor < 0)
+                    tbCantidad.Text = "0";
+            }
+            catch (FormatException)
+            {
+                tbCantidad.Text = "0";
+            }          
+        }
+
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tbCantidad.Text.ToString()))   //No resta null
+                tbCantidad.Text = "0";
+            try
+            {
+                int valor = Convert.ToInt32(tbCantidad.Text.ToString()); //Intenta convertir (no letras)
+                if (valor < 0)
+                    tbCantidad.Text = "0";
+            }
+            catch (FormatException)
+            {
+                tbCantidad.Text = "0";
+            }
+        }
+
+        protected bool setTBto0()
+        {
+            if (string.IsNullOrWhiteSpace(tbCantidad.Text.ToString()))   //No resta null
+                tbCantidad.Text = "0";
+            try
+            {
+                int valor = Convert.ToInt32(tbCantidad.Text.ToString()); //Intenta convertir (no letras)
+                if (valor < 0)
+                    tbCantidad.Text = "0";
+                return false;
+            }
+            catch (FormatException)
+            {
+                tbCantidad.Text = "0";
+                return false;
+            }
+        }
+
     }
 }
