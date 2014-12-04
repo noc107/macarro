@@ -49,6 +49,24 @@ namespace back_office.Interfaz.web.InventarioRestaurante {
         protected global::System.Web.UI.WebControls.TextBox tbCantidadMinima;
         
         /// <summary>
+        /// Control ValidacionCantidadminima1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ValidacionCantidadminima1;
+        
+        /// <summary>
+        /// Control ValidacionUltima.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ValidacionUltima;
+        
+        /// <summary>
         /// Control lbNombre.
         /// </summary>
         /// <remarks>

@@ -42,8 +42,17 @@
        
        <asp:Label ID="lbCantidadMinima" CssClass="labels LabelAgregarCantidadMinima" runat="server" Text="Cantidad minima(*):" ></asp:Label>
        <asp:TextBox ID="tbCantidadMinima" CssClass="textbox TextboxAgregarCantidadMinima" runat="server"  maxlength="50"></asp:TextBox>
-      
+       <asp:RequiredFieldValidator ID="ValidacionCantidadminima1" CssClass="ValidacionCantidadMinima" runat="server"    
+            ControlToValidate="tbCantidadMinima" Text="*" ForeColor="Red" ErrorMessage="Cantidad Minima Requerida">
 
+       </asp:RequiredFieldValidator>
+       <asp:RegularExpressionValidator CssClass="ValidacionCantidadMinima" ID="ValidacionUltima" runat="server" 
+                    ControlToValidate="tbCantidadMinima" 
+                    Text="*"
+                    ErrorMessage="Cantidad debe ser un numero entero, Ejemplo: 10" 
+                    ForeColor="Red" 
+                    ValidationExpression="(^\d+)">
+                </asp:RegularExpressionValidator>
        <asp:Label ID="lbNombre" CssClass="labels LabelAgregarNombre" runat="server" Text="Nombre(*):" ></asp:Label>
        <asp:TextBox ID="Nombre" CssClass="textbox TextboxAgregarNombre" runat="server"  maxlength="50"></asp:TextBox>
       
@@ -52,7 +61,7 @@
         </asp:RequiredFieldValidator>
        <asp:RegularExpressionValidator CssClass="ValidacionNombreAgregar" ID="Validator9" runat="server"
                     ControlToValidate="Nombre" Text="*" ForeColor="Red" ErrorMessage="El nombre deben ser letras (3-50)"
-                    ValidationExpression="[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÁÉÍÓÚáéíóú]{3,50}$">
+                    ValidationExpression="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚáéíóú]{3,50}$">
        </asp:RegularExpressionValidator>
        
         
@@ -86,7 +95,7 @@
        </asp:RegularExpressionValidator> 
        <asp:RegularExpressionValidator CssClass="ValidacionDescripcionAgregar" ID="ValidatorDescripcion2" runat="server"
             ControlToValidate="tbDescripcion" Text="*" ForeColor="Red" ErrorMessage="Descripcion no debe contener caracteres extranos"
-            ValidationExpression="[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÁÉÍÓÚáéíóú][.,()]">
+            ValidationExpression="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚáéíóú]">
        </asp:RegularExpressionValidator>
 
         <asp:Label ID="Label6" CssClass="labels LabelAgregarPrecioVenta"  runat="server" Text="Precio Venta(*):" ></asp:Label>
@@ -99,7 +108,7 @@
 
         <asp:CompareValidator ID="ValidacionPrecioFloat" CssClass="ValidacionPrecioAgregar" runat="server"   
                             ControlToValidate="tbPrecio" Text="*" ForeColor="Red" 
-                            ErrorMessage="El precio venta debe ser numerico"
+                            ErrorMessage="Precio Venta debe ser numerico, ejemplo: 12,6"
                             Type="Double" >
        </asp:CompareValidator>
         <asp:Label ID="Label7" CssClass="labels LabelAgregarPrecioCompra"  runat="server" Text="Precio Compra(*):" ></asp:Label>
@@ -111,7 +120,7 @@
        <asp:CompareValidator CssClass="ValidacionPrecio2Agregar" ID="ValidacionPrecioCompraDouble" runat="server" 
                     ControlToValidate="tbPrecio2" 
                     Text="*"
-                    ErrorMessage="Precio Compra debe ser numerico"
+                    ErrorMessage="Precio Compra debe ser numerico, ejemplo: 12,6"
                     ForeColor="Red" 
                     Type="Double">
                 </asp:CompareValidator>

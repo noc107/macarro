@@ -337,19 +337,19 @@ margin-right:auto;
 
 .ValidacionPrecioAgregar {
     position:absolute;
-    top: 160px;
+    top: 169px;
     left: 1017px;
 }
 
 .ValidacionPrecio2Agregar {
     position:absolute;
-    top: 232px;
+    top: 240px;
     left: 1017px;
 }
 
 .ValidacionProveedorAgregar {
     position:absolute;
-    top: 86px;
+    top: 94px;
     left: 1017px;
 }
 
@@ -375,3 +375,8 @@ margin-right:auto;
     width:190px;
 }
 
+.ValidacionCantidadMinima {
+    position:absolute;
+    top:259px;
+    left:517px;
+}
