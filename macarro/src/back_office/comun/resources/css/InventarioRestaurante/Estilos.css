@@ -3,8 +3,7 @@
  margin-left:auto;
  margin-right:auto;
  height: 566px;
-    top: 1px;
-    left: -35px;
+    
     
 }
 
@@ -16,43 +15,56 @@ margin-right:auto;
 
 .LabelAgregarNombre {
     position:absolute;
-    top: 84px; 
+    top: 66px; 
     left: 135px;
 }
 
 .TextboxAgregarNombre {
     position:absolute;
-    top: 65px;
+    top: 42px;
     left: 246px;
 }
 
 .LabelAgregarCantidad {
     position:absolute;
-    top: 155px; 
+    top: 131px; 
     left: 134px;
 }
 
 .TextboxAgregarCantidad {
     position:absolute;
-    top: 136px; 
+    top: 108px; 
     left: 245px;
 }
 
 .LabelAgregarDescripcion {
     position:absolute;
-    top: 230px; 
+    top: 195px; 
     left: 134px;
 }
 
 .TextboxAgregarDescripcion {
     position:absolute; 
-    top: 211px; 
+    top: 172px; 
     left: 245px;
 }
 
+.LabelAgregarCantidadMinima {
+    position: absolute;
+    top: 249px;
+    left: 134px;
+    width: 80px;   
+}
+
+.TextboxAgregarCantidadMinima 
+{
+    position:absolute;
+    left:245px;
+    top:236px;
+}
 .LabelAgregarPrecioVenta {
     position:absolute;
-    top: 158px; 
+    top: 167px; 
     left: 604px; 
     height: 17px; 
     width: 124px;
@@ -60,38 +72,38 @@ margin-right:auto;
 
 .TextboxAgregarPrecioVenta {
     position:absolute;
-    top: 139px; 
+    top: 144px; 
     left: 743px;
-    bottom: 367px;
+    bottom: 353px;
 }
 
 .LabelAgregarPrecioCompra {
     position:absolute;
-    top: 229px; 
+    top: 238px; 
     left: 605px;
 }
 
 .TextboxAgregarPrecioCompra {
     position:absolute;
-    top: 208px; 
+    top: 215px; 
     left: 744px;
 }
 
 .LabelAgregarProveedor {
     position:absolute;
-    top: 84px; 
+    top: 92px; 
     left: 603px;
 }
 
 .ComboProveedor {
     position:absolute;
-    top: 71px; 
+    top: 79px; 
     left: 744px
 }
 
 .BotonAgregar {
     position:absolute;
-    top: 304px;
+    top: 323px;
     left: 487px;
 }
 
@@ -306,20 +318,20 @@ margin-right:auto;
 
 .Validaciones {
     position:absolute;
-    top: 363px;
+    top: 398px;
     left: 450px;
 }
 
 .ValidacionNombreAgregar {
     position:absolute;
-    top: 84px;
+    top: 68px;
     left: 516px;
   
 }
 
 .ValidacionCantidadAgregar {
     position:absolute;
-    top: 157px;
+    top: 133px;
     left: 517px;
 }
 
@@ -343,7 +355,7 @@ margin-right:auto;
 
 .ValidacionDescripcionAgregar {
     position:absolute;
-    top: 229px;
+    top: 197px;
     left: 517px;
 }
 

@@ -84,6 +84,10 @@
                     ControlToValidate="tbDescripcion" Text="*" ForeColor="Red" ErrorMessage="Descripcion excede el rango (0-99)"
                     ValidationExpression="^.{0,99}$">
        </asp:RegularExpressionValidator> 
+       <asp:RegularExpressionValidator CssClass="ValidacionDescripcionAgregar" ID="ValidatorDescripcion2" runat="server"
+            ControlToValidate="tbDescripcion" Text="*" ForeColor="Red" ErrorMessage="Descripcion no debe contener caracteres extranos"
+            ValidationExpression="[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÁÉÍÓÚáéíóú][.,()]">
+       </asp:RegularExpressionValidator>
 
         <asp:Label ID="Label6" CssClass="labels LabelAgregarPrecioVenta"  runat="server" Text="Precio Venta(*):" ></asp:Label>
         <asp:TextBox ID="tbPrecio" CssClass="textbox TextboxAgregarPrecioVenta"   runat="server" maxlength="8"></asp:TextBox>
@@ -93,42 +97,29 @@
 
         </asp:RequiredFieldValidator>
 
-       <asp:RegularExpressionValidator CssClass="ValidacionPrecioAgregar" ID="Validator6" runat="server" 
-                    ControlToValidate="tbPrecio" 
-                    Text="*"
-                    ErrorMessage="Precio Venta debe ser numerico" 
-                    ForeColor="Red" 
-                    ValidationExpression="^\d+(.[0-9]*)">
-                </asp:RegularExpressionValidator>
-
-        <asp:RangeValidator ID="Validator12" CssClass="ValidacionPreciodAgregar" runat="server"   
-                            MinimumValue="1" MaximumValue="99999999" ControlToValidate="tbPrecio" Text="*" ForeColor="Red" 
-                            ErrorMessage="El precio venta excede el rango (1-99999999)"
-                            Type="Integer" >
-       </asp:RangeValidator>
+        <asp:CompareValidator ID="ValidacionPrecioFloat" CssClass="ValidacionPrecioAgregar" runat="server"   
+                            ControlToValidate="tbPrecio" Text="*" ForeColor="Red" 
+                            ErrorMessage="El precio venta debe ser numerico"
+                            Type="Double" >
+       </asp:CompareValidator>
         <asp:Label ID="Label7" CssClass="labels LabelAgregarPrecioCompra"  runat="server" Text="Precio Compra(*):" ></asp:Label>
         <asp:TextBox ID="tbPrecio2" CssClass="textbox TextboxAgregarPrecioCompra"  runat="server" maxlength="8"></asp:TextBox>
        <asp:RequiredFieldValidator ID="Validator4" runat="server" ControlToValidate="tbPrecio2" 
             Text="*" ForeColor="Red" CssClass="ValidacionPrecio2Agregar" ErrorMessage="Precio de Compra Requerido">
         </asp:RequiredFieldValidator>
        
-       <asp:RangeValidator ID="Validator13" CssClass="ValidacionPrecio2dAgregar" runat="server"   
-                            MinimumValue="1" MaximumValue="99999999" ControlToValidate="tbPrecio2" Text="*" ForeColor="Red" 
-                            ErrorMessage="El precio compra excede el rango (1-99999999)"
-                            Type="Integer" >
-       </asp:RangeValidator>
-       <asp:RegularExpressionValidator CssClass="ValidacionPrecio2Agregar" ID="RegularExpressionValidator1" runat="server" 
+       <asp:CompareValidator CssClass="ValidacionPrecio2Agregar" ID="ValidacionPrecioCompraDouble" runat="server" 
                     ControlToValidate="tbPrecio2" 
                     Text="*"
-                    ErrorMessage="Precio Compra debe ser numerico" 
+                    ErrorMessage="Precio Compra debe ser numerico"
                     ForeColor="Red" 
-                    ValidationExpression="^\d+(.[0-9]*)">
-                </asp:RegularExpressionValidator>
+                    Type="Double">
+                </asp:CompareValidator>
 
         <asp:Label  ID="Label4" CssClass="labels LabelAgregarProveedor" runat="server"  Text="Proveedor(*): " ></asp:Label>
             <asp:DropDownList ID="Proveedores" CssClass="combo_box ComboProveedor" runat="server"  OnSelectedIndexChanged="Unnamed1_SelectedIndexChanged" >
              <asp:ListItem Text="Seleccione un Proveedor"></asp:ListItem>
-             <asp:ListItem Text="Proveedor 1" ></asp:ListItem>
+             <asp:ListItem Text="Empresas Polar C.A" ></asp:ListItem>
              <asp:ListItem Text="Proovedor 2"></asp:ListItem>
             </asp:DropDownList>
          <asp:RequiredFieldValidator CssClass="ValidacionProveedorAgregar" ID="Validator5" 

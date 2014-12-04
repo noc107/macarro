@@ -166,6 +166,15 @@ namespace back_office.Interfaz.web.InventarioRestaurante {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
         
         /// <summary>
+        /// Control ValidatorDescripcion2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ValidatorDescripcion2;
+        
+        /// <summary>
         /// Control Label6.
         /// </summary>
         /// <remarks>
@@ -193,22 +202,13 @@ namespace back_office.Interfaz.web.InventarioRestaurante {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator Validator3;
         
         /// <summary>
-        /// Control Validator6.
+        /// Control ValidacionPrecioFloat.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator Validator6;
-        
-        /// <summary>
-        /// Control Validator12.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator Validator12;
+        protected global::System.Web.UI.WebControls.CompareValidator ValidacionPrecioFloat;
         
         /// <summary>
         /// Control Label7.
@@ -238,22 +238,13 @@ namespace back_office.Interfaz.web.InventarioRestaurante {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator Validator4;
         
         /// <summary>
-        /// Control Validator13.
+        /// Control ValidacionPrecioCompraDouble.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator Validator13;
-        
-        /// <summary>
-        /// Control RegularExpressionValidator1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        protected global::System.Web.UI.WebControls.CompareValidator ValidacionPrecioCompraDouble;
         
         /// <summary>
         /// Control Label4.
