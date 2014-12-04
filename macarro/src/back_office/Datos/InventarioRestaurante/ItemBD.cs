@@ -13,7 +13,11 @@ namespace back_office.Datos.InventarioRestaurante
     {
         OperacionesBD _baseDatos = new OperacionesBD();
         
-
+        /// <summary>
+        /// Metodo que abre conexion con la base de datos y guarda los datos
+        /// </summary>
+        /// <param name="_item">Item que se desea guardar en la base de datos</param>
+        /// <returns>Boolean indicando si la operacion fue exitosa</returns>
         public bool guardarItemBD(Item _item)
         {
             bool _exito;
@@ -36,8 +40,8 @@ namespace back_office.Datos.InventarioRestaurante
             catch (Exception ex)
             {
                 _exito = false;
-                throw new ExcepcionAgregarItem(ex.Message);
-                //Excepcion
+                throw new ExcepcionAgregarItem(ex.Message); //ExcepcionCreada
+                
             }
             finally 
             {
