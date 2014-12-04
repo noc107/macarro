@@ -1,0 +1,3 @@
+CANTIDAD NOT NULL en actualizacion
+descripcion opcional en item_inventario, tipo_item
+tipo item relacionado con actualizacion e item_inventario y con prov_inventario...
