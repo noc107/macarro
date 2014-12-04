@@ -37,5 +37,20 @@ namespace back_office.Logica.InventarioRestaurante
             }
         }
 
+        public bool eliminarItem(int id)
+        {
+            ItemBD _operacionEliminar = new ItemBD();
+            Proveedor _proveedorItem = new Proveedor();
+
+            if (_operacionEliminar.eliminarItemBD(id))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

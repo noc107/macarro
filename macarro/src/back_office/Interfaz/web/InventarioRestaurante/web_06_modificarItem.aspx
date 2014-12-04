@@ -17,9 +17,6 @@
 
 
 
-
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="title_place_holder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="css_place_holder" runat="server">
@@ -169,7 +166,7 @@
                 
 
                     <asp:Label ID="Label1" CssClass="labels"  runat="server" Text="Agregar:"></asp:Label>
-        <asp:TextBox ID="TextBoxAumentarCantidad" CssClass="textbox" Width="180" Height="30"  runat="server" maxlength="4"></asp:TextBox>
+        <asp:TextBox ID="TextBoxAumentarCantidad" CssClass="textbox"  Width="180" Height="30"  runat="server" maxlength="4"></asp:TextBox>
 
 
                 </div>

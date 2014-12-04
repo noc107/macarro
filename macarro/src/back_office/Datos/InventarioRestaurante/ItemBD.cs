@@ -51,6 +51,24 @@ namespace back_office.Datos.InventarioRestaurante
             return _exito;
         }
 
+        public bool eliminarItemBD(int id)
+        {
+            SqlCommand _comando = new SqlCommand("Procedure_eliminarItem", _baseDatos._cn);
+            _comando.CommandType = CommandType.StoredProcedure;
+            _comando.Parameters.Add("@_itemId", SqlDbType.Int).Value = id;
+            try
+            {
+                _baseDatos._cn.Open();
+                _comando.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                //Excepcion
+            }
+        }
+
 
 
     }

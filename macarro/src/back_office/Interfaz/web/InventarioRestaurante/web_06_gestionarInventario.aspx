@@ -20,9 +20,9 @@
     <asp:Label ID="MensajeFallo" CssClass="LabelMensajeFallo" runat="server" Text="El item no ha podido ser eliminado debido a que X" Visible="false"></asp:Label>
     </div>
     <br /><br />
-<asp:GridView ID="Inventario"  CssClass="mGrid" AllowPaging="True" HorizontalAlign="Center" runat="server" 
+<asp:GridView ID="Inventario"  CssClass="mGrid" AllowPaging="true" HorizontalAlign="Center" runat="server" onrowcommand="userGridview_RowCommand"
                          BorderStyle="None"  AllowSorting="true" GridLines="None" AutoGenerateColumns="False"
-                                              ForeColor="#99CCFF" PageSize="2" OnRowDataBound="Inventario_RowDataBound">
+                                              ForeColor="#99CCFF" PageSize="5" OnRowDataBound="Inventario_RowDataBound" OnSelectedIndexChanged="Inventario_SelectedIndexChanged" OnPageIndexChanging="Inventario_PageIndexChanged">
             <AlternatingRowStyle CssClass="alt" />  
             <Columns>    
                 
