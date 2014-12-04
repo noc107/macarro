@@ -14,6 +14,8 @@ namespace back_office.Dominio
         private float _precioCompra;
         private float _precioVenta;
         private DateTime _fechaCompra;
+        private int _cantidadMinima;
+        private Proveedor _proveedor;
 
         public Item()
         {
@@ -24,11 +26,13 @@ namespace back_office.Dominio
             _precioCompra = 0;
             _precioVenta = 0;
             _fechaCompra = System.DateTime.Now;
+            _cantidadMinima = 0;
+            _proveedor = null;
         }
 
 
       
-        public Item(int codigo, string descripcion, int cantidad, string nombre, float precioCompra, float precioVenta, DateTime fecha)
+        public Item(int codigo, string descripcion, int cantidad, string nombre, float precioCompra, float precioVenta, DateTime fecha, int cantidadMinima, Proveedor proveedor)
         {
             _codigo = codigo;
             _descripcion = descripcion;
@@ -37,6 +41,8 @@ namespace back_office.Dominio
             _precioCompra = precioCompra;
             _precioVenta = precioVenta;
             _fechaCompra = fecha;
+            _cantidadMinima = cantidadMinima;
+            _proveedor = proveedor;
         }
 
         public int Codigo
@@ -79,6 +85,18 @@ namespace back_office.Dominio
         {
             get { return _fechaCompra; }
             set { _fechaCompra = value; }
+        }
+
+        public int CantidadMinima 
+        {
+            get { return _cantidadMinima; }
+            set { _cantidadMinima = value; }
+        }
+
+        public Proveedor Proveedor 
+        {
+            get { return _proveedor; }
+            set { _proveedor = value; }
         }
     }
 }
