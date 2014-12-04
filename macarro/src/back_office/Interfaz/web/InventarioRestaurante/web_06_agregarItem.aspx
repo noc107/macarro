@@ -111,6 +111,7 @@
                             ErrorMessage="Precio Venta debe ser numerico, ejemplo: 12,6"
                             Type="Double" >
        </asp:CompareValidator>
+       
         <asp:Label ID="Label7" CssClass="labels LabelAgregarPrecioCompra"  runat="server" Text="Precio Compra(*):" ></asp:Label>
         <asp:TextBox ID="tbPrecio2" CssClass="textbox TextboxAgregarPrecioCompra"  runat="server" maxlength="8"></asp:TextBox>
        <asp:RequiredFieldValidator ID="Validator4" runat="server" ControlToValidate="tbPrecio2" 

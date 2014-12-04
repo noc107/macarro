@@ -5,6 +5,7 @@ using System.Web;
 using back_office.Dominio;
 using System.Data.SqlClient;
 using System.Data;
+using back_office.Excepciones.InventarioRestaurante;
 
 namespace back_office.Datos.InventarioRestaurante
 {
@@ -15,6 +16,7 @@ namespace back_office.Datos.InventarioRestaurante
 
         public bool guardarItemBD(Item _item)
         {
+            bool _exito;
             SqlCommand _comando = new SqlCommand("Procedure_guardarItem",_baseDatos._cn);
             _comando.CommandType = CommandType.StoredProcedure;
             _comando.Parameters.Add("@_guardarItemNombre", SqlDbType.VarChar).Value = _item.Nombre;
@@ -29,13 +31,20 @@ namespace back_office.Datos.InventarioRestaurante
             {
                 _baseDatos._cn.Open();
                 _comando.ExecuteNonQuery();
-                return true;
+                _exito = true;
             }
             catch (Exception ex)
             {
-                throw ex;
-              //Excepcion
+                _exito = false;
+                throw new ExcepcionAgregarItem(ex.Message);
+                //Excepcion
             }
+            finally 
+            {
+                _baseDatos._cn.Close();
+                
+            }
+            return _exito;
         }
 
 

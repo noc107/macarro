@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using back_office.Logica.InventarioRestaurante;
-
+using back_office.Excepciones.InventarioRestaurante;
 
 namespace back_office.Interfaz.web.InventarioRestaurante
 {
@@ -18,18 +18,47 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            
             ProcedimientosItem _procedimiento = new ProcedimientosItem();
-            bool _exito = _procedimiento.guardarItem(Nombre.Text,Convert.ToInt32(Cantidad.Text),
-                        float.Parse(tbPrecio2.Text),float.Parse(tbPrecio.Text),tbDescripcion.Text,Proveedores.Text,
-                        Convert.ToInt32(tbCantidadMinima.Text));
-            if (_exito)
+            float _precioCompra = float.Parse(tbPrecio2.Text);
+            float _precioVenta = float.Parse(tbPrecio.Text);
+            int _cantidad = int.Parse(Cantidad.Text);
+            int _cantidadMinima = int.Parse(tbCantidadMinima.Text);
+            if (_precioVenta < _precioCompra)
             {
-                MensajeExito.Visible = true;
-                Boton1.Enabled = false;
-            }
-            else
-            {
+                MensajeFallo.Text = "El precio de venta no puede ser menor al precio de compra";
                 MensajeFallo.Visible = true;
+            }
+            else if (_cantidad < _cantidadMinima)
+            {
+                MensajeFallo.Text = "La cantidad no puede ser menor a la cantidad minima";
+                MensajeFallo.Visible = true;
+            }
+            else 
+            {
+                try
+                {
+
+                    bool _exito = _procedimiento.guardarItem(Nombre.Text, Convert.ToInt32(Cantidad.Text),
+                                float.Parse(tbPrecio2.Text), float.Parse(tbPrecio.Text), tbDescripcion.Text, Proveedores.Text,
+                                Convert.ToInt32(tbCantidadMinima.Text));
+
+                    if (_exito)
+                    {
+                        MensajeFallo.Visible = false;
+                        MensajeExito.Visible = true;
+                        Boton1.Enabled = false;
+                    }
+                    else
+                    {
+                        MensajeFallo.Visible = true;
+                    }
+                }
+                catch (ExcepcionAgregarItem)
+                {
+                    MensajeFallo.Text = "En estos momentos presentamos problemas con la base de datos, por favor intente mas tarde";
+                    MensajeFallo.Visible = true;
+                }
             }
         }
     }
