@@ -57,7 +57,11 @@ namespace back_office.Logica.InventarioRestaurante
                 return false;
             }
         }
-
+        /// <summary>
+        /// Funcion que devuelve los datos del item
+        /// </summary>
+        /// <param name="_codigo">Integer con el codigo del item para buscar</param>
+        /// <returns>Cadena de string con los datos del item</returns>
         public string [] verItem(int _codigo)
         {
             ItemBD _operacionVer = new ItemBD();
@@ -69,7 +73,7 @@ namespace back_office.Logica.InventarioRestaurante
             string[] _respuesta = new string[_actualizar.Count+6];
 
             string[] _paraVer = new string[_actualizar.Count];
-            int _contar = 0;
+            int _contar = 6;
 
              _respuesta[0] = _nombre; //Nombre del item
              _respuesta[1] = _preciocompra; //Precio Compra
@@ -86,7 +90,10 @@ namespace back_office.Logica.InventarioRestaurante
             return _respuesta;
 
         }
-
+        /// <summary>
+        /// Funcion que devuelve los proveedores
+        /// </summary>
+        /// <returns>Cadena de string con la razon social de los proveedores</returns>
         public string[] verProveedor()
         {
             ItemBD _operacionProveedor = new ItemBD();
