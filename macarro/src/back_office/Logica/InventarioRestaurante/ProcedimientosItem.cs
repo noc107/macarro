@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using back_office.Dominio;
 using back_office.Datos.InventarioRestaurante;
+using System.Data.SqlClient;
 
 namespace back_office.Logica.InventarioRestaurante
 {
@@ -55,6 +56,36 @@ namespace back_office.Logica.InventarioRestaurante
                 return false;
             }
         }
+
+        public string [] verItem(int _codigo)
+        {
+            ItemBD _operacionVer = new ItemBD();
+            string []_respuesta = new string[1000];
+            string _nombre = _operacionVer.VerItemNombreBD(_codigo);
+            string [] _datos = _operacionVer.VerItemInventarioBD(_codigo);
+            string [] _actualizar = _operacionVer.VerItemCantidadBD(_codigo);
+            string _preciocompra = _operacionVer.VerProveedorInventarioBD(_codigo);
+            string _nombreProveedor = _operacionVer.VerProveedorBD(_codigo);
+            int contador = 0;
+            int contador2= 6;
+
+             _respuesta[0] = _nombre; //Nombre del item
+             _respuesta[1] = _preciocompra; //Precio Compra
+             _respuesta[2] = _nombreProveedor; //Nombre proveedor
+             _respuesta[3] = _datos[0]; //Cantidad
+             _respuesta[4] = _datos[1]; //Descripcion
+             _respuesta[5] = _datos[2]; //Precio venta
+    
+             //while (_reader3.Read())
+             //{
+          
+             _respuesta[6] = _actualizar[0]; //Cantidad actualizacion
+             _respuesta[7] = _actualizar[1]; //Fecha actualizacion
+             //}
+            return _respuesta;
+
+        }
+
 
     }
 }

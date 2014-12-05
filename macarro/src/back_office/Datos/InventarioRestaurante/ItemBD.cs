@@ -80,7 +80,157 @@ namespace back_office.Datos.InventarioRestaurante
             return _exito;
         }
 
+        public string VerItemNombreBD(int _codigo)
+        {
+            string _nombre = null;
+            SqlCommand _comando = Conexiones("Procedure_verItemNombre", _codigo);
+
+            try
+            {
+                _baseDatos._cn.Open();
+                SqlDataReader _reader = _comando.ExecuteReader();
+                _reader.Read();
+                _nombre = _reader["ITE_nombre"].ToString();
+                    
+                return _nombre;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                //Excepcion
+            }
+            finally 
+            {
+                _baseDatos._cn.Close();
+            
+            }
+        }
+
+        public string [] VerItemCantidadBD(int _codigo)
+        {
+            string[] _coman = new string [10];
+            SqlCommand _comando = Conexiones("Procedure_verItemCantidad", _codigo);
+
+            try
+            {
+                _baseDatos._cn.Open();
+                _comando.ExecuteNonQuery();
+                SqlDataReader _reader = _comando.ExecuteReader();
+                while (_reader.Read())
+                {
+                    _coman[0] = _reader["ACT_cantidad"].ToString();
+                    _coman[1] = _reader["ACT_fecha"].ToString();
+                } 
+               return _coman;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                //Excepcion
+            }
+            finally
+            {
+                _baseDatos._cn.Close();
+
+            }
+
+        }
+
+        public string[] VerItemInventarioBD(int _codigo)
+        {
+            string [] _iteinv = new string [3];
+            SqlCommand _comando = Conexiones("Procedure_verItemInventario", _codigo);
+
+            try
+            {
+                _baseDatos._cn.Open();
+                _comando.ExecuteNonQuery();
+                SqlDataReader _reader1 = _comando.ExecuteReader();
+                _reader1.Read();
+               
+                    _iteinv[0] = _reader1["ITE_INV_cantidad"].ToString();
+                    _iteinv[1] = _reader1["ITE_INV_descripcion"].ToString();
+                    _iteinv[2] = _reader1["ITE_INV_precioVenta"].ToString();
+               
+                return _iteinv;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                //Excepcion
+            }
+
+            finally
+            {
+                _baseDatos._cn.Close();
+
+            }
+        }
+
+        public string VerProveedorInventarioBD(int _codigo)
+        {
+            string _prove;
+            SqlCommand _comando = Conexiones("Procedure_verProveedorInventario", _codigo);
+
+            try
+            {
+                _baseDatos._cn.Open();
+                _comando.ExecuteNonQuery();
+                SqlDataReader _reader = _comando.ExecuteReader();
+                _reader.Read();
+                _prove = _reader["PRO_INV_precioCompra"].ToString();
+                return _prove;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                //Excepcion
+            }
+            finally
+            {
+                _baseDatos._cn.Close();
+
+            }
 
 
+        }
+
+        public string VerProveedorBD(int _codigo)
+        {
+            string _prove;
+            SqlCommand _comando = Conexiones("Procedure_verProveedor",_codigo);
+            try
+            {
+                _baseDatos._cn.Open();
+                _comando.ExecuteNonQuery();
+                SqlDataReader _reader = _comando.ExecuteReader();
+                _reader.Read();
+                _prove = _reader["PRO_razonSocial"].ToString();
+                return _prove;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                //Excepcion
+            }
+            finally
+            {
+                _baseDatos._cn.Close();
+
+            }
+
+
+        }
+
+        
+        protected SqlCommand Conexiones(string _procedimiento,int _codigo)
+        {
+            SqlCommand _comando = new SqlCommand(_procedimiento, _baseDatos._cn);
+            _comando.CommandType = CommandType.StoredProcedure;
+            _comando.Parameters.Add("@_verItemId", SqlDbType.Int).Value = _codigo;
+
+            return _comando;
+
+        }
     }
 }

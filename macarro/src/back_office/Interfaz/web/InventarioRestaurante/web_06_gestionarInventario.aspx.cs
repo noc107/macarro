@@ -8,9 +8,6 @@ using back_office.Dominio;
 using System.Data;
 using System.Data.SqlClient;
 using back_office.Datos;
-using back_office.Logica.InventarioRestaurante;
-using back_office.Excepciones.InventarioRestaurante;
-
 
 namespace back_office.Interfaz.web.InventarioRestaurante
 {
@@ -37,26 +34,23 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 consultar.ImageUrl = "../../../comun/resources/img/View-128.png";
                 consultar.Height = 50;
                 consultar.Width = 50;
-               // consultar.Click += new ImageClickEventHandler(this.consultar_Click);
+                consultar.Click += new ImageClickEventHandler(this.consultar_Click);
                 consultar.ToolTip = "Ver para imprimir";
-                consultar.CommandName = "Consultar";
 
                 ImageButton editar = new ImageButton();
                 editar.ID = "bEditar";
                 editar.ImageUrl = "../../../comun/resources/img/Data-Edit-128.png";
                 editar.Height = 50;
                 editar.Width = 50;
-               // editar.Click += new ImageClickEventHandler(this.modificar_Click);
+                editar.Click += new ImageClickEventHandler(this.modificar_Click);
                 editar.ToolTip = "Editar Cuenta";
-                editar.CommandName = "Modificar";
 
                 ImageButton eliminar = new ImageButton();
                 eliminar.ID = "bEliminar";
                 eliminar.ImageUrl = "../../../comun/resources/img/Garbage-Closed-128.png";
                 eliminar.Height = 50;
                 eliminar.Width = 50;
-             //   eliminar.Click += new ImageClickEventHandler(this.eliminar_Click);
-                eliminar.CommandName = "Eliminar";
+                eliminar.Click += new ImageClickEventHandler(this.eliminar_Click);
 
                 e.Row.Cells[3].Controls.Add(consultar);
                 e.Row.Cells[3].Controls.Add(editar);
@@ -82,28 +76,12 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         void eliminar_Click(Object sender, ImageClickEventArgs e)
         {
-            /*ProcedimientosItem _procedimiento = new ProcedimientosItem();
-            bool _exito = _procedimiento.eliminarItem(Nombre.Text, Convert.ToInt32(Cantidad.Text),
-                        float.Parse(tbPrecio2.Text), float.Parse(tbPrecio.Text), tbDescripcion.Text, Proveedores.Text,
-                        Convert.ToInt32(tbCantidadMinima.Text));
-            if (_exito)
-            {
-                MensajeExito.Visible = true;
-                Boton1.Enabled = false;
-            }
-            else
-            {
-                MensajeFallo.Visible = true;
-            }*/
+            Response.Redirect("web_06_gestionarInventario.aspx");
         }
-
-
-
 
         protected void CargarGrid()
         {
             SqlDataReader _reader;
-            //SqlDataAdapter da;
             SqlCommand _comando = new SqlCommand("Procedure_GridviewCarga", _baseDatos._cn);
             //try
             //{
@@ -111,8 +89,6 @@ namespace back_office.Interfaz.web.InventarioRestaurante
             _baseDatos._cn.Open();
             _comando.ExecuteNonQuery();
             _reader = _comando.ExecuteReader();
-            //foreach (DataColumn _colum in _myTable.Columns)
-            //{
                  while (_reader.Read())
                 {
                     DataRow _dr = _myTable.NewRow();
@@ -121,7 +97,6 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                     _dr["Cantidad"] = _reader[2];
                     _myTable.Rows.Add(_dr);
                 }
-            //}
             _baseDatos._cn.Close();
             Inventario.DataSource = _myTable;
             Inventario.DataBind();
@@ -137,73 +112,8 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         protected void Inventario_PageIndexChanged(object sender, GridViewPageEventArgs e)
         {
             Inventario.PageIndex = e.NewPageIndex;
-            this.CargarGrid();
-        }
-
-
-
-
-        protected void userGridview_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "Consultar")
-            {
-                Response.Redirect("web_02_modificarProveedor.aspx");
-            }
-            if (e.CommandName == "Modificar")
-            {
-                Response.Redirect("web_02_modificarProveedor.aspx");
-            }
-            if (e.CommandName == "Eliminar")
-            {
-                GridViewRow rowSelect = (GridViewRow)(((ImageButton)e.CommandSource).NamingContainer);
-                int index = rowSelect.RowIndex;
-                eliminarItem(ObtenerIdItem(index));
-            }
-        }
-
-        public int ObtenerIdItem(int index)
-        {
-
-            GridViewRow selectedRow = Inventario.Rows[index];
-
-            TableCell codigoItem = selectedRow.Cells[0];
-
-            return (Convert.ToInt32(codigoItem.Text));
-        }
-
-
-        protected void eliminarItem(int idItem)
-        {
-            ProcedimientosItem _procedimiento = new ProcedimientosItem();
-            try
-            {
-                bool _exito = _procedimiento.eliminarItem(idItem);
-                /*   if (_exito)
-                   {
-                       MensajeExito.Visible = true;
-                       Boton1.Enabled = false;
-                   }
-                   else
-                   {
-                       MensajeFallo.Visible = true;
-                   } */
-            }
-            catch (ExcepcionEliminarItem)
-            {
-                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-          "err_msg",
-          "alert('Ha ocurrido un error de base de datos, por favor intente luego)');",
-          true);
-            }
-
-            catch (Exception)
-            {
-                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-          "err_msg",
-          "alert('Dispatch assignment saved, but you forgot to click Confirm or Cancel!)');",
-          true);
-            }
-        }
-
+            Inventario.DataSource = _myTable;
+            Inventario.DataBind();
+        }  
     }
 }
