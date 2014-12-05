@@ -80,7 +80,11 @@ namespace back_office.Datos.InventarioRestaurante
             }
             return _exito;
         }
-
+        /// <summary>
+        /// Funcion que devuelve el nombre del item
+        /// </summary>
+        /// <param name="_codigo">Integer con el codigo del item a buscar</param>
+        /// <returns>String con el nombre del item</returns>
         public string VerItemNombreBD(int _codigo)
         {
             string _nombre = null;
@@ -97,7 +101,7 @@ namespace back_office.Datos.InventarioRestaurante
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new ExcepcionVerItem(ex.Message);
                 //Excepcion
             }
             finally 
@@ -106,7 +110,11 @@ namespace back_office.Datos.InventarioRestaurante
             
             }
         }
-
+        /// <summary>
+        /// Funcion que devuelve una lista con las actualizaciones
+        /// </summary>
+        /// <param name="_codigo">Integer con el codigo</param>
+        /// <returns>Arraylist con las actualizaciones</returns>
         public ArrayList VerItemCantidadBD(int _codigo)
         {
             ArrayList _coman = new ArrayList(); 
@@ -126,7 +134,7 @@ namespace back_office.Datos.InventarioRestaurante
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new ExcepcionVerItem(ex.Message);
                 //Excepcion
             }
             finally
@@ -136,7 +144,11 @@ namespace back_office.Datos.InventarioRestaurante
             }
 
         }
-
+        /// <summary>
+        /// Funcion que devuelve la cantidad, descripcion y precio de venta
+        /// </summary>
+        /// <param name="_codigo">Integer con el codigo del item a buscar</param>
+        /// <returns>Una cadena de strings con la cantidad, descripcion y precio venta</returns>
         public string[] VerItemInventarioBD(int _codigo)
         {
             string [] _iteinv = new string [3];
@@ -157,7 +169,7 @@ namespace back_office.Datos.InventarioRestaurante
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new ExcepcionVerItem(ex.Message);
                 //Excepcion
             }
 
@@ -167,7 +179,11 @@ namespace back_office.Datos.InventarioRestaurante
 
             }
         }
-
+        /// <summary>
+        /// Funcion que devuelve el precio de compra
+        /// </summary>
+        /// <param name="_codigo">Integer con el codigo del item a buscar</param>
+        /// <returns>String con el precio de compra</returns>
         public string VerProveedorInventarioBD(int _codigo)
         {
             string _prove;
@@ -184,7 +200,7 @@ namespace back_office.Datos.InventarioRestaurante
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new ExcepcionVerItem(ex.Message);
                 //Excepcion
             }
             finally
@@ -195,7 +211,11 @@ namespace back_office.Datos.InventarioRestaurante
 
 
         }
-
+        /// <summary>
+        /// Funcion que devuelve la razon social del proveedor
+        /// </summary>
+        /// <param name="_codigo">Integer con el codigo del item a buscar</param>
+        /// <returns>String con la razon social del proveedor</returns>
         public string VerProveedorBD(int _codigo)
         {
             string _prove;
@@ -211,7 +231,7 @@ namespace back_office.Datos.InventarioRestaurante
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new ExcepcionVerItem(ex.Message);
                 //Excepcion
             }
             finally
@@ -220,7 +240,10 @@ namespace back_office.Datos.InventarioRestaurante
 
             }
         }
-
+        /// <summary>
+        /// Funcion que devuelve todos los provedores
+        /// </summary>
+        /// <returns>ArrayList con las razon social de todos los proveedores</returns>
             public ArrayList VerRazonesSocialesBD()
             {
             ArrayList _prove = new ArrayList(); 
@@ -239,7 +262,7 @@ namespace back_office.Datos.InventarioRestaurante
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new ExcepcionVerItem(ex.Message);
                 //Excepcion
             }
             finally
@@ -250,7 +273,12 @@ namespace back_office.Datos.InventarioRestaurante
 
         }
 
-        
+        /// <summary>
+        /// Funcion que retorna un comando
+        /// </summary>
+        /// <param name="_procedimiento">String con el nombre del procedimiento en la base de datos</param>
+        /// <param name="_codigo">Integer con el codigo del item a buscar</param>
+        /// <returns>Comando de Sql</returns>
         protected SqlCommand Conexiones(string _procedimiento,int _codigo)
         {
             SqlCommand _comando = new SqlCommand(_procedimiento, _baseDatos._cn);
@@ -260,7 +288,11 @@ namespace back_office.Datos.InventarioRestaurante
             return _comando;
 
         }
-
+        /// <summary>
+        /// Funcion que retorna un comando
+        /// </summary>
+        /// <param name="_procedimiento">String con el nombre del procedimiento</param>
+        /// <returns>Comando de sql</returns>
         protected SqlCommand ConexionProveedor(string _procedimiento)
         {
             SqlCommand _comando = new SqlCommand(_procedimiento, _baseDatos._cn);
