@@ -6,6 +6,7 @@ using back_office.Dominio;
 using System.Data.SqlClient;
 using System.Data;
 using back_office.Excepciones.InventarioRestaurante;
+using System.Collections;
 
 namespace back_office.Datos.InventarioRestaurante
 {
@@ -106,11 +107,10 @@ namespace back_office.Datos.InventarioRestaurante
             }
         }
 
-        public string [] VerItemCantidadBD(int _codigo)
+        public ArrayList VerItemCantidadBD(int _codigo)
         {
-            string[] _coman = new string [10];
+            ArrayList _coman = new ArrayList(); 
             SqlCommand _comando = Conexiones("Procedure_verItemCantidad", _codigo);
-
             try
             {
                 _baseDatos._cn.Open();
@@ -118,10 +118,11 @@ namespace back_office.Datos.InventarioRestaurante
                 SqlDataReader _reader = _comando.ExecuteReader();
                 while (_reader.Read())
                 {
-                    _coman[0] = _reader["ACT_cantidad"].ToString();
-                    _coman[1] = _reader["ACT_fecha"].ToString();
-                } 
+                    _coman.Add(_reader["ACT_cantidad"].ToString());
+                    _coman.Add(_reader["ACT_fecha"].ToString());
+                }
                return _coman;
+
             }
             catch (Exception ex)
             {
@@ -198,7 +199,7 @@ namespace back_office.Datos.InventarioRestaurante
         public string VerProveedorBD(int _codigo)
         {
             string _prove;
-            SqlCommand _comando = Conexiones("Procedure_verProveedor",_codigo);
+            SqlCommand _comando = Conexiones("Procedure_verProveedor", _codigo);
             try
             {
                 _baseDatos._cn.Open();
@@ -218,6 +219,33 @@ namespace back_office.Datos.InventarioRestaurante
                 _baseDatos._cn.Close();
 
             }
+        }
+
+            public ArrayList VerRazonesSocialesBD()
+            {
+            ArrayList _prove = new ArrayList(); 
+            SqlCommand _comando = ConexionProveedor("Procedure_consultaDeGestionarProveedor");
+            try
+            {
+                _baseDatos._cn.Open();
+                _comando.ExecuteNonQuery();
+                SqlDataReader _reader = _comando.ExecuteReader();
+               
+                while (_reader.Read())
+                {   
+                    _prove.Add(_reader["PRO_razonSocial"].ToString());
+                }
+                return _prove;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                //Excepcion
+            }
+            finally
+            {
+                _baseDatos._cn.Close();
+            }
 
 
         }
@@ -232,5 +260,15 @@ namespace back_office.Datos.InventarioRestaurante
             return _comando;
 
         }
+
+        protected SqlCommand ConexionProveedor(string _procedimiento)
+        {
+            SqlCommand _comando = new SqlCommand(_procedimiento, _baseDatos._cn);
+            _comando.CommandType = CommandType.StoredProcedure;
+            return _comando;
+        }
+
+ 
+
     }
 }
