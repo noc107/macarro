@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using back_office.Datos;
 using back_office.Logica.InventarioRestaurante;
+using back_office.Excepciones.InventarioRestaurante;
 
 
 namespace back_office.Interfaz.web.InventarioRestaurante
@@ -174,16 +175,34 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         protected void eliminarItem(int idItem)
         {
             ProcedimientosItem _procedimiento = new ProcedimientosItem();
-            bool _exito = _procedimiento.eliminarItem(idItem);
-         /*   if (_exito)
+            try
             {
-                MensajeExito.Visible = true;
-                Boton1.Enabled = false;
+                bool _exito = _procedimiento.eliminarItem(idItem);
+                /*   if (_exito)
+                   {
+                       MensajeExito.Visible = true;
+                       Boton1.Enabled = false;
+                   }
+                   else
+                   {
+                       MensajeFallo.Visible = true;
+                   } */
             }
-            else
+            catch (ExcepcionEliminarItem)
             {
-                MensajeFallo.Visible = true;
-            } */
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+          "err_msg",
+          "alert('Ha ocurrido un error de base de datos, por favor intente luego)');",
+          true);
+            }
+
+            catch (Exception)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+          "err_msg",
+          "alert('Dispatch assignment saved, but you forgot to click Confirm or Cancel!)');",
+          true);
+            }
         }
 
     }

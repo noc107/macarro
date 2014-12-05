@@ -19,7 +19,7 @@ namespace back_office.Logica.InventarioRestaurante
         /// <param name="descripcion">String con la descripcion del item</param>
         /// <param name="proveedor">String con la razon social del proveedor</param>
         /// <param name="cantidadMinima">Integer con la cantidad minima del item en el inventario</param>
-        /// <returns>Boolean que senala si la operacion ha sido exitosa</returns>
+        /// <returns>Boolean que indica si la operacion ha sido exitosa</returns>
         public bool guardarItem(string nombre,int cantidad, float precioCompra, float precioVenta, string descripcion,string proveedor,int cantidadMinima) 
         {   
             ItemBD  _operacionGuardar = new ItemBD();
@@ -36,7 +36,11 @@ namespace back_office.Logica.InventarioRestaurante
                 return false;
             }
         }
-
+        /// <summary>
+        /// Funcion para eliminar el item de la bd
+        /// </summary>
+        /// <param name="id">Integer con el codigo del item</param>
+        /// <returns>Boolean que indica si la operacion fue exitosa</returns>
         public bool eliminarItem(int id)
         {
             ItemBD _operacionEliminar = new ItemBD();
