@@ -35,7 +35,7 @@
 <asp:Content ID="Content8" ContentPlaceHolderID="middle_place_holder" runat="server">
     <h2>Modificar Item</h2>
     <div id="Mensajes" class="BloqueMensaje">
-        <asp:Label ID="MensajeFallo" CssClass="LabelMensajeFallo" runat="server" Text="El item no ha podido ser modificado debido a que X" Visible="false"></asp:Label>
+        <asp:Label ID="MensajeFallo" CssClass="avisoMensaje MensajeError" runat="server" Text="El item no ha podido ser modificado debido a que X" Visible="false"></asp:Label>
     </div>
    <div ID="Formulario1" class="Bloque">
 

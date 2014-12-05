@@ -35,7 +35,7 @@
     <h2>Agregar Item</h2>
     <div ID="Mensaje" class="BloqueMensaje" >
         <asp:Label ID="MensajeExito" CssClass="avisoMensaje MensajeExito"   runat="server" Text="El item ha sido creado satisfactoriamente" Visible="false" ></asp:Label>
-        <asp:Label ID="MensajeFallo" CssClass="LabelMensajeFallo"   runat="server" Text="El item no ha podido ser creado debido a que X" Visible="false"></asp:Label>
+        <asp:Label ID="MensajeFallo" CssClass="avisoMensaje MensajeError"   runat="server" Text="El item no ha podido ser creado debido a que X" Visible="false"></asp:Label>
     </div>
    <div ID="Formulario" class="Bloque">
        
