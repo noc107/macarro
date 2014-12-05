@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using back_office.Logica.InventarioRestaurante;
 
 namespace back_office.Interfaz.web.InventarioRestaurante
 {
@@ -12,6 +13,23 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         protected void Page_Load(object sender, EventArgs e)
         {
             TextBoxAumentarCantidad.Visible= true;
+
+            ProcedimientosItem _procedimiento = new ProcedimientosItem();
+            string[] _mostrar = _procedimiento.verItem(10);
+            string[] _proveedores = _procedimiento.verProveedor();
+
+            tbNombre.Text = _mostrar[0];
+            tbCantidad.Text = _mostrar[3];
+            tbDescripcion.Text = _mostrar[4];
+            tbPrecio.Text = _mostrar[5];
+            tbPrecio2.Text = _mostrar[1];
+
+            for (int _contador = 0; _contador < _proveedores.Length; _contador++)
+            {
+                ListItem oItem = new ListItem(_proveedores[_contador]);
+                Proveedores.Items.Add(oItem);
+            }
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)

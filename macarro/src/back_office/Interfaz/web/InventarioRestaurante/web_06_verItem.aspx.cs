@@ -26,11 +26,12 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 lbDescripcionVer.Text = _mostrar[4];
                 lbPrecio.Text = _mostrar[5];
 
+                for (int _contador = 6; _contador < _mostrar.Length; _contador= _contador+2)
+                {
+                    ListItem list = new ListItem("Cantidad: " + _mostrar[_contador] + "Fecha: " + _mostrar[_contador+1]);
+                    ListBox1.Items.Add(list);
+                }
 
-                ListItem list = new ListItem("Cantidad: " + _mostrar[6] + "Fecha: " + _mostrar[7]);
-                ListBox1.Items.Add(list);
-
-                //  ListBox1.Items.AddRange(string[]);
             }
             catch (ExcepcionVerItem)
             {

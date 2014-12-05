@@ -61,9 +61,6 @@
        
         <asp:Label ID="Label8" CssClass="labels LabelVerActualizaciones"  runat="server" Text="Actualizaciones:" ></asp:Label>
         <asp:ListBox ID="ListBox1" CssClass="list_box ListBoxVerActualizaciones" Enabled="false" runat="server">
-            <asp:ListItem Text="Cantidad: 10, Fecha: 11/11/2014"></asp:ListItem>
-            <asp:ListItem Text="Cantidad: 20, Fecha: 11/10/2014"></asp:ListItem>
-            <asp:ListItem Text="Cantidad: 15, Fecha: 11/09/2014"></asp:ListItem>
         </asp:ListBox>
       
    </div>
