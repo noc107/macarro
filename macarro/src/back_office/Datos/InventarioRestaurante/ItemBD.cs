@@ -50,7 +50,11 @@ namespace back_office.Datos.InventarioRestaurante
             }
             return _exito;
         }
-
+        /// <summary>
+        /// Funcion que abre la conexion a la base de datos y elimina los datos relacionados con el id del item
+        /// </summary>
+        /// <param name="id">Integer del codigo del item</param>
+        /// <returns>Boolean que indica si la operacion fue exitosa</returns>
         public bool eliminarItemBD(int id)
         {
             bool _exito;

@@ -34,7 +34,7 @@
 <asp:Content ID="Content8" ContentPlaceHolderID="middle_place_holder" runat="server">
     <h2>Agregar Item</h2>
     <div ID="Mensaje" class="BloqueMensaje" >
-        <asp:Label ID="MensajeExito" CssClass="LabelMensajeExito"   runat="server" Text="El item ha sido creado satisfactoriamente" Visible="false" ></asp:Label>
+        <asp:Label ID="MensajeExito" CssClass="avisoMensaje MensajeExito"   runat="server" Text="El item ha sido creado satisfactoriamente" Visible="false" ></asp:Label>
         <asp:Label ID="MensajeFallo" CssClass="LabelMensajeFallo"   runat="server" Text="El item no ha podido ser creado debido a que X" Visible="false"></asp:Label>
     </div>
    <div ID="Formulario" class="Bloque">
@@ -105,12 +105,11 @@
             Text="*" ForeColor="Red" CssClass="ValidacionPrecioAgregar" ErrorMessage="Precio de Venta Requerido">
 
         </asp:RequiredFieldValidator>
-
-        <asp:CompareValidator ID="ValidacionPrecioFloat" CssClass="ValidacionPrecioAgregar" runat="server"   
-                            ControlToValidate="tbPrecio" Text="*" ForeColor="Red" 
-                            ErrorMessage="Precio Venta debe ser numerico, ejemplo: 12,6"
-                            Type="Double" >
-       </asp:CompareValidator>
+       <asp:RegularExpressionValidator CssClass="ValidacionPrecioAgregar" ID="ValidacionPrecioVentaFloat" runat="server"
+            ControlToValidate="tbPrecio" Text="*" ForeColor="Red" ErrorMessage="Precio Venta debe ser numerico, ejemplo: 12.6"
+            ValidationExpression="^\d+(.\d+)?$">
+       </asp:RegularExpressionValidator>
+       
        
         <asp:Label ID="Label7" CssClass="labels LabelAgregarPrecioCompra"  runat="server" Text="Precio Compra(*):" ></asp:Label>
         <asp:TextBox ID="tbPrecio2" CssClass="textbox TextboxAgregarPrecioCompra"  runat="server" maxlength="8"></asp:TextBox>
@@ -118,13 +117,10 @@
             Text="*" ForeColor="Red" CssClass="ValidacionPrecio2Agregar" ErrorMessage="Precio de Compra Requerido">
         </asp:RequiredFieldValidator>
        
-       <asp:CompareValidator CssClass="ValidacionPrecio2Agregar" ID="ValidacionPrecioCompraDouble" runat="server" 
-                    ControlToValidate="tbPrecio2" 
-                    Text="*"
-                    ErrorMessage="Precio Compra debe ser numerico, ejemplo: 12,6"
-                    ForeColor="Red" 
-                    Type="Double">
-                </asp:CompareValidator>
+       <asp:RegularExpressionValidator CssClass="ValidacionPrecio2Agregar" ID="ValidacionPrecioCompraFloat" runat="server"
+            ControlToValidate="tbPrecio2" Text="*" ForeColor="Red" ErrorMessage="Precio Compra debe ser numerico, ejemplo: 12.6"
+            ValidationExpression="^\d+(.\d+)?$">
+       </asp:RegularExpressionValidator>
 
         <asp:Label  ID="Label4" CssClass="labels LabelAgregarProveedor" runat="server"  Text="Proveedor(*): " ></asp:Label>
             <asp:DropDownList ID="Proveedores" CssClass="combo_box ComboProveedor" runat="server"  OnSelectedIndexChanged="Unnamed1_SelectedIndexChanged" >
@@ -137,12 +133,12 @@
         ErrorMessage="Seleccionar Proveedor" 
         InitialValue="Seleccione un Proveedor" Text="*" ForeColor="Red">
         </asp:RequiredFieldValidator>
-       <asp:ValidationSummary ID="ValidationSummary1" CssClass="Validaciones"
-                HeaderText=""
+       <asp:ValidationSummary ID="ValidationSummary1" CssClass="avisoMensaje MensajeError "
+                style="top:370px;position:absolute;" HeaderText=""
                 DisplayMode="BulletList"
                 EnableClientScript="true"
                 runat="server" 
-                ForeColor="Red"/>
+                />
      
        </div>
 </asp:Content>

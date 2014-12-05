@@ -220,13 +220,13 @@ namespace back_office.Interfaz.web.InventarioRestaurante {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator Validator3;
         
         /// <summary>
-        /// Control ValidacionPrecioFloat.
+        /// Control ValidacionPrecioVentaFloat.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator ValidacionPrecioFloat;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ValidacionPrecioVentaFloat;
         
         /// <summary>
         /// Control Label7.
@@ -256,13 +256,13 @@ namespace back_office.Interfaz.web.InventarioRestaurante {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator Validator4;
         
         /// <summary>
-        /// Control ValidacionPrecioCompraDouble.
+        /// Control ValidacionPrecioCompraFloat.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator ValidacionPrecioCompraDouble;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ValidacionPrecioCompraFloat;
         
         /// <summary>
         /// Control Label4.

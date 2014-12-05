@@ -18,7 +18,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-             
+            
             ProcedimientosItem _procedimiento = new ProcedimientosItem();
             float _precioCompra = float.Parse(tbPrecio2.Text);
             float _precioVenta = float.Parse(tbPrecio.Text);
@@ -45,6 +45,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
                     if (_exito)
                     {
+                     
                         MensajeFallo.Visible = false;
                         MensajeExito.Visible = true;
                         Boton1.Enabled = false;
