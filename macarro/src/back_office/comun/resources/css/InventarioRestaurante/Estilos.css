@@ -64,7 +64,7 @@ margin-right:auto;
 }
 .LabelAgregarPrecioVenta {
     position:absolute;
-    top: 167px; 
+    top: 136px; 
     left: 604px; 
     height: 17px; 
     width: 124px;
@@ -72,32 +72,32 @@ margin-right:auto;
 
 .TextboxAgregarPrecioVenta {
     position:absolute;
-    top: 144px; 
+    top: 116px; 
     left: 743px;
-    bottom: 353px;
+    bottom: 381px;
 }
 
 .LabelAgregarPrecioCompra {
     position:absolute;
-    top: 238px; 
+    top: 197px; 
     left: 605px;
 }
 
 .TextboxAgregarPrecioCompra {
     position:absolute;
-    top: 215px; 
+    top: 177px; 
     left: 744px;
 }
 
 .LabelAgregarProveedor {
     position:absolute;
-    top: 92px; 
+    top: 69px; 
     left: 603px;
 }
 
 .ComboProveedor {
     position:absolute;
-    top: 79px; 
+    top: 57px; 
     left: 744px
 }
 
@@ -337,13 +337,13 @@ Validaciones {
 
 .ValidacionPrecioAgregar {
     position:absolute;
-    top: 169px;
+    top: 139px;
     left: 1017px;
 }
 
 .ValidacionPrecio2Agregar {
     position:absolute;
-    top: 240px;
+    top: 200px;
     left: 1017px;
 }
 
@@ -361,13 +361,13 @@ Validaciones {
 
 .BotonMas {
     position: absolute;
-    top: 151px;
+    top: 129px;
     left: 429px;
 }
 
 .BotonMenos {
     position: absolute;
-    top: 151px;
+    top: 130px;
     left: 461px;
 }
 

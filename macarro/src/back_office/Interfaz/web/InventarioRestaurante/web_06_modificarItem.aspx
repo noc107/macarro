@@ -96,7 +96,7 @@
         <asp:TextBox ID="tbDescripcion" CssClass="textbox TextboxAgregarDescripcion"   runat="server" Text="Este es un item" maxlength="99"></asp:TextBox>
         <asp:RegularExpressionValidator CssClass="ValidacionDescripcionAgregar" ID="RegularExpressionValidator2" runat="server"
                     ControlToValidate="tbDescripcion" Text="*" ForeColor="Red" ErrorMessage="Descripcion excede el rango (0-99)"
-                    ValidationExpression="^.{0,99}$">
+                    ValidationExpression="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚáéíóú]">
        </asp:RegularExpressionValidator>
         <asp:Label ID="Label6" CssClass="labels LabelAgregarPrecioVenta"  runat="server" Text="Precio Venta (*):" ></asp:Label>
         <asp:TextBox ID="tbPrecio" CssClass="textbox TextboxAgregarPrecioVenta"  runat="server" Text="500" maxlength="8"></asp:TextBox>
@@ -111,14 +111,10 @@
                     Text="*"
                     ErrorMessage="Precio Venta debe ser numerico" 
                     ForeColor="Red" 
-                    ValidationExpression="^\d+(.[0-9]*)">
+                    ValidationExpression="^\d+(.\d+)?$">
                 </asp:RegularExpressionValidator>
 
-        <asp:RangeValidator ID="Validator12" CssClass="ValidacionPreciodAgregar" runat="server"   
-                            MinimumValue="1" MaximumValue="99999999" ControlToValidate="tbPrecio" Text="*" ForeColor="Red" 
-                            ErrorMessage="El precio venta excede el rango (1-99999999)"
-                            Type="Integer" >
-       </asp:RangeValidator>
+        
         <asp:Label ID="Label7" CssClass="labels LabelAgregarPrecioCompra" runat="server" Text="Precio Compra (*):" ></asp:Label>
         <asp:TextBox ID="tbPrecio2" CssClass="textbox TextboxAgregarPrecioCompra" runat="server" Text="400" maxlength="8" ></asp:TextBox>
 
@@ -126,17 +122,13 @@
             Text="*" ForeColor="Red" CssClass="ValidacionPrecio2Agregar" ErrorMessage="Precio de Compra Requerido">
         </asp:RequiredFieldValidator>
        
-       <asp:RangeValidator ID="Validator13" CssClass="ValidacionPrecio2dAgregar" runat="server"   
-                            MinimumValue="1" MaximumValue="99999999" ControlToValidate="tbPrecio2" Text="*" ForeColor="Red" 
-                            ErrorMessage="El precio compra excede el rango (1-99999999)"
-                            Type="Integer" >
-       </asp:RangeValidator>
+       
        <asp:RegularExpressionValidator CssClass="ValidacionPrecio2Agregar" ID="RegularExpressionValidator1" runat="server" 
                     ControlToValidate="tbPrecio2" 
                     Text="*"
                     ErrorMessage="Precio Compra debe ser numerico" 
                     ForeColor="Red" 
-                    ValidationExpression="^\d+(.[0-9]*)">
+                    ValidationExpression="^\d+(.\d+)?$">
                 </asp:RegularExpressionValidator>
 
         <asp:Label ID="Label4" CssClass="labels LabelAgregarProveedor"  runat="server"  Text="Proveedor (*): " ></asp:Label>
@@ -145,12 +137,12 @@
              <asp:ListItem Text="Proovedor 2"></asp:ListItem>
             </asp:DropDownList>
      
-   <asp:ValidationSummary ID="ValidationSummary1" CssClass="Validaciones"
-                HeaderText=""
+   <asp:ValidationSummary ID="ValidationSummary1" CssClass="avisoMensaje MensajeError"
+                style="top:370px;position:absolute;" HeaderText=""
                 DisplayMode="BulletList"
                 EnableClientScript="true"
                 runat="server" 
-                ForeColor="Red"/>
+               />
 
 
        
