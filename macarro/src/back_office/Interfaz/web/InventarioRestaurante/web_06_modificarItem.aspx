@@ -94,10 +94,7 @@
        
         <asp:Label ID="Label3" CssClass="labels LabelAgregarDescripcion"  runat="server" Text="Descripción:"  ></asp:Label>
         <asp:TextBox ID="tbDescripcion" CssClass="textbox TextboxAgregarDescripcion"   runat="server" Text="Este es un item" maxlength="99"></asp:TextBox>
-        <asp:RegularExpressionValidator CssClass="ValidacionDescripcionAgregar" ID="RegularExpressionValidator2" runat="server"
-                    ControlToValidate="tbDescripcion" Text="*" ForeColor="Red" ErrorMessage="Descripcion excede el rango (0-99)"
-                    ValidationExpression="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚáéíóú]">
-       </asp:RegularExpressionValidator>
+        
         <asp:Label ID="Label6" CssClass="labels LabelAgregarPrecioVenta"  runat="server" Text="Precio Venta (*):" ></asp:Label>
         <asp:TextBox ID="tbPrecio" CssClass="textbox TextboxAgregarPrecioVenta"  runat="server" Text="500" maxlength="8"></asp:TextBox>
         
@@ -133,8 +130,6 @@
 
         <asp:Label ID="Label4" CssClass="labels LabelAgregarProveedor"  runat="server"  Text="Proveedor (*): " ></asp:Label>
             <asp:DropDownList ID="Proveedores" CssClass="combo_box ComboProveedor" runat="server" OnSelectedIndexChanged="Unnamed1_SelectedIndexChanged" >
-             <asp:ListItem Text="Proveedor 1" Selected="True"></asp:ListItem>
-             <asp:ListItem Text="Proovedor 2"></asp:ListItem>
             </asp:DropDownList>
      
    <asp:ValidationSummary ID="ValidationSummary1" CssClass="avisoMensaje MensajeError"

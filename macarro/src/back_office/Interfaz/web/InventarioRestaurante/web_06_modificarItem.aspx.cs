@@ -34,7 +34,16 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            float _precioVenta = int.Parse(tbPrecio.Text);
+            float _precioCompra = int.Parse(tbPrecio2.Text);
+
+            if (_precioVenta < _precioCompra) 
+            {
+                MensajeFallo.Text = "Precio venta no puede ser menor que precio compra";
+                MensajeFallo.Visible = true;
+            }
             
+
             Response.Redirect("web_06_gestionarInventario.aspx");
         
         
