@@ -54,10 +54,18 @@
             return ret;
         }
     </script>
+
+       <script>
+           function validacionesOk() {
+               if (Page_ClientValidate() == true) {
+                   confirm("Está a punto de modificar el Item. ¿Desea continuar?");
+               }
+           }
+    </script>
        
        
        <asp:Label ID="lbNombre" CssClass="labels LabelAgregarNombre" runat="server" Text="Nombre (*):" ></asp:Label>
-       <asp:TextBox ID="tbNombre" CssClass="textbox TextboxAgregarNombre" runat="server" Text="Pasta" maxlength="50"></asp:TextBox>
+       <asp:TextBox ID="tbNombre" CssClass="textbox TextboxAgregarNombre" runat="server" maxlength="50"></asp:TextBox>
 
        <asp:RequiredFieldValidator CssClass="ValidacionNombreAgregar" ID="RequiredFieldValidator1" runat="server" 
                     ControlToValidate="tbNombre" Text="*" ForeColor="Red" ErrorMessage="Nombre Requerido">
@@ -69,11 +77,11 @@
        
 
         <asp:Button ID="Boton1" CssClass="Boton BotonAceptarModificar"  runat="server" Text="Aceptar"   OnClick="Button1_Click" />
-        <asp:Button ID="Boton2" CssClass="Boton BotonCancelarModificar"  runat="server" Text="Cancelar"  OnClick="Button2_Click" />
+        <asp:Button ID="Boton2" CssClass="Boton BotonCancelarModificar" CausesValidation="false" runat="server" Text="Cancelar"  OnClick="Button2_Click" />
        
         <asp:Label ID="Label2" CssClass="labels LabelAgregarCantidad"  runat="server" Text="Cantidad (*):"></asp:Label>
         <asp:TextBox ID="tbCantidad" CssClass="textbox TextboxAgregarCantidad"  
-            runat="server"  Text="20" maxlength="4" onblur="javascript: if(this.value==''){this.value='0';}"
+            runat="server" maxlength="4" onblur="javascript: if(this.value==''){this.value='0';}"
             onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"></asp:TextBox>
                 <asp:RequiredFieldValidator CssClass="ValidacionCantidadAgregar" ID="ValidatorReq2" runat="server" 
                     ControlToValidate="tbCantidad" Text="*" ForeColor="Red" ErrorMessage="Cantidad Requerida">
@@ -93,10 +101,10 @@
 
        
         <asp:Label ID="Label3" CssClass="labels LabelAgregarDescripcion"  runat="server" Text="Descripción:"  ></asp:Label>
-        <asp:TextBox ID="tbDescripcion" CssClass="textbox TextboxAgregarDescripcion"   runat="server" Text="Este es un item" maxlength="99"></asp:TextBox>
+        <asp:TextBox ID="tbDescripcion" CssClass="textbox TextboxAgregarDescripcion"   runat="server" maxlength="99"></asp:TextBox>
         
         <asp:Label ID="Label6" CssClass="labels LabelAgregarPrecioVenta"  runat="server" Text="Precio Venta (*):" ></asp:Label>
-        <asp:TextBox ID="tbPrecio" CssClass="textbox TextboxAgregarPrecioVenta"  runat="server" Text="500" maxlength="8"></asp:TextBox>
+        <asp:TextBox ID="tbPrecio" CssClass="textbox TextboxAgregarPrecioVenta"  runat="server" maxlength="8"></asp:TextBox>
         
         <asp:RequiredFieldValidator ID="Validator3" runat="server" ControlToValidate="tbPrecio" 
             Text="*" ForeColor="Red" CssClass="ValidacionPrecioAgregar" ErrorMessage="Precio de Venta Requerido">
@@ -113,7 +121,7 @@
 
         
         <asp:Label ID="Label7" CssClass="labels LabelAgregarPrecioCompra" runat="server" Text="Precio Compra (*):" ></asp:Label>
-        <asp:TextBox ID="tbPrecio2" CssClass="textbox TextboxAgregarPrecioCompra" runat="server" Text="400" maxlength="8" ></asp:TextBox>
+        <asp:TextBox ID="tbPrecio2" CssClass="textbox TextboxAgregarPrecioCompra" runat="server" maxlength="8" ></asp:TextBox>
 
        <asp:RequiredFieldValidator ID="Validator4" runat="server" ControlToValidate="tbPrecio2" 
             Text="*" ForeColor="Red" CssClass="ValidacionPrecio2Agregar" ErrorMessage="Precio de Compra Requerido">
@@ -158,8 +166,8 @@
 
                 </div>
                 <div class="modal-footer">
-                     <asp:Button ID="Button1"   runat="server" CssClass="Boton" Text="Aceptar" OnClick="ButtonAceptarModalAumentar_Click"/>
-        <asp:Button ID="Button2"   runat="server" Text="Cancelar" CssClass="Boton" OnClick="ButtonCancelarModalAumentar_Click" />
+                     <asp:Button ID="Button1"   runat="server" CausesValidation="false" CssClass="Boton" Text="Aceptar" OnClick="ButtonAceptarModalAumentar_Click"/>
+        <asp:Button ID="Button2"   runat="server" Text="Cancelar"  CausesValidation="false" CssClass="Boton" OnClick="ButtonCancelarModalAumentar_Click" />
        
                 </div>
 
@@ -187,8 +195,8 @@
 
                 </div>
                 <div class="modal-footer">
-                     <asp:Button ID="botonAceptarResta"  runat="server" CssClass="Boton" Text="Aceptar" OnClick="ButtonAceptarModalRestar_Click" />
-        <asp:Button ID="botonCancelarModalRestar"  runat="server" Text="Cancelar" CssClass="Boton"  OnClick="ButtonCancelarModalRestar_Click"/>
+                     <asp:Button ID="botonAceptarResta" CausesValidation="false" runat="server" CssClass="Boton" Text="Aceptar" OnClick="ButtonAceptarModalRestar_Click" />
+        <asp:Button ID="botonCancelarModalRestar" CausesValidation="false" runat="server" Text="Cancelar" CssClass="Boton"  OnClick="ButtonCancelarModalRestar_Click"/>
        
                 </div>
 
@@ -200,7 +208,7 @@
 
 
         <asp:ImageButton id="ImageButton1" runat="server" data-target="#modalAgregar" cssclass="mas_menos_info BotonMas"
-              data-toggle="modal" ImageUrl="../../../comun/resources/img/Agregar.png"  OnClientClick="javascript: return false;"/>
+              data-toggle="modal" ImageUrl="../../../comun/resources/img/Agregar.png"  OnClientClick="javascript:return false;" OnClick="ButtonMasoMenos_Click"/>
 
      <asp:ImageButton id="ImageButton2" runat="server" data-target="#modalEliminar" cssclass="mas_menos_info BotonMenos"
               data-toggle="modal" ImageUrl="../../../comun/resources/img/menos.png" OnClientClick="javascript:return false;" />

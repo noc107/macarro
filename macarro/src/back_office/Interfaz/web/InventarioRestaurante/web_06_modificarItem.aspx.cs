@@ -30,16 +30,12 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 ListItem oItem = new ListItem(_proveedores[_contador]);
                 Proveedores.Items.Add(oItem);
             }
-            
+            Boton1.OnClientClick = "validacionesOk();";   //Funcion que revisa validaciones antes de confirmar            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             int _idItem = web_06_gestionarInventario.idItemSeleccionado;
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-            "err_msg",
-            "confirm('Ha ocurrido un error de base de datos, por favor intente luego');",
-            true);
             float _precioVenta = int.Parse(tbPrecio.Text);
             float _precioCompra = int.Parse(tbPrecio2.Text);
             ProcedimientosItem _procedimiento = new ProcedimientosItem();
@@ -91,6 +87,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void ButtonAceptarModalAumentar_Click(object sender, EventArgs e)
         {
+            string ajaa = tbCantidad.Text.ToString();
             int valorAct = valorActual();
             int y = 0;
             if (string.IsNullOrWhiteSpace(TextBoxAumentarCantidad.Text.ToString()))   //No suma null
@@ -123,7 +120,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void ButtonAceptarModalRestar_Click(object sender, EventArgs e)
         {
-            int valorAct = valorActual();
+            int valorAct = Convert.ToInt32(tbCantidad.Text.ToString());
             int y = 0;
             if (string.IsNullOrWhiteSpace(TextBoxRestarCantidad.Text.ToString()))   //No resta null
                 y = 0;
