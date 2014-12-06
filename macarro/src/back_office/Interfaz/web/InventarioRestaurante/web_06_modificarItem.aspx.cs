@@ -11,38 +11,46 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 {
     public partial class web_06_modificarItem : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            int idItem = web_06_gestionarInventario.idItemSeleccionado;   //id del item seleccionado en la ventana gestion
-            TextBoxAumentarCantidad.Visible= true;
-            ProcedimientosItem _procedimiento = new ProcedimientosItem();
-            string[] _mostrar = _procedimiento.verItem(idItem);
-            string[] _proveedores = _procedimiento.verProveedor();
-
-            tbNombre.Text = _mostrar[0];
-            tbCantidad.Text = _mostrar[3];
-            tbDescripcion.Text = _mostrar[4];
-            tbPrecio.Text = _mostrar[5];
-            tbPrecio2.Text = _mostrar[1];
-
-            for (int _contador = 0; _contador < _proveedores.Length; _contador++)
+            if (!Page.IsPostBack)
             {
-                ListItem oItem = new ListItem(_proveedores[_contador]);
-                Proveedores.Items.Add(oItem);
+                int idItem = web_06_gestionarInventario.idItemSeleccionado;   //id del item seleccionado en la ventana gestion
+                TextBoxAumentarCantidad.Visible = true;
+                ProcedimientosItem _procedimiento = new ProcedimientosItem();
+                string[] _mostrar = _procedimiento.verItem(idItem);
+                string[] _proveedores = _procedimiento.verProveedor();
+
+                this.tbNombre.Text = _mostrar[0];
+                this.tbCantidad.Text = _mostrar[3];
+                this.tbDescripcion.Text = _mostrar[4];
+                this.tbPrecio.Text = _mostrar[5];
+                this.tbPrecio2.Text = _mostrar[1];
+
+                for (int _contador = 0; _contador < _proveedores.Length; _contador++)
+                {
+                    ListItem oItem = new ListItem(_proveedores[_contador]);
+                    Proveedores.Items.Add(oItem);
+                }
+              
+
+                Boton1.OnClientClick = "validacionesOk();";   //Funcion que revisa validaciones antes de confirmar            
             }
-            Boton1.OnClientClick = "validacionesOk();";   //Funcion que revisa validaciones antes de confirmar            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+           
+           
             int _idItem = web_06_gestionarInventario.idItemSeleccionado;
-            float _precioVenta = int.Parse(tbPrecio.Text);
-            float _precioCompra = int.Parse(tbPrecio2.Text);
+            float _precioVenta = int.Parse(this.tbPrecio.Text);
+            float _precioCompra = int.Parse(this.tbPrecio2.Text);
             ProcedimientosItem _procedimiento = new ProcedimientosItem();
-            string _nombre = tbNombre.Text;
-            int _cantidad = int.Parse(tbCantidad.Text);
-            string _descripcion = tbDescripcion.Text;
-            string _proveedor = Proveedores.Text;
+            string _nombre = this.tbNombre.Text;
+            int _cantidad = int.Parse(this.tbCantidad.Text);
+            string _descripcion = this.tbDescripcion.Text;
+            string _proveedor = this.Proveedores.Text;
             
             if (_precioVenta < _precioCompra)
             {
@@ -54,6 +62,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 try
                 {
                     _procedimiento.modificarItem(_idItem, _nombre, _cantidad, _descripcion, _proveedor, _precioVenta, _precioCompra);
+                    Response.Redirect("web_06_gestionarInventario.aspx");
                 }
                 catch (ExcepcionModificarItem)
                 {
