@@ -11,13 +11,14 @@ using back_office.Datos;
 using back_office.Logica.InventarioRestaurante;
 using back_office.Excepciones.InventarioRestaurante;
 
+
 namespace back_office.Interfaz.web.InventarioRestaurante
-{
+{   
     public partial class web_06_gestionarInventario : System.Web.UI.Page
     {
         System.Data.DataTable _myTable = new System.Data.DataTable();
         OperacionesBD _baseDatos = new OperacionesBD();
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             _myTable.Columns.Add("Codigo", typeof(String));
@@ -146,10 +147,14 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         {
             if (e.CommandName == "Consultar")
             {
-                Response.Redirect("web_02_modificarProveedor.aspx");
+                GridViewRow rowSelect = (GridViewRow)(((ImageButton)e.CommandSource).NamingContainer);
+                int index = rowSelect.RowIndex;
+                int _indexTabla = ObtenerIdItem(index);
+                Response.Redirect("web_06_verItem.aspx");
             }
             if (e.CommandName == "Modificar")
             {
+                
                 Response.Redirect("web_02_modificarProveedor.aspx");
             }
             if (e.CommandName == "Eliminar")

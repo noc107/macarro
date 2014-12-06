@@ -125,8 +125,6 @@
         <asp:Label  ID="Label4" CssClass="labels LabelAgregarProveedor" runat="server"  Text="Proveedor(*): " ></asp:Label>
             <asp:DropDownList ID="Proveedores" CssClass="combo_box ComboProveedor" runat="server"  OnSelectedIndexChanged="Unnamed1_SelectedIndexChanged" >
              <asp:ListItem Text="Seleccione un Proveedor"></asp:ListItem>
-             <asp:ListItem Text="Empresas Polar C.A" ></asp:ListItem>
-             <asp:ListItem Text="Proovedor 2"></asp:ListItem>
             </asp:DropDownList>
          <asp:RequiredFieldValidator CssClass="ValidacionProveedorAgregar" ID="Validator5" 
         runat="server" ControlToValidate ="Proveedores"
