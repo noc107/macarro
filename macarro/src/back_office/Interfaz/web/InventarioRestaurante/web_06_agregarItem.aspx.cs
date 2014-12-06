@@ -14,11 +14,19 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         protected void Page_Load(object sender, EventArgs e)
         {
             ProcedimientosItem _procedimiento = new ProcedimientosItem();
-            string[] _proveedores = _procedimiento.verProveedor();
-            for (int _contador = 0; _contador < _proveedores.Length; _contador++)
+            try
             {
-                ListItem oItem = new ListItem(_proveedores[_contador]);
-                Proveedores.Items.Add(oItem);
+                string[] _proveedores = _procedimiento.verProveedor();
+                for (int _contador = 0; _contador < _proveedores.Length; _contador++)
+                {
+                    ListItem oItem = new ListItem(_proveedores[_contador]);
+                    Proveedores.Items.Add(oItem);
+                }
+            }catch(ExcepcionVerItem)
+            {
+                MensajeFallo.Text = "Ha ocurrido un error de base de datos, por favor intente mas tarde";
+                MensajeFallo.Visible = true;
+
             }
         }
 

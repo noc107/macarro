@@ -61,7 +61,7 @@
         </asp:RequiredFieldValidator>
        <asp:RegularExpressionValidator CssClass="ValidacionNombreAgregar" ID="Validator9" runat="server"
                     ControlToValidate="Nombre" Text="*" ForeColor="Red" ErrorMessage="El nombre deben ser letras (3-50)"
-                    ValidationExpression="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚáéíóú]{3,50}$">
+                    ValidationExpression="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚáéíóú ]{3,50}$">
        </asp:RegularExpressionValidator>
        
         
@@ -91,12 +91,8 @@
         <asp:TextBox ID="tbDescripcion" CssClass="textbox TextboxAgregarDescripcion" runat="server" maxlength="99"></asp:TextBox>
         <asp:RegularExpressionValidator CssClass="ValidacionDescripcionAgregar" ID="RegularExpressionValidator2" runat="server"
                     ControlToValidate="tbDescripcion" Text="*" ForeColor="Red" ErrorMessage="Descripcion excede el rango (0-99)"
-                    ValidationExpression="^.{0,99}$">
+                    ValidationExpression="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚáéíóú ]{0,99}$">
        </asp:RegularExpressionValidator> 
-       <asp:RegularExpressionValidator CssClass="ValidacionDescripcionAgregar" ID="ValidatorDescripcion2" runat="server"
-            ControlToValidate="tbDescripcion" Text="*" ForeColor="Red" ErrorMessage="Descripcion no debe contener caracteres extranos"
-            ValidationExpression="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚáéíóú]">
-       </asp:RegularExpressionValidator>
 
         <asp:Label ID="Label6" CssClass="labels LabelAgregarPrecioVenta"  runat="server" Text="Precio Venta(*):" ></asp:Label>
         <asp:TextBox ID="tbPrecio" CssClass="textbox TextboxAgregarPrecioVenta"   runat="server" maxlength="8"></asp:TextBox>
