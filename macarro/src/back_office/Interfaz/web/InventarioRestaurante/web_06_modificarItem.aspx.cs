@@ -44,8 +44,8 @@ namespace back_office.Interfaz.web.InventarioRestaurante
            
            
             int _idItem = web_06_gestionarInventario.idItemSeleccionado;
-            float _precioVenta = int.Parse(this.tbPrecio.Text);
-            float _precioCompra = int.Parse(this.tbPrecio2.Text);
+            float _precioVenta = float.Parse(this.tbPrecio.Text);
+            float _precioCompra = float.Parse(this.tbPrecio2.Text);
             ProcedimientosItem _procedimiento = new ProcedimientosItem();
             string _nombre = this.tbNombre.Text;
             int _cantidad = int.Parse(this.tbCantidad.Text);

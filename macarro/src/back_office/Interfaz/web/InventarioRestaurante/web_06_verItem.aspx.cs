@@ -18,7 +18,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
             try
             {
                 ProcedimientosItem _procedimiento = new ProcedimientosItem();
-                string[] _mostrar = _procedimiento.verItem(10);
+                string[] _mostrar = _procedimiento.verItem(idItem);
 
                 lbNombreVer.Text = _mostrar[0];
                 lbPrecio2.Text = _mostrar[1];
