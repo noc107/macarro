@@ -14,6 +14,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int idItem = web_06_gestionarInventario.idItemSeleccionado;   //id del item seleccionado en la ventana gestion
             try
             {
                 ProcedimientosItem _procedimiento = new ProcedimientosItem();

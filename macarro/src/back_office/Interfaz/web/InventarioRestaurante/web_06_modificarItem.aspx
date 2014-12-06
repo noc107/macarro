@@ -68,7 +68,7 @@
        </asp:RegularExpressionValidator>
        
 
-        <asp:Button ID="Boton1" CssClass="Boton BotonAceptarModificar"  runat="server" Text="Aceptar" OnClientClick="if (confirm('Está accion modificara el item en el sistema ¿Desea continuar?')) return alert('Los datos se han modificado satisfactoriamente.');" OnClick="Button1_Click" />
+        <asp:Button ID="Boton1" CssClass="Boton BotonAceptarModificar"  runat="server" Text="Aceptar"   OnClick="Button1_Click" />
         <asp:Button ID="Boton2" CssClass="Boton BotonCancelarModificar"  runat="server" Text="Cancelar"  OnClick="Button2_Click" />
        
         <asp:Label ID="Label2" CssClass="labels LabelAgregarCantidad"  runat="server" Text="Cantidad (*):"></asp:Label>

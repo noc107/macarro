@@ -18,6 +18,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
     {
         System.Data.DataTable _myTable = new System.Data.DataTable();
         OperacionesBD _baseDatos = new OperacionesBD();
+        public static int idItemSeleccionado = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -132,11 +133,17 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         {
             if (e.CommandName == "Consultar")
             {
-                Response.Redirect("web_02_modificarProveedor.aspx");
+                GridViewRow rowSelect = (GridViewRow)(((ImageButton)e.CommandSource).NamingContainer);
+                int index = rowSelect.RowIndex;
+                ObtenerIdItem(index);
+                Response.Redirect("web_06_agregarItem.aspx");
             }
             if (e.CommandName == "Modificar")
             {
-                Response.Redirect("web_02_modificarProveedor.aspx");
+                GridViewRow rowSelect = (GridViewRow)(((ImageButton)e.CommandSource).NamingContainer);
+                int index = rowSelect.RowIndex;
+                ObtenerIdItem(index);
+                Response.Redirect("web_06_modificarItem.aspx");
             }
             if (e.CommandName == "Eliminar")
             {
@@ -150,7 +157,8 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         {
             GridViewRow selectedRow = gdRows.Rows[index];
             TableCell codigoItem = selectedRow.Cells[0];
-            return (Convert.ToInt32(codigoItem.Text));
+            idItemSeleccionado = Convert.ToInt32(codigoItem.Text);
+            return (idItemSeleccionado);
         }
 
 
@@ -176,7 +184,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
           "err_msg",
-          "alert('Dispatch assignment saved, but you forgot to click Confirm or Cancel!)');",
+          "alert('Lo sentimos, ha ocurrido un error, por favor intente nuevamente)');",
           true);
             }
         }

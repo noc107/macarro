@@ -12,8 +12,8 @@ namespace back_office.Interfaz.web.InventarioRestaurante
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int idItem = web_06_gestionarInventario.idItemSeleccionado;   //id del item seleccionado en la ventana gestion
             TextBoxAumentarCantidad.Visible= true;
-
             ProcedimientosItem _procedimiento = new ProcedimientosItem();
             string[] _mostrar = _procedimiento.verItem(10);
             string[] _proveedores = _procedimiento.verProveedor();
@@ -34,6 +34,10 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+            "err_msg",
+            "confirm('Ha ocurrido un error de base de datos, por favor intente luego');",
+            true);
             float _precioVenta = int.Parse(tbPrecio.Text);
             float _precioCompra = int.Parse(tbPrecio2.Text);
 
