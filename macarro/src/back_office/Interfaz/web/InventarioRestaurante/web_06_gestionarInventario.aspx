@@ -14,32 +14,61 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="js_place_holder" runat="server">
 </asp:Content>
 
+
 <asp:Content ID="Content7" ContentPlaceHolderID="middle_place_holder" runat="server">
     <h2>Gestionar Inventario</h2>
     <div ID="Mensajes" class="BloqueMensaje">
     <asp:Label ID="MensajeFallo" CssClass="LabelMensajeFallo" runat="server" Text="El item no ha podido ser eliminado debido a que X" Visible="false"></asp:Label>
     </div>
     <br /><br />
-<asp:GridView ID="Inventario"  CssClass="mGrid" AllowPaging="true" HorizontalAlign="Center" runat="server" 
-                               BorderStyle="None"  AllowSorting="true" GridLines="None" AutoGenerateColumns="False"
-                                              ForeColor="#99CCFF" PageSize="5" OnRowDataBound="Inventario_RowDataBound" OnSelectedIndexChanged="Inventario_SelectedIndexChanged" OnPageIndexChanging="Inventario_PageIndexChanged">
+
+    <script src="../../../comun/resources/js/jquery-1.11.1.js"></script>
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        //agregar una nueva columna con todo el texto 
+        //contenido en las columnas de la grilla 
+        // contains de Jquery es CaseSentive, por eso a minúscula
+        $(".filtrar tr:has(td.filtro)").each(function () {
+            var t = $(this).text().toLowerCase();
+            $("<td class='indexColumn'></td>")
+            .hide().text(t).appendTo(this);
+        });
+        //Agregar el comportamiento al texto (se selecciona por el ID) 
+        $("#texto").keyup(function () {
+            var s = $(this).val().toLowerCase().split(" ");
+            $(".filtrar tr:hidden").show();
+            $.each(s, function () {
+                $(".filtrar tr:visible .indexColumn:not(:contains('"
+                + this + "'))").parent().hide();
+            });
+        });
+    });
+     </script>
+
+<input type="text" id="texto" name="texto"/>
+
+<asp:GridView ID="gdRows"  CssClass="mGrid filtrar" AllowPaging="true" HorizontalAlign="Center" runat="server" onrowcommand="userGridview_RowCommand"
+             BorderStyle="None"  AllowSorting="true" GridLines="None" AutoGenerateColumns="False"
+             ForeColor="#99CCFF" PageSize="5" OnRowDataBound="Inventario_RowDataBound" 
+             OnSelectedIndexChanged="Inventario_SelectedIndexChanged" OnPageIndexChanging="Inventario_PageIndexChanged">
             <AlternatingRowStyle CssClass="alt" />  
             <Columns>    
                 
-                <asp:BoundField DataField="Codigo" HeaderText="Código">  
+                <asp:BoundField DataField="Codigo" HeaderText="Código" ItemStyle-CssClass="filtro">  
                 <ItemStyle Width="80px" HorizontalAlign="Center" />
                 </asp:BoundField>
 
-                <asp:BoundField DataField="Nombre" HeaderText="Nombre" >       
+                <asp:BoundField DataField="Nombre" HeaderText="Nombre" ItemStyle-CssClass="filtro">       
                 <ItemStyle Width="270px" HorizontalAlign="Center" />
                 </asp:BoundField>
 
-                <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" >       
+                <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" ItemStyle-CssClass="filtro">       
                 <ItemStyle Width="80px" HorizontalAlign="Center" />
                 </asp:BoundField>
 
                
-                <asp:BoundField HeaderText="Acciones" DataField="Acciones" >       
+                <asp:BoundField HeaderText="Acciones" DataField="Acciones" ItemStyle-CssClass="filtro">       
                 <ItemStyle Width="150px" HorizontalAlign="Center" />
                 </asp:BoundField>
 

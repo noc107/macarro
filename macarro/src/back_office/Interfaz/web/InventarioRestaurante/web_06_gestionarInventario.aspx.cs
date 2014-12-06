@@ -13,12 +13,12 @@ using back_office.Excepciones.InventarioRestaurante;
 
 
 namespace back_office.Interfaz.web.InventarioRestaurante
-{   
+{
     public partial class web_06_gestionarInventario : System.Web.UI.Page
     {
         System.Data.DataTable _myTable = new System.Data.DataTable();
         OperacionesBD _baseDatos = new OperacionesBD();
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             _myTable.Columns.Add("Codigo", typeof(String));
@@ -37,7 +37,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 consultar.ImageUrl = "../../../comun/resources/img/View-128.png";
                 consultar.Height = 50;
                 consultar.Width = 50;
-                // consultar.Click += new ImageClickEventHandler(this.consultar_Click);
+               // consultar.Click += new ImageClickEventHandler(this.consultar_Click);
                 consultar.ToolTip = "Ver para imprimir";
                 consultar.CommandName = "Consultar";
 
@@ -46,7 +46,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 editar.ImageUrl = "../../../comun/resources/img/Data-Edit-128.png";
                 editar.Height = 50;
                 editar.Width = 50;
-                // editar.Click += new ImageClickEventHandler(this.modificar_Click);
+               // editar.Click += new ImageClickEventHandler(this.modificar_Click);
                 editar.ToolTip = "Editar Cuenta";
                 editar.CommandName = "Modificar";
 
@@ -55,8 +55,9 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 eliminar.ImageUrl = "../../../comun/resources/img/Garbage-Closed-128.png";
                 eliminar.Height = 50;
                 eliminar.Width = 50;
-                //   eliminar.Click += new ImageClickEventHandler(this.eliminar_Click);
+                eliminar.Click += new ImageClickEventHandler(this.eliminar_Click);
                 eliminar.CommandName = "Eliminar";
+                eliminar.OnClientClick = "return confirm('¿Desea eliminar el item seleccionado?');";
 
                 e.Row.Cells[3].Controls.Add(consultar);
                 e.Row.Cells[3].Controls.Add(editar);
@@ -68,64 +69,48 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         }
 
         //Evento consulta de evento especifico
-        void consultar_Click(Object sender, ImageClickEventArgs e)
+        protected void consultar_Click(Object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("web_06_verItem.aspx");
+
         }
 
 
         //Evento modificar de evento especifico
-        void modificar_Click(Object sender, ImageClickEventArgs e)
+        protected void modificar_Click(Object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("web_06_modificarItem.aspx");
+
         }
 
-        void eliminar_Click(Object sender, ImageClickEventArgs e)
+        protected void eliminar_Click(Object sender, ImageClickEventArgs e)
         {
-            /*ProcedimientosItem _procedimiento = new ProcedimientosItem();
-            bool _exito = _procedimiento.eliminarItem(Nombre.Text, Convert.ToInt32(Cantidad.Text),
-                        float.Parse(tbPrecio2.Text), float.Parse(tbPrecio.Text), tbDescripcion.Text, Proveedores.Text,
-                        Convert.ToInt32(tbCantidadMinima.Text));
-            if (_exito)
-            {
-                MensajeExito.Visible = true;
-                Boton1.Enabled = false;
-            }
-            else
-            {
-                MensajeFallo.Visible = true;
-            }*/
+
         }
 
-
+       protected string confirmacionEliminar_Click(Object sender, ImageClickEventArgs e)
+        {
+            return ("confirm('seguro')");
+        }
 
 
         protected void CargarGrid()
         {
             SqlDataReader _reader;
-            //SqlDataAdapter da;
             SqlCommand _comando = new SqlCommand("Procedure_GridviewCarga", _baseDatos._cn);
-            //try
-            //{
             _comando.CommandType = CommandType.StoredProcedure;
             _baseDatos._cn.Open();
             _comando.ExecuteNonQuery();
             _reader = _comando.ExecuteReader();
-            //foreach (DataColumn _colum in _myTable.Columns)
-            //{
-            while (_reader.Read())
-            {
-                DataRow _dr = _myTable.NewRow();
-                _dr["Codigo"] = _reader[0];
-                _dr["Nombre"] = (string)_reader[1];
-                _dr["Cantidad"] = _reader[2];
-                _myTable.Rows.Add(_dr);
-            }
-            //}
+                 while (_reader.Read())
+                {
+                    DataRow _dr = _myTable.NewRow();
+                    _dr["Codigo"] = _reader[0];
+                    _dr["Nombre"] = (string)_reader[1];
+                    _dr["Cantidad"] = _reader[2];
+                    _myTable.Rows.Add(_dr);
+                }
             _baseDatos._cn.Close();
-            Inventario.DataSource = _myTable;
-            Inventario.DataBind();
-
+            gdRows.DataSource = _myTable;
+            gdRows.DataBind();
         }
 
         protected void Inventario_SelectedIndexChanged(object sender, EventArgs e)
@@ -136,7 +121,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void Inventario_PageIndexChanged(object sender, GridViewPageEventArgs e)
         {
-            Inventario.PageIndex = e.NewPageIndex;
+            gdRows.PageIndex = e.NewPageIndex;
             this.CargarGrid();
         }
 
@@ -147,14 +132,10 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         {
             if (e.CommandName == "Consultar")
             {
-                GridViewRow rowSelect = (GridViewRow)(((ImageButton)e.CommandSource).NamingContainer);
-                int index = rowSelect.RowIndex;
-                int _indexTabla = ObtenerIdItem(index);
-                Response.Redirect("web_06_verItem.aspx");
+                Response.Redirect("web_02_modificarProveedor.aspx");
             }
             if (e.CommandName == "Modificar")
             {
-                
                 Response.Redirect("web_02_modificarProveedor.aspx");
             }
             if (e.CommandName == "Eliminar")
@@ -167,11 +148,8 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         public int ObtenerIdItem(int index)
         {
-
-            GridViewRow selectedRow = Inventario.Rows[index];
-
+            GridViewRow selectedRow = gdRows.Rows[index];
             TableCell codigoItem = selectedRow.Cells[0];
-
             return (Convert.ToInt32(codigoItem.Text));
         }
 
@@ -182,15 +160,9 @@ namespace back_office.Interfaz.web.InventarioRestaurante
             try
             {
                 bool _exito = _procedimiento.eliminarItem(idItem);
-                /*   if (_exito)
-                   {
-                       MensajeExito.Visible = true;
-                       Boton1.Enabled = false;
-                   }
-                   else
-                   {
-                       MensajeFallo.Visible = true;
-                   } */
+
+                Response.Redirect("web_06_gestionarinventario.aspx");
+                
             }
             catch (ExcepcionEliminarItem)
             {

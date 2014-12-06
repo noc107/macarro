@@ -22,12 +22,12 @@ namespace back_office.Interfaz.web.InventarioRestaurante {
         protected global::System.Web.UI.WebControls.Label MensajeFallo;
         
         /// <summary>
-        /// Inventario control.
+        /// gdRows control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Inventario;
+        protected global::System.Web.UI.WebControls.GridView gdRows;
     }
 }
