@@ -299,7 +299,40 @@ namespace back_office.Datos.InventarioRestaurante
             _comando.CommandType = CommandType.StoredProcedure;
             return _comando;
         }
-
+        /// <summary>
+        /// Funcion que modifica los datos de un item
+        /// </summary>
+        /// <param name="_itemModificar">El item a modificar</param>
+        /// <returns>Boolean que indica si la operacion fue exitosa o no</returns>
+        public bool ModificarItem(Item _itemModificar)
+        {
+            bool _exito;
+            SqlCommand _comando = new SqlCommand("Procedure_modificarItemMostrado",_baseDatos._cn);
+            _comando.CommandType = CommandType.StoredProcedure;
+            _comando.Parameters.Add("@_modificarItemId", SqlDbType.Int).Value = _itemModificar.Codigo;
+            _comando.Parameters.Add("@_modificarItemNombre", SqlDbType.VarChar).Value = _itemModificar.Nombre;
+            _comando.Parameters.Add("@_modificarItemCantidad", SqlDbType.Int).Value = _itemModificar.Cantidad;
+            _comando.Parameters.Add("@_modificarItemDescripcion", SqlDbType.VarChar).Value = _itemModificar.Descripcion;
+            _comando.Parameters.Add("@_modificarItemProveedor", SqlDbType.VarChar).Value = _itemModificar.Proveedor.RazonSocial;
+            _comando.Parameters.Add("@_modificarItemPrecioCompra", SqlDbType.Float).Value = _itemModificar.PrecioCompra;
+            _comando.Parameters.Add("@_modificarItemPrecioventa", SqlDbType.Float).Value = _itemModificar.PrecioVenta;
+            try
+            {
+                _baseDatos._cn.Open();
+                _comando.ExecuteNonQuery();
+                _exito = true;
+            }
+            catch (Exception ex)
+            {   
+                _exito = false;
+                throw new ExcepcionModificarItem(ex.Message);
+            }
+            finally 
+            {
+                _baseDatos._cn.Close();
+            }
+            return _exito;
+        }
  
 
     }

@@ -38,7 +38,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
           "err_msg",
-          "alert('Ha ocurrido un error de base de datos, por favor intente luego)');",
+          "alert('Ha ocurrido un error de base de datos, por favor intente luego');",
           true);
                 Response.Redirect("web_06_gestionarInventario.aspx");
             }
@@ -46,7 +46,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
           "err_msg",
-          "alert('Ha ocurrido un error)');",
+          "alert('Su solicitud no pudo ser procesada');",
           true);
             }
 

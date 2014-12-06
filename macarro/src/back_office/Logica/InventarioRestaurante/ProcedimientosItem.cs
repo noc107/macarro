@@ -107,6 +107,31 @@ namespace back_office.Logica.InventarioRestaurante
 
             return _datos;
         }
-
+        /// <summary>
+        /// Funcion que modifica los datos de un item en la base de datos
+        /// </summary>
+        /// <param name="_id">Integer con el Codigo del item</param>
+        /// <param name="_nombre">String con el nombre del item</param>
+        /// <param name="_cantidad">Integer con la cantidad del item</param>
+        /// <param name="_descripcion">String con la descripcion del item</param>
+        /// <param name="_proveedor">string con la razon social del proveedor</param>
+        /// <param name="_precioVenta">Float con el precio de venta</param>
+        /// <param name="_precioCompra">Float con el precio de compra</param>
+        /// <returns></returns>
+        public bool modificarItem(int _id, string _nombre, int _cantidad, string _descripcion, string _proveedor, float _precioVenta,float _precioCompra)
+        {
+            ItemBD _itemDatos = new ItemBD();
+            Proveedor _proveedorItem = new Proveedor();
+            _proveedorItem.RazonSocial = _proveedor;
+            Item _itemModificar = new Item(_id,_descripcion,_cantidad,_nombre,_precioCompra,_precioVenta,System.DateTime.Now,10,_proveedorItem);
+            if (_itemDatos.ModificarItem(_itemModificar))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

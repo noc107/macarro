@@ -5,13 +5,13 @@ using System.Web;
 
 namespace back_office.Excepciones.InventarioRestaurante
 {
-    public class ExcepcionEliminarItem : Exception
+    public class ExcepcionModificarItem : Exception
     {
         private string _codigoError;
         /// <summary>
-        /// Constructor por defecto de la clase ExcepcionEliminarItem
+        /// Constructor por defecto de la clase ExcepcionModificarItem
         /// </summary>
-        public ExcepcionEliminarItem()
+        public ExcepcionModificarItem()
         {
             _codigoError = string.Empty;
         }
@@ -19,7 +19,7 @@ namespace back_office.Excepciones.InventarioRestaurante
         /// Constructor con una excepcion referente a la base de datos
         /// </summary>
         /// <param name="mensajeExcepcion">Mensaje de error de la base de datos</param>
-        public ExcepcionEliminarItem(string mensajeExcepcion) : base(mensajeExcepcion) 
+        public ExcepcionModificarItem(string mensajeExcepcion) : base(mensajeExcepcion) 
         {
             
         }
@@ -29,7 +29,7 @@ namespace back_office.Excepciones.InventarioRestaurante
         /// <param name="_codigoError">String con el codigo de error</param>
         /// <param name="mensajeExcepcion">String con mensaje de la excepcion</param>
         /// <param name="ex">Excepcion de la base de datos</param>
-        public ExcepcionEliminarItem(string _codigoError,string mensajeExcepcion,Exception ex) : base(mensajeExcepcion,ex) 
+        public ExcepcionModificarItem(string _codigoError,string mensajeExcepcion,Exception ex) : base(mensajeExcepcion,ex) 
         {
         
         }
@@ -38,5 +38,6 @@ namespace back_office.Excepciones.InventarioRestaurante
         {
             get { return _codigoError; }
         }
+
     }
 }

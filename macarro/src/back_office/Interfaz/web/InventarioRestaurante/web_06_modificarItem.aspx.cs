@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using back_office.Logica.InventarioRestaurante;
+using back_office.Excepciones.InventarioRestaurante;
 
 namespace back_office.Interfaz.web.InventarioRestaurante
 {
@@ -15,7 +16,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
             int idItem = web_06_gestionarInventario.idItemSeleccionado;   //id del item seleccionado en la ventana gestion
             TextBoxAumentarCantidad.Visible= true;
             ProcedimientosItem _procedimiento = new ProcedimientosItem();
-            string[] _mostrar = _procedimiento.verItem(10);
+            string[] _mostrar = _procedimiento.verItem(idItem);
             string[] _proveedores = _procedimiento.verProveedor();
 
             tbNombre.Text = _mostrar[0];
@@ -34,21 +35,50 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            int _idItem = web_06_gestionarInventario.idItemSeleccionado;
             ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
             "err_msg",
             "confirm('Ha ocurrido un error de base de datos, por favor intente luego');",
             true);
             float _precioVenta = int.Parse(tbPrecio.Text);
             float _precioCompra = int.Parse(tbPrecio2.Text);
-
-            if (_precioVenta < _precioCompra) 
+            ProcedimientosItem _procedimiento = new ProcedimientosItem();
+            string _nombre = tbNombre.Text;
+            int _cantidad = int.Parse(tbCantidad.Text);
+            string _descripcion = tbDescripcion.Text;
+            string _proveedor = Proveedores.Text;
+            
+            if (_precioVenta < _precioCompra)
             {
                 MensajeFallo.Text = "Precio venta no puede ser menor que precio compra";
                 MensajeFallo.Visible = true;
             }
-            
+            else
+            {
+                try
+                {
+                    _procedimiento.modificarItem(_idItem, _nombre, _cantidad, _descripcion, _proveedor, _precioVenta, _precioCompra);
+                }
+                catch (ExcepcionModificarItem)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+             "err_msg",
+             "alert('Ha ocurrido un error de base de datos, por favor intente luego');",
+             true);
+                    Response.Redirect("web_06_gestionarInventario.aspx");
+                }
+                catch (Exception) 
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+             "err_msg",
+             "alert('Su solicitud no pudo ser procesada');",
+             true);
+                    Response.Redirect("web_06_gestionarInventario.aspx");
+                }
+                    
+            }
 
-            Response.Redirect("web_06_gestionarInventario.aspx");
+            
         
         
         }
