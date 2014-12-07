@@ -23,34 +23,18 @@
     <br /><br />
 
     <script src="../../../comun/resources/js/jquery-1.11.1.js"></script>
-
-<script language="javascript" type="text/javascript">
-    $(document).ready(function () {
-        //agregar una nueva columna con todo el texto 
-        //contenido en las columnas de la grilla 
-        // contains de Jquery es CaseSentive, por eso a minúscula
-        $(".filtrar tr:has(td.filtro)").each(function () {
-            var t = $(this).text().toLowerCase();
-            $("<td class='indexColumn'></td>")
-            .hide().text(t).appendTo(this);
-        });
-        //Agregar el comportamiento al texto (se selecciona por el ID) 
-        $("#texto").keyup(function () {
-            var s = $(this).val().toLowerCase().split(" ");
-            $(".filtrar tr:hidden").show();
-            $.each(s, function () {
-                $(".filtrar tr:visible .indexColumn:not(:contains('"
-                + this + "'))").parent().hide();
-            });
-        });
-    });
-     </script>
-
-<input type="text" id="texto" name="texto"/>
+    <asp:Label ID="lbParametro" runat="server" Text="Parámetro:" CssClass="labels labelParametro"></asp:Label>
+<asp:TextBox ID="tbBuscar" runat="server" MaxLength="49" CssClass="textbox TextboxBuscar" placeholder="Buscar Item..."></asp:TextBox>
+                <asp:DropDownList ID="ddParametro" runat="server" CssClass="combo_box_estatus ComboboxBuscar">
+                    <asp:ListItem>Nombre</asp:ListItem>
+                    <asp:ListItem>Codigo</asp:ListItem>
+                </asp:DropDownList>
+<asp:ImageButton ID="botonBuscar" text="buscar" runat="server" OnClick="botonBuscar_Click" ImageUrl="~/comun/resources/img/icon-buscar.png" CssClass="botonCualquiera btnSearch BotonBuscar" />
+<asp:ImageButton ID="botonCancelar" text="buscar" runat="server" OnClick="botonCancelar_Click" ImageUrl="~/comun/resources/img/icon-cancel.png" CssClass="botonCualquiera btnSearch BotonBorrarBuscar" />
 
 <asp:GridView ID="gdRows"  CssClass="mGrid filtrar" AllowPaging="true" HorizontalAlign="Center" runat="server" onrowcommand="userGridview_RowCommand"
              BorderStyle="None"  AllowSorting="true" GridLines="None" AutoGenerateColumns="False"
-             ForeColor="#99CCFF" PageSize="5" OnRowDataBound="Inventario_RowDataBound" 
+             ForeColor="#99CCFF" PageSize="5" OnRowDataBound="Inventario_RowDataBound" ShowHeaderWhenEmpty="true"
              OnSelectedIndexChanged="Inventario_SelectedIndexChanged" OnPageIndexChanging="Inventario_PageIndexChanged">
             <AlternatingRowStyle CssClass="alt" />  
             <Columns>    
@@ -76,4 +60,5 @@
             <PagerStyle CssClass="pgr" />
             <SelectedRowStyle HorizontalAlign="Center" BackColor="#3366FF" BorderColor="Black" />  
         </asp:GridView>
+
 </asp:Content>

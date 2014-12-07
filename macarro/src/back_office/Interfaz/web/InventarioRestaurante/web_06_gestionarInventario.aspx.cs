@@ -87,11 +87,6 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         }
 
-       protected string confirmacionEliminar_Click(Object sender, ImageClickEventArgs e)
-        {
-            return ("confirm('seguro')");
-        }
-
 
         protected void CargarGrid()
         {
@@ -114,6 +109,8 @@ namespace back_office.Interfaz.web.InventarioRestaurante
             gdRows.DataBind();
         }
 
+
+
         protected void Inventario_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -123,7 +120,8 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         protected void Inventario_PageIndexChanged(object sender, GridViewPageEventArgs e)
         {
             gdRows.PageIndex = e.NewPageIndex;
-            this.CargarGrid();
+            gdRows.DataSource = _myTable;
+            gdRows.DataBind();
         }
 
 
@@ -188,6 +186,108 @@ namespace back_office.Interfaz.web.InventarioRestaurante
           true);
             }
         }
+
+        protected void botonBuscar_Click(object sender, EventArgs e)
+        {
+            if (ddParametro.SelectedIndex == 0)
+            {
+                cargarFilasDataTable();
+                this.gdRows.DataSource = null;
+                gdRows.DataBind();
+                SqlDataReader _reader;
+                SqlCommand _comando = new SqlCommand("Procedure_buscarItemNombre", _baseDatos._cn);
+                _comando.CommandType = CommandType.StoredProcedure;
+                _comando.Parameters.Add("@nombreBuscado", SqlDbType.VarChar).Value = tbBuscar.Text.ToString();
+                _baseDatos._cn.Open();
+                _comando.ExecuteNonQuery();
+                _reader = _comando.ExecuteReader();
+                while (_reader.Read())
+                {
+                    DataRow _dr = _myTable.NewRow();
+                    _dr["Codigo"] = _reader[0];
+                    _dr["Nombre"] = (string)_reader[1];
+                    _dr["Cantidad"] = _reader[2];
+                    _myTable.Rows.Add(_dr);
+                }
+                _baseDatos._cn.Close();
+                gdRows.DataSource = _myTable;
+                gdRows.DataBind();
+            }
+            else
+            {
+                validarBuscarItemPorCodigo();
+            }
+        }
+
+
+
+        protected void buscarItemPorCodigo()
+        {
+            cargarFilasDataTable();
+            this.gdRows.DataSource = null;
+            gdRows.DataBind();
+            SqlDataReader _reader;
+            SqlCommand _comando = new SqlCommand("Procedure_buscarItemCodigo", _baseDatos._cn);
+            _comando.CommandType = CommandType.StoredProcedure;
+            _comando.Parameters.Add("@idBuscado", SqlDbType.Int).Value = Convert.ToInt32(tbBuscar.Text.ToString());
+            _baseDatos._cn.Open();
+            _comando.ExecuteNonQuery();
+            _reader = _comando.ExecuteReader();
+            while (_reader.Read())
+            {
+                DataRow _dr = _myTable.NewRow();
+                _dr["Codigo"] = _reader[0];
+                _dr["Nombre"] = (string)_reader[1];
+                _dr["Cantidad"] = _reader[2];
+                _myTable.Rows.Add(_dr);
+            }
+            _baseDatos._cn.Close();
+            gdRows.DataSource = _myTable;
+            gdRows.DataBind();
+        }
+
+        protected void cargarFilasDataTable()
+        {
+            _myTable = null;
+            _myTable = new System.Data.DataTable();
+
+            _myTable.Columns.Add("Codigo", typeof(String));
+            _myTable.Columns.Add("Nombre", typeof(String));
+            _myTable.Columns.Add("Cantidad", typeof(String));
+            _myTable.Columns.Add("Acciones", typeof(String));
+        }
+
+        protected void validarBuscarItemPorCodigo()
+        {
+            try
+            {
+                Convert.ToInt32(tbBuscar.Text.ToString());
+                buscarItemPorCodigo();
+
+            }
+            catch (FormatException)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                "err_msg",
+                "alert('¡Solo se aceptan números para la busqueda por código!');",
+                true);
+                tbBuscar.Text = "";
+            }
+            catch (OverflowException)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+               "err_msg",
+               "alert('¡Numero demasiado largo!');",
+                true);
+                tbBuscar.Text = "";
+            }
+        }
+
+        protected void botonCancelar_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("web_06_gestionarinventario.aspx");
+        }
+
 
     }
 }

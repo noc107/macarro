@@ -22,6 +22,51 @@ namespace back_office.Interfaz.web.InventarioRestaurante {
         protected global::System.Web.UI.WebControls.Label MensajeFallo;
         
         /// <summary>
+        /// lbParametro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbParametro;
+        
+        /// <summary>
+        /// tbBuscar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbBuscar;
+        
+        /// <summary>
+        /// ddParametro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddParametro;
+        
+        /// <summary>
+        /// botonBuscar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton botonBuscar;
+        
+        /// <summary>
+        /// botonCancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton botonCancelar;
+        
+        /// <summary>
         /// gdRows control.
         /// </summary>
         /// <remarks>

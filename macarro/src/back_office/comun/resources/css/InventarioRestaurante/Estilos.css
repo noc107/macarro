@@ -21,7 +21,7 @@ margin-right:auto;
 
 .TextboxAgregarNombre {
     position:absolute;
-    top: 42px;
+    top: 44px;
     left: 246px;
 }
 
@@ -33,7 +33,7 @@ margin-right:auto;
 
 .TextboxAgregarCantidad {
     position:absolute;
-    top: 108px; 
+    top: 110px; 
     left: 245px;
 }
 
@@ -45,7 +45,7 @@ margin-right:auto;
 
 .TextboxAgregarDescripcion {
     position:absolute; 
-    top: 172px; 
+    top: 174px; 
     left: 245px;
 }
 
@@ -80,7 +80,7 @@ margin-right:auto;
 .LabelAgregarPrecioCompra {
     position:absolute;
     top: 197px; 
-    left: 605px;
+    left: 604px;
 }
 
 .TextboxAgregarPrecioCompra {
@@ -91,13 +91,13 @@ margin-right:auto;
 
 .LabelAgregarProveedor {
     position:absolute;
-    top: 69px; 
+    top: 67px; 
     left: 603px;
 }
 
 .ComboProveedor {
     position:absolute;
-    top: 58px; 
+    top: 54px; 
     left: 744px
 }
 
@@ -361,14 +361,14 @@ Validaciones {
 
 .BotonMas {
     position: absolute;
-    top: 119px;
-    left: 429px;
+    top: 124px;
+    left: 432px;
 }
 
 .BotonMenos {
     position: absolute;
-    top: 119px;
-    left: 461px;
+    top: 124px;
+    left: 464px;
 }
 
 .TextBoxModalWindow {
@@ -379,4 +379,34 @@ Validaciones {
     position:absolute;
     top:259px;
     left:517px;
+}
+
+.ComboboxBuscar {
+    position:absolute;
+    top: 131px;
+    left: 432px;
+}
+
+.TextboxBuscar {
+    position:absolute;
+    top: 123px;
+    left: 68px;
+}
+
+.BotonBuscar {
+    position:absolute;
+    top: 140px;
+    left: 615px;
+}
+
+.BotonBorrarBuscar {
+    position:absolute;
+    top: 140px;
+    left: 646px;
+}
+
+.labelParametro {
+    position: absolute;
+    top: 146px;
+    left: 350px;
 }
