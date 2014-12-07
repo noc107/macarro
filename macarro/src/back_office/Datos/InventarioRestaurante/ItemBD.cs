@@ -126,8 +126,9 @@ namespace back_office.Datos.InventarioRestaurante
                 SqlDataReader _reader = _comando.ExecuteReader();
                 while (_reader.Read())
                 {
+                    string[] _fechas = _reader["ACT_fecha"].ToString().Split(' ');
                     _coman.Add(_reader["ACT_cantidad"].ToString());
-                    _coman.Add(_reader["ACT_fecha"].ToString());
+                    _coman.Add(_fechas[0]);
                 }
                return _coman;
 

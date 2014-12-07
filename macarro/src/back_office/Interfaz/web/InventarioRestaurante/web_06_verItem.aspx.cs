@@ -29,7 +29,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
                 for (int _contador = 6; _contador < _mostrar.Length; _contador= _contador+2)
                 {
-                    ListItem list = new ListItem("Cantidad: " + _mostrar[_contador] + "Fecha: " + _mostrar[_contador+1]);
+                    ListItem list = new ListItem("Cantidad: " + _mostrar[_contador] + " Fecha: " + _mostrar[_contador+1]);
                     ListBox1.Items.Add(list);
                 }
 
