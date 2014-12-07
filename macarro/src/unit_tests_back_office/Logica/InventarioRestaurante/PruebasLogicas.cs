@@ -88,7 +88,23 @@ namespace unit_tests_back_office.Logica.InventarioRestaurante
             Assert.AreSame(_proveedorVer,"Distribuidora La LLanisa C.A");
             Assert.AreSame(_cantidadVer,"100");
             Assert.AreSame(_descripcionVer,"Granos y frijoles");
+            
+        }
 
+        [Test]
+        public void pruebaVerProveedores() 
+        {
+            string[] _proveedores = _procedimiento.verProveedor();
+            string _proveedor1 = _proveedores[0];
+            string _proveedor2 = _proveedores[1];
+            string _proveedor3 = _proveedores[2];
+            string _proveedor4 = _proveedores[3];
+            string _proveedor5 = _proveedores[4];
+            Assert.AreSame(_proveedor1,"Sacos y Envases Canarven C.A");
+            Assert.AreSame(_proveedor2, "Distribuidora La Llanisca C.A");
+            Assert.AreSame(_proveedor3, "Empresas Polar C.A");
+            Assert.AreSame(_proveedor4, "Cordeles y Mecates El Asturcon C.A");
+            Assert.AreSame(_proveedor5, "Pepsico de Venezuela C.A");
         }
    }
 }

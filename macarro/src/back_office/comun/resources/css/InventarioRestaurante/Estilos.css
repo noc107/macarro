@@ -384,29 +384,29 @@ Validaciones {
 .ComboboxBuscar {
     position:absolute;
     top: 146px;
-    left: 514px;
+    left: 560px;
 }
 
 .TextboxBuscar {
     position:absolute;
     top: 131px;
-    left: 141px;
+    left: 198px;
 }
 
 .BotonBuscar {
     position:absolute;
     top: 155px;
-    left: 684px;
+    left: 732px;
 }
 
 .BotonBorrarBuscar {
     position:absolute;
     top: 155px;
-    left: 717px;
+    left: 769px;
 }
 
 .labelParametro {
     position: absolute;
     top: 159px;
-    left: 439px;
+    left: 483px;
 }
