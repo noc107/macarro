@@ -106,7 +106,7 @@
         <asp:TextBox ID="tbDescripcion" CssClass="textbox TextboxAgregarDescripcion"   runat="server" maxlength="99"></asp:TextBox>
         <asp:RegularExpressionValidator CssClass="ValidacionDescripcionAgregar" ID="RegularExpressionValidator2" runat="server"
                     ControlToValidate="tbDescripcion" Text="*" ForeColor="Red" ErrorMessage="Descripcion excede el rango (0-99)"
-                    ValidationExpression="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚáéíóú ]{0,99}$">
+                    ValidationExpression="[,.1234567890ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚáéíóú ]{0,99}$">
        </asp:RegularExpressionValidator> 
 
         <asp:Label ID="Label6" CssClass="labels LabelAgregarPrecioVenta"  runat="server" Text="Precio Venta (*):" ></asp:Label>
