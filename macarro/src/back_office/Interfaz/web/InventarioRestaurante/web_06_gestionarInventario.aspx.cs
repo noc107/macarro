@@ -22,11 +22,21 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            _myTable.Columns.Add("Codigo", typeof(String));
-            _myTable.Columns.Add("Nombre", typeof(String));
-            _myTable.Columns.Add("Cantidad", typeof(String));
-            _myTable.Columns.Add("Acciones", typeof(String));
-            this.CargarGrid();
+            try
+            {
+                _myTable.Columns.Add("Codigo", typeof(String));
+                _myTable.Columns.Add("Nombre", typeof(String));
+                _myTable.Columns.Add("Cantidad", typeof(String));
+                _myTable.Columns.Add("Acciones", typeof(String));
+                this.CargarGrid();
+            }
+            catch (ExcepcionVerItem) 
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+          "err_msg",
+          "alert('Ha ocurrido un error de base de datos, por favor intente luego)');",
+          true);
+            }
         }
 
         protected void Inventario_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
@@ -93,10 +103,12 @@ namespace back_office.Interfaz.web.InventarioRestaurante
             SqlDataReader _reader;
             SqlCommand _comando = new SqlCommand("Procedure_GridviewCarga", _baseDatos._cn);
             _comando.CommandType = CommandType.StoredProcedure;
-            _baseDatos._cn.Open();
-            _comando.ExecuteNonQuery();
-            _reader = _comando.ExecuteReader();
-                 while (_reader.Read())
+            try
+            {
+                _baseDatos._cn.Open();
+                _comando.ExecuteNonQuery();
+                _reader = _comando.ExecuteReader();
+                while (_reader.Read())
                 {
                     DataRow _dr = _myTable.NewRow();
                     _dr["Codigo"] = _reader[0];
@@ -104,6 +116,11 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                     _dr["Cantidad"] = _reader[2];
                     _myTable.Rows.Add(_dr);
                 }
+            }
+            catch (Exception ex) 
+            {
+                throw new ExcepcionVerItem(ex.Message);
+            }
             _baseDatos._cn.Close();
             gdRows.DataSource = _myTable;
             gdRows.DataBind();
@@ -134,7 +151,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 GridViewRow rowSelect = (GridViewRow)(((ImageButton)e.CommandSource).NamingContainer);
                 int index = rowSelect.RowIndex;
                 ObtenerIdItem(index);
-                Response.Redirect("web_06_agregarItem.aspx");
+                Response.Redirect("web_06_verItem.aspx");
             }
             if (e.CommandName == "Modificar")
             {
