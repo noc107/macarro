@@ -13,6 +13,7 @@ namespace back_office.Datos.InventarioRestaurante
     public class ItemBD
     {
         OperacionesBD _baseDatos = new OperacionesBD();
+        private List<Item> _listaItemBD;
         
         /// <summary>
         /// Metodo que abre conexion con la base de datos y guarda los datos
@@ -334,7 +335,6 @@ namespace back_office.Datos.InventarioRestaurante
             }
             return _exito;
         }
- 
 
     }
 }

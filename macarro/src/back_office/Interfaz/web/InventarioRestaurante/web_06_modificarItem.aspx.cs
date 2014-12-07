@@ -41,52 +41,54 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-           
-           
-            int _idItem = web_06_gestionarInventario.idItemSeleccionado;
-            float _precioVenta = float.Parse(this.tbPrecio.Text);
-            float _precioCompra = float.Parse(this.tbPrecio2.Text);
-            ProcedimientosItem _procedimiento = new ProcedimientosItem();
-            string _nombre = this.tbNombre.Text;
-            int _cantidad = int.Parse(this.tbCantidad.Text);
-            string _descripcion = this.tbDescripcion.Text;
-            string _proveedor = this.Proveedores.Text;
-            
-            if (_precioVenta < _precioCompra)
-            {
-                MensajeFallo.Text = "Precio venta no puede ser menor que precio compra";
-                MensajeFallo.Visible = true;
-            }
-            else
-            {
                 try
                 {
-                    _procedimiento.modificarItem(_idItem, _nombre, _cantidad, _descripcion, _proveedor, _precioVenta, _precioCompra);
-                    Response.Redirect("web_06_gestionarInventario.aspx");
-                }
-                catch (ExcepcionModificarItem)
-                {
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-             "err_msg",
-             "alert('Ha ocurrido un error de base de datos, por favor intente luego');",
-             true);
-                    Response.Redirect("web_06_gestionarInventario.aspx");
-                }
-                catch (Exception) 
-                {
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-             "err_msg",
-             "alert('Su solicitud no pudo ser procesada');",
-             true);
-                    Response.Redirect("web_06_gestionarInventario.aspx");
-                }
-                    
-            }
+                int _idItem = web_06_gestionarInventario.idItemSeleccionado;
+                float _precioVenta = float.Parse(this.tbPrecio.Text);
+                float _precioCompra = float.Parse(this.tbPrecio2.Text);
+                ProcedimientosItem _procedimiento = new ProcedimientosItem();
+                string _nombre = this.tbNombre.Text;
+                int _cantidad = int.Parse(this.tbCantidad.Text);
+                string _descripcion = this.tbDescripcion.Text;
+                string _proveedor = this.Proveedores.Text;
 
-            
-        
-        
-        }
+                if (_precioVenta < _precioCompra)
+                {
+                    MensajeFallo.Text = "Precio venta no puede ser menor que precio compra";
+                    MensajeFallo.Visible = true;
+                }
+                else
+                {
+                    try
+                    {
+                        _procedimiento.modificarItem(_idItem, _nombre, _cantidad, _descripcion,
+                        _proveedor, _precioVenta, _precioCompra);
+                        Response.Redirect("web_06_gestionarInventario.aspx");
+                    }
+                    catch (ExcepcionModificarItem)
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "err_msg",
+                        "alert('Ha ocurrido un error de base de datos, por favor intente luego');", true);
+                        Response.Redirect("web_06_gestionarInventario.aspx");
+                    }
+                    catch (Exception)
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "err_msg",
+                        "alert('Su solicitud no pudo ser procesada');", true);
+                        Response.Redirect("web_06_gestionarInventario.aspx");
+                    }
+                }
+
+                }
+                catch (FormatException)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "err_msg",
+                    "alert('¡Formato Incorrecto de precio!');", true);
+                }
+         }
+
+
+
 
         protected void Button2_Click(object sender, EventArgs e)
         {

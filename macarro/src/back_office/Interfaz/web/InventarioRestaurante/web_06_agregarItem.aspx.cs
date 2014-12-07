@@ -22,7 +22,8 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                     ListItem oItem = new ListItem(_proveedores[_contador]);
                     Proveedores.Items.Add(oItem);
                 }
-            }catch(ExcepcionVerItem)
+            }
+            catch (ExcepcionVerItem)
             {
                 MensajeFallo.Text = "Ha ocurrido un error de base de datos, por favor intente mas tarde";
                 MensajeFallo.Visible = true;
@@ -32,58 +33,68 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            ProcedimientosItem _procedimiento = new ProcedimientosItem();
-            float _precioCompra = float.Parse(tbPrecio2.Text);
-            float _precioVenta = float.Parse(tbPrecio.Text);
-            int _cantidad = int.Parse(Cantidad.Text);
-            int _cantidadMinima = int.Parse(tbCantidadMinima.Text);
-            if (_precioVenta < _precioCompra)
+            try
             {
-                MensajeFallo.Text = "El precio de venta no puede ser menor al precio de compra";
-                MensajeFallo.Visible = true;
-            }
-            else if (_cantidad < _cantidadMinima)
-            {
-                MensajeFallo.Text = "La cantidad no puede ser menor a la cantidad minima";
-                MensajeFallo.Visible = true;
-            }
-            else 
-            {
-                try
+                ProcedimientosItem _procedimiento = new ProcedimientosItem();
+                float _precioCompra = float.Parse(tbPrecio2.Text);
+                float _precioVenta = float.Parse(tbPrecio.Text);
+                int _cantidad = int.Parse(Cantidad.Text);
+                int _cantidadMinima = int.Parse(tbCantidadMinima.Text);
+                if (_precioVenta < _precioCompra)
                 {
-
-                    bool _exito = _procedimiento.guardarItem(Nombre.Text, Convert.ToInt32(Cantidad.Text),
-                                float.Parse(tbPrecio2.Text), float.Parse(tbPrecio.Text), tbDescripcion.Text, Proveedores.Text,
-                                Convert.ToInt32(tbCantidadMinima.Text));
-
-                    if (_exito)
+                    MensajeFallo.Text = "El precio de venta no puede ser menor al precio de compra";
+                    MensajeFallo.Visible = true;
+                }
+                else if (_cantidad < _cantidadMinima)
+                {
+                    MensajeFallo.Text = "La cantidad no puede ser menor a la cantidad minima";
+                    MensajeFallo.Visible = true;
+                }
+                else
+                {
+                    try
                     {
-                     
-                        MensajeFallo.Visible = false;
-                        MensajeExito.Visible = true;
-                        Nombre.Text = "";
-                        tbCantidadMinima.Text = "";
-                        tbDescripcion.Text = "";
-                        tbPrecio.Text = "";
-                        tbPrecio2.Text = "";
-                        Cantidad.Text = "";
+
+                        bool _exito = _procedimiento.guardarItem(Nombre.Text, Convert.ToInt32(Cantidad.Text),
+                                    float.Parse(tbPrecio2.Text), float.Parse(tbPrecio.Text), tbDescripcion.Text, Proveedores.Text,
+                                    Convert.ToInt32(tbCantidadMinima.Text));
+
+                        if (_exito)
+                        {
+
+                            MensajeFallo.Visible = false;
+                            MensajeExito.Visible = true;
+                            Nombre.Text = "";
+                            tbCantidadMinima.Text = "";
+                            tbDescripcion.Text = "";
+                            tbPrecio.Text = "";
+                            tbPrecio2.Text = "";
+                            Cantidad.Text = "";
+                        }
+                        else
+                        {
+                            MensajeFallo.Visible = true;
+                        }
                     }
-                    else
+                    catch (ExcepcionAgregarItem)
                     {
+                        MensajeFallo.Text = "En estos momentos presentamos problemas con la base de datos, por favor intente mas tarde";
+                        MensajeFallo.Visible = true;
+                    }
+                    catch (Exception)
+                    {
+                        MensajeFallo.Text = "Su operacion no pudo ser procesada, por favor contacte con el administrador";
                         MensajeFallo.Visible = true;
                     }
                 }
-                catch (ExcepcionAgregarItem)
-                {
-                    MensajeFallo.Text = "En estos momentos presentamos problemas con la base de datos, por favor intente mas tarde";
-                    MensajeFallo.Visible = true;
-                }
-                catch (Exception) 
-                {
-                    MensajeFallo.Text = "Su operacion no pudo ser procesada, por favor contacte con el administrador";
-                    MensajeFallo.Visible = true;
-                }
+            }
+            catch (FormatException)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "err_msg",
+                "alert('¡Formato Incorrecto de precio!');", true);
             }
         }
+
+        
     }
 }
