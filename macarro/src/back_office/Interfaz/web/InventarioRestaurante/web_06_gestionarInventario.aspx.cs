@@ -19,6 +19,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         System.Data.DataTable _myTable = new System.Data.DataTable();
         OperacionesBD _baseDatos = new OperacionesBD();
         public static int idItemSeleccionado = 0;
+        private static bool _tablaBuscada = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,7 +29,11 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 _myTable.Columns.Add("Nombre", typeof(String));
                 _myTable.Columns.Add("Cantidad", typeof(String));
                 _myTable.Columns.Add("Acciones", typeof(String));
-                this.CargarGrid();
+                if (!_tablaBuscada)
+                    this.CargarGrid();
+                else
+                    this.cargarGridBusqueda();
+
             }
             catch (ExcepcionVerItem) 
             {
@@ -48,7 +53,6 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 consultar.ImageUrl = "../../../comun/resources/img/View-128.png";
                 consultar.Height = 50;
                 consultar.Width = 50;
-               // consultar.Click += new ImageClickEventHandler(this.consultar_Click);
                 consultar.ToolTip = "Ver para imprimir";
                 consultar.CommandName = "Consultar";
 
@@ -57,7 +61,6 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 editar.ImageUrl = "../../../comun/resources/img/Data-Edit-128.png";
                 editar.Height = 50;
                 editar.Width = 50;
-               // editar.Click += new ImageClickEventHandler(this.modificar_Click);
                 editar.ToolTip = "Editar Cuenta";
                 editar.CommandName = "Modificar";
 
@@ -73,8 +76,6 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 e.Row.Cells[3].Controls.Add(consultar);
                 e.Row.Cells[3].Controls.Add(editar);
                 e.Row.Cells[3].Controls.Add(eliminar);
-
-
             }
 
         }
@@ -108,14 +109,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 _baseDatos._cn.Open();
                 _comando.ExecuteNonQuery();
                 _reader = _comando.ExecuteReader();
-                while (_reader.Read())
-                {
-                    DataRow _dr = _myTable.NewRow();
-                    _dr["Codigo"] = _reader[0];
-                    _dr["Nombre"] = (string)_reader[1];
-                    _dr["Cantidad"] = _reader[2];
-                    _myTable.Rows.Add(_dr);
-                }
+                insertarEnDataSource(_reader);
             }
             catch (Exception ex) 
             {
@@ -127,6 +121,32 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         }
 
 
+        protected void cargarGridBusqueda()
+        {
+            if (ddParametro.SelectedIndex == 0)
+            {
+                cargarFilasDataTable();
+                this.gdRows.DataSource = null;
+                gdRows.DataBind();
+                SqlDataReader _reader;
+                SqlCommand _comando = new SqlCommand("Procedure_buscarItemNombre", _baseDatos._cn);
+                _comando.CommandType = CommandType.StoredProcedure;
+                _comando.Parameters.Add("@nombreBuscado", SqlDbType.VarChar).Value = tbBuscar.Text.ToString();
+                _baseDatos._cn.Open();
+                _comando.ExecuteNonQuery();
+                _reader = _comando.ExecuteReader();
+                insertarEnDataSource(_reader);
+                _baseDatos._cn.Close();
+                gdRows.DataSource = _myTable;
+                gdRows.DataBind();
+                _tablaBuscada = true;
+            }
+            else
+            {
+                validarBuscarItemPorCodigo();
+            }
+        }
+
 
         protected void Inventario_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -137,7 +157,6 @@ namespace back_office.Interfaz.web.InventarioRestaurante
         protected void Inventario_PageIndexChanged(object sender, GridViewPageEventArgs e)
         {
             gdRows.PageIndex = e.NewPageIndex;
-            gdRows.DataSource = _myTable;
             gdRows.DataBind();
         }
 
@@ -206,34 +225,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void botonBuscar_Click(object sender, EventArgs e)
         {
-            if (ddParametro.SelectedIndex == 0)
-            {
-                cargarFilasDataTable();
-                this.gdRows.DataSource = null;
-                gdRows.DataBind();
-                SqlDataReader _reader;
-                SqlCommand _comando = new SqlCommand("Procedure_buscarItemNombre", _baseDatos._cn);
-                _comando.CommandType = CommandType.StoredProcedure;
-                _comando.Parameters.Add("@nombreBuscado", SqlDbType.VarChar).Value = tbBuscar.Text.ToString();
-                _baseDatos._cn.Open();
-                _comando.ExecuteNonQuery();
-                _reader = _comando.ExecuteReader();
-                while (_reader.Read())
-                {
-                    DataRow _dr = _myTable.NewRow();
-                    _dr["Codigo"] = _reader[0];
-                    _dr["Nombre"] = (string)_reader[1];
-                    _dr["Cantidad"] = _reader[2];
-                    _myTable.Rows.Add(_dr);
-                }
-                _baseDatos._cn.Close();
-                gdRows.DataSource = _myTable;
-                gdRows.DataBind();
-            }
-            else
-            {
-                validarBuscarItemPorCodigo();
-            }
+            cargarGridBusqueda();
         }
 
 
@@ -244,12 +236,35 @@ namespace back_office.Interfaz.web.InventarioRestaurante
             this.gdRows.DataSource = null;
             gdRows.DataBind();
             SqlDataReader _reader;
-            SqlCommand _comando = new SqlCommand("Procedure_buscarItemCodigo", _baseDatos._cn);
-            _comando.CommandType = CommandType.StoredProcedure;
-            _comando.Parameters.Add("@idBuscado", SqlDbType.Int).Value = Convert.ToInt32(tbBuscar.Text.ToString());
-            _baseDatos._cn.Open();
-            _comando.ExecuteNonQuery();
-            _reader = _comando.ExecuteReader();
+            try
+            {
+                SqlCommand _comando = new SqlCommand("Procedure_buscarItemCodigo", _baseDatos._cn);
+                _comando.CommandType = CommandType.StoredProcedure;
+                _comando.Parameters.Add("@idBuscado", SqlDbType.Int).Value = Convert.ToInt32(tbBuscar.Text.ToString());
+                _baseDatos._cn.Open();
+                _comando.ExecuteNonQuery();
+                _reader = _comando.ExecuteReader();
+                insertarEnDataSource(_reader);
+                _baseDatos._cn.Close();
+                gdRows.DataSource = _myTable;
+                gdRows.DataBind();
+            }
+            catch (FormatException)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),"err_msg",
+                "alert('¡Solo se aceptan números para la busqueda por código!');",true);
+                tbBuscar.Text = "";
+            }
+            catch (OverflowException)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),"err_msg",
+                "alert('¡Numero demasiado largo!');",true);
+                tbBuscar.Text = "";
+            }
+        }
+
+        protected void insertarEnDataSource(SqlDataReader _reader)
+        {
             while (_reader.Read())
             {
                 DataRow _dr = _myTable.NewRow();
@@ -258,9 +273,6 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                 _dr["Cantidad"] = _reader[2];
                 _myTable.Rows.Add(_dr);
             }
-            _baseDatos._cn.Close();
-            gdRows.DataSource = _myTable;
-            gdRows.DataBind();
         }
 
         protected void cargarFilasDataTable()
@@ -302,6 +314,7 @@ namespace back_office.Interfaz.web.InventarioRestaurante
 
         protected void botonCancelar_Click(object sender, ImageClickEventArgs e)
         {
+            _tablaBuscada = false;
             Response.Redirect("web_06_gestionarinventario.aspx");
         }
 

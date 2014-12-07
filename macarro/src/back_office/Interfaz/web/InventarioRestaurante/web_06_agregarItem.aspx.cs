@@ -61,7 +61,12 @@ namespace back_office.Interfaz.web.InventarioRestaurante
                      
                         MensajeFallo.Visible = false;
                         MensajeExito.Visible = true;
-                        Boton1.Enabled = false;
+                        Nombre.Text = "";
+                        tbCantidadMinima.Text = "";
+                        tbDescripcion.Text = "";
+                        tbPrecio.Text = "";
+                        tbPrecio2.Text = "";
+                        Cantidad.Text = "";
                     }
                     else
                     {

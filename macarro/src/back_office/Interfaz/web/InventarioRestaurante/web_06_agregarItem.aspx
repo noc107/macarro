@@ -41,7 +41,7 @@
        
        
        <asp:Label ID="lbCantidadMinima" CssClass="labels LabelAgregarCantidadMinima" runat="server" Text="Cantidad minima(*):" ></asp:Label>
-       <asp:TextBox ID="tbCantidadMinima" CssClass="textbox TextboxAgregarCantidadMinima" runat="server"  maxlength="50"></asp:TextBox>
+       <asp:TextBox ID="tbCantidadMinima" CssClass="textbox TextboxAgregarCantidadMinima" runat="server"  maxlength="4"></asp:TextBox>
        <asp:RequiredFieldValidator ID="ValidacionCantidadminima1" CssClass="ValidacionCantidadMinima" runat="server"    
             ControlToValidate="tbCantidadMinima" Text="*" ForeColor="Red" ErrorMessage="Cantidad Minima Requerida">
 
