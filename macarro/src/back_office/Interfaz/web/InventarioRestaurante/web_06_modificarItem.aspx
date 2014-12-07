@@ -72,12 +72,14 @@
         </asp:RequiredFieldValidator>
        <asp:RegularExpressionValidator CssClass="ValidacionNombreAgregar" ID="Validator9" runat="server"
                     ControlToValidate="tbNombre" Text="*" ForeColor="Red" ErrorMessage="El nombre deben ser letras (3-50)"
-                    ValidationExpression="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚáéíóú]{3,50}$">
+                    ValidationExpression="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚáéíóú ]{3,50}$">
        </asp:RegularExpressionValidator>
        
 
         <asp:Button ID="Boton1" CssClass="Boton BotonAceptarModificar"  runat="server" Text="Aceptar"   OnClick="Button1_Click" />
+
         <asp:Button ID="Boton2" CssClass="Boton BotonCancelarModificar" CausesValidation="false" runat="server" Text="Cancelar"  OnClick="Button2_Click" />
+
        
         <asp:Label ID="Label2" CssClass="labels LabelAgregarCantidad"  runat="server" Text="Cantidad (*):"></asp:Label>
         <asp:TextBox ID="tbCantidad" CssClass="textbox TextboxAgregarCantidad"  
@@ -102,7 +104,11 @@
        
         <asp:Label ID="Label3" CssClass="labels LabelAgregarDescripcion"  runat="server" Text="Descripción:"  ></asp:Label>
         <asp:TextBox ID="tbDescripcion" CssClass="textbox TextboxAgregarDescripcion"   runat="server" maxlength="99"></asp:TextBox>
-        
+        <asp:RegularExpressionValidator CssClass="ValidacionDescripcionAgregar" ID="RegularExpressionValidator2" runat="server"
+                    ControlToValidate="tbDescripcion" Text="*" ForeColor="Red" ErrorMessage="Descripcion excede el rango (0-99)"
+                    ValidationExpression="[ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚáéíóú ]{0,99}$">
+       </asp:RegularExpressionValidator> 
+
         <asp:Label ID="Label6" CssClass="labels LabelAgregarPrecioVenta"  runat="server" Text="Precio Venta (*):" ></asp:Label>
         <asp:TextBox ID="tbPrecio" CssClass="textbox TextboxAgregarPrecioVenta"  runat="server" maxlength="8"></asp:TextBox>
         
