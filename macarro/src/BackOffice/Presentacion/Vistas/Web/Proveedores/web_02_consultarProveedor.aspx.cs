@@ -4,13 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using BackOffice.Presentacion.Contratos.Proveedores;
+using BackOffice.Presentacion.Contratos;
+using BackOffice.Presentacion.Presentadores.Proveedores;
 
 namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 {
-    public partial class web_02_consultarProveedor : System.Web.UI.Page
+    public partial class web_02_consultarProveedor : System.Web.UI.Page , IContratoGeneral, IContrato_02_consultarProveedor
     {
         //ProveedorBD auxBD = new ProveedorBD();
+        Presentador_02_consultarProveedor _presentador;
+        public web_02_consultarProveedor() 
+        {
+            _presentador = new Presentador_02_consultarProveedor(this);
+        }
 
         /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
         /// <summary>
@@ -40,6 +47,61 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect("web_02_gestionarProveedores.aspx");
+        }
+
+        Label IContrato_02_consultarProveedor.Rif
+        {
+            set { Rif = value; }
+        }
+
+        Label IContrato_02_consultarProveedor.RazonSocial
+        {
+            set { RazonSocial = value; }
+        }
+
+        Label IContrato_02_consultarProveedor.Correo
+        {
+            set { Correo = value; }
+        }
+
+        Label IContrato_02_consultarProveedor.PaginaWeb
+        {
+            set { PaginaWeb = value; }
+        }
+
+        Label IContrato_02_consultarProveedor.Telefono
+        {
+            set { Telefono = value; }
+        }
+
+        Label IContrato_02_consultarProveedor.FechaContrato
+        {
+            set { FechaContrato = value; }
+        }
+
+        Label IContrato_02_consultarProveedor.Direccion
+        {
+            set { Direccion = value; }
+        }
+
+        Label IContrato_02_consultarProveedor.Pais
+        {
+            set { Pais = value; }
+        }
+
+        Label IContrato_02_consultarProveedor.Estado
+        {
+            set { Estado = value; }
+        }
+
+        Label IContrato_02_consultarProveedor.Ciudad
+        {
+            set { Ciudad = value; }
+        }
+
+        GridView IContrato_02_consultarProveedor.Items
+        {
+            set { GridView1 = value; }
         }
 
         /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 

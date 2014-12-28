@@ -73,67 +73,67 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
            //Mensaje de aviso
         }
 
-        TextBox IContrato_02_agregarProveedores.Rif
+        TextBox IContrato_02_modificarProveedor.Rif
         {
             get { return Rif; }
             set { Rif = value; }
         }
 
-        TextBox IContrato_02_agregarProveedores.RazonSocial
+        TextBox IContrato_02_modificarProveedor.RazonSocial
         {
             get { return RazonSocial; }
             set { RazonSocial = value; }
         }
 
-        TextBox IContrato_02_agregarProveedores.Correo
+        TextBox IContrato_02_modificarProveedor.Correo
         {
             get { return Correo; }
             set { Correo = value; }
         }
 
-        TextBox IContrato_02_agregarProveedores.PaginaWeb
+        TextBox IContrato_02_modificarProveedor.PaginaWeb
         {
             get { return PaginaWeb; }
             set { PaginaWeb = value; }
         }
 
-        TextBox IContrato_02_agregarProveedores.Telefono
+        TextBox IContrato_02_modificarProveedor.Telefono
         {
             get { return Telefono; }
             set { Telefono = value; }
         }
 
-        TextBox IContrato_02_agregarProveedores.FechaContrato
+        TextBox IContrato_02_modificarProveedor.FechaContrato
         {
             get { return FechaContrato; }
             set { FechaContrato = value; }
         }
 
-        TextBox IContrato_02_agregarProveedores.Direccion
+        TextBox IContrato_02_modificarProveedor.Direccion
         {
             get { return Direccion; }
             set { Direccion = value; }
         }
 
-        DropDownList IContrato_02_agregarProveedores.Pais
+        DropDownList IContrato_02_modificarProveedor.Pais
         {
             get { return Pais; }
             set { Pais = value; }
         }
 
-        DropDownList IContrato_02_agregarProveedores.Estado
+        DropDownList IContrato_02_modificarProveedor.Estado
         {
             get { return Estado; }
             set { Estado = value; }
         }
 
-        DropDownList IContrato_02_agregarProveedores.Ciudad
+        DropDownList IContrato_02_modificarProveedor.Ciudad
         {
             get { return Ciudad; }
             set { Ciudad = value; }
         }
 
-        GridView IContrato_02_agregarProveedores.Items
+        GridView IContrato_02_modificarProveedor.Items
         {
             get { return GridItems; }
             set { GridItems = value; }
