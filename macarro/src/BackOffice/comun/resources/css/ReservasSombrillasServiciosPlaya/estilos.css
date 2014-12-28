@@ -1,0 +1,39 @@
+﻿.subtitulo {
+    color:#2980B9;
+}
+.centrado {
+    text-align:center;
+}
+
+.x {
+    color:#2980B9;
+}
+
+.lab {
+    text-align:center;
+ }
+
+.radio_list {
+    width:300px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
+.grid_view {
+    margin:20px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.Boton {
+    margin:20px;
+}
+
+.tabla {
+    margin:20px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+

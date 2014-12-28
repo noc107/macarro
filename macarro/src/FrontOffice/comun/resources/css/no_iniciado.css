@@ -1,0 +1,16 @@
+﻿div.header_log {
+    
+    height:100%;
+    width:330px;
+    display:inline-block;
+    float:right;
+    padding-left:30px;
+}
+div.header_log_icons{
+    height:50px;
+    width:150px;
+}
+.BotonLogin {
+    margin-top:5px;
+    background-color:#38B0E4;
+}

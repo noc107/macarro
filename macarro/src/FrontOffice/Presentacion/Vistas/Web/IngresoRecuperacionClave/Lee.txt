@@ -1,0 +1,10 @@
+CodeBehind de cada página:
+
+string _correoS = (string)(Session["correo"]);
+string _docIdentidadS = (string)(Session["docIdentidad"]);
+string _primerNombreS = (string)(Session["primerNombre"]);
+string _primerApellidoS = (string)(Session["primerApellido"]);
+
+En el master: 
+
+Session.Abandon();

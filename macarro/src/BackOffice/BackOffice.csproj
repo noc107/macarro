@@ -1,0 +1,878 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A3267698-FEA6-4C42-8110-E6A41F6A73C7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BackOffice</RootNamespace>
+    <AssemblyName>BackOffice</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\TextFile1.txt" />
+    <Content Include="comun\resources\css\ConfiguracionPuestosPlaya\puestosPlaya.css" />
+    <Content Include="comun\resources\css\Estacionamiento\estilo.css" />
+    <Content Include="comun\resources\css\Font.css" />
+    <Content Include="comun\resources\css\IngresoRecuperacionClave\modulo01.css" />
+    <Content Include="comun\resources\css\InventarioRestaurante\Estilos.css" />
+    <Content Include="comun\resources\css\InventarioRestaurante\modalWindow.css" />
+    <Content Include="comun\resources\css\loged_in.css" />
+    <Content Include="comun\resources\css\log_in.css" />
+    <Content Include="comun\resources\css\ModuloMembresia\buscarMembresia.css" />
+    <Content Include="comun\resources\css\ModuloMembresia\consultarMembresia.css" />
+    <Content Include="comun\resources\css\ModuloMembresia\modificarMembresia.css" />
+    <Content Include="comun\resources\css\ModuloMenuRestaurante\Estilos.css" />
+    <Content Include="comun\resources\css\ModuloProveedores\agregarProveedor.css" />
+    <Content Include="comun\resources\css\ModuloProveedores\consultarProveedor.css" />
+    <Content Include="comun\resources\css\ModuloProveedores\eliminarProveedor.css" />
+    <Content Include="comun\resources\css\ModuloProveedores\gestionarProveedor.css" />
+    <Content Include="comun\resources\css\ModuloReportes\ReporteBebidaComidaPopular.css" />
+    <Content Include="comun\resources\css\ModuloReportes\ReporteIngresos.css" />
+    <Content Include="comun\resources\css\ModuloReportes\ReporteMembresia.css" />
+    <Content Include="comun\resources\css\ModuloReportes\ReporteProductos.css" />
+    <Content Include="comun\resources\css\ModuloReportes\ReporteProveedores.css" />
+    <Content Include="comun\resources\css\ModuloReportes\ReporteRoles.css" />
+    <Content Include="comun\resources\css\ModuloReportes\ReporteUsuarios.css" />
+    <Content Include="comun\resources\css\ModuloServiciosPlaya\agregarServicioPlaya.css" />
+    <Content Include="comun\resources\css\ModuloServiciosPlaya\ConsultaServicioCompleta.css" />
+    <Content Include="comun\resources\css\ModuloServiciosPlaya\ConsultaServicioTabla.css" />
+    <Content Include="comun\resources\css\ModuloServiciosPlaya\moduloServicioPlaya.css" />
+    <Content Include="comun\resources\css\ReservasSombrillasServiciosPlaya\estilos.css" />
+    <Content Include="comun\resources\css\RolesSeguridad\Estilos.css" />
+    <Content Include="comun\resources\css\standards.css" />
+    <Content Include="comun\resources\css\VentaCierreCaja\estilos.css" />
+    <Content Include="comun\resources\img\agregar.png" />
+    <Content Include="comun\resources\img\bg_body.jpg" />
+    <Content Include="comun\resources\img\bg_footer.jpg" />
+    <Content Include="comun\resources\img\bg_header.jpg" />
+    <Content Include="comun\resources\img\Calendar-Date-01-128 %281%29.png" />
+    <Content Include="comun\resources\img\Data-Edit-128.png" />
+    <Content Include="comun\resources\img\dropdown.png" />
+    <Content Include="comun\resources\img\Garbage-Closed-128.png" />
+    <Content Include="comun\resources\img\grd_alt.png" />
+    <Content Include="comun\resources\img\grd_head.png" />
+    <Content Include="comun\resources\img\grd_pgr.png" />
+    <Content Include="comun\resources\img\icon-buscar.png" />
+    <Content Include="comun\resources\img\icon-cancel.png" />
+    <Content Include="comun\resources\img\icon-edit.png" />
+    <Content Include="comun\resources\img\icon-trash.png" />
+    <Content Include="comun\resources\img\info.png" />
+    <Content Include="comun\resources\img\logo-macarro.png" />
+    <Content Include="comun\resources\img\logo.png" />
+    <Content Include="comun\resources\img\logo2.png" />
+    <Content Include="comun\resources\img\Logout-128.png" />
+    <Content Include="comun\resources\img\menos.png" />
+    <Content Include="comun\resources\img\ModuloServiciosPlaya\agregar.png" />
+    <Content Include="comun\resources\img\ModuloServiciosPlaya\Editar.png" />
+    <Content Include="comun\resources\img\ModuloServiciosPlaya\Eliminar.png" />
+    <Content Include="comun\resources\img\ModuloServiciosPlaya\info.png" />
+    <Content Include="comun\resources\img\ModuloServiciosPlaya\menos.png" />
+    <Content Include="comun\resources\img\ModuloServiciosPlaya\reloj.png" />
+    <Content Include="comun\resources\img\ModuloServiciosPlaya\Ver.png" />
+    <Content Include="comun\resources\img\publicidad_ejemplo.jpg" />
+    <Content Include="comun\resources\img\sort_asc.png" />
+    <Content Include="comun\resources\img\sort_both.png" />
+    <Content Include="comun\resources\img\User-Profile-128.png" />
+    <Content Include="comun\resources\img\View-128.png" />
+    <Content Include="comun\resources\img\Warning-Shield-128.png" />
+    <Content Include="comun\resources\js\jquery-1.11.1.js" />
+    <Content Include="comun\resources\js\menu_manager.js" />
+    <Content Include="comun\resources\js\ModuloInventarioRestaurante\bootstrap.min.js" />
+    <Content Include="comun\resources\js\ModuloMenuRestaurante\MenuRestaurante.js" />
+    <Content Include="comun\resources\js\ModuloMenuRestaurante\ValidacionesAgregarProducto.js" />
+    <Content Include="comun\resources\js\ModuloServiciosPlaya\moduloServicioPlaya.js" />
+    <Content Include="FuenteDatos\TextFile1.txt" />
+    <Content Include="Excepciones\TextFile1.txt" />
+    <Content Include="Presentacion\Contratos\ConfiguracionPuestosPlaya\texto.txt" />
+    <Content Include="Presentacion\Contratos\ConfiguracionServiciosPlaya\texto.txt" />
+    <Content Include="Presentacion\Contratos\GestionVentaMembresia\texto.txt" />
+    <Content Include="Presentacion\Contratos\IngresoRecuperacionClave\texto.txt" />
+    <Content Include="Presentacion\Contratos\InventarioRestaurante\texto.txt" />
+    <Content Include="Presentacion\Contratos\MenuRestaurante\texto.txt" />
+    <Content Include="Presentacion\Contratos\Proveedores\texto.txt" />
+    <Content Include="Presentacion\Contratos\ReportesFinancierosExportacion\texto.txt" />
+    <Content Include="Presentacion\Contratos\ReservasSombrillasServiciosPlaya\texto.txt" />
+    <Content Include="Presentacion\Contratos\RolesSeguridad\texto.txt" />
+    <Content Include="Presentacion\Contratos\UsuariosInternos\texto.txt" />
+    <Content Include="Presentacion\Contratos\VentaCierreCaja\texto.txt" />
+    <Content Include="Presentacion\Presentadores\ConfiguracionEstacionamiento\texto.txt" />
+    <Content Include="Presentacion\Presentadores\ConfiguracionPuestosPlaya\texto.txt" />
+    <Content Include="Presentacion\Presentadores\ConfiguracionServiciosPlaya\texto.txt" />
+    <Content Include="Presentacion\Presentadores\GestionVentaMembresia\texto.txt" />
+    <Content Include="Presentacion\Presentadores\IngresoRecuperacionClave\texto.txt" />
+    <Content Include="Presentacion\Presentadores\InventarioRestaurante\texto.txt" />
+    <Content Include="Presentacion\Presentadores\MenuRestaurante\texto.txt" />
+    <Content Include="Presentacion\Presentadores\Proveedores\texto.txt" />
+    <Content Include="Presentacion\Presentadores\ReportesFinancierosExportacion\texto.txt" />
+    <Content Include="Presentacion\Presentadores\ReservasSombrillasServiciosPlaya\texto.txt" />
+    <Content Include="Presentacion\Presentadores\RolesSeguridad\texto.txt" />
+    <Content Include="Presentacion\Presentadores\UsuariosInternos\texto.txt" />
+    <Content Include="Presentacion\Presentadores\VentaCierreCaja\texto.txt" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_agregarEstacionamiento.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_consultarEstacionamiento.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_consultarTicket.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_detalleTicket.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_editarEstacionamiento.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_gestionarEstacionamiento.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\CampoNumerico.ascx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\comboConsultarInventario.ascx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioAgregarItem.ascx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioAgregarPuesto.ascx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioConsultarPuesto.ascx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioModificarInventario.ascx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioModificarPuesto.ascx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\mensajeDeEstado.ascx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\textboxConfigurarPlaya.ascx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_agregarItem.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_agregarPuesto.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_configurarPlaya.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_consultarInventario.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_consultarPuesto.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_modificarInventario.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_modificarPuesto.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\Nuevo documento de texto.txt" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_03_consultaServicio.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_03_consultaServicioCompleta.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_03_modificarServiciosPlaya.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_3_agregarServicio.aspx" />
+    <Content Include="Presentacion\Vistas\Web\GestionVentaMembresia\Nuevo documento de texto.txt" />
+    <Content Include="Presentacion\Vistas\Web\GestionVentaMembresia\web_14_buscarMembresia.aspx" />
+    <Content Include="Presentacion\Vistas\Web\GestionVentaMembresia\web_14_consultarMembresia.aspx" />
+    <Content Include="Presentacion\Vistas\Web\GestionVentaMembresia\web_14_gestionPrecioMembresia.aspx" />
+    <Content Include="Presentacion\Vistas\Web\GestionVentaMembresia\web_14_modificarMembresia.aspx" />
+    <Content Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_inicioSesionA.aspx" />
+    <Content Include="Presentacion\Vistas\Web\inicio.aspx" />
+    <Content Include="Presentacion\Vistas\Web\InventarioRestaurante\web_06_agregarItem.aspx" />
+    <Content Include="Presentacion\Vistas\Web\InventarioRestaurante\web_06_gestionarInventario.aspx" />
+    <Content Include="Presentacion\Vistas\Web\InventarioRestaurante\web_06_modificarItem.aspx" />
+    <Content Include="Presentacion\Vistas\Web\InventarioRestaurante\web_06_verItem.aspx" />
+    <Content Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\DescripcionProducto.ascx" />
+    <Content Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\mensajeDeConfirmacion.ascx" />
+    <Content Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\mensajeDeError.ascx" />
+    <Content Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\NombreProducto.ascx" />
+    <Content Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\PrecioProducto.ascx" />
+    <Content Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_agregarProducto.aspx" />
+    <Content Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_agregarSeccion.aspx" />
+    <Content Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_gestionarProducto.aspx" />
+    <Content Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_gestionarSeccion.aspx" />
+    <Content Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_modificarProducto.aspx" />
+    <Content Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_modificarSeccion.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Proveedores\Nuevo documento de texto.txt" />
+    <Content Include="Presentacion\Vistas\Web\Proveedores\web_02_agregarProveedores.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Proveedores\web_02_consultarProveedor.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Proveedores\web_02_eliminarProveedor.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Proveedores\web_02_gestionarProveedores.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Proveedores\web_02_modificarProveedor.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\Nuevo documento de texto.txt" />
+    <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteComidaBebida.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteIngresos.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteMembresias.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteProductos.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteProveedores.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteRoles.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteUsuarios.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\Nuevo documento de texto.txt" />
+    <Content Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_confirmacionReserva.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_editarReserva.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_gestionarReservas.aspx" />
+    <Content Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_listaReservas.aspx" />
+    <Content Include="Presentacion\Vistas\Web\RolesSeguridad\Nuevo documento de texto.txt" />
+    <Content Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_agregarRol.aspx" />
+    <Content Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_consultarAcciones.aspx" />
+    <Content Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_consultarRol.aspx" />
+    <Content Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_editarRol.aspx" />
+    <Content Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_gestionarRoles.aspx" />
+    <Content Include="Presentacion\Vistas\Web\UsuariosInternos\Nuevo documento de texto.txt" />
+    <Content Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_agregarUsuario.aspx" />
+    <Content Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_asignarRoles.aspx" />
+    <Content Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_consultarUsuario.aspx" />
+    <Content Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_gestionUsuario.aspx" />
+    <Content Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_modificarUsuario.aspx" />
+    <Content Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_perfil_usuario.aspx" />
+    <Content Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cerrarCajaDiario.aspx" />
+    <Content Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cerrarCajaMensual.aspx" />
+    <Content Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_facturacion.aspx" />
+    <Content Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_gestionarVenta.aspx" />
+    <Content Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_imprimirFactura.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dominio\Entidad.cs" />
+    <Compile Include="Dominio\Entidades\Persona.cs" />
+    <Compile Include="Dominio\Fabrica\FabricaEntidad.cs" />
+    <Compile Include="LogicaNegocio\Comando.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ComandoAgregarPersona.cs" />
+    <Compile Include="LogicaNegocio\Fabrica\FabricaComando.cs" />
+    <Compile Include="Presentacion\Contratos\IContratoGeneral.cs" />
+    <Compile Include="Presentacion\Contratos\VentaCierreCaja\IContrato_07_Facturacion.cs" />
+    <Compile Include="Presentacion\Presentadores\PresentadorGeneral.cs" />
+    <Compile Include="Presentacion\Presentadores\VentaCierreCaja\Presentador_07_Facturacion.cs" />
+    <Compile Include="Presentacion\Vistas\Temp\back_office_temp.Master.cs">
+      <DependentUpon>back_office_temp.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Temp\back_office_temp.Master.designer.cs">
+      <DependentUpon>back_office_temp.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Temp\log_in.Master.cs">
+      <DependentUpon>log_in.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Temp\log_in.Master.designer.cs">
+      <DependentUpon>log_in.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_agregarEstacionamiento.aspx.cs">
+      <DependentUpon>web_5_agregarEstacionamiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_agregarEstacionamiento.aspx.designer.cs">
+      <DependentUpon>web_5_agregarEstacionamiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_consultarEstacionamiento.aspx.cs">
+      <DependentUpon>web_5_consultarEstacionamiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_consultarEstacionamiento.aspx.designer.cs">
+      <DependentUpon>web_5_consultarEstacionamiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_consultarTicket.aspx.cs">
+      <DependentUpon>web_5_consultarTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_consultarTicket.aspx.designer.cs">
+      <DependentUpon>web_5_consultarTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_detalleTicket.aspx.cs">
+      <DependentUpon>web_5_detalleTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_detalleTicket.aspx.designer.cs">
+      <DependentUpon>web_5_detalleTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_editarEstacionamiento.aspx.cs">
+      <DependentUpon>web_5_editarEstacionamiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_editarEstacionamiento.aspx.designer.cs">
+      <DependentUpon>web_5_editarEstacionamiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_gestionarEstacionamiento.aspx.cs">
+      <DependentUpon>web_5_gestionarEstacionamiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_gestionarEstacionamiento.aspx.designer.cs">
+      <DependentUpon>web_5_gestionarEstacionamiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\CampoNumerico.ascx.cs">
+      <DependentUpon>CampoNumerico.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\CampoNumerico.ascx.designer.cs">
+      <DependentUpon>CampoNumerico.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\comboConsultarInventario.ascx.cs">
+      <DependentUpon>comboConsultarInventario.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\comboConsultarInventario.ascx.designer.cs">
+      <DependentUpon>comboConsultarInventario.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioAgregarItem.ascx.cs">
+      <DependentUpon>formularioAgregarItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioAgregarItem.ascx.designer.cs">
+      <DependentUpon>formularioAgregarItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioAgregarPuesto.ascx.cs">
+      <DependentUpon>formularioAgregarPuesto.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioAgregarPuesto.ascx.designer.cs">
+      <DependentUpon>formularioAgregarPuesto.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioConsultarPuesto.ascx.cs">
+      <DependentUpon>formularioConsultarPuesto.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioConsultarPuesto.ascx.designer.cs">
+      <DependentUpon>formularioConsultarPuesto.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioModificarInventario.ascx.cs">
+      <DependentUpon>formularioModificarInventario.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioModificarInventario.ascx.designer.cs">
+      <DependentUpon>formularioModificarInventario.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioModificarPuesto.ascx.cs">
+      <DependentUpon>formularioModificarPuesto.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\formularioModificarPuesto.ascx.designer.cs">
+      <DependentUpon>formularioModificarPuesto.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\mensajeDeEstado.ascx.cs">
+      <DependentUpon>mensajeDeEstado.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\mensajeDeEstado.ascx.designer.cs">
+      <DependentUpon>mensajeDeEstado.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\textboxConfigurarPlaya.ascx.cs">
+      <DependentUpon>textboxConfigurarPlaya.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\componentes\textboxConfigurarPlaya.ascx.designer.cs">
+      <DependentUpon>textboxConfigurarPlaya.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\RecursosInterfaz.Designer.cs" />
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\RecursosInterfazConfiguracioPuestosPlaya.Designer.cs" />
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_agregarItem.aspx.cs">
+      <DependentUpon>web_2_agregarItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_agregarItem.aspx.designer.cs">
+      <DependentUpon>web_2_agregarItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_agregarPuesto.aspx.cs">
+      <DependentUpon>web_2_agregarPuesto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_agregarPuesto.aspx.designer.cs">
+      <DependentUpon>web_2_agregarPuesto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_configurarPlaya.aspx.cs">
+      <DependentUpon>web_2_configurarPlaya.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_configurarPlaya.aspx.designer.cs">
+      <DependentUpon>web_2_configurarPlaya.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_consultarInventario.aspx.cs">
+      <DependentUpon>web_2_consultarInventario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_consultarInventario.aspx.designer.cs">
+      <DependentUpon>web_2_consultarInventario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_consultarPuesto.aspx.cs">
+      <DependentUpon>web_2_consultarPuesto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_consultarPuesto.aspx.designer.cs">
+      <DependentUpon>web_2_consultarPuesto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_modificarInventario.aspx.cs">
+      <DependentUpon>web_2_modificarInventario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_modificarInventario.aspx.designer.cs">
+      <DependentUpon>web_2_modificarInventario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_modificarPuesto.aspx.cs">
+      <DependentUpon>web_2_modificarPuesto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_modificarPuesto.aspx.designer.cs">
+      <DependentUpon>web_2_modificarPuesto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_03_consultaServicio.aspx.cs">
+      <DependentUpon>web_03_consultaServicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_03_consultaServicio.aspx.designer.cs">
+      <DependentUpon>web_03_consultaServicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_03_consultaServicioCompleta.aspx.cs">
+      <DependentUpon>web_03_consultaServicioCompleta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_03_consultaServicioCompleta.aspx.designer.cs">
+      <DependentUpon>web_03_consultaServicioCompleta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_03_modificarServiciosPlaya.aspx.cs">
+      <DependentUpon>web_03_modificarServiciosPlaya.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_03_modificarServiciosPlaya.aspx.designer.cs">
+      <DependentUpon>web_03_modificarServiciosPlaya.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_3_agregarServicio.aspx.cs">
+      <DependentUpon>web_3_agregarServicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_3_agregarServicio.aspx.designer.cs">
+      <DependentUpon>web_3_agregarServicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\GestionVentaMembresia\web_14_buscarMembresia.aspx.cs">
+      <DependentUpon>web_14_buscarMembresia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\GestionVentaMembresia\web_14_buscarMembresia.aspx.designer.cs">
+      <DependentUpon>web_14_buscarMembresia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\GestionVentaMembresia\web_14_consultarMembresia.aspx.cs">
+      <DependentUpon>web_14_consultarMembresia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\GestionVentaMembresia\web_14_consultarMembresia.aspx.designer.cs">
+      <DependentUpon>web_14_consultarMembresia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\GestionVentaMembresia\web_14_gestionPrecioMembresia.aspx.cs">
+      <DependentUpon>web_14_gestionPrecioMembresia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\GestionVentaMembresia\web_14_gestionPrecioMembresia.aspx.designer.cs">
+      <DependentUpon>web_14_gestionPrecioMembresia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\GestionVentaMembresia\web_14_modificarMembresia.aspx.cs">
+      <DependentUpon>web_14_modificarMembresia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\GestionVentaMembresia\web_14_modificarMembresia.aspx.designer.cs">
+      <DependentUpon>web_14_modificarMembresia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_inicioSesionA.aspx.cs">
+      <DependentUpon>web_01_inicioSesionA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_inicioSesionA.aspx.designer.cs">
+      <DependentUpon>web_01_inicioSesionA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\inicio.aspx.cs">
+      <DependentUpon>inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\inicio.aspx.designer.cs">
+      <DependentUpon>inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\InventarioRestaurante\web_06_agregarItem.aspx.cs">
+      <DependentUpon>web_06_agregarItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\InventarioRestaurante\web_06_agregarItem.aspx.designer.cs">
+      <DependentUpon>web_06_agregarItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\InventarioRestaurante\web_06_gestionarInventario.aspx.cs">
+      <DependentUpon>web_06_gestionarInventario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\InventarioRestaurante\web_06_gestionarInventario.aspx.designer.cs">
+      <DependentUpon>web_06_gestionarInventario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\InventarioRestaurante\web_06_modificarItem.aspx.cs">
+      <DependentUpon>web_06_modificarItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\InventarioRestaurante\web_06_modificarItem.aspx.designer.cs">
+      <DependentUpon>web_06_modificarItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\InventarioRestaurante\web_06_verItem.aspx.cs">
+      <DependentUpon>web_06_verItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\InventarioRestaurante\web_06_verItem.aspx.designer.cs">
+      <DependentUpon>web_06_verItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\DescripcionProducto.ascx.cs">
+      <DependentUpon>DescripcionProducto.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\DescripcionProducto.ascx.designer.cs">
+      <DependentUpon>DescripcionProducto.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\mensajeDeConfirmacion.ascx.cs">
+      <DependentUpon>mensajeDeConfirmacion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\mensajeDeConfirmacion.ascx.designer.cs">
+      <DependentUpon>mensajeDeConfirmacion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\mensajeDeError.ascx.cs">
+      <DependentUpon>mensajeDeError.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\mensajeDeError.ascx.designer.cs">
+      <DependentUpon>mensajeDeError.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\NombreProducto.ascx.cs">
+      <DependentUpon>NombreProducto.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\NombreProducto.ascx.designer.cs">
+      <DependentUpon>NombreProducto.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\PrecioProducto.ascx.cs">
+      <DependentUpon>PrecioProducto.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\componentes\PrecioProducto.ascx.designer.cs">
+      <DependentUpon>PrecioProducto.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_agregarProducto.aspx.cs">
+      <DependentUpon>web_05_agregarProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_agregarProducto.aspx.designer.cs">
+      <DependentUpon>web_05_agregarProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_agregarSeccion.aspx.cs">
+      <DependentUpon>web_05_agregarSeccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_agregarSeccion.aspx.designer.cs">
+      <DependentUpon>web_05_agregarSeccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_gestionarProducto.aspx.cs">
+      <DependentUpon>web_05_gestionarProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_gestionarProducto.aspx.designer.cs">
+      <DependentUpon>web_05_gestionarProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_gestionarSeccion.aspx.cs">
+      <DependentUpon>web_05_gestionarSeccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_gestionarSeccion.aspx.designer.cs">
+      <DependentUpon>web_05_gestionarSeccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_modificarProducto.aspx.cs">
+      <DependentUpon>web_05_modificarProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_modificarProducto.aspx.designer.cs">
+      <DependentUpon>web_05_modificarProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_modificarSeccion.aspx.cs">
+      <DependentUpon>web_05_modificarSeccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_modificarSeccion.aspx.designer.cs">
+      <DependentUpon>web_05_modificarSeccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Proveedores\web_02_agregarProveedores.aspx.cs">
+      <DependentUpon>web_02_agregarProveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Proveedores\web_02_agregarProveedores.aspx.designer.cs">
+      <DependentUpon>web_02_agregarProveedores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Proveedores\web_02_consultarProveedor.aspx.cs">
+      <DependentUpon>web_02_consultarProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Proveedores\web_02_consultarProveedor.aspx.designer.cs">
+      <DependentUpon>web_02_consultarProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Proveedores\web_02_eliminarProveedor.aspx.cs">
+      <DependentUpon>web_02_eliminarProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Proveedores\web_02_eliminarProveedor.aspx.designer.cs">
+      <DependentUpon>web_02_eliminarProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Proveedores\web_02_gestionarProveedores.aspx.cs">
+      <DependentUpon>web_02_gestionarProveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Proveedores\web_02_gestionarProveedores.aspx.designer.cs">
+      <DependentUpon>web_02_gestionarProveedores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Proveedores\web_02_modificarProveedor.aspx.cs">
+      <DependentUpon>web_02_modificarProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Proveedores\web_02_modificarProveedor.aspx.designer.cs">
+      <DependentUpon>web_02_modificarProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteComidaBebida.aspx.cs">
+      <DependentUpon>web_13_ReporteComidaBebida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteComidaBebida.aspx.designer.cs">
+      <DependentUpon>web_13_ReporteComidaBebida.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteIngresos.aspx.cs">
+      <DependentUpon>web_13_ReporteIngresos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteIngresos.aspx.designer.cs">
+      <DependentUpon>web_13_ReporteIngresos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteMembresias.aspx.cs">
+      <DependentUpon>web_13_ReporteMembresias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteMembresias.aspx.designer.cs">
+      <DependentUpon>web_13_ReporteMembresias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteProductos.aspx.cs">
+      <DependentUpon>web_13_ReporteProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteProductos.aspx.designer.cs">
+      <DependentUpon>web_13_ReporteProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteProveedores.aspx.cs">
+      <DependentUpon>web_13_ReporteProveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteProveedores.aspx.designer.cs">
+      <DependentUpon>web_13_ReporteProveedores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteRoles.aspx.cs">
+      <DependentUpon>web_13_ReporteRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteRoles.aspx.designer.cs">
+      <DependentUpon>web_13_ReporteRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteUsuarios.aspx.cs">
+      <DependentUpon>web_13_ReporteUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteUsuarios.aspx.designer.cs">
+      <DependentUpon>web_13_ReporteUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_confirmacionReserva.aspx.cs">
+      <DependentUpon>web_07_confirmacionReserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_confirmacionReserva.aspx.designer.cs">
+      <DependentUpon>web_07_confirmacionReserva.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_editarReserva.aspx.cs">
+      <DependentUpon>web_07_editarReserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_editarReserva.aspx.designer.cs">
+      <DependentUpon>web_07_editarReserva.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_gestionarReservas.aspx.cs">
+      <DependentUpon>web_07_gestionarReservas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_gestionarReservas.aspx.designer.cs">
+      <DependentUpon>web_07_gestionarReservas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_listaReservas.aspx.cs">
+      <DependentUpon>web_07_listaReservas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_listaReservas.aspx.designer.cs">
+      <DependentUpon>web_07_listaReservas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_agregarRol.aspx.cs">
+      <DependentUpon>web_08_agregarRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_agregarRol.aspx.designer.cs">
+      <DependentUpon>web_08_agregarRol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_consultarAcciones.aspx.cs">
+      <DependentUpon>web_08_consultarAcciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_consultarAcciones.aspx.designer.cs">
+      <DependentUpon>web_08_consultarAcciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_consultarRol.aspx.cs">
+      <DependentUpon>web_08_consultarRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_consultarRol.aspx.designer.cs">
+      <DependentUpon>web_08_consultarRol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_editarRol.aspx.cs">
+      <DependentUpon>web_08_editarRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_editarRol.aspx.designer.cs">
+      <DependentUpon>web_08_editarRol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_gestionarRoles.aspx.cs">
+      <DependentUpon>web_08_gestionarRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_gestionarRoles.aspx.designer.cs">
+      <DependentUpon>web_08_gestionarRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_agregarUsuario.aspx.cs">
+      <DependentUpon>web_09_agregarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_agregarUsuario.aspx.designer.cs">
+      <DependentUpon>web_09_agregarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_asignarRoles.aspx.cs">
+      <DependentUpon>web_09_asignarRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_asignarRoles.aspx.designer.cs">
+      <DependentUpon>web_09_asignarRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_consultarUsuario.aspx.cs">
+      <DependentUpon>web_09_consultarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_consultarUsuario.aspx.designer.cs">
+      <DependentUpon>web_09_consultarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_gestionUsuario.aspx.cs">
+      <DependentUpon>web_09_gestionUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_gestionUsuario.aspx.designer.cs">
+      <DependentUpon>web_09_gestionUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_modificarUsuario.aspx.cs">
+      <DependentUpon>web_09_modificarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_modificarUsuario.aspx.designer.cs">
+      <DependentUpon>web_09_modificarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_perfil_usuario.aspx.cs">
+      <DependentUpon>web_09_perfil_usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_perfil_usuario.aspx.designer.cs">
+      <DependentUpon>web_09_perfil_usuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cerrarCajaDiario.aspx.cs">
+      <DependentUpon>web_07_cerrarCajaDiario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cerrarCajaDiario.aspx.designer.cs">
+      <DependentUpon>web_07_cerrarCajaDiario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cerrarCajaMensual.aspx.cs">
+      <DependentUpon>web_07_cerrarCajaMensual.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cerrarCajaMensual.aspx.designer.cs">
+      <DependentUpon>web_07_cerrarCajaMensual.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_facturacion.aspx.cs">
+      <DependentUpon>web_07_facturacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_facturacion.aspx.designer.cs">
+      <DependentUpon>web_07_facturacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_gestionarVenta.aspx.cs">
+      <DependentUpon>web_07_gestionarVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_gestionarVenta.aspx.designer.cs">
+      <DependentUpon>web_07_gestionarVenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_imprimirFactura.aspx.cs">
+      <DependentUpon>web_07_imprimirFactura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_imprimirFactura.aspx.designer.cs">
+      <DependentUpon>web_07_imprimirFactura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Presentacion\Vistas\Temp\back_office_temp.Master" />
+    <Content Include="Presentacion\Vistas\Temp\log_in.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Presentacion\Contratos\ConfiguracionEstacionamiento\" />
+    <Folder Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\resources\css\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\RecursosInterfaz.resx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53164/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

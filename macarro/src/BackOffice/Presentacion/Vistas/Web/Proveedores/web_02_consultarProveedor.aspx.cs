@@ -1,0 +1,90 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+
+namespace BackOffice.Presentacion.Vistas.Web.Proveedores
+{
+    public partial class web_02_consultarProveedor : System.Web.UI.Page
+    {
+        //ProveedorBD auxBD = new ProveedorBD();
+
+        /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
+        /// <summary>
+        /// Metodo por defecto / estandar , se ejecuta al cargase la pagina
+        /// </summary>
+        /// <param name= sender> Objeto</param>
+        /// <param name= e> Argumento</param>
+        /// <exception> Exception , Param = ex </exception>
+         
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //String s = Request.QueryString["p"];
+            //Proveedor p = auxBD.consultarProveedorBD(s);
+            //List<Item> i = auxBD.consultarItemsProveedorBD(s);
+            //CargarProveedor(p);
+            //CargarItems(i);
+        }
+
+        /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
+        /// <summary>
+        /// Evento, cuya funcion se realiza al clickear el boton especificado
+        /// Regresa al menu anterior 'Gestionar Proveedores'
+        /// </summary>
+        /// <param name= sender> Objeto </param>
+        /// <param name= e> Argumento </param>
+  
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("web_02_gestionarProveedores.aspx");
+        }
+
+        /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
+        /// <summary>
+        /// Metodo que carga la informacion del proveedor dentro de la pagina
+        /// </summary>
+        /// <param name= p> Objeto de tipo proveedor, contiene todos los campos que existen para un proveedor</param>
+        /// <exception> Exception, Param = e</exception>
+        
+        //private void CargarProveedor(Proveedor p)
+        //{
+        //    List<string> lugar = auxBD.ConsultarDireccionProveedorBD(p.Lugar);
+
+        //    try
+        //    {
+        //        this.Rif.Text = p.Rif;
+        //        this.RazonSocial.Text = p.RazonSocial;
+        //        this.Correo.Text = p.Correo;
+        //        this.PaginaWeb.Text = p.PaginaWeb;
+        //        this.Telefono.Text = p.Telefono;
+        //        this.FechaContrato.Text = p.FechaContrato.ToString();
+        //        this.Pais.Text = lugar[0];
+        //        this.Estado.Text = lugar[1];
+        //        this.Ciudad.Text = lugar[2];
+        //        this.Direccion.Text = lugar[3];                
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //    }
+        //}
+
+        /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
+        /// <summary>
+        /// Metodo que carga la informacion de la lista de items dentro de la pagina
+        /// </summary>
+        /// <param name= Items> Lista de tipo Item con el nombre de cada Item</param>
+        /// <exception> Exception , Param = e </exception>
+        /// <exception> ExcepcionConsultarProveedor , Param = ex </exception>
+
+        //private void CargarItems(List<Item> Items)
+        //{   
+        //    GridView1.DataSource = Items;
+        //    GridView1.DataBind();
+        //}
+
+    }
+}

@@ -1,0 +1,26 @@
+﻿.centrar {
+    text-align:center;
+}
+.subtitulo {
+    color:#2980B9;
+}
+.divPrincipal {
+    margin:auto;
+    width:1000px;
+}
+.divBoton {
+    clear:both; 
+    margin:auto; 
+    padding:20px; 
+    width: 130px;
+}
+.tabla {
+    margin:50px;
+}
+.ancho {
+     width:200px;
+}
+.imagen {
+    Height="50px";
+    Width="50px";
+}

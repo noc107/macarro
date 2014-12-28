@@ -1,0 +1,208 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="master_loged_in.Master.cs" Inherits="front_office.view.temp.master_loged_in" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head id="Head1" runat="server">
+
+        <title>
+
+            <asp:ContentPlaceHolder ID="title_place_holder" runat="server">
+
+            </asp:ContentPlaceHolder>
+
+        </title>
+
+        <link href="/comun/resources/css/standards.css" rel="stylesheet" />
+        <link href="/comun/resources/css/loged_in.css" rel="stylesheet" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'/>
+
+        <asp:ContentPlaceHolder ID="css_place_holder" runat="server">
+
+        </asp:ContentPlaceHolder>
+
+        <script src="/comun/resources/js/jquery-1.11.1.js"></script>
+
+        <asp:ContentPlaceHolder ID="libs_place_holder" runat="server">
+
+        </asp:ContentPlaceHolder>
+
+        <script src="/comun/resources/js/menu_manager.js"></script>
+
+        <asp:ContentPlaceHolder ID="js_place_holder" runat="server">
+
+        </asp:ContentPlaceHolder>
+    
+    </head>
+
+    <body>
+        <form id="main_form" runat="server">
+
+            <header class="main_header">
+
+                <div class="header_container">
+
+                    <div class="header_logo">
+                    
+                        <a href="/Presentacion/Vistas/Web/inicio.aspx"><img src="/comun/resources/img/logo-macarro.png" alt="Inicio" /></a>
+
+                    </div>
+
+                    <nav class="header_menu">
+
+                        <ul class="header_menu_first_ul">
+
+                            <li class="header_menu_first_li">
+
+                                <a href="/Presentacion/Vistas/Web/inicio.aspx">Inicio</a>
+
+                            </li>
+
+                            <li class="header_menu_first_li">
+
+                                <a href="#">Reservas <img src="/comun/resources/img/dropdown.png" /></a>
+
+                                <ul class="header_menu_second_ul">
+
+                                    <li class="header_menu_second_li">
+
+                                        <a href="#">Reservar servicio</a>
+
+                                    </li>
+                                    <li class="header_menu_second_li">
+
+                                        <a href="#">Reservar sombrilla</a>
+
+                                    </li>
+                                    <li class="header_menu_second_li">
+
+                                        <a href="#">Mis Reservas</a>
+
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <li class="header_menu_first_li">
+
+                                <a href="#">Menu</a>
+
+                            </li>
+
+                            <li class="header_menu_first_li">
+
+                                <a href="#">Estacionamiento <img src="/comun/resources/img/dropdown.png" /></a>
+
+                                <ul class="header_menu_second_ul">
+
+                                    <li class="header_menu_second_li">
+
+                                        <a href="/Presentacion/Vistas/Web/Estacionamiento/web_11_ConsultarTicket.aspx">Consultar Ticket</a>
+
+                                    </li>
+                                    <li class="header_menu_second_li">
+
+                                        <a href="/Presentacion/Vistas/Web/Estacionamiento/web_11_consultar_Estacionamiento.aspx">Consultar Estacionamiento</a>
+
+                                    </li>
+                                    <li class="header_menu_second_li">
+
+                                        <a href="/Presentacion/Vistas/Web/Estacionamiento/web_11_GenerarTicket.aspx">Generar Ticket</a>
+
+                                    </li>
+                                    <li class="header_menu_second_li">
+
+                                        <a href="/Presentacion/Vistas/Web/Estacionamiento/web_11_CobrarTicket.aspx">Cobrar Ticket</a>
+
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <li class="header_menu_first_li">
+
+                                <a href="#">Membresia <img src="/comun/resources/img/dropdown.png" /></a>
+
+                                <ul class="header_menu_second_ul">
+
+                                    <li class="header_menu_second_li">
+
+                                        <a href="/Presentacion/Vistas/Web/Membresia/web_14_consultarMembresia.aspx">Consultar Membresia</a>
+
+                                    </li>
+                                    <li class="header_menu_second_li">
+
+                                        <a href="/Presentacion/Vistas/Web/Membresia/web_14_agregarMembresia.aspx">Agregar Membresia</a>
+
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+
+                        </ul>
+
+                    </nav>
+
+                    <div class="header_log">
+
+                        <div class="header_log_user_name">
+                             <%=Session["primerNombre"]%>
+                            <asp:ContentPlaceHolder ID="username_place_holder" runat="server"></asp:ContentPlaceHolder>
+
+                        </div>
+
+                        <div class="header_log_icons">
+
+                            <a id="Profile" href="#"><img  class="iconoslogout" src="/comun/resources/img/User-Profile-128.png"/> </a>
+                            <ul class="header_menu_second_ul_Profile">
+
+                                    <li class="header_menu_second_li">
+
+                                        <a href="/Presentacion/Vistas/Web/IngresoRecuperacionClave/web_01_modificar.aspx">Ver Perfil</a>
+
+                                    </li>
+                                    <li class="header_menu_second_li">
+
+                                        <asp:LinkButton CssClass="a" ID="Link"  OnClick="Cerrar_Sesion" runat="server">Cerrar Sesion</asp:LinkButton>
+
+                                    </li>
+
+                             </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </header>
+            <div class="title">
+                <h1>
+                    <asp:ContentPlaceHolder ID="title_shown_place_holder" runat="server"></asp:ContentPlaceHolder>
+                </h1>
+
+            </div>
+            <div class="content">
+            
+                    <div class="content_middle">
+
+                        <asp:ContentPlaceHolder ID="middle_place_holder" runat="server"></asp:ContentPlaceHolder>
+
+                    </div>
+            
+            </div>
+            <footer class="main_footer">
+
+                <h3 class="h3bot"> © Copyright Macarro 2014</h3>
+
+            </footer>
+        </form>
+
+    </body>
+
+</html>
+

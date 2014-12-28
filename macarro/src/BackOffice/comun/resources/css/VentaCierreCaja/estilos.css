@@ -1,0 +1,283 @@
+﻿.listaServicios {
+    width:200px;
+    height:300px;
+
+    margin-top:5px;
+}
+
+.botonServicio {
+    width:32px;
+    height:32px;
+    cursor:pointer;
+    margin:5px 5px;
+    border:none;
+    display:inline-block;
+    vertical-align:top;
+    top:135px;
+}
+
+
+.botonFactura {
+    margin:15px 5px;
+    position:relative;
+   
+}
+
+#Bloques {
+    width:1050px;
+    height:auto;
+    margin:0 auto;
+    margin-bottom:5%;
+}
+
+.Bloques {
+    display:inline-block;
+    position:relative;
+    vertical-align:top;
+    
+}
+
+#Servicios {
+    width:40%;
+    height:auto;
+}
+
+/*-----TABLA--------*/
+.detalleFactura {
+    width:500px;
+    /*background-color:#FFF;*/
+
+    background-color: #fff;
+    margin: 5px 0 10px 0;
+    border: solid 1px #525252;
+    border-collapse: collapse;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+    .detalleFactura th {
+        padding: 4px 2px;
+        color: #fff;
+        background: #424242 url(../img/grd_head.png) repeat-x top;
+        border-left: solid 1px #525252;
+        font-size: 0.9em;
+        vertical-align:middle;
+    }
+
+    .detalleFactura .celda {
+        padding: 2px;
+        border: solid 1px #c1c1c1;
+        color: #717171;
+        text-align:center;
+        height:22px;
+    }
+
+    .alterna {
+        background: #fcfcfc url(~/comun/resources/img/grd_alt.png) repeat-x top;
+        color:red;
+    }
+
+/*-----TABLA--------*/
+
+#tablaFactura {
+    width:500px;
+    height:auto;
+    display:inline-block;
+    vertical-align:top;
+}
+
+#Factura {
+    width:58%;
+    height:auto;
+}
+
+#contFactura {
+    width:750px;
+    height:auto;
+    margin:0 auto;
+}
+
+    #contFactura > h2,h5 {
+        text-align:center;
+    }
+
+#facturaFinal {
+    width:100%;
+    position:relative;
+    margin-top:20px;
+}
+
+.botonImprimir {
+    margin:0 auto;
+    position:relative;
+    margin-top:15px;
+    margin-left:20px;
+}
+
+#gestionVentas {
+    width:800px;
+    height:auto;
+    margin:0 auto;
+    margin-bottom:20%;
+}
+
+.gestionVentas {
+    margin-bottom:50px;
+}
+
+
+.botonCierre {
+    margin:0 10px;
+}
+
+#elementosAbajo {
+    width:inherit;
+    height:auto;
+    margin:0 auto;
+}
+
+
+.bloqueElemento {
+    width:390px;
+    height:auto;
+    display:inline-block;
+    vertical-align:top;
+}
+
+#listaRadioButtons {
+    width:150px;
+    margin:0 auto;
+    margin-top:20px;
+}
+
+#buttonsFactura {
+    width:263px;
+    margin-top:10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+}
+
+.labelCierre {
+    padding-left:42%;
+    
+}
+
+#botonImprimirFactura {
+    width:250px;
+    margin:30px auto;
+}
+
+#totales {
+    position:relative;
+    width:100%;
+}
+
+    #totales td {
+        width:187px;
+        text-align:right;
+    }
+
+.tablaCierreCaja {
+    width: 300px;
+    margin: 0 auto;
+
+}
+
+.check {
+    font-family: 'Open Sans', sans-serif;
+    font-size:medium;
+    color:#2980B9;
+}
+
+.TablaCliente {
+
+Width:400px;
+margin: 0 auto 0 auto;
+
+}
+
+.TablaNombre{
+
+font-weight:bold;
+width:45%;
+height:40px;
+text-align:right;
+}
+
+.TablaValor{
+
+padding-left:10%;
+width:55%;
+
+}
+
+.textbox {
+    margin:0;
+}
+
+.labelFacturacion {
+    text-align:left;
+    display:inline-block;
+    width:150px;
+}
+
+.BloqueDatosUsuario {
+    margin:0 auto;
+    width:43%;
+}
+
+.BloqueNuevo {
+    width:1050px;
+    height:auto;
+    margin:0 auto;   
+}
+
+.gridServicios {
+    display:inline-block;
+    min-height:350px;
+    padding-left:30px;
+    width:89%;
+}
+
+.containerMas {
+    display:inline-block;
+    margin-top:150px;
+    position:absolute;
+    width:14%;
+}
+.containerMenos {
+    display:inline-block;
+    margin-top:200px;
+    position:absolute;
+    width:14%;
+}
+
+.containerBuscadorServicio {
+    padding-left:30px;
+    width:100%;
+
+}
+
+.buscadorServicio {
+    width:150px;
+}
+
+.comboFiltro {
+    margin-left:-2px;
+}
+
+h3 {
+    margin-top:0px;
+    margin-bottom:20px;
+}
+
+.labelTotal {
+    text-align: right;
+    display: inline-block;
+    width: 74%;
+}
+
+.bFactura {
+    min-width:130px;
+}
