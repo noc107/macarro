@@ -5,20 +5,27 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using BackOffice.Presentacion.Contratos.Proveedores;
+using BackOffice.Presentacion.Contratos;
+using BackOffice.Presentacion.Presentadores.Proveedores;
 
 namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 {
-    public partial class web_02_agregarProveedores : System.Web.UI.Page
+    public partial class web_02_agregarProveedores : System.Web.UI.Page, IContratoGeneral , IContrato_02_agregarProveedores
     {
         //LogicaProveedor _auxLogica = new LogicaProveedor();
         //ProveedorBD auxDatos = new ProveedorBD();
-
+        Presentador_02_agregarProveedores _presentador;
         /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
         /// <summary>
         /// Metodo por defecto / estandar , se ejecuta al cargase la pagina
         /// </summary>
         /// <param name= sender> Objeto</param>
         /// <param name= e> Argumento</param>
+        public web_02_agregarProveedores() 
+        {
+            _presentador = new Presentador_02_agregarProveedores(this);
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -69,7 +76,60 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
         //    }
         }
 
+        TextBox IContrato_02_agregarProveedores.Rif
+        {
+            get { return Rif; }
+        }
 
+        TextBox IContrato_02_agregarProveedores.RazonSocial 
+        {
+            get { return RazonSocial; }
+        }
+
+        TextBox IContrato_02_agregarProveedores.Correo 
+        {
+            get { return Correo; }
+        }
+
+        TextBox IContrato_02_agregarProveedores.PaginaWeb 
+        {
+            get { return PaginaWeb; }
+        }
+
+        TextBox IContrato_02_agregarProveedores.Telefono 
+        {
+            get { return Telefono; }
+        }
+
+        TextBox IContrato_02_agregarProveedores.FechaContrato 
+        {
+            get { return FechaContrato; }
+        }
+
+        TextBox IContrato_02_agregarProveedores.Direccion 
+        {
+            get { return Direccion; }
+        }
+
+        DropDownList IContrato_02_agregarProveedores.Pais 
+        {
+            get { return _Pais; }
+        }
+
+        DropDownList IContrato_02_agregarProveedores.Estado 
+        {
+            get { return _Estado; }
+        }
+
+        DropDownList IContrato_02_agregarProveedores.Ciudad 
+        {
+            get { return _Ciudad; }
+        }
+
+        GridView IContrato_02_agregarProveedores.Items 
+        {
+            get { return GridItems; }
+        }
         /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
         /// <summary>
         /// Metodo que se encarga de tomar los valores escritos dentro del textbox para asignarselos al proveedor

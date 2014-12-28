@@ -82,87 +82,73 @@
                     ForeColor="Red"></asp:RequiredFieldValidator>    
         </div>
         <div class="divDerecho">
-            <%--<div class="divEtiqueta"><asp:Label CssClass="labels etiqueta" ID="Label2" runat="server" Text="País (*):"></asp:Label></div>
+           <div class="divEtiqueta"><asp:Label CssClass="labels etiqueta" ID="Label2" runat="server" Text="País (*):"></asp:Label></div>
             <div class="divEtiqueta"><asp:Label CssClass="labels etiqueta" ID="Label4" runat="server" Text="Estado (*):"></asp:Label></div>
             <div class="divEtiqueta"><asp:Label CssClass="labels etiqueta" ID="Label6" runat="server" Text="Ciudad (*):"></asp:Label></div>
             <div class="divEtiqueta"><asp:Label CssClass="labels etiqueta" ID="Label8" runat="server" Text="Municipio (*):"></asp:Label></div>
             <div class="divEtiqueta"><asp:Label CssClass="labels etiqueta" ID="Label10" runat="server" Text="Dirección (*):"></asp:Label></div>
         </div>
         <div class="divCajas">
-            <asp:TextBox CssClass="textbox caja" ID="TextBox2" runat="server"></asp:TextBox>
+            <asp:DropDownList CssClass="textbox caja" ID="Pais" runat="server"></asp:DropDownList>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator3" runat="server" 
-                    ControlToValidate="TextBox2" 
+                    ControlToValidate="Pais" 
                     Text="*"
                     ErrorMessage="Pais no debe contener caracteres especiales" 
                     ForeColor="Red" 
                     ValidationExpression="^([0-9a-zA-Z]? ?)*$">
                 </asp:RegularExpressionValidator>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator5" 
-                    runat="server" ControlToValidate ="TextBox2"
+                    runat="server" ControlToValidate ="Pais"
                     ErrorMessage="Pais requerido." 
                     Text="*"
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
             <br />
-            <asp:TextBox CssClass="textbox caja" ID="TextBox4" runat="server"></asp:TextBox>
+            <asp:DropDownList CssClass="textbox caja" ID="Estado" runat="server"></asp:DropDownList>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator1" runat="server" 
-                    ControlToValidate="TextBox4" 
+                    ControlToValidate="Estado" 
                     Text="*"
                     ErrorMessage="Estado no debe contener caracteres especiales" 
                     ForeColor="Red" 
                     ValidationExpression="^([0-9a-zA-Z]? ?)*$">
             </asp:RegularExpressionValidator>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator6" 
-                    runat="server" ControlToValidate ="TextBox4"
+                    runat="server" ControlToValidate ="Estado"
                     ErrorMessage="Estado requerido." 
                     Text="*"
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
             <br />
-            <asp:TextBox CssClass="textbox caja" ID="TextBox6" runat="server"></asp:TextBox>
+            <asp:DropDownList CssClass="textbox caja" ID="Ciudad" runat="server"></asp:DropDownList>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator2" runat="server" 
-                    ControlToValidate="TextBox6" 
+                    ControlToValidate="Ciudad" 
                     Text="*"
                     ErrorMessage="Ciudad no debe contener caracteres especiales" 
                     ForeColor="Red" 
                     ValidationExpression="^([0-9a-zA-Z]? ?)*$">
              </asp:RegularExpressionValidator>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator7" 
-                    runat="server" ControlToValidate ="TextBox6"
+                    runat="server" ControlToValidate ="Ciudad"
                     ErrorMessage="Ciudad requerido." 
                     Text="*"
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
             <br />
-            <asp:TextBox CssClass="textbox caja" ID="TextBox8" runat="server"></asp:TextBox>
-            <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator4" runat="server" 
-                    ControlToValidate="TextBox8" 
-                    Text="*"
-                    ErrorMessage="Municipio no debe contener caracteres especiales" 
-                    ForeColor="Red" 
-                    ValidationExpression="^([0-9a-zA-Z]? ?)*$">
-            </asp:RegularExpressionValidator>
-            <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator8" 
-                    runat="server" ControlToValidate ="TextBox8"
-                    ErrorMessage="Municipio requerido." 
-                    Text="*"
-                    ForeColor="Red">
-            </asp:RequiredFieldValidator>
-            <br />
-            <asp:TextBox CssClass="textbox caja" ID="TextBox10" runat="server"></asp:TextBox>
+           
+            <asp:TextBox CssClass="textbox caja" ID="Direccion" runat="server"></asp:TextBox>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator5" runat="server" 
-                    ControlToValidate="TextBox10" 
+                    ControlToValidate="Direccion" 
                     Text="*"
                     ErrorMessage="Dirección no debe contener caracteres especiales" 
                     ForeColor="Red" 
                     ValidationExpression="^([0-9a-zA-Z]? ?)*$">
             </asp:RegularExpressionValidator>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator9" 
-                    runat="server" ControlToValidate ="TextBox10"
+                    runat="server" ControlToValidate ="Direccion"
                     ErrorMessage="Dirección requerido." 
                     Text="*"
                     ForeColor="Red">
-            </asp:RequiredFieldValidator>--%>
+            </asp:RequiredFieldValidator>
          </div>
     </div>
     <div class="divAbajo">

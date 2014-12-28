@@ -71,7 +71,7 @@
                     ForeColor="Red"></asp:RequiredFieldValidator>  
         </div>
         <div class="divDerecho">
-            <%--<div class="divEtiqueta"><asp:Label CssClass="labels etiqueta" ID="Label2" runat="server" Text="País (*):"></asp:Label></div>
+           <div class="divEtiqueta"><asp:Label CssClass="labels etiqueta" ID="Label2" runat="server" Text="País (*):"></asp:Label></div>
             <div class="divEtiqueta"><asp:Label CssClass="labels etiqueta" ID="Label4" runat="server" Text="Estado (*):"></asp:Label></div>
             <div class="divEtiqueta"><asp:Label CssClass="labels etiqueta" ID="Label6" runat="server" Text="Ciudad (*):"></asp:Label></div>
             <div class="divEtiqueta"><asp:Label CssClass="labels etiqueta" ID="Label10" runat="server" Text="Dirección (*):"></asp:Label></div>
@@ -91,7 +91,7 @@
                     Text="*"
                     ForeColor="Red"> </asp:RequiredFieldValidator>
             <br />
-            <asp:DropDownList ID="_Estado" runat="server" OnSelectedIndexChanged="_Pais_SelectedIndexChanged"></asp:DropDownList>
+            <asp:DropDownList ID="_Estado" runat="server" OnSelectedIndexChanged="_Estado_SelectedIndexChanged"></asp:DropDownList>
             <asp:TextBox CssClass="textbox caja" ID="Estado" runat="server"></asp:TextBox>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator1" runat="server" 
                     ControlToValidate="Estado" 
@@ -105,6 +105,7 @@
                     Text="*"
                     ForeColor="Red"> </asp:RequiredFieldValidator>
             <br />
+            <asp:DropDownList ID="_Ciudad" runat="server" OnSelectedIndexChanged="_Ciudad_SelectedIndexChanged"></asp:DropDownList>
             <asp:TextBox CssClass="textbox caja" ID="Ciudad" runat="server"></asp:TextBox>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator2" runat="server" 
                     ControlToValidate="Ciudad" 
@@ -130,11 +131,11 @@
                     ErrorMessage="Dirección requerido." 
                     Text="*"
                     ForeColor="Red"> </asp:RequiredFieldValidator>
-            --%>
+             
          </div>
     </div>
     <div class="divAbajo">
-        <%--<asp:GridView CssClass="grid_view tabla mGrid" ID="GridItems" runat="server" AutoGenerateColumns="False" HorizontalAlign="Center" BorderStyle="None"
+        <asp:GridView CssClass="grid_view tabla mGrid" ID="GridItems" runat="server" AutoGenerateColumns="False" HorizontalAlign="Center" BorderStyle="None"
             AllowSorting="true" AllowPaging="True" GridLines="None" ForeColor="#99CCFF"  OnPageIndexChanging="GridView1_PageIndexChanging">
             <AlternatingRowStyle CssClass="alt" />
             <Columns>
@@ -148,7 +149,7 @@
             </Columns>
         <PagerStyle CssClass="pgr" />
             <SelectedRowStyle HorizontalAlign="Center" BackColor="#3366FF" BorderColor="Black" />
-        </asp:GridView>--%>
+        </asp:GridView>
 
    </div>
     <div class="divValidacion">
