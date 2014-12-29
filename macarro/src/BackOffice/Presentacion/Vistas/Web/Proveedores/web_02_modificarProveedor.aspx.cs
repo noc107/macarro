@@ -138,6 +138,18 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             get { return GridItems; }
             set { GridItems = value; }
         }
+
+        public Label LabelMensajeExito
+        {
+            get { return Mensaje; }
+            set { Mensaje = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return Mensaje; }
+            set { Mensaje = value; }
+        }
         /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
         /// <summary>
         /// Metodo que se encarga de tomar los valores escritos dentro del textbox para asignarselos al proveedor

@@ -4,14 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Contratos;
+using BackOffice.Presentacion.Contratos.Proveedores;
+using BackOffice.Presentacion.Presentadores.Proveedores;
 
 
 namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 {
-    public partial class web_02_eliminarProveedor : System.Web.UI.Page
+    public partial class web_02_eliminarProveedor : System.Web.UI.Page, IContratoGeneral, IContrato_02_eliminarProveedor
     {
         //ProveedorBD auxBD = new ProveedorBD();
-      
+        Presentador_02_eliminarProveedor _presentador;
+
+        public web_02_eliminarProveedor() 
+        {
+            _presentador = new Presentador_02_eliminarProveedor(this);
+        }
+
         private string auxString = "";
 
         /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
@@ -36,6 +45,83 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             //}
 
         }
+
+        Label IContrato_02_eliminarProveedor.Rif
+        {
+            set { Rif = value; }
+        }
+
+        Label IContrato_02_eliminarProveedor.RazonSocial
+        {
+            set { RazonSocial = value; }
+        }
+
+        Label IContrato_02_eliminarProveedor.Correo
+        {
+            set { Correo = value; }
+        }
+
+        Label IContrato_02_eliminarProveedor.PaginaWeb
+        {
+            set { PaginaWeb = value; }
+        }
+
+        Label IContrato_02_eliminarProveedor.Telefono
+        {
+            set { Telefono = value; }
+        }
+
+        Label IContrato_02_eliminarProveedor.FechaContrato
+        {
+            set { FechaContrato = value; }
+        }
+
+        Label IContrato_02_eliminarProveedor.Direccion
+        {
+            set { Direccion = value; }
+        }
+
+        Label IContrato_02_eliminarProveedor.Pais
+        {
+            set { Pais = value; }
+        }
+
+        Label IContrato_02_eliminarProveedor.Estado
+        {
+            set { Estado = value; }
+        }
+
+        Label IContrato_02_eliminarProveedor.Ciudad
+        {
+            set { Ciudad = value; }
+        }
+
+        GridView IContrato_02_eliminarProveedor.Items
+        {
+            set { GridItems = value; }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get { return Mensaje; }
+            set { Mensaje = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return Mensaje; }
+            set { Mensaje = value; }
+        }
+
+
+
+
+
+
+
+
+
+
 
         /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
         /// <summary>
@@ -67,7 +153,7 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
         ///// 
         protected void Button2_Click(object sender, EventArgs e)
         {
-        //    Response.Redirect("web_02_gestionarProveedores.aspx");
+            Response.Redirect("web_02_gestionarProveedores.aspx");
         }
 
         ///// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 

@@ -104,6 +104,20 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             set { GridView1 = value; }
         }
 
+        public Label LabelMensajeExito
+        {
+            get { return Label23; }
+            set { Label23 = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return Label23; }
+            set { Label23 = value; }
+        }
+
+
+
         /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
         /// <summary>
         /// Metodo que carga la informacion del proveedor dentro de la pagina

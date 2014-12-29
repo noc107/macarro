@@ -5,12 +5,22 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using BackOffice.Presentacion.Presentadores.Proveedores;
+using BackOffice.Presentacion.Contratos;
+using BackOffice.Presentacion.Contratos.Proveedores;
 
 namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 {
-    public partial class web_02_gestionarProveedores : System.Web.UI.Page
+    public partial class web_02_gestionarProveedores : System.Web.UI.Page , IContratoGeneral, IContrato_02_gestionarProveedor
     {
         //LogicaProveedor auxLogica = new LogicaProveedor();
+        
+        Presentador_02_gestionarProveedor _presentador;
+        public web_02_gestionarProveedores() 
+        {
+            _presentador = new Presentador_02_gestionarProveedor(this);
+        }
+
 
         /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
         /// <summary>
@@ -30,6 +40,29 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
         /// </summary>
         /// <param name= sender> Objeto</param>
         /// <param name= e> Argumento</param>
+
+
+        GridView IContrato_02_consultarProveedor.Items
+        {
+            set { GridView1 = value; }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get { return Label13; }
+            set { Label13 = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return Label13; }
+            set { Label13 = value; }
+        }
+
+
+
+
+
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
