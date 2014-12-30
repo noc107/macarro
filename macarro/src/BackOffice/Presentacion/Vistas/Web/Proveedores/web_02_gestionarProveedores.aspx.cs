@@ -42,7 +42,7 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
         /// <param name= e> Argumento</param>
 
 
-        GridView IContrato_02_consultarProveedor.Items
+        GridView IContrato_02_gestionarProveedor.Items
         {
             set { GridView1 = value; }
         }
