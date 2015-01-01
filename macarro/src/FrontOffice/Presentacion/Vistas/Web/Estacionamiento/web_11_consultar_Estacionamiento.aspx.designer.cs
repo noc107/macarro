@@ -13,201 +13,147 @@ namespace FrontOffice.Presentacion.Vistas.Web.Estacionamiento {
     public partial class web_11_consultar_Estacionamiento {
         
         /// <summary>
-        /// tabla control.
+        /// _mensajeExito control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tabla;
+        protected global::System.Web.UI.WebControls.Label _mensajeExito;
         
         /// <summary>
-        /// label1 control.
+        /// _mensajeError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label1;
+        protected global::System.Web.UI.WebControls.Label _mensajeError;
         
         /// <summary>
-        /// DropDown_estacionamiento control.
+        /// tablaConsultarEst control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDown_estacionamiento;
+        protected global::System.Web.UI.WebControls.Table tablaConsultarEst;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// nombreEstacionamiento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.Label nombreEstacionamiento;
         
         /// <summary>
-        /// fila_nombre control.
+        /// _nombreEstacionamiento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow fila_nombre;
+        protected global::System.Web.UI.WebControls.Label _nombreEstacionamiento;
         
         /// <summary>
-        /// label_nombre control.
+        /// labelDisponible control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_nombre;
+        protected global::System.Web.UI.WebControls.Label labelDisponible;
         
         /// <summary>
-        /// tb_fechaHora_entrada control.
+        /// _disponible control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_fechaHora_entrada;
+        protected global::System.Web.UI.WebControls.Label _disponible;
         
         /// <summary>
-        /// fila_capacidad control.
+        /// LabelCapacidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow fila_capacidad;
+        protected global::System.Web.UI.WebControls.Label LabelCapacidad;
         
         /// <summary>
-        /// label_Capacidad control.
+        /// _capacidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_Capacidad;
+        protected global::System.Web.UI.WebControls.Label _capacidad;
         
         /// <summary>
-        /// TextBox1 control.
+        /// LabelTarifa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Label LabelTarifa;
         
         /// <summary>
-        /// fila_tarifa control.
+        /// _tarifa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow fila_tarifa;
+        protected global::System.Web.UI.WebControls.Label _tarifa;
         
         /// <summary>
-        /// label_Tarifa control.
+        /// LabelEstado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_Tarifa;
+        protected global::System.Web.UI.WebControls.Label LabelEstado;
         
         /// <summary>
-        /// tb_tarifa control.
+        /// _estado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_tarifa;
+        protected global::System.Web.UI.WebControls.Label _estado;
         
         /// <summary>
-        /// tarifa_perdido control.
+        /// LabelTicket control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow tarifa_perdido;
+        protected global::System.Web.UI.WebControls.Label LabelTicket;
         
         /// <summary>
-        /// label_tarifaTicketPerdido control.
+        /// _tarifaPerdido control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_tarifaTicketPerdido;
+        protected global::System.Web.UI.WebControls.Label _tarifaPerdido;
         
         /// <summary>
-        /// tb_perdido control.
+        /// BotonVolver control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_perdido;
-        
-        /// <summary>
-        /// fila_estatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableRow fila_estatus;
-        
-        /// <summary>
-        /// label_estatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_estatus;
-        
-        /// <summary>
-        /// TextBox2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
-        
-        /// <summary>
-        /// BotonAgregarEstacionamiento control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BotonAgregarEstacionamiento;
-        
-        /// <summary>
-        /// Table1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table1;
-        
-        /// <summary>
-        /// ValidationSummary2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
+        protected global::System.Web.UI.WebControls.Button BotonVolver;
     }
 }

@@ -60,7 +60,7 @@
                 runat="server" 
                 ForeColor="Red"/> 
         </p>
-        <p> <asp:Button CssClass="Boton01" ID="Button1" runat="server" Text="Iniciar Sesi&oacute;n" OnClick="Button1_Click" /> </p>
+        <p> <asp:Button CssClass="Boton01" ID="Button1" runat="server" Text="Iniciar Sesi&oacute;n" OnClick="Boton_IniciarSesion" /> </p>
         <p> <asp:HyperLink CssClass="HiperLink" ID="Link1" runat="server" Text="&#191;No est&aacute;s registrado&#63;" NavigateUrl="~/Interfaz/web/IngresoRecuperacionClave/web_01_registro.aspx"></asp:HyperLink> </p>
         <p> 
             <asp:Button ID="BOlvidasteContrasena" runat="server" BackColor="#EBEBEB" BorderColor="#EBEBEB" BorderStyle="None" 

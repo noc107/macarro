@@ -17,16 +17,7 @@ namespace FrontOffice.Presentacion.Vistas.Web.Reservas
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //LogicaReservaSombrilla _log = new LogicaReservaSombrilla();
-            //string _correo = Session["correo"].ToString();
-            //string _fecha = this.tb_fecha.Text;
-            //Session["horaI"] = this.tb_hora_i.Text;
-            //Session["horaF"] = this.dd_hora_f.Text;
-            //if (_log.agregarReservaP(_fecha, _correo))
-            //{
-            //    MensajeExito.Text = "Reserva Apartada Exitosamente";
-            //    Response.Redirect("web_07_reservacionSombrilla.aspx");
-            //}
+            Response.Redirect("web_07_reservacionSombrilla.aspx?tipo=2&fecha=" + tb_fecha.Text);
         }
 
         protected void Button2_Click(object sender, EventArgs e)

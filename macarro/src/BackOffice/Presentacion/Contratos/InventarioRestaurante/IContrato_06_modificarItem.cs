@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace BackOffice.Presentacion.Contratos.InventarioRestaurante
 {
-    interface IContrato_06_modificarItem : IContratoGeneral
+    public interface IContrato_06_modificarItem : IContratoGeneral
     {
         TextBox nombre { get; set; }
         TextBox cantidad { get; set; }
@@ -15,7 +15,7 @@ namespace BackOffice.Presentacion.Contratos.InventarioRestaurante
         TextBox precioVenta { get; set; }
         TextBox precioCompra { get; set; }
         DropDownList proveedor { get; set; }
-        TextBox aumentarCantidad { get; set; }
-        TextBox restarCantidad { get; set; }
+        TextBox aumentarCantidad { get;  }
+        TextBox restarCantidad { get;  }
     }
 }

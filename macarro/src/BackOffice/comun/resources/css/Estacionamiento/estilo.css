@@ -1,33 +1,18 @@
-﻿.contenedor {
-    align-content:center;
-   align-items:center;
+﻿.nombreEst {
+    font-size:1.3em;
+    
 }
 
-.tabla
-{
-    margin:10px;
+.tabla {
+    width:600px;
+    height:600px;
+    margin:0 auto;
 }
 
-.simple_tables {
-    margin: 0px auto;
-}
-
-.boton_centrado {
-    height: 40px;
-    width: 100px;
-    margin: 0px auto;
-    padding-bottom:20px;
-}
-
-table .boton_centrado {
-    margin: 0px 10px;
-}
-
-.centrado {
-    width: 105px;
-    margin:0px auto;    
-}
-
-.Textocentrado {
+.celda {
+    width:200px;
+    height:150px;
     text-align:center;
 }
+
+

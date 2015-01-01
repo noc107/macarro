@@ -1,8 +1,0 @@
-En la MasterPage se colocaran en el submenú de estacionamiento, las opciones:
-->Generar Ticket: ------------------------->"web_11_GenerarTicket.aspx"
-->Cobrar Ticket: -------------------------->"web_11_CobrarTicket.aspx"
-->Consultar Ticket: ----------------------->"web_11_ConsultarTicket.aspx"
-->Consultar Estacionamiento (*): ---------->"web_11_consultar_Estacionamiento.aspx"
-
-(*) Se debe ELIMINAR la pestaña "Gestionar Tickets" del sub-menu de estacionamiento.
-  en su lugar se pondrá la pestaña "Consultar Estacionamiento" con su nuevo enlace.

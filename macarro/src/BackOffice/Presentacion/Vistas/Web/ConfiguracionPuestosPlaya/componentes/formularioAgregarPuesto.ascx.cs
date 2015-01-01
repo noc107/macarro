@@ -12,55 +12,61 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya.component
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            fila.Enabled = false;
-            columna.Enabled = false;
+            Fila.Enabled = false;
+            Columna.Enabled = false;
         }
 
         protected void listaDeOpciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listaDeOpciones.SelectedValue == "0")
+            if (ListaDeOpciones.SelectedValue == "0")
             {
-                fila.Enabled = false;
-                columna.Enabled = false;
+                Fila.Enabled = false;
+                Columna.Enabled = false;
             }
-            if (listaDeOpciones.SelectedValue == "1")
+            if (ListaDeOpciones.SelectedValue == "1")
             {
-                fila.Enabled = true;
-                columna.Enabled = false;
+                Fila.Enabled = true;
+                Columna.Enabled = false;
             }
-            if (listaDeOpciones.SelectedValue == "2")
+            if (ListaDeOpciones.SelectedValue == "2")
             {
-                fila.Enabled = false;
-                columna.Enabled = true;
+                Fila.Enabled = false;
+                Columna.Enabled = true;
             }
-            if (listaDeOpciones.SelectedValue == "3")
+            if (ListaDeOpciones.SelectedValue == "3")
             {
-                fila.Enabled = true;
-                columna.Enabled = true;
+                Fila.Enabled = true;
+                Columna.Enabled = true;
             }
         }
 
         #region PROPIEDADES
-        public string Fila()
+        
+        public RadioButtonList ListaDeOpciones
         {
-            return this.fila.Text;
+            get { return listaDeOpciones; }
         }
-        public string Columna()
+
+        public TextBox Fila
         {
-            return this.columna.Text;
+            get { return fila; }
         }
-        public string Descripcion()
+
+        public TextBox Columna
         {
-            return this.descripcion.Text;
+            get { return columna; }
         }
-        public string Precio()
+
+        public TextBox Descripcion
         {
-            return this.precio.Text;
+            get { return descripcion; }
         }
-        public string Tipo()
+
+        public TextBox Precio
         {
-            return this.listaDeOpciones.SelectedValue;
+            get { return precio; }
         }
+
         #endregion
 
 
@@ -89,5 +95,28 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya.component
             }
         }
 
+
+/*
+        public string Fila()
+        {
+            return this.fila.Text;
+        }
+        public string Columna()
+        {
+            return this.columna.Text;
+        }
+        public string Descripcion()
+        {
+            return this.descripcion.Text;
+        }
+        public string Precio()
+        {
+            return this.precio.Text;
+        }
+        public string Tipo()
+        {
+            return this.listaDeOpciones.SelectedValue;
+        }
+        */
     }
 }

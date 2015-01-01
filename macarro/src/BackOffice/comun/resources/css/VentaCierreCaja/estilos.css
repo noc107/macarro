@@ -281,3 +281,112 @@ h3 {
 .bFactura {
     min-width:130px;
 }
+
+/*------------------------------------SAM----------------------------------------------------*/
+.informacionReporte {
+    width:300px;
+    height:400px;
+    display:inline-block;
+    float:left;
+}
+.reporteLabel {
+    margin-left:10px;
+    display:inline-block;
+    width:140px;
+}
+.reporteFecha {
+    font-weight:bold;
+}
+.mensajeResumen {
+    font-weight:bold;
+    text-decoration:underline;
+}
+.informacionLabel {
+    margin-left:10px;
+}
+.reporteSaldoTotal {
+    width:85%;
+    border-top-style:solid;
+    border-bottom-style:solid;
+    border-color:#095587;
+}
+.informacionGrafica {
+    display:inline-block;
+}
+.contenedorConsultaDia {
+    margin-top: 10px;
+}
+.contenedorCierreCaja {
+    margin:0 auto 0 auto;
+    width:900px;
+    min-height:800px;
+}
+.tituloReporte {
+    font-size:18px;
+    font-weight:bold;
+    color:#2980B9;
+}
+#tituloGraficaDia, #tituloGraficaMes {
+    text-align:center;
+}
+.separador {
+    border-width:thin;
+    padding-bottom:5px;
+    border-bottom-style:solid;
+    border-color:#095587;
+}
+
+.mensajesAyuda {
+    font-family: 'Open Sans', sans-serif;
+    font-size:medium;
+    color:#2980B9;
+}
+
+.cierreCajaMes, .cierreCajaDia {
+    visibility:hidden;
+    position:absolute;
+}
+
+.radioCierreCaja {
+    display:inline-block;
+    width:50px;
+}
+.labelsCierreCajaRadio {
+    display:inline-block;
+    width:70px;
+    margin-left:50px;
+}
+
+.textboxDate {
+    padding-bottom:0px;
+    padding-top:0px;
+}
+.textboxDefault {
+    background:#d8d8d8;
+}
+.botonGenerar {
+    display:block;
+    margin:10px auto 0 auto;
+}
+.graficaEjeY {
+    position:absolute;
+    transform: rotate(-90deg);
+    margin-top: 170px;
+    margin-left: -20px;
+    color:#2980B9;
+    font-style:italic;
+}
+.graficaEjeX {
+    position:absolute;
+    margin-top: 400px;
+    margin-left: 250px;
+    color:#2980B9;
+    font-style:italic;
+}
+.dropdownlistMes {
+   width:175px; 
+}
+.dropdownlistAño {
+    width:170px;
+}
+/*------------------------------------------------------------------------------------------*/

@@ -5,10 +5,9 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="css_place_holder" runat="server">
-    <link href="../../../comun/resources/css/standards.css" rel="stylesheet" />
-    <link href="../../../comun/resources/css/RolesSeguridad/Estilos.css" rel="stylesheet" />
+    <link href="../../../../comun/resources/css/RolesSeguridad/Estilos.css" rel="stylesheet" />
+    <link href="../../../../comun/resources/css/standards.css" rel="stylesheet" />
 </asp:Content>
-
 <asp:Content ID="Content3" ContentPlaceHolderID="libs_place_holder" runat="server">
 </asp:Content>
 
@@ -18,8 +17,8 @@
 <asp:Content ID="Content7" ContentPlaceHolderID="middle_place_holder" runat="server">
     <h2>Gestionar Roles</h2>
 
-    <asp:Label ID="MensajeExitoso" runat="server"  Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
-    <asp:Label ID="MensajeErrores" runat="server"  Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
+    <asp:Label ID="_mensajeExito" runat="server"  Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
+    <asp:Label ID="_mensajeError" runat="server"  Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
 
     <asp:Table ID="Table1" runat="server" HorizontalAlign="Center">
         <asp:TableRow>

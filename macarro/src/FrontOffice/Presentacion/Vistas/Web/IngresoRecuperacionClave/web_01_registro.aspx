@@ -20,7 +20,7 @@
     <table style="width:100%">
         <tr>
             <td> <asp:Label CssClass="labels" ID="LPriNombre" runat="server" Text="Primer Nombre (*) :"></asp:Label> </td>
-            <td> <asp:TextBox CssClass="textbox" ID="PriNombre" MaxLength="20" runat="server" ></asp:TextBox> 
+            <td> <asp:TextBox CssClass="textbox" ID="PriNombre" MaxLength="20" runat="server" OnTextChanged="PriNombre_TextChanged" ></asp:TextBox> 
                 <asp:RegularExpressionValidator ID="ValidarExpRegularPriNombre" 
                     runat="server" ControlToValidate="PriNombre" 
                     ErrorMessage="Solo se admiten caracteres alfabéticos para el nombre" 
@@ -76,7 +76,7 @@
         <tr>
             <td> <asp:Label CssClass="labels" ID="LTipoDocIdentidad" runat="server" Text="Documento de Identificaci&oacute;n (*) :"></asp:Label> </td>
             <td> 
-                <asp:DropDownList class="DropDownList" ID="TipoDocIdentidad" runat="server">
+                <asp:DropDownList class="DropDownList" ID="TipoDocIdentidad" runat="server" OnSelectedIndexChanged="TipoDocIdentidad_SelectedIndexChanged">
                     <asp:ListItem> Seleccione documento </asp:ListItem>
                     <asp:ListItem>Cedula</asp:ListItem>
                     <asp:ListItem>Pasaporte</asp:ListItem>

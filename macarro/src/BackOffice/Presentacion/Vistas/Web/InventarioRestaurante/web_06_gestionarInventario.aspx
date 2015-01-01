@@ -17,7 +17,10 @@
 
 <asp:Content ID="Content7" ContentPlaceHolderID="middle_place_holder" runat="server">
     <h2>Gestionar Inventario</h2>
-    <div ID="Mensajes" class="BloqueMensaje">
+    <div id="Mensajes" class="BloqueMensaje">
+
+               <asp:Label ID="MensajeExito" CssClass="avisoMensaje MensajeExito"   runat="server" Text="El item ha sido creado satisfactoriamente" Visible="false" ></asp:Label>
+
     <asp:Label ID="MensajeFallo" CssClass="avisoMensaje MensajeError" runat="server" Text="El item no ha podido ser eliminado debido a que X" Visible="false"></asp:Label>
     </div>
     <br /><br />

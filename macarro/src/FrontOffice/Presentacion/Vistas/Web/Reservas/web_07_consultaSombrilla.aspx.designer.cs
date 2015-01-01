@@ -13,6 +13,15 @@ namespace FrontOffice.Presentacion.Vistas.Web.Reservas {
     public partial class web_07_consultaSombrilla {
         
         /// <summary>
+        /// MensajeExito control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MensajeExito;
+        
+        /// <summary>
         /// Table1 control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace FrontOffice.Presentacion.Vistas.Web.Reservas {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewUsuario;
+        
+        /// <summary>
+        /// MensajeError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MensajeError;
         
         /// <summary>
         /// ValidationSummary0 control.

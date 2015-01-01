@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="title_place_holder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="css_place_holder" runat="server">
-    <link href="../../../comun/resources/css/ReservasSombrillasServiciosPlaya/estilos.css" rel="stylesheet" />
+    <link href="../../../../comun/resources/css/ReservasSombrillasServiciosPlaya/estilos.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="libs_place_holder" runat="server">
 </asp:Content>
@@ -25,24 +25,30 @@
          <asp:MultiView ID="MV_ListaUsuario" runat="server" ActiveViewIndex="0" Visible="true">
                 <asp:View ID="GV_Usuario" runat="server">
 
-                    <asp:GridView ID="GridView" CssClass="mGrid" AllowPaging="True" HorizontalAlign ="Center" runat="server" 
+                    <asp:GridView ID="Tabla" CssClass="mGrid" AllowPaging="False" HorizontalAlign ="Center" runat="server" 
                                             BorderStyle="None"  AllowSorting="true" GridLines="None" AutoGenerateColumns="False"  
                                              Width="510px" ForeColor="#99CCFF" PageSize="5" OnRowCommand="grid_RowCommand" OnRowEditing="grid_RowEditing" 
                                             OnPageIndexChanging="grid_PageIndexChanging">
+
+                       
                      
 
                        <AlternatingRowStyle CssClass="alt" />
                          <Columns>
                              
-                            <asp:BoundField HeaderText="Reserva" DataField="Reserva" ItemStyle-Width="200px" ItemStyle-HorizontalAlign="Center"></asp:BoundField>
+                            <asp:BoundField HeaderText="Reserva" DataField="ID" ItemStyle-Width="200px" ItemStyle-HorizontalAlign="Center"></asp:BoundField>
                              
-                            <asp:BoundField HeaderText="Total" DataField="Total"  ItemStyle-Width="200px" ItemStyle-HorizontalAlign="Center"></asp:BoundField>
+                            <asp:BoundField HeaderText="Fecha Reserva" DataField="Fecha"  ItemStyle-Width="400px" ItemStyle-HorizontalAlign="Center"></asp:BoundField>
+                              
+                            <asp:BoundField HeaderText="Usuario" DataField="Usuario"  ItemStyle-Width="200px" ItemStyle-HorizontalAlign="Center"></asp:BoundField>
+                             
+                            <asp:BoundField HeaderText="Estado de la reserva" DataField="Estado"  ItemStyle-Width="200px" ItemStyle-HorizontalAlign="Center"></asp:BoundField>
 
-                             <asp:BoundField HeaderText="Fecha Reserva" DataField="FechaReserva"  ItemStyle-Width="400px" ItemStyle-HorizontalAlign="Center"></asp:BoundField>
+                            
 
                             <asp:CommandField ShowEditButton="true" ButtonType="Image" EditImageUrl="~/comun/resources/img/ModuloServiciosPlaya/Editar.png"  />
 
-                            <asp:CommandField ShowDeleteButton="true" ButtonType="Image" DeleteImageUrl="~/comun/resources/img/ModuloServiciosPlaya/Eliminar.png"/>
+                           
 
 
                          </Columns>

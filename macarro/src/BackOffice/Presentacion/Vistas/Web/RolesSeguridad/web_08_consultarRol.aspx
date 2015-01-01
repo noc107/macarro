@@ -3,7 +3,7 @@
     Roles y Acciones
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="css_place_holder" runat="server">
-    <link href="../../../comun/resources/css/RolesSeguridad/Estilos.css" rel="stylesheet" />
+    <link href="../../../../comun/resources/css/RolesSeguridad/Estilos.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="libs_place_holder" runat="server">
 </asp:Content>
@@ -13,8 +13,8 @@
     <h2>Detalle de Rol</h2>
 
 
-    <asp:Label ID="MensajeExitoso" runat="server"  Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
-    <asp:Label ID="MensajeErrores" runat="server"  Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
+    <asp:Label ID="_mensajeExito" runat="server"  Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
+    <asp:Label ID="_mensajeError" runat="server"  Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
 
     <asp:Table ID="Table1" runat="server" HorizontalAlign="Center" Style="padding-bottom:20px">
         <asp:TableRow>

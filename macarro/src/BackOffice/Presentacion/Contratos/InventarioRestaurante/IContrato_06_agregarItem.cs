@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace BackOffice.Presentacion.Contratos.InventarioRestaurante
 {
-    interface IContrato_06_agregarItem : IContratoGeneral
+    public interface IContrato_06_agregarItem : IContratoGeneral
     {
         TextBox cantidadMinima { get; }
         TextBox nombre { get; }

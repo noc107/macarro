@@ -67,13 +67,13 @@ namespace BackOffice.Presentacion.Vistas.Web.IngresoRecuperacionClave {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
         
         /// <summary>
-        /// Control Button1.
+        /// Control Boton_iniciarSesion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button Boton_iniciarSesion;
         
         /// <summary>
         /// Control ValidationSummary1.

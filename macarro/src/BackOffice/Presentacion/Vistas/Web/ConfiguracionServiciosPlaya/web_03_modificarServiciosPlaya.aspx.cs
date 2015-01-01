@@ -1,17 +1,207 @@
-﻿using System;
+﻿using BackOffice.Presentacion.Contratos.ConfiguracionServiciosPlaya;
+using BackOffice.Presentacion.Presentadores.ConfiguracionServiciosPlaya;
+using BackOffice.Presentacion.Contratos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Globalization;
 
 namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
 {
-    public partial class web_03_modificarServiciosPlaya : System.Web.UI.Page
+    public partial class web_03_modificarServiciosPlaya : System.Web.UI.Page, IContrato_3_modificarServiciosPlaya
     {
+        private Presentador_3_modificarServiciosPlaya _presentadorModificarServicio;
+
+        #region Implementa el contrato, IContrato_3_modificarServicio
+
+        public Label lNombreServicio
+        {
+            set { labelNombreServicio = value; }
+        }
+
+        public TextBox NombreServicio
+        {
+            get { return inputNombreServcio; }
+        }
+
+        public Label lDescripcion
+        {
+            set { labelDescripcion = value; }
+        }
+
+        public TextBox Descripcion
+        {
+            get { return inputDescripcion; }
+        }
+
+        public Label lCategoria
+        {
+            set { labelCategoria = value; }
+        }
+
+        public DropDownList ListaCategoria
+        {
+            get { return dropdownlistCategoria; }
+        }
+
+        public Label lOtraCategoria
+        {
+            set { LabelCategoriaOtro = value; }
+        }
+
+        public TextBox OtraCategoria
+        {
+            get { return inputCategoriaOtro; }
+        }
+
+        public Label lLugarRetiro
+        {
+            set { labelLugarRetiro = value; }
+        }
+
+        public TextBox LugarRetiro
+        {
+            get { return inputLugarRetiro; }
+        }
+
+        public Label lCantidad
+        {
+            set { labelCantidad = value; }
+        }
+
+        public TextBox Cantidad
+        {
+            get { return inputCantidad; }
+        }
+
+        public Label lCapacidad
+        {
+            set { labelCapacidad = value; }
+        }
+
+        public TextBox Capacidad
+        {
+            get { return inputCapacidad; }
+        }
+
+        public Label lCosto
+        {
+            set { labelCosto = value; }
+        }
+
+        public TextBox Costo
+        {
+            get { return inputCosto; }
+        }
+
+        public Label TituloHorario
+        {
+            set { ltituloHorario = value; }
+        }
+
+        public Label NotaHorario
+        {
+            set { notaHorario = value; }
+        }
+
+        public Label lHoraInicio
+        {
+            set { labelHoraInicio = value; }
+        }
+
+        public TextBox HoraInicio
+        {
+            get { return timePickerInicio; }
+        }
+
+        public Label ErrorAgregarHorario
+        {
+            set { mensajeErrorAgregarHorario = value; }
+        }
+
+        public Label lHoraFin
+        {
+            set { labelHoraFin = value; }
+        }
+
+        public TextBox HoraFin
+        {
+            get { return timePickerFin; }
+        }
+
+        public Label ErrorEliminarHorario
+        {
+            set { mensajeErrorEliminarHorario = value; }
+        }
+
+        public Label HorarioRepetido
+        {
+            set { mensajeHorarioRepetido = value; }
+        }
+
+        public Label HorarioOcupado
+        {
+            set { mensajeHorarioOcupado = value; }
+        }
+
+        public Label lHorario
+        {
+            set { labelHorario = value; }
+        }
+
+        public ListBox ListaHorario
+        {
+            get { return listboxHorario; }
+        }
+
+        public Label lEstado
+        {
+            set { labelEstado = value; }
+        }
+
+        public DropDownList ListaEstado
+        {
+            get { return dropdownlistEstado; }
+        }
+
+        public Label lNombreOriginal
+        {
+            set { nombreOriginal = value; }
+        }
+
+        public Label lCategoriaNueva
+        {
+            set { categoriaNueva = value; }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get { return _mensajeExito; }
+            set { _mensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return _mensajeError; }
+            set { _mensajeError = value; }
+        }
+
+        #endregion
+
+        #region Constructor
+
+        public web_03_modificarServiciosPlaya()
+        {
+            this._presentadorModificarServicio = new Presentador_3_modificarServiciosPlaya(this);
+        }
+
+        #endregion
+
+        #region _2daEntrega
         //private Logica.ConfiguracionServiciosPlaya.LogicaModificarServicio _logicaModificarServicio;
-        
+
         /// <summary>
         /// Inicializa los valores en la pagina
         /// </summary>
@@ -31,7 +221,7 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
 
             //    if (Request.QueryString["Servicio"] == null)
             //        Response.Redirect("web_03_consultaServicio.aspx");
-                
+
             //    _servicio = new Servicio();                
 
             //    this.inicializarMensajes();                 
@@ -49,7 +239,7 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         /// <summary>
         /// Inicializa los mensajes de error
         /// </summary>
-        private void inicializarMensajes() 
+        private void inicializarMensajes()
         {
 
             this.mensajeHorarioOcupado.Visible = false;
@@ -139,10 +329,10 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         /// <returns>El string con el formato a mostrar</returns>
         private string obtenerHoraString(DateTime _itemHora)
         {
-            int _horaTempInicio = 0;            
+            int _horaTempInicio = 0;
             string _horaInicio;
-            bool _esTarde = false;            
-            
+            bool _esTarde = false;
+
             if (_itemHora.Hour >= 12)
             {
                 _horaTempInicio = _itemHora.Hour - 12;
@@ -234,7 +424,7 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
                 if (_horaFin.TimeOfDay == _horaFinItem.TimeOfDay)
                     return false;
                 if (_horaFin.TimeOfDay > _horaIniItem.TimeOfDay && _horaFin.TimeOfDay <= _horaFinItem.TimeOfDay)
-                    return false;                
+                    return false;
             }
 
             return true;
@@ -242,75 +432,75 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
 
         protected void AceptarBoton_Click(object sender, EventArgs e)
         {
-        //    int _contador = 0;
-        //    string[] _datos = new string[7];
-        //    string[] horas;
-        //    Servicio _servicio;
+            //    int _contador = 0;
+            //    string[] _datos = new string[7];
+            //    string[] horas;
+            //    Servicio _servicio;
 
-        //    if (Page.IsValid)
-        //    {
-        //        this.AceptarBoton.Enabled = false;
+            //    if (Page.IsValid)
+            //    {
+            //        this.AceptarBoton.Enabled = false;
 
-        //        this._logicaModificarServicio = new Logica.ConfiguracionServiciosPlaya.LogicaModificarServicio();                                
-        //        HorarioServicio[] _horarios = new HorarioServicio[this.listboxHorario.Items.Count];                
-                
+            //        this._logicaModificarServicio = new Logica.ConfiguracionServiciosPlaya.LogicaModificarServicio();                                
+            //        HorarioServicio[] _horarios = new HorarioServicio[this.listboxHorario.Items.Count];                
 
-        //        //this.ButtonAgregar.Enabled = false;
-        //        _datos[0] = this.inputNombreServcio.Text;
-        //        _datos[1] = this.inputDescripcion.Text;
 
-        //        if (this.dropdownlistCategoria.SelectedValue != "Otro")
-        //            _datos[5] = this.dropdownlistCategoria.SelectedValue;
-        //        else
-        //            _datos[5] = this.inputCategoriaOtro.Text;
+            //        //this.ButtonAgregar.Enabled = false;
+            //        _datos[0] = this.inputNombreServcio.Text;
+            //        _datos[1] = this.inputDescripcion.Text;
 
-        //        _datos[6] = this.inputLugarRetiro.Text;
-        //        _datos[2] = this.inputCapacidad.Text;
-        //        _datos[3] = this.inputCantidad.Text;
-        //        _datos[4] = this.inputCosto.Text;
+            //        if (this.dropdownlistCategoria.SelectedValue != "Otro")
+            //            _datos[5] = this.dropdownlistCategoria.SelectedValue;
+            //        else
+            //            _datos[5] = this.inputCategoriaOtro.Text;
 
-        //        foreach (ListItem item in this.listboxHorario.Items)
-        //        {
+            //        _datos[6] = this.inputLugarRetiro.Text;
+            //        _datos[2] = this.inputCapacidad.Text;
+            //        _datos[3] = this.inputCantidad.Text;
+            //        _datos[4] = this.inputCosto.Text;
 
-        //            horas = item.Text.Split(new string[] { " a " }, StringSplitOptions.None);                    
-        //            _horarios[_contador] = new HorarioServicio(DateTime.Parse(horas[0]), DateTime.Parse(horas[1]));
+            //        foreach (ListItem item in this.listboxHorario.Items)
+            //        {
 
-        //            if (item.Value.Equals("1"))
-        //                _horarios[_contador].Nuevo = true;
+            //            horas = item.Text.Split(new string[] { " a " }, StringSplitOptions.None);                    
+            //            _horarios[_contador] = new HorarioServicio(DateTime.Parse(horas[0]), DateTime.Parse(horas[1]));
 
-        //            _contador++;
+            //            if (item.Value.Equals("1"))
+            //                _horarios[_contador].Nuevo = true;
 
-        //        }
+            //            _contador++;
 
-        //        _servicio = new Servicio(_datos, _horarios);
+            //        }
 
-        //        if (this.dropdownlistEstado.SelectedValue.Equals("true"))
-        //            _servicio.Estado = true;
-        //        else
-        //            _servicio.Estado = false;
+            //        _servicio = new Servicio(_datos, _horarios);
 
-        //        if (_servicio.Nombre.Equals(this.nombreOriginal.Text))
-        //            this._logicaModificarServicio.actualizarServicio(_servicio,false,this.nombreOriginal.Text,this.LabelMensaje);
-        //        else
-        //            this._logicaModificarServicio.actualizarServicio(_servicio, true, this.nombreOriginal.Text,this.LabelMensaje);
+            //        if (this.dropdownlistEstado.SelectedValue.Equals("true"))
+            //            _servicio.Estado = true;
+            //        else
+            //            _servicio.Estado = false;
 
-        //        if (this.dropdownlistCategoria.SelectedValue == "Otro")
-        //        {
-        //            this.llenarCategorias();
-        //            foreach (ListItem _categoria in this.dropdownlistCategoria.Items)
-        //            {
+            //        if (_servicio.Nombre.Equals(this.nombreOriginal.Text))
+            //            this._logicaModificarServicio.actualizarServicio(_servicio,false,this.nombreOriginal.Text,this.LabelMensaje);
+            //        else
+            //            this._logicaModificarServicio.actualizarServicio(_servicio, true, this.nombreOriginal.Text,this.LabelMensaje);
 
-        //                if (_categoria.Text.Equals(this.inputCategoriaOtro.Text))
-        //                    _categoria.Selected = true;
+            //        if (this.dropdownlistCategoria.SelectedValue == "Otro")
+            //        {
+            //            this.llenarCategorias();
+            //            foreach (ListItem _categoria in this.dropdownlistCategoria.Items)
+            //            {
 
-        //            }
-        //            this.inputCategoriaOtro.Text = "";
+            //                if (_categoria.Text.Equals(this.inputCategoriaOtro.Text))
+            //                    _categoria.Selected = true;
 
-        //        }
-        //        this.AceptarBoton.Enabled = true;
-        //        Response.Redirect("web_03_consultaServicio.aspx?Mensaje=" + LabelMensaje.Text);
+            //            }
+            //            this.inputCategoriaOtro.Text = "";
 
-        //    }
+            //        }
+            //        this.AceptarBoton.Enabled = true;
+            //        Response.Redirect("web_03_consultaServicio.aspx?Mensaje=" + LabelMensaje.Text);
+
+            //    }
 
         }
 
@@ -342,7 +532,8 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
                     this.mensajeHorarioRepetido.Visible = true;
                 }
             }
-            else {
+            else
+            {
                 this.mensajeErrorAgregarHorario.Visible = true;
             }
         }
@@ -354,45 +545,45 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         /// <param name="e">Evento</param>
         protected void removerHorarioListbox_Click(object sender, ImageClickEventArgs e)
         {
-        //    Servicio _servicio = new Servicio();
-        //    HorarioServicio _horario = new HorarioServicio();
-        //    string[] _horas;
+            //    Servicio _servicio = new Servicio();
+            //    HorarioServicio _horario = new HorarioServicio();
+            //    string[] _horas;
 
-            
-        //    if (this.listboxHorario.SelectedItem == null)
-        //    {
-        //        this.mensajeHorarioOcupado.Visible = false;                     
-        //        this.mensajeHorarioRepetido.Visible = false;
-        //        this.mensajeErrorEliminarHorario.Visible = true;
 
-        //    }
+            //    if (this.listboxHorario.SelectedItem == null)
+            //    {
+            //        this.mensajeHorarioOcupado.Visible = false;                     
+            //        this.mensajeHorarioRepetido.Visible = false;
+            //        this.mensajeErrorEliminarHorario.Visible = true;
 
-        //    if (this.listboxHorario.SelectedItem != null)
-        //    {
-        //        _servicio.Nombre=this.nombreOriginal.Text;                          
-        //        _horas = this.listboxHorario.SelectedItem.Text.Split(new string[] { " a " }, StringSplitOptions.None);
-        //        _horario.HoraInicio = DateTime.Parse(_horas[0]);
-        //        _horario.HoraInicio.AddYears(1000);
-        //        _horario.HoraFin = DateTime.Parse(_horas[1]);
-        //        _horario.HoraFin.AddYears(1000);
+            //    }
 
-        //        if (this._logicaModificarServicio.validarEliminarServicio(_servicio, _horario, this.LabelMensaje))
-        //        {
+            //    if (this.listboxHorario.SelectedItem != null)
+            //    {
+            //        _servicio.Nombre=this.nombreOriginal.Text;                          
+            //        _horas = this.listboxHorario.SelectedItem.Text.Split(new string[] { " a " }, StringSplitOptions.None);
+            //        _horario.HoraInicio = DateTime.Parse(_horas[0]);
+            //        _horario.HoraInicio.AddYears(1000);
+            //        _horario.HoraFin = DateTime.Parse(_horas[1]);
+            //        _horario.HoraFin.AddYears(1000);
 
-        //            this.mensajeErrorEliminarHorario.Visible = false;
-        //            this.mensajeHorarioRepetido.Visible = false;
-        //            this.mensajeHorarioOcupado.Visible = true;                    
+            //        if (this._logicaModificarServicio.validarEliminarServicio(_servicio, _horario, this.LabelMensaje))
+            //        {
 
-        //        }
-        //        else
-        //        {
-      
-        //            this.mensajeErrorEliminarHorario.Visible = false;
-        //            this.listboxHorario.Items.Remove(this.listboxHorario.SelectedItem);
+            //            this.mensajeErrorEliminarHorario.Visible = false;
+            //            this.mensajeHorarioRepetido.Visible = false;
+            //            this.mensajeHorarioOcupado.Visible = true;                    
 
-        //        }
+            //        }
+            //        else
+            //        {
 
-        //    }
+            //            this.mensajeErrorEliminarHorario.Visible = false;
+            //            this.listboxHorario.Items.Remove(this.listboxHorario.SelectedItem);
+
+            //        }
+
+            //    }
 
         }
 
@@ -400,11 +591,13 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         {
             Response.Redirect("web_03_consultaServicio.aspx");
         }
-        
+
         protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
-        {            
+        {
             args.IsValid = false;
         }
-   
+
+        #endregion
     }
+
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace back_office.Interfaz.temp {
+namespace BackOffice.Presentacion.Vistas.Temp {
     
     
     public partial class back_office_temp {

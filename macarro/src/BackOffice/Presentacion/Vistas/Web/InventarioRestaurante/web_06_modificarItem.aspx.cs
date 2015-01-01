@@ -4,12 +4,139 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Contratos.InventarioRestaurante;
+using BackOffice.Presentacion.Presentadores.InventarioRestaurante;
 
 namespace BackOffice.Presentacion.Vistas.Web.InventarioRestaurante
 {
-    public partial class web_06_modificarItem : System.Web.UI.Page
+    public partial class web_06_modificarItem : System.Web.UI.Page , IContrato_06_modificarItem
     {
-        
+        private Presentador_06_modificarItem _presentador;
+
+        public web_06_modificarItem()
+        {
+            _presentador = new Presentador_06_modificarItem(this);
+        }
+
+
+
+        public TextBox Nombre
+        {
+            get
+            {
+               return  this.tbNombre;
+            }
+            set
+            {
+                this.tbNombre = value;
+            }
+        }
+
+        public TextBox Cantidad
+        {
+            get
+            {
+                return this.tbCantidad;
+            }
+            set
+            {
+                this.tbCantidad = value;
+            }
+        }
+
+    public TextBox Descripcion 
+    {
+        get
+        {
+            return this.tbDescripcion;
+        }
+        set
+        {
+            this.tbDescripcion = value;
+        }
+    }
+
+        public TextBox Precio
+        {
+            get
+            {
+                return this.tbPrecio;
+            }
+            set
+            {
+                this.tbPrecio = value;
+            }
+        }
+
+        public TextBox Precio1
+        {
+            get
+            {
+                return this.tbPrecio2;
+            }
+            set
+            {
+                this.tbPrecio2 = value;
+
+            }
+        }
+
+        public DropDownList Proveedor
+        {
+            get
+            {
+                return this.Proveedores;
+            }
+            set
+            {
+                this.Proveedores = value;
+            }
+        }
+
+        public TextBox Aumento
+        {
+            get
+            {
+                return this.TextBoxAumentarCantidad;
+            }
+        }
+
+        public TextBox Disminuir
+
+        {
+            get
+            {
+                return this.TextBoxRestarCantidad;
+            }
+        }
+
+
+        public Label LabelMensajeExito
+        {
+            get
+            {
+                return this.MensajeExito;
+            }
+            set
+            {
+                this.MensajeExito = value;
+            }
+        }
+
+        public Label LabelMensajeError
+        {
+            get
+            {
+                return this.MensajeFallo;
+            }
+            set
+            {
+                this.MensajeFallo = value;
+            }
+        }
+            
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (!Page.IsPostBack)
@@ -234,5 +361,87 @@ namespace BackOffice.Presentacion.Vistas.Web.InventarioRestaurante
             }
         }
 
+
+        public TextBox nombre
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public TextBox cantidad
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public TextBox descripcion
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public TextBox precioVenta
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public TextBox precioCompra
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public DropDownList proveedor
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public TextBox aumentarCantidad
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public TextBox restarCantidad
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Presentacion/Vistas/Temp/back_office_temp.Master" AutoEventWireup="true" 
-    CodeBehind="web_08_agregarRol.aspx.cs" Inherits="BackOffice.Presentacion.Vistas.Web.RolesSeguridad.Agregar_Rol" 
+    CodeBehind="web_08_agregarRol.aspx.cs" Inherits="BackOffice.Presentacion.Vistas.Web.RolesSeguridad.web_08_agregarRol" 
     UnobtrusiveValidationMode="None" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title_shown_place_holder" runat="server">
@@ -11,7 +11,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="css_place_holder" runat="server">
-    <link href="../../../comun/resources/css/RolesSeguridad/Estilos.css" rel="stylesheet" />
+    <link href="../../../../comun/resources/css/RolesSeguridad/Estilos.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="libs_place_holder" runat="server">
@@ -25,8 +25,8 @@
     <h2>Agregar Rol</h2>
     
 
-    <asp:Label ID="MensajeExitoso" runat="server"  Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
-    <asp:Label ID="MensajeErrores" runat="server"  Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
+    <asp:Label ID="_mensajeExito" runat="server"  Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
+    <asp:Label ID="_mensajeError" runat="server"  Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
 
     <asp:Table ID="Table1" runat="server" HorizontalAlign="Center">
 
@@ -34,7 +34,7 @@
         <%-- Fila para el nombre --%>
         <asp:TableRow>
             <asp:TableCell HorizontalAlign="Left">
-                <asp:Label ID="Nombre" runat="server" Text="Nombre del rol(*):" cssclass="labels"></asp:Label>
+                <asp:Label ID="LNombre" runat="server" Text="Nombre del rol(*):" cssclass="labels"></asp:Label>
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox ID="TextBoxNombre" runat="server" cssclass="textbox" MaxLength="30"></asp:TextBox>
@@ -64,7 +64,7 @@
         <%-- Fila para la descripcion --%>
         <asp:TableRow>
             <asp:TableCell HorizontalAlign="Left">
-                <asp:Label ID="Descripcion" runat="server" Text="Descripcion del rol(*):" cssclass="labels"></asp:Label>
+                <asp:Label ID="LDescripcion" runat="server" Text="Descripcion del rol(*):" cssclass="labels"></asp:Label>
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox ID="TextBoxDescripcion" runat="server" cssclass="textbox" MaxLength="100"></asp:TextBox>
@@ -94,7 +94,7 @@
         <%-- Fila para lista de acciones disponibles  --%>
         <asp:TableRow>
             <asp:TableCell HorizontalAlign="Left" >
-                <asp:Label ID="AccionesDisponibles" runat="server" Text="Acciones disponibles:" cssclass="labels"></asp:Label>
+                <asp:Label ID="LAccionesDisponibles" runat="server" Text="Acciones disponibles:" cssclass="labels"></asp:Label>
             </asp:TableCell>
             <asp:TableCell>
                <asp:ListBox ID="ListaAccionesDisponibles" runat="server" CssClass="list_box list_box_propio">
@@ -102,7 +102,7 @@
             </asp:TableCell>
             <asp:TableCell>
                <asp:ImageButton ID="ButtonAgregarAccion" runat="server" cssclass="mas_menos_info" 
-                   ImageUrl="../../../comun/resources/img/Agregar.png" CausesValidation="false" OnClick="agregar_Click"/>
+                   ImageUrl="../../../../comun/resources/img/Agregar.png" CausesValidation="false" OnClick="agregar_Click"/>
             </asp:TableCell>
         </asp:TableRow>
 
@@ -110,7 +110,7 @@
         <%-- Fila para lista de acciones asignadas --%>
         <asp:TableRow>
             <asp:TableCell HorizontalAlign="Left" VerticalAlign="NotSet">
-                <asp:Label ID="AccionesAsignadas" runat="server" Text="Acciones asignadas(*):" cssclass="labels"></asp:Label>
+                <asp:Label ID="LAccionesAsignadas" runat="server" Text="Acciones asignadas(*):" cssclass="labels"></asp:Label>
             </asp:TableCell>
             <asp:TableCell>
                 <asp:ListBox ID="ListaAccionesAsignadas" runat="server" CssClass="list_box list_box_propio">
@@ -118,7 +118,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:ImageButton ID="ButtonQuitarAccion" runat="server" cssclass="mas_menos_info" 
-                    ImageUrl="../../../comun/resources/img/menos.png" CausesValidation="false" OnClick="quitar_Click"/>
+                    ImageUrl="../../../../comun/resources/img/menos.png" CausesValidation="false" OnClick="quitar_Click"/>
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>

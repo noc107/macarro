@@ -27,21 +27,24 @@
     <h3>Seleccione el puesto de su preferencia:</h3>
             
 <div  id="reservar">
+             <asp:Label ID="MensajeExito" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
+    
     <asp:Image ID="Image1" runat="server" ImageUrl ="../../../../comun/resources/img/menuf.png" CssClass="menu"/>
         <div class="img" id ="i">
             <asp:Table ID="tabla" runat="server" HorizontalAlign="Center" CssClass ="playa"> 
             </asp:Table>
         </div>
     <br />
-    <asp:Label ID="lseleccion" runat="server" Text="Puesto Seleccionado: " CssClass="labels"></asp:Label>
-         <asp:ListBox ID="l_puesto" runat="server" CssClass ="ListBox1" Width="149px"></asp:ListBox>
         <br />
+        <asp:Label ID="lfecha" runat="server" Text="Fecha: " CssClass="labels"></asp:Label>
+        <asp:Label ID="l_fecha" runat="server" Text="?" CssClass="labels"></asp:Label>
         <asp:Label ID="lprecio" runat="server" Text="Precio: " CssClass="labels"></asp:Label>
         <asp:Label ID="l_total" runat="server" Text="0.0" CssClass="labels"></asp:Label>
             <br />
             <asp:Button ID="botonAceptar" runat="server" Text="Aceptar" CssClass="Boton" OnClick="botonAceptar_Click" />
         <asp:Button ID="botonCancelar" runat="server" Text="Cancelar" CssClass="Boton" OnClick="botonCancelar_Click"  />
-
+        <asp:Label ID="MensajeError" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
+    
 </div>
     
 

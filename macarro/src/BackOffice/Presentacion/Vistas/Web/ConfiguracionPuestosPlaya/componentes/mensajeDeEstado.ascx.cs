@@ -13,6 +13,22 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya.component
         {
 
         }
+
+        #region PROPIEDADES
+        public Label mensajeExito
+        {
+            get { return MensajeExito; }
+            set { MensajeExito = value; }
+        }
+
+        public Label mensajeError
+        {
+            get { return MensajeExcepcion; }
+            set { MensajeExcepcion = value; }
+        }
+
+        #endregion
+
         #region MANEJO DE LOS LABEL DE MENSAJE
         public void MensajeDeExito(string mensaje)
         {

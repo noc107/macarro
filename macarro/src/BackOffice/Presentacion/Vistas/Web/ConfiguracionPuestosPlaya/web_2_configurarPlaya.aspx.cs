@@ -5,12 +5,78 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using BackOffice.Presentacion.Contratos.ConfiguracionPuestosPlaya;
+using BackOffice.Presentacion.Presentadores.ConfiguracionPuestosPlaya;
 
 
 namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya
 {
-    public partial class web_2_configurarPlaya : System.Web.UI.Page
+    public partial class web_2_configurarPlaya : System.Web.UI.Page , IContrato_2_configurarPlaya
     {
+
+        #region Presentador
+        private Presentador_2_configurarPlaya _presentador;
+        #endregion
+
+        #region Implementación de Contrato
+        
+        public GridView GridPlayaActual
+        {
+	        get { return estadoActualDeLaPlaya; }
+        }
+
+        public TextBox CampoLargoPlaya
+        {
+	        get { return textboxConfigurarPlaya.LargoDePlaya; }
+        }
+
+        public TextBox CampoAnchoPlaya
+        {
+	        get { return textboxConfigurarPlaya.AnchoDePlaya; }
+        }
+
+        public Button BtnAceptar
+        {
+	        get { return botonAceptar; }
+        }
+
+        public Label LabelMensajeExito 
+        {
+            get { return mensajeDeEstado.mensajeExito;}
+            set { mensajeDeEstado.mensajeExito = value;}
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return mensajeDeEstado.mensajeError; }
+            set { mensajeDeEstado.mensajeError = value; }
+        }
+        #endregion
+
+        #region constructor
+        public web_2_configurarPlaya()
+        {
+            _presentador = new Presentador_2_configurarPlaya(this);            
+        }
+        #endregion
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            _presentador.EventoConsultarPlayaActual();
+        }
+
+        ///// <summary>
+        ///// Evento llamado al presionar el boton aceptar que llama a la capa logica para ingresar la nueva configuracion de la configuracion de la playa 
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        protected void botonAceptar_Click(object sender, EventArgs e)
+        {
+            _presentador.EventoClickAceptar();
+        }
+
+        #region CodigoAnterior
+        /*
         //private Playa _configuracion;
         private int _playaAconfigurar;
 
@@ -109,6 +175,8 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya
         //        this.mensajeDeEstado.MensajeDeError(RecursosExcepciones.mensajeFalso);
         //    }
         }
-
+        */
+        #endregion
+    
     }
 }

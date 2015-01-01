@@ -6,13 +6,23 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Contratos.ReportesFinancierosExportacion;
+using BackOffice.Presentacion.Presentadores.ReportesFinancierosExportacion;
 
 namespace BackOffice.Presentacion.Vistas.Web.ReportesFinancierosExportacion
 {
-	public partial class web_13_ReporteComidaBebida : System.Web.UI.Page
+	public partial class web_13_ReporteComidaBebida : System.Web.UI.Page, IContrato_13_ReporteComidaBebida
 	{
 		DataTable _dataTable = new DataTable ();
 		DataTable _dataTable2 = new DataTable ();
+
+        private Presentador_13_ReporteComidaBebida _pesentador;
+
+        public web_13_ReporteComidaBebida()
+        {
+            _pesentador = new Presentador_13_ReporteComidaBebida(this);
+        }
+
 		/// <summary>
 		/// El metodo Page_Load se encarga de manejar 
 		/// el evento de Click en el boton BuscarBoton.
@@ -45,6 +55,28 @@ namespace BackOffice.Presentacion.Vistas.Web.ReportesFinancierosExportacion
             //ComidaPopular.CssClass = "mGrid";
 
 		}
+
+        TextBox IContrato_13_ReporteComidaBebida.inputFechaInicio
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        TextBox IContrato_13_ReporteComidaBebida.inputFechaFin
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get { return _mensajeExito; }
+            set { _mensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return _mensajeError; }
+            set { _mensajeError = value; }
+        }
 
 		/// <summary>
 		/// El metodo ExportarBoton_Click se encarga 
@@ -183,5 +215,6 @@ namespace BackOffice.Presentacion.Vistas.Web.ReportesFinancierosExportacion
         //    }
 
         //}
-	}
+
+    }
 }

@@ -129,35 +129,47 @@
     <Content Include="comun\resources\js\ModuloMenuRestaurante\MenuRestaurante.js" />
     <Content Include="comun\resources\js\ModuloMenuRestaurante\ValidacionesAgregarProducto.js" />
     <Content Include="comun\resources\js\ModuloServiciosPlaya\moduloServicioPlaya.js" />
-    <Content Include="FuenteDatos\TextFile1.txt" />
     <Content Include="Excepciones\TextFile1.txt" />
-    <Content Include="Presentacion\Contratos\ConfiguracionPuestosPlaya\texto.txt" />
-    <Content Include="Presentacion\Contratos\ConfiguracionServiciosPlaya\texto.txt" />
+    <Content Include="FuenteDatos\Dao\ConfiguracionEstacionamiento\texto.txt" />
+    <Content Include="FuenteDatos\Dao\ConfiguracionPuestosPlaya\texto.txt" />
+    <Content Include="FuenteDatos\Dao\ConfiguracionServiciosPlaya\texto.txt" />
+    <Content Include="FuenteDatos\Dao\GestionVentaMembresia\texto.txt" />
+    <Content Include="FuenteDatos\Dao\IngresoRecuperacionClave\texto.txt" />
+    <Content Include="FuenteDatos\Dao\InventarioRestaurante\texto.txt" />
+    <Content Include="FuenteDatos\Dao\MenuRestaurante\texto.txt" />
+    <Content Include="FuenteDatos\Dao\Proveedores\texto.txt" />
+    <Content Include="FuenteDatos\Dao\ReportesFinancierosExportacion\texto.txt" />
+    <Content Include="FuenteDatos\Dao\ReservasSombrillasServiciosPlaya\texto.txt" />
+    <Content Include="FuenteDatos\Dao\RolesSeguridad\texto.txt" />
+    <Content Include="FuenteDatos\Dao\UsuariosInternos\texto.txt" />
+    <Content Include="FuenteDatos\Dao\VentaCierreCaja\texto.txt" />
+    <Content Include="FuenteDatos\IDao\ConfiguracionEstacionamiento\texto.txt" />
+    <Content Include="FuenteDatos\IDao\ConfiguracionPuestosPlaya\texto.txt" />
+    <Content Include="FuenteDatos\IDao\ConfiguracionServiciosPlaya\texto.txt" />
+    <Content Include="FuenteDatos\IDao\GestionVentaMembresia\texto.txt" />
+    <Content Include="FuenteDatos\IDao\IngresoRecuperacionClave\texto.txt" />
+    <Content Include="FuenteDatos\IDao\InventarioRestaurante\texto.txt" />
+    <Content Include="FuenteDatos\IDao\MenuRestaurante\texto.txt" />
+    <Content Include="FuenteDatos\IDao\Proveedores\texto.txt" />
+    <Content Include="FuenteDatos\IDao\ReportesFinancierosExportacion\texto.txt" />
+    <Content Include="FuenteDatos\IDao\ReservasSombrillasServiciosPlaya\texto.txt" />
+    <Content Include="FuenteDatos\IDao\RolesSeguridad\texto.txt" />
+    <Content Include="FuenteDatos\IDao\UsuariosInternos\texto.txt" />
+    <Content Include="FuenteDatos\IDao\VentaCierreCaja\texto.txt" />
+    <Content Include="LogicaNegocio\Comandos\ConfiguracionEstacionamiento\texto.txt" />
+    <Content Include="LogicaNegocio\Comandos\ConfiguracionServiciosPlaya\texto.txt" />
+    <Content Include="LogicaNegocio\Comandos\GestionVentaMembresia\texto.txt" />
+    <Content Include="LogicaNegocio\Comandos\IngresoRecuperacionClave\texto.txt" />
+    <Content Include="LogicaNegocio\Comandos\InventarioRestaurante\texto.txt" />
+    <Content Include="LogicaNegocio\Comandos\MenuRestaurante\texto.txt" />
+    <Content Include="LogicaNegocio\Comandos\Proveedores\texto.txt" />
+    <Content Include="LogicaNegocio\Comandos\ReportesFinancierosExportacion\texto.txt" />
+    <Content Include="LogicaNegocio\Comandos\RolesSeguridad\texto.txt" />
+    <Content Include="LogicaNegocio\Comandos\UsuariosInternos\texto.txt" />
+    <Content Include="LogicaNegocio\Comandos\VentaCierreCaja\texto.txt" />
     <Content Include="Presentacion\Contratos\GestionVentaMembresia\texto.txt" />
-    <Content Include="Presentacion\Contratos\IngresoRecuperacionClave\texto.txt" />
-    <Content Include="Presentacion\Contratos\InventarioRestaurante\texto.txt" />
-    <Content Include="Presentacion\Contratos\MenuRestaurante\texto.txt" />
-    <Content Include="Presentacion\Contratos\Proveedores\texto.txt" />
-    <Content Include="Presentacion\Contratos\ReportesFinancierosExportacion\texto.txt" />
-    <Content Include="Presentacion\Contratos\ReservasSombrillasServiciosPlaya\texto.txt" />
-    <Content Include="Presentacion\Contratos\RolesSeguridad\texto.txt" />
-    <Content Include="Presentacion\Contratos\UsuariosInternos\texto.txt" />
-    <Content Include="Presentacion\Contratos\VentaCierreCaja\texto.txt" />
-    <Content Include="Presentacion\Presentadores\ConfiguracionEstacionamiento\texto.txt" />
-    <Content Include="Presentacion\Presentadores\ConfiguracionPuestosPlaya\texto.txt" />
-    <Content Include="Presentacion\Presentadores\ConfiguracionServiciosPlaya\texto.txt" />
     <Content Include="Presentacion\Presentadores\GestionVentaMembresia\texto.txt" />
-    <Content Include="Presentacion\Presentadores\IngresoRecuperacionClave\texto.txt" />
-    <Content Include="Presentacion\Presentadores\InventarioRestaurante\texto.txt" />
     <Content Include="Presentacion\Presentadores\MenuRestaurante\texto.txt" />
-    <Content Include="Presentacion\Presentadores\Proveedores\texto.txt" />
-    <Content Include="Presentacion\Presentadores\ReportesFinancierosExportacion\texto.txt" />
-    <Content Include="Presentacion\Presentadores\ReservasSombrillasServiciosPlaya\texto.txt" />
-    <Content Include="Presentacion\Presentadores\RolesSeguridad\texto.txt" />
-    <Content Include="Presentacion\Presentadores\UsuariosInternos\texto.txt" />
-    <Content Include="Presentacion\Presentadores\VentaCierreCaja\texto.txt" />
-    <Content Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_agregarEstacionamiento.aspx" />
-    <Content Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_consultarEstacionamiento.aspx" />
     <Content Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_consultarTicket.aspx" />
     <Content Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_detalleTicket.aspx" />
     <Content Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_editarEstacionamiento.aspx" />
@@ -178,7 +190,6 @@
     <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_consultarPuesto.aspx" />
     <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_modificarInventario.aspx" />
     <Content Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\web_2_modificarPuesto.aspx" />
-    <Content Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\Nuevo documento de texto.txt" />
     <Content Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_03_consultaServicio.aspx" />
     <Content Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_03_consultaServicioCompleta.aspx" />
     <Content Include="Presentacion\Vistas\Web\ConfiguracionServiciosPlaya\web_03_modificarServiciosPlaya.aspx" />
@@ -205,13 +216,11 @@
     <Content Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_gestionarSeccion.aspx" />
     <Content Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_modificarProducto.aspx" />
     <Content Include="Presentacion\Vistas\Web\MenuRestaurante\web_05_modificarSeccion.aspx" />
-    <Content Include="Presentacion\Vistas\Web\Proveedores\Nuevo documento de texto.txt" />
     <Content Include="Presentacion\Vistas\Web\Proveedores\web_02_agregarProveedores.aspx" />
     <Content Include="Presentacion\Vistas\Web\Proveedores\web_02_consultarProveedor.aspx" />
     <Content Include="Presentacion\Vistas\Web\Proveedores\web_02_eliminarProveedor.aspx" />
     <Content Include="Presentacion\Vistas\Web\Proveedores\web_02_gestionarProveedores.aspx" />
     <Content Include="Presentacion\Vistas\Web\Proveedores\web_02_modificarProveedor.aspx" />
-    <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\Nuevo documento de texto.txt" />
     <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteComidaBebida.aspx" />
     <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteIngresos.aspx" />
     <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteMembresias.aspx" />
@@ -219,26 +228,20 @@
     <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteProveedores.aspx" />
     <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteRoles.aspx" />
     <Content Include="Presentacion\Vistas\Web\ReportesFinancierosExportacion\web_13_ReporteUsuarios.aspx" />
-    <Content Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\Nuevo documento de texto.txt" />
     <Content Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_confirmacionReserva.aspx" />
-    <Content Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_editarReserva.aspx" />
-    <Content Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_gestionarReservas.aspx" />
     <Content Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_listaReservas.aspx" />
-    <Content Include="Presentacion\Vistas\Web\RolesSeguridad\Nuevo documento de texto.txt" />
     <Content Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_agregarRol.aspx" />
     <Content Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_consultarAcciones.aspx" />
     <Content Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_consultarRol.aspx" />
     <Content Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_editarRol.aspx" />
     <Content Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_gestionarRoles.aspx" />
-    <Content Include="Presentacion\Vistas\Web\UsuariosInternos\Nuevo documento de texto.txt" />
     <Content Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_agregarUsuario.aspx" />
     <Content Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_asignarRoles.aspx" />
     <Content Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_consultarUsuario.aspx" />
     <Content Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_gestionUsuario.aspx" />
     <Content Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_modificarUsuario.aspx" />
     <Content Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_perfil_usuario.aspx" />
-    <Content Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cerrarCajaDiario.aspx" />
-    <Content Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cerrarCajaMensual.aspx" />
+    <Content Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cierreCaja.aspx" />
     <Content Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_facturacion.aspx" />
     <Content Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_gestionarVenta.aspx" />
     <Content Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_imprimirFactura.aspx" />
@@ -246,15 +249,135 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dominio\Entidad.cs" />
+    <Compile Include="Dominio\Entidades\Accion.cs" />
+    <Compile Include="Dominio\Entidades\Estado.cs" />
+    <Compile Include="Dominio\Entidades\InventarioPlaya.cs" />
+    <Compile Include="Dominio\Entidades\Item.cs" />
     <Compile Include="Dominio\Entidades\Persona.cs" />
+    <Compile Include="Dominio\Entidades\Playa.cs" />
+    <Compile Include="Dominio\Entidades\Puesto.cs" />
+    <Compile Include="Dominio\Entidades\Rol.cs" />
     <Compile Include="Dominio\Fabrica\FabricaEntidad.cs" />
+    <Compile Include="FuenteDatos\Dao\Dao.cs" />
+    <Compile Include="FuenteDatos\Fabrica\FabricaDao.cs" />
+    <Compile Include="FuenteDatos\IDao\IDao.cs" />
     <Compile Include="LogicaNegocio\Comando.cs" />
     <Compile Include="LogicaNegocio\Comandos\ComandoAgregarPersona.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ConfiguracionPuestosPlaya\ComandoActualizarInventarioTipo.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ConfiguracionPuestosPlaya\ComandoActualizarItemSeleccionado.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ConfiguracionPuestosPlaya\ComandoConsultarEstadosInventario.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ConfiguracionPuestosPlaya\ComandoConsultarInventario.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ConfiguracionPuestosPlaya\ComandoConsultarInventarioXId.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ConfiguracionPuestosPlaya\ComandoEliminarItemSeleccionado.cs" />
     <Compile Include="LogicaNegocio\Fabrica\FabricaComando.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ReservasSombrillasServiciosPlaya\logica_13_consultar.cs" />
+    <Compile Include="Presentacion\Contratos\ConfiguracionEstacionamiento\IContrato_5_editarEstacionamiento.cs" />
+    <Compile Include="Presentacion\Contratos\ConfiguracionEstacionamiento\IContrato_5_gestionarEstacionamiento.cs" />
+    <Compile Include="Presentacion\Contratos\ConfiguracionPuestosPlaya\IContrato_2_agregarItem.cs" />
+    <Compile Include="Presentacion\Contratos\ConfiguracionPuestosPlaya\IContrato_2_agregarPuesto.cs" />
+    <Compile Include="Presentacion\Contratos\ConfiguracionPuestosPlaya\IContrato_2_configurarPlaya.cs" />
+    <Compile Include="Presentacion\Contratos\ConfiguracionPuestosPlaya\IContrato_2_consultarInventario.cs" />
+    <Compile Include="Presentacion\Contratos\ConfiguracionPuestosPlaya\IContrato_2_consultarPuesto.cs" />
+    <Compile Include="Presentacion\Contratos\ConfiguracionPuestosPlaya\IContrato_2_modificarInventario.cs" />
+    <Compile Include="Presentacion\Contratos\ConfiguracionPuestosPlaya\IContrato_2_modificarPuesto.cs" />
+    <Compile Include="Presentacion\Contratos\ConfiguracionServiciosPlaya\IContrato_03_consultaServicio.cs" />
+    <Compile Include="Presentacion\Contratos\ConfiguracionServiciosPlaya\IContrato_03_consultaServicioCompleta.cs" />
+    <Compile Include="Presentacion\Contratos\ConfiguracionServiciosPlaya\IContrato_3_agregarServicio.cs" />
+    <Compile Include="Presentacion\Contratos\ConfiguracionServiciosPlaya\IContrato_3_modificarServiciosPlayacs.cs" />
     <Compile Include="Presentacion\Contratos\IContratoGeneral.cs" />
+    <Compile Include="Presentacion\Contratos\IngresoRecuperacionClave\IContrato_01_inicioSesionA.cs" />
+    <Compile Include="Presentacion\Contratos\InventarioRestaurante\IContrato_06_agregarItem.cs" />
+    <Compile Include="Presentacion\Contratos\InventarioRestaurante\IContrato_06_gestionarInventario.cs" />
+    <Compile Include="Presentacion\Contratos\InventarioRestaurante\IContrato_06_modificarItem.cs" />
+    <Compile Include="Presentacion\Contratos\InventarioRestaurante\IContrato_06_verItem.cs" />
+    <Compile Include="Presentacion\Contratos\MenuRestaurante\IContrato_05_agregarProducto.cs" />
+    <Compile Include="Presentacion\Contratos\MenuRestaurante\IContrato_05_agregarSeccion.cs" />
+    <Compile Include="Presentacion\Contratos\MenuRestaurante\IContrato_05_gestionarProducto.cs" />
+    <Compile Include="Presentacion\Contratos\MenuRestaurante\IContrato_05_gestionarSeccion.cs" />
+    <Compile Include="Presentacion\Contratos\MenuRestaurante\IContrato_05_modificarProducto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Contratos\MenuRestaurante\IContrato_05_modificarSeccion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Contratos\Proveedores\IContrato_02_agregarProveedores.cs" />
+    <Compile Include="Presentacion\Contratos\Proveedores\IContrato_02_consultarProveedor.cs" />
+    <Compile Include="Presentacion\Contratos\Proveedores\IContrato_02_eliminarProveedor.cs" />
+    <Compile Include="Presentacion\Contratos\Proveedores\IContrato_02_gestionarProveedor.cs" />
+    <Compile Include="Presentacion\Contratos\Proveedores\IContrato_02_modificarProveedor.cs" />
+    <Compile Include="Presentacion\Contratos\ReportesFinancierosExportacion\IContrato_13_ReporteComidaBebida.cs" />
+    <Compile Include="Presentacion\Contratos\ReportesFinancierosExportacion\IContrato_13_ReporteIngresos.cs" />
+    <Compile Include="Presentacion\Contratos\ReportesFinancierosExportacion\IContrato_13_ReporteMembresias.cs" />
+    <Compile Include="Presentacion\Contratos\ReportesFinancierosExportacion\IContrato_13_ReporteProductos.cs" />
+    <Compile Include="Presentacion\Contratos\ReportesFinancierosExportacion\IContrato_13_ReporteProveedores.cs" />
+    <Compile Include="Presentacion\Contratos\ReportesFinancierosExportacion\IContrato_13_ReporteRoles.cs" />
+    <Compile Include="Presentacion\Contratos\ReportesFinancierosExportacion\IContrato_13_ReporteUsuarios.cs" />
+    <Compile Include="Presentacion\Contratos\ReservasSombrillasServiciosPlaya\IContrato_07_confirmacionReserva.cs" />
+    <Compile Include="Presentacion\Contratos\ReservasSombrillasServiciosPlaya\IContrato_07_listaReserva.cs" />
+    <Compile Include="Presentacion\Contratos\RolesSeguridad\IContrato_08_AgregarRol.cs" />
+    <Compile Include="Presentacion\Contratos\RolesSeguridad\IContrato_08_ConsultarAcciones.cs" />
+    <Compile Include="Presentacion\Contratos\RolesSeguridad\IContrato_08_ConsultarRol.cs" />
+    <Compile Include="Presentacion\Contratos\RolesSeguridad\IContrato_08_EditarRol.cs" />
+    <Compile Include="Presentacion\Contratos\RolesSeguridad\IContrato_08_GestionarRoles.cs" />
+    <Compile Include="Presentacion\Contratos\UsuariosInternos\IContrato_09_AgregarUsuario.cs" />
+    <Compile Include="Presentacion\Contratos\UsuariosInternos\IContrato_09_AsignarRolUsuario.cs" />
+    <Compile Include="Presentacion\Contratos\UsuariosInternos\IContrato_09_ConsultarUsuarios.cs" />
+    <Compile Include="Presentacion\Contratos\UsuariosInternos\IContrato_09_gestionUsuario.cs" />
+    <Compile Include="Presentacion\Contratos\UsuariosInternos\IContrato_09_modificarUsuario.cs" />
+    <Compile Include="Presentacion\Contratos\UsuariosInternos\IContrato_09_PerfilUsuario.cs" />
+    <Compile Include="Presentacion\Contratos\VentaCierreCaja\IContrato_07_CierreCaja.cs" />
     <Compile Include="Presentacion\Contratos\VentaCierreCaja\IContrato_07_Facturacion.cs" />
+    <Compile Include="Presentacion\Contratos\VentaCierreCaja\IContrato_07_GestionarVenta.cs" />
+    <Compile Include="Presentacion\Contratos\VentaCierreCaja\IContrato_07_ImprimirFactura.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionEstacionamiento\Presentador_5_editarEstacionamiento.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionEstacionamiento\Presentador_5_gestionarEstacionamiento.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionPuestosPlaya\Presentador_2_agregarItem.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionPuestosPlaya\Presentador_2_agregrarPuesto.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionPuestosPlaya\Presentador_2_configurarPlaya.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionPuestosPlaya\Presentador_2_consultarInventario.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionPuestosPlaya\Presentador_2_consultarPuesto.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionPuestosPlaya\Presentador_2_modificarInventario.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionPuestosPlaya\Presentador_2_modificarPuesto.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionPuestosPlaya\RecursosPresentador.Designer.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionServiciosPlaya\Presentador_03_consultaServicio.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionServiciosPlaya\Presentador_03_consultaServicioCompleta.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionServiciosPlaya\Presentador_3_agregarServicio.cs" />
+    <Compile Include="Presentacion\Presentadores\ConfiguracionServiciosPlaya\Presentador_3_modificarServiciosPlaya.cs" />
+    <Compile Include="Presentacion\Presentadores\IngresoRecuperacionClave\Presentador_01_inicioSesionA.cs" />
+    <Compile Include="Presentacion\Presentadores\InventarioRestaurante\Presentador_06_agregarItem.cs" />
+    <Compile Include="Presentacion\Presentadores\InventarioRestaurante\Presentador_06_gestionarInventario.cs" />
+    <Compile Include="Presentacion\Presentadores\InventarioRestaurante\Presentador_06_modificarItem.cs" />
+    <Compile Include="Presentacion\Presentadores\InventarioRestaurante\Presentador_06_verItem.cs" />
     <Compile Include="Presentacion\Presentadores\PresentadorGeneral.cs" />
+    <Compile Include="Presentacion\Presentadores\Proveedores\Presentador_02_agregarProveedores.cs" />
+    <Compile Include="Presentacion\Presentadores\Proveedores\Presentador_02_consultarProveedor.cs" />
+    <Compile Include="Presentacion\Presentadores\Proveedores\Presentador_02_eliminarProveedor.cs" />
+    <Compile Include="Presentacion\Presentadores\Proveedores\Presentador_02_gestionarProveedor.cs" />
+    <Compile Include="Presentacion\Presentadores\Proveedores\Presentador_02_modificarProveedor.cs" />
+    <Compile Include="Presentacion\Presentadores\ReportesFinancierosExportacion\Presentador_13_ReporteComidaBebida.cs" />
+    <Compile Include="Presentacion\Presentadores\ReportesFinancierosExportacion\Presentador_13_ReporteIngresos.cs" />
+    <Compile Include="Presentacion\Presentadores\ReportesFinancierosExportacion\Presentador_13_ReporteMembresias.cs" />
+    <Compile Include="Presentacion\Presentadores\ReportesFinancierosExportacion\Presentador_13_ReporteProductos.cs" />
+    <Compile Include="Presentacion\Presentadores\ReportesFinancierosExportacion\Presentador_13_ReporteProveedores.cs" />
+    <Compile Include="Presentacion\Presentadores\ReportesFinancierosExportacion\Presentador_13_ReporteRoles.cs" />
+    <Compile Include="Presentacion\Presentadores\ReportesFinancierosExportacion\Presentador_13_ReporteUsuarios.cs" />
+    <Compile Include="Presentacion\Presentadores\ReservasSombrillasServiciosPlaya\presentador_07_confirmacionReserva.cs" />
+    <Compile Include="Presentacion\Presentadores\ReservasSombrillasServiciosPlaya\presentador_07_listaReservas.cs" />
+    <Compile Include="Presentacion\Presentadores\RolesSeguridad\Presentador_08_AgregarRol.cs" />
+    <Compile Include="Presentacion\Presentadores\RolesSeguridad\Presentador_08_ConsultarAcciones.cs" />
+    <Compile Include="Presentacion\Presentadores\RolesSeguridad\Presentador_08_ConsultarRol.cs" />
+    <Compile Include="Presentacion\Presentadores\RolesSeguridad\Presentador_08_EditarRol.cs" />
+    <Compile Include="Presentacion\Presentadores\RolesSeguridad\Presentador_08_GestionarRoles.cs" />
+    <Compile Include="Presentacion\Presentadores\UsuariosInternos\Presentador_09_agregarUsuario.cs" />
+    <Compile Include="Presentacion\Presentadores\UsuariosInternos\Presentador_09_asignarRolUsuario.cs" />
+    <Compile Include="Presentacion\Presentadores\UsuariosInternos\Presentador_09_ConsultarUsuarios.cs" />
+    <Compile Include="Presentacion\Presentadores\UsuariosInternos\Presentador_09_gestionUsuario.cs" />
+    <Compile Include="Presentacion\Presentadores\UsuariosInternos\Presentador_09_modificarUsuario.cs" />
+    <Compile Include="Presentacion\Presentadores\UsuariosInternos\Presentador_09_PerfilUsuario.cs" />
+    <Compile Include="Presentacion\Presentadores\VentaCierreCaja\Presentador_07_CierreCaja.cs" />
     <Compile Include="Presentacion\Presentadores\VentaCierreCaja\Presentador_07_Facturacion.cs" />
+    <Compile Include="Presentacion\Presentadores\VentaCierreCaja\Presentador_07_GestionarVenta.cs" />
+    <Compile Include="Presentacion\Presentadores\VentaCierreCaja\Presentador_07_ImprimirFactura.cs" />
     <Compile Include="Presentacion\Vistas\Temp\back_office_temp.Master.cs">
       <DependentUpon>back_office_temp.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -268,20 +391,6 @@
     </Compile>
     <Compile Include="Presentacion\Vistas\Temp\log_in.Master.designer.cs">
       <DependentUpon>log_in.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_agregarEstacionamiento.aspx.cs">
-      <DependentUpon>web_5_agregarEstacionamiento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_agregarEstacionamiento.aspx.designer.cs">
-      <DependentUpon>web_5_agregarEstacionamiento.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_consultarEstacionamiento.aspx.cs">
-      <DependentUpon>web_5_consultarEstacionamiento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_consultarEstacionamiento.aspx.designer.cs">
-      <DependentUpon>web_5_consultarEstacionamiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Vistas\Web\ConfiguracionEstacionamientos\web_5_consultarTicket.aspx.cs">
       <DependentUpon>web_5_consultarTicket.aspx</DependentUpon>
@@ -691,20 +800,6 @@
     <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_confirmacionReserva.aspx.designer.cs">
       <DependentUpon>web_07_confirmacionReserva.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_editarReserva.aspx.cs">
-      <DependentUpon>web_07_editarReserva.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_editarReserva.aspx.designer.cs">
-      <DependentUpon>web_07_editarReserva.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_gestionarReservas.aspx.cs">
-      <DependentUpon>web_07_gestionarReservas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_gestionarReservas.aspx.designer.cs">
-      <DependentUpon>web_07_gestionarReservas.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_listaReservas.aspx.cs">
       <DependentUpon>web_07_listaReservas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -712,6 +807,7 @@
     <Compile Include="Presentacion\Vistas\Web\ReservasSombrillasServiciosPlaya\web_07_listaReservas.aspx.designer.cs">
       <DependentUpon>web_07_listaReservas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Vistas\Web\RolesSeguridad\Recursos\RecursosInterfazRolesSeguridad.Designer.cs" />
     <Compile Include="Presentacion\Vistas\Web\RolesSeguridad\web_08_agregarRol.aspx.cs">
       <DependentUpon>web_08_agregarRol.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -789,19 +885,12 @@
     <Compile Include="Presentacion\Vistas\Web\UsuariosInternos\web_09_perfil_usuario.aspx.designer.cs">
       <DependentUpon>web_09_perfil_usuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cerrarCajaDiario.aspx.cs">
-      <DependentUpon>web_07_cerrarCajaDiario.aspx</DependentUpon>
+    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cierreCaja.aspx.cs">
+      <DependentUpon>web_07_cierreCaja.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cerrarCajaDiario.aspx.designer.cs">
-      <DependentUpon>web_07_cerrarCajaDiario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cerrarCajaMensual.aspx.cs">
-      <DependentUpon>web_07_cerrarCajaMensual.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cerrarCajaMensual.aspx.designer.cs">
-      <DependentUpon>web_07_cerrarCajaMensual.aspx</DependentUpon>
+    <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_cierreCaja.aspx.designer.cs">
+      <DependentUpon>web_07_cierreCaja.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Vistas\Web\VentaCierreCaja\web_07_facturacion.aspx.cs">
       <DependentUpon>web_07_facturacion.aspx</DependentUpon>
@@ -837,11 +926,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Presentacion\Contratos\ConfiguracionEstacionamiento\" />
     <Folder Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\resources\css\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Presentacion\Presentadores\ConfiguracionPuestosPlaya\RecursosPresentador.resx" />
     <EmbeddedResource Include="Presentacion\Vistas\Web\ConfiguracionPuestosPlaya\RecursosInterfaz.resx" />
+    <EmbeddedResource Include="Presentacion\Vistas\Web\RolesSeguridad\Recursos\RecursosInterfazRolesSeguridad.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

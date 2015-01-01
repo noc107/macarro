@@ -4,15 +4,103 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using FrontOffice.Presentacion.Contratos.IngresoRecuperacionClave;
+using FrontOffice.Presentacion.Presentadores.IngresoRecuperacionClave;
 
 
 namespace FrontOffice.Presentacion.Vistas.Web.IngresoRecuperacionClave
 {
-    public partial class web_01_modificar : System.Web.UI.Page
+    public partial class web_01_modificar : System.Web.UI.Page, IContrato_01_modificar
     {
+        private Presentador_01_modificar _presentador;
+
+        public web_01_modificar()
+        {
+            _presentador = new Presentador_01_modificar(this);
+        }
+
+        string IContrato_01_modificar.PriNombre
+        {
+            get { return PriNombre.Text; }
+            set { PriNombre.Text = value; }
+        }
+
+        string IContrato_01_modificar.SegNombre
+        {
+            get { return SegNombre.Text; }
+            set { SegNombre.Text = value; }
+        }
+
+        string IContrato_01_modificar.PriApellido
+        {
+            get { return PriApellido.Text; }
+            set { PriApellido.Text = value; }
+        }
+
+        string IContrato_01_modificar.SegApellido
+        {
+            get { return SegApellido.Text; }
+            set { SegApellido.Text = value; }
+        }
+
+        string IContrato_01_modificar.TipoDocIdentidad
+        {
+            get { return this.TipoDocIdentidad.SelectedValue; }
+        }
+
+        string IContrato_01_modificar.NumeroDocumento
+        {
+            get { return NumeroDocumento.Text; }
+            set { NumeroDocumento.Text = value; }
+        }
+
+        string IContrato_01_modificar.Correo
+        {
+            get { return Correo.Text; }
+            set { Correo.Text = value; }
+        }
+
+        DateTime IContrato_01_modificar.FechaNac
+        {
+            get { return Convert.ToDateTime(FechaNac.Text); }
+            set { FechaNac.Text = value.ToShortDateString(); }
+        }
+
+        string IContrato_01_modificar.Contrasena
+        {
+            get { return Contrasena.Text; }
+            set { Contrasena.Text = value; }
+        }
+
+        string IContrato_01_modificar.RContrasena
+        {
+            get { return RContrasena.Text; }
+            set { RContrasena.Text = value; }
+        }
+
+        string IContrato_01_modificar.PreSeguridad
+        {
+            get { return PreSeguridad.Text; }
+            set { PreSeguridad.Text = value; }
+        }
+
+        string IContrato_01_modificar.RespSeguridad
+        {
+            get { return RespSeguridad.Text; }
+            set { RespSeguridad.Text = value; }
+        }
+
+        string IContrato_01_modificar.Direccion1
+        {
+            get { return Direccion1.Text; }
+            set { Direccion1.Text = value; }
+        }
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Se cargar los datos
+
             //string _correoCliente = (string)(Session["correo"]);
             //string _docIdentidadS = (string)(Session["docIdentidad"]);
             //string _primerNombreS = (string)(Session["primerNombre"]);
@@ -48,6 +136,8 @@ namespace FrontOffice.Presentacion.Vistas.Web.IngresoRecuperacionClave
 
         protected void aceptar_Click(object sender, EventArgs e)
         {
+            _presentador.aceptar_Click();
+
             //ClienteCM _modificar = new ClienteCM();
 
             //_modificar.Usuario.Correo = Correo.Text;
@@ -89,6 +179,30 @@ namespace FrontOffice.Presentacion.Vistas.Web.IngresoRecuperacionClave
             //else
             //    if (_modificoInformacion == false)
             //        Response.Write("No se pudo procesar su solicitud");
+        }
+
+        public Label LabelMensajeExito
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public Label LabelMensajeError
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

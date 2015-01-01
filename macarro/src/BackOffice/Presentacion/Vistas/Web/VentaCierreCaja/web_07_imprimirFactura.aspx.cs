@@ -6,19 +6,31 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-//using back_office.Dominio;
-//using back_office.Logica.VentaCierreCaja;
+using System.Data;
+using BackOffice.Presentacion.Contratos;
+using BackOffice.Presentacion.Contratos.VentaCierreCaja;
+using BackOffice.Presentacion.Presentadores.VentaCierreCaja;
+
+
 
 namespace back_office.Interfaz.web.VentaCierreCaja
 {
-    public partial class WebForm2 : System.Web.UI.Page
+    public partial class WebForm2 : System.Web.UI.Page, IContrato_07_ImprimirFactura
     {
-        #region Variables de Sesion
+        /*#region Variables de Sesion
         string _correoS;
         string _docIdentidadS;
         string _primerNombreS;
         string _primerApellidoS;
-        #endregion
+        #endregion*/
+
+        private Presentador_07_ImprimirFactura _presentadorImprimirFactura;
+
+        public WebForm2()
+        {
+            this._presentadorImprimirFactura = new Presentador_07_ImprimirFactura(this);
+        }
+
 
       /*  private List<LineaFactura> _listaLineas = new List<LineaFactura>();
         private LogicaFactura _logica = new LogicaFactura();
@@ -140,6 +152,115 @@ namespace back_office.Interfaz.web.VentaCierreCaja
         {
          //   Response.Redirect("web_07_gestionarVenta.aspx");
         }
+
+        public Label LabelMensajeExito
+        {
+            get
+            {
+                return this._mensajeExito;
+            }
+            set
+            {
+                this._mensajeExito = value;
+            }
+        }
+
+        public Label LabelMensajeError
+        {
+            get
+            {
+                return this._mensajeError;
+            }
+            set
+            {
+                this._mensajeError = value;
+            }
+        }
+
+
+
+        public GridView GridFactura
+        {
+            get
+            {
+                return this.gridFactura;
+            }
+        }
+
+        public string LabelFechaFactura
+        {
+            set
+            {
+                this.Fecha.Text = value;
+            }
+        }
+
+        public string LabelDocIdentidadCliente
+        {
+            set
+            {
+                this.DocIdentidad.Text = value;
+            }
+        }
+
+        public string LabelNombreCliente
+        {
+            set
+            {
+                this.Nombres.Text = value;
+            }
+        }
+
+        public string LabelApellidoCliente
+        {
+            set
+            {
+                this.Apellidos.Text = value;
+            }
+        }
+
+        public string LabelMiembroClub
+        {
+            set
+            {
+                this.Miembro.Text = value;
+            }
+        }
+
+        public string LabelSubTotal
+        {
+            set
+            {
+                this.subTotal.Text = value;
+            }
+        }
+
+        public string LabelMontoIVA
+        {
+            set
+            {
+                this.montoIva.Text = value;
+            }
+        }
+
+        public string LabelDescuento
+        {
+            set
+            {
+                this.montoDescuento.Text = value;
+            }
+        }
+
+        public string LabelTotal
+        {
+            set
+            {
+                this.total.Text = value;
+            }
+        }
+
+
+
 
 
     }

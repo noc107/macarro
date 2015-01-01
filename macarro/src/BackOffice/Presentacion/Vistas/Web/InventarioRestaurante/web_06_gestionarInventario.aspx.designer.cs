@@ -13,6 +13,15 @@ namespace BackOffice.Presentacion.Vistas.Web.InventarioRestaurante {
     public partial class web_06_gestionarInventario {
         
         /// <summary>
+        /// MensajeExito control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MensajeExito;
+        
+        /// <summary>
         /// MensajeFallo control.
         /// </summary>
         /// <remarks>

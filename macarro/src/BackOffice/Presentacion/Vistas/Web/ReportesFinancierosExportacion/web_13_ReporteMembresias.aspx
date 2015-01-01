@@ -2,8 +2,6 @@
     AutoEventWireup="true" CodeBehind="web_13_ReporteMembresias.aspx.cs" 
     Inherits="BackOffice.Presentacion.Vistas.Web.ReportesFinancierosExportacion.web_13_ReporteMembresias" %>
 
-
-
 <asp:Content ID="Content2" ContentPlaceHolderID="css_place_holder" runat="server">
     <link href="../../../comun/resources/css/ModuloReportes/ReporteMembresia.css" rel="stylesheet" />
 </asp:Content>
@@ -19,11 +17,9 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="middle_place_holder" runat="server">
    <script type="text/javascript" src="https://www.google.com/jsapi"></script> 
      <h2 class ="" id ="subtitulo">Reporte Membresías</h2>
-                        <div>
-       
+     <div>
             <asp:Table CssClass="" ID="Table1" runat="server" Height="122px" Width="1091px" HorizontalAlign ="Center">
 
-            
                 <asp:TableRow ID="TableRow1" runat="server">
 
                     <asp:TableCell ID="TableCell1" runat="server" width="12%">
@@ -99,9 +95,9 @@
             </asp:TableRow>
 
         </asp:Table>
-
-            <asp:Label ID="MensajeError" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
-
+            
+        <asp:Label ID="_mensajeExito" runat="server" Text="" Visible="false" CssClass="avisoMensaje"></asp:Label>
+        <asp:Label ID="_mensajeError" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
 
            <asp:Table CssClass="TablaConsulta" ID="Table3" runat="server" Height="100px" Width="1200px" align="center">
                 
@@ -155,11 +151,7 @@
                         ForeColor="Red"
                     />
 
-
-
 </asp:Content>
-
-
 
 <asp:Content ID="Content6" ContentPlaceHolderID="username_place_holder" runat="server">
 </asp:Content>

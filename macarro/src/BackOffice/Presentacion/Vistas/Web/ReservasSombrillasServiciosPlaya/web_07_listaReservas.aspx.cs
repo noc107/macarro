@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BackOffice.Presentacion.Contratos;
+using BackOffice.Presentacion.Contratos.ReservasSombrillasServiciosPlaya;
+using BackOffice.Presentacion.Presentadores.ReservasSombrillasServiciosPlaya;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -8,12 +11,20 @@ using System.Web.UI.WebControls;
 
 namespace BackOffice.Presentacion.Vistas.Web.ReservasSombrillasServiciosPlaya
 {
-    public partial class web_07_listaReservas : System.Web.UI.Page
+    public partial class web_07_listaReservas : Page, IContrato_07_listaReserva
     {
-        DataTable _dt;
-        string _idReserva;
+
+
         string _id;
-        protected void Page_Load(object sender, EventArgs e)
+
+        private presentador_07_listaReservas _presentador;
+
+        public web_07_listaReservas ()
+        {
+            _presentador = new presentador_07_listaReservas ( this );
+
+        }
+        protected void Page_Load ( object sender, EventArgs e )
         {
             //_idReserva = Request.QueryString["Reserva"];
 
@@ -21,27 +32,59 @@ namespace BackOffice.Presentacion.Vistas.Web.ReservasSombrillasServiciosPlaya
 
             //_consulta = new ConfigurarReserva();
             //_dt = _consulta.ListarReservas(_idReserva);
-            //GridView.DataSource = _dt;
-            //GridView.DataBind();
+
+
+            _presentador.Cargar_Reservas ();
+
+
+
         }
 
-        protected void grid_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        public GridView _table
         {
-            GridView.PageIndex = e.NewPageIndex;
-            GridView.DataSource = _dt;
+
+            get { return Tabla; }
+            set { Tabla = value; }
+
         }
 
-        protected void grid_RowCommand(object sender, GridViewCommandEventArgs e)
+        public string _idReserva
         {
-            Int16 _Index;
-
-            _Index = Convert.ToInt16(e.CommandArgument);
-            this._id = GridView.Rows[_Index].Cells[0].Text;
+            get { return _id; }
+            set { _id = value; }
         }
 
-        protected void grid_RowEditing(object sender, GridViewEditEventArgs e)
+
+
+
+        public Label LabelMensajeExito
         {
-            Response.Redirect("web_07_confirmacionReserva.aspx?Reserva=" + this._id);
+            get { return MensajeExito; }
+            set { MensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return MensajeExito; }
+            set { MensajeExito = value; }
+        }
+
+
+
+        protected void grid_PageIndexChanging ( object sender, GridViewPageEventArgs e )
+        {
+            _presentador.grid_PageIndexChanging ( sender, e );
+        }
+
+        protected void grid_RowCommand ( object sender, GridViewCommandEventArgs e )
+        {
+            _presentador.grid_RowCommand ( sender, e );
+
+        }
+
+        protected void grid_RowEditing ( object sender, GridViewEditEventArgs e )
+        {
+            Response.Redirect ( "web_07_confirmacionReserva.aspx?Reserva=" + this._id );
         }
     }
 }

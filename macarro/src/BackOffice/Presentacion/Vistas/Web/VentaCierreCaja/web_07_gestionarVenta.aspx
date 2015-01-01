@@ -17,7 +17,8 @@
     <h2>Gestionar Ventas</h2>
 
 
-    <asp:Label ID="MensajeError" runat="server" CssClass="avisoMensaje MensajeError" Text="La Factura ya ha sido facturada" Visible="false"></asp:Label>
+    <asp:Label ID="_mensajeExito" runat="server" CssClass="avisoMensaje MensajeError" Visible="false"></asp:Label>
+    <asp:Label ID="_mensajeError" runat="server" CssClass="avisoMensaje MensajeError" Visible="false"></asp:Label>
   
     <%--Buscador --%>
     <asp:Table ID="tableBuscador" runat="server" HorizontalAlign="Center">    

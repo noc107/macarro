@@ -11,7 +11,7 @@ using BackOffice.Presentacion.Presentadores.Proveedores;
 
 namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 {
-    public partial class web_02_eliminarProveedor : System.Web.UI.Page, IContratoGeneral, IContrato_02_eliminarProveedor
+    public partial class web_02_eliminarProveedor : System.Web.UI.Page, IContrato_02_eliminarProveedor
     {
         //ProveedorBD auxBD = new ProveedorBD();
         Presentador_02_eliminarProveedor _presentador;

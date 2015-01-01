@@ -93,7 +93,8 @@
 
         </asp:Table>
 
-        <asp:Label ID="MensajeError" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
+        <asp:Label ID="_mensajeExito" runat="server" Text="" Visible="false" CssClass="avisoMensaje"></asp:Label>
+        <asp:Label ID="_mensajeError" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
 
         <asp:Table  ID="Table3" runat="server" Height="100px"
             Width="1200px" align="center">

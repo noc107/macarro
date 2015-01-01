@@ -6,12 +6,22 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Contratos.ReportesFinancierosExportacion;
+using BackOffice.Presentacion.Presentadores.ReportesFinancierosExportacion;
+
 
 namespace BackOffice.Presentacion.Vistas.Web.ReportesFinancierosExportacion
 {
-	public partial class web_13_ReporteMembresias : System.Web.UI.Page
+	public partial class web_13_ReporteMembresias : System.Web.UI.Page, IContrato_13_ReporteMembresias
 	{
 		DataTable _dataTable = new DataTable ();
+
+        private Presentador_13_ReporteMembresias _presentador;
+
+        public web_13_ReporteMembresias()
+        {
+            _presentador = new Presentador_13_ReporteMembresias(this);
+        }
 
 		/// <summary>
 		/// El metodo Page_Load se encarga de manejar 
@@ -44,6 +54,28 @@ namespace BackOffice.Presentacion.Vistas.Web.ReportesFinancierosExportacion
             //ResumenValidaciones.Style.Add ( "font-size", "large" );
 		}
 
+        TextBox IContrato_13_ReporteMembresias.inputFechaInicio
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        TextBox IContrato_13_ReporteMembresias.inputFechaFin
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+
+        public Label LabelMensajeExito
+        {
+            get { return _mensajeExito; }
+            set { _mensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return _mensajeError; }
+            set { _mensajeError = value; }
+        }
 
 		/// <summary>
 		/// El metodo ExportarBoton_Click se encarga 
@@ -146,5 +178,7 @@ namespace BackOffice.Presentacion.Vistas.Web.ReportesFinancierosExportacion
         //        MensajeError.Visible = true;
         //    }
         //}
-	}
+
+
+    }
 }

@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace back_office.Interfaz.temp {
+namespace BackOffice.Presentacion.Vistas.Temp {
     
     
-    public partial class Log_In {
+    public partial class log_in {
         
         /// <summary>
         /// Head1 control.

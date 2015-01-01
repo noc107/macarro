@@ -19,8 +19,8 @@
     <asp:Table ID="Table1" runat="server" HorizontalAlign="Center"> 
         <asp:TableRow>
             <asp:TableCell ColumnSpan="6" HorizontalAlign="Center" >
-                <asp:label ID="mensajeExito" runat="server" CssClass="avisoMensaje MensajeExito" Visible="false">  Mensaje de Confirmacion </asp:label>
-               <asp:label ID="mensajeError" runat="server" CssClass="avisoMensaje MensajeError" Visible="false">  Mensaje de Confirmacion </asp:label>
+                <asp:label ID="_mensajeExito" runat="server" CssClass="avisoMensaje MensajeExito" Visible="false">  Mensaje de Confirmacion </asp:label>
+               <asp:label ID="_mensajeError" runat="server" CssClass="avisoMensaje MensajeError" Visible="false">  Mensaje de Confirmacion </asp:label>
                 <br />
             </asp:TableCell>
         </asp:TableRow>
@@ -134,11 +134,11 @@
             
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell>
+             <asp:TableCell>
                 <asp:label ID="LabelFechaNac" runat="server" CssClass="labels">   Fecha de Nacimiento <span>(*)</span>  : </asp:label>
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox ID="TextBoxFechaNac" runat="server"  TextMode="Date" width="250" height="38" ></asp:TextBox>
+                <asp:TextBox CssClass="textbox" ID="TextBoxFechaNac" runat="server"  TextMode="Date" width="250" height="38" ></asp:TextBox>
             </asp:TableCell>
             <asp:TableCell HorizontalAlign="Left" Width="60px">
                 <asp:RangeValidator ID="validatorfechanac"
@@ -151,7 +151,7 @@
                     ErrorMessage="Se requiere la fecha de nacimiento"
                     ForeColor="Red">
                 </asp:RequiredFieldValidator>
-            </asp:TableCell>
+            </asp:TableCell> 
             <asp:TableCell >
                 <asp:label ID="LabelCorreo" runat="server" CssClass="labels">  E-mail <span>(*)</span> : </asp:label>
             </asp:TableCell>
@@ -222,7 +222,27 @@
                     InitialValue="Seleccione un estatus"
                     ForeColor="Red">
                 </asp:RequiredFieldValidator>
-            </asp:TableCell>   
+            </asp:TableCell> 
+            <asp:TableCell>
+                <asp:Label ID ="labelTelefono" runat="server" CssClass="labels">Teléfono <span>(*)</span> : </asp:Label>
+            </asp:TableCell> 
+            <asp:TableCell>
+                <asp:TextBox CssClass="textbox caja" ID="Telefono" runat="server"></asp:TextBox>
+            </asp:TableCell>
+               <asp:TableCell>
+                <asp:regularexpressionvalidator CssClass="asterisco" ID="RegularExpressionValidator11" runat="server" 
+                    ControlToValidate= "Telefono" 
+                    ErrorMessage="Formato de teléfono no valido: (XX)-YYY-ZZZZZZZ"
+                    Text="*" 
+                    ForeColor= "Red"
+                    ValidationExpression="\(\d{2}\)\-\d{3}\-\d{7}"> </asp:regularexpressionvalidator>
+            <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator12" 
+                    runat="server" ControlToValidate ="Telefono"
+                    ErrorMessage="Telefono requerido." 
+                    Text="*"
+                    ForeColor="Red"> </asp:RequiredFieldValidator> 
+                
+            </asp:TableCell> 
         </asp:TableRow>
 
         <asp:TableRow >  

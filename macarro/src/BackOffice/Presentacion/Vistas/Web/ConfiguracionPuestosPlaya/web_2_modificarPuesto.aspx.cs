@@ -5,12 +5,95 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using BackOffice.Presentacion.Contratos.ConfiguracionPuestosPlaya;
+using BackOffice.Presentacion.Presentadores.ConfiguracionPuestosPlaya;
 
 
 namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya
 {
-    public partial class web_2_modificarPuesto : System.Web.UI.Page
+    public partial class web_2_modificarPuesto : System.Web.UI.Page , IContrato_2_modificarPuesto
     {
+
+        #region Presentador
+        private Presentador_2_modificarPuesto _presentador;
+        #endregion
+
+        #region Implementacion de Contrato
+
+        public TextBox CampoFila
+        {
+            get { return formularioModificarPuesto.Fila; }
+        }
+
+        public TextBox CampoColumna
+        {
+            get { return formularioModificarPuesto.Columna; }
+        }
+
+        public TextBox CampoDescripcion
+        {
+            get { return formularioModificarPuesto.Descripcion; }
+        }
+
+        public TextBox CampoPrecio
+        {
+            get { return formularioModificarPuesto.Precio; }
+        }
+
+        public Button BtnAceptar
+        {
+            get { return botonAceptar; }
+        }
+
+        public Button BtnCancelar
+        {
+            get { return botonCancelar; }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get { return mensajeDeEstado.mensajeExito; }
+            set { mensajeDeEstado.mensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return mensajeDeEstado.mensajeError; }
+            set { mensajeDeEstado.mensajeError = value; }
+        }
+
+        #endregion
+
+        #region constructor
+        public web_2_modificarPuesto()
+        {
+            _presentador = new Presentador_2_modificarPuesto(this);
+        }
+        #endregion
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Metodo de evento del boton para actualizar el puesto.
+        /// </summary>
+        protected void botonAceptar_Click(object sender, EventArgs e)
+        {
+            _presentador.EventoClickAceptar();
+        }
+
+        /// <summary>
+        /// Metodo que regresa al regresar puesto.
+        /// </summary>
+        protected void botonCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(_presentador.EventoClickCancelar());
+        }
+
+        #region CodigoAnterior
+        /*
         private string paginaBuscar = RecursosInterfaz.PaginaConsultarPuesto;       
         private object _fila;
         private object _columna;
@@ -102,6 +185,8 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya
         {
             Response.Redirect(RecursosInterfaz.PaginaConsultarPuesto);
         }
-            
-        }
+         */
+        #endregion
+        
     }
+}

@@ -7,7 +7,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="css_place_holder" runat="server">
-    <link href="../../../comun/resources/css/RolesSeguridad/Estilos.css" rel="stylesheet" />
+    <link href="../../../../comun/resources/css/RolesSeguridad/Estilos.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="libs_place_holder" runat="server">
@@ -19,8 +19,8 @@
 
     <h2>Modificar Rol</h2>
 
-    <asp:Label ID="MensajeExitoso" runat="server"  Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
-    <asp:Label ID="MensajeErrores" runat="server"  Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
+    <asp:Label ID="_mensajeExito" runat="server"  Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
+    <asp:Label ID="_mensajeError" runat="server"  Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
 
 
     <asp:Table ID="Table1" runat="server" HorizontalAlign="Center" Style="padding-bottom:20px">
@@ -97,7 +97,7 @@
                 </asp:ListBox>
             </asp:TableCell>    
             <asp:TableCell>
-                <asp:ImageButton ID="ImageButton1" runat="server" src="../../../comun/resources/img/menos.png" CssClass ="mas_menos_info" 
+                <asp:ImageButton ID="ImageButton1" runat="server" src="../../../../comun/resources/img/menos.png" CssClass ="mas_menos_info" 
                 OnClick="quitar_Click" CausesValidation="false"/>
             </asp:TableCell>                   
         </asp:TableRow>
@@ -112,7 +112,7 @@
                 </asp:ListBox>
             </asp:TableCell>    
             <asp:TableCell>
-                <asp:ImageButton ID="ImageButton2" runat="server" src="../../../comun/resources/img/agregar.png" CssClass ="mas_menos_info" 
+                <asp:ImageButton ID="ImageButton2" runat="server" src="../../../../comun/resources/img/agregar.png" CssClass ="mas_menos_info" 
                 OnClick="agregar_Click" CausesValidation="false"/>
             </asp:TableCell>                       
         </asp:TableRow>

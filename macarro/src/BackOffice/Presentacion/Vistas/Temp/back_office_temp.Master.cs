@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 
-namespace back_office.Interfaz.temp
+namespace BackOffice.Presentacion.Vistas.Temp
 {
     public partial class back_office_temp : System.Web.UI.MasterPage
     {
@@ -67,7 +67,7 @@ namespace back_office.Interfaz.temp
         protected void Cerrar_Sesion(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("/Presentacion/Vistas/Web/IngresoRecuperacionClave/web_01_inicioSesionA.aspx");
+            Response.Redirect("../Web/IngresoRecuperacionClave/web_01_inicioSesionA.aspx");
         }
 
 

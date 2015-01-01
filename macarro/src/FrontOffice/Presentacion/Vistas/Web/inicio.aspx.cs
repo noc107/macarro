@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace front_office.view.web
+namespace FrontOffice.Presentacion.Vistas.Web
 {
     public partial class home : System.Web.UI.Page
     {
@@ -16,7 +16,7 @@ namespace front_office.view.web
 
             //if (Session["correo"] == null)
             //{
-            //    Response.Redirect("/Interfaz/web/inicio_no_logeado.aspx");
+            //    Response.Redirect("inicio_no_logeado.aspx");
             //}
 
         }

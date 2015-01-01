@@ -4,11 +4,50 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Contratos.UsuariosInternos;
+using BackOffice.Presentacion.Presentadores.UsuariosInternos;
 
 namespace BackOffice.Presentacion.Vistas.Web.UsuariosInternos
 {
-    public partial class web_09_asignarRoles : System.Web.UI.Page
+    public partial class web_09_asignarRoles : System.Web.UI.Page, IContrato_09_AsignarRolUsuario
     {
+        private Presentador_09_asignarRolUsuario _presentador;
+
+         public web_09_asignarRoles() 
+        {
+            _presentador = new Presentador_09_asignarRolUsuario(this);
+        }
+
+        # region Implementación get y set de los atributos del contrato Asignar Rol Usuario
+        
+        public Label LabelMensajeExito
+        {
+            get { return _mensajeExito; }
+            set { _mensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return _mensajeError; }
+            set { _mensajeError = value; }
+        }
+
+        ListBox IContrato_09_AsignarRolUsuario.RolAsignado 
+        {
+            get { return listboxListaAsignado; }
+            set { listboxListaAsignado = value; }           
+        }
+
+        ListBox IContrato_09_AsignarRolUsuario.RolDisponible
+        {
+            get { return listboxListaSinAsignar; }
+            set { listboxListaSinAsignar = value; }
+        }
+
+        #endregion
+
+
+        #region Código Anterior Usuarios Internos
         string _correoS = string.Empty;
         string _docIdentidadS = string.Empty;
         string _primerNombreS = string.Empty;
@@ -35,6 +74,7 @@ namespace BackOffice.Presentacion.Vistas.Web.UsuariosInternos
             //}
             //else
             //    Server.Transfer("../IngresoRecuperacionClave/web_01_inicioSesionA.aspx", false);
+            _presentador.PageLoad(); 
         }
 
         private void VariableSesion()
@@ -168,5 +208,6 @@ namespace BackOffice.Presentacion.Vistas.Web.UsuariosInternos
         //        _logicaUsuarioInternos.EliminarEmpleadoNuevo(_idEmpleado);
         //    Response.Redirect("web_09_gestionUsuario.aspx");
         }
+        #endregion
     }
 }

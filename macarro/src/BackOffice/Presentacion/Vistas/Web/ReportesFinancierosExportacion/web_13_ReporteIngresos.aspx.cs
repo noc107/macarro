@@ -8,16 +8,26 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Contratos.ReportesFinancierosExportacion;
+using BackOffice.Presentacion.Presentadores.ReportesFinancierosExportacion;
+
 
 namespace BackOffice.Presentacion.Vistas.Web.ReportesFinancierosExportacion
 {
 
-	public partial class web_13_ReporteIngresos : System.Web.UI.Page
+	public partial class web_13_ReporteIngresos : System.Web.UI.Page, IContrato_13_ReporteIngresos
 	{
 		DataTable _dataTable1 = new DataTable ();
 		DataTable _dataTable2 = new DataTable ();
 		DataTable _dataTable3 = new DataTable ();
 		DataTable _dataTable4 = new DataTable ();
+
+        private Presentador_13_ReporteIngresos _presentador;
+
+        public web_13_ReporteIngresos()
+        {
+            _presentador = new Presentador_13_ReporteIngresos(this);
+        }
 
 		/// <summary>
 		/// El metodo Page_Load se encarga de manejar 
@@ -50,6 +60,28 @@ namespace BackOffice.Presentacion.Vistas.Web.ReportesFinancierosExportacion
             //ResumenValidaciones.Style.Add ( "font-size", "large" );
 
 		}
+
+        TextBox IContrato_13_ReporteIngresos.inputFechaInicio
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        TextBox IContrato_13_ReporteIngresos.inputFechaFin
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get { return _mensajeExito; }
+            set { _mensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return _mensajeError; }
+            set { _mensajeError = value; }
+        }
 
 
 		/// <summary>
@@ -252,5 +284,6 @@ namespace BackOffice.Presentacion.Vistas.Web.ReportesFinancierosExportacion
         //        MensajeError.Visible = true;
         //    }
         //}
-	}
+
+    }
 }

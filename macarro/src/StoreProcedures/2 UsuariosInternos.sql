@@ -1,4 +1,4 @@
-﻿/*--------------------------------------------------------------------------------------- 
+/*--------------------------------------------------------------------------------------- 
                                         MODULO USUARIOS INTERNOS
 -----------------------------------------------------------------------------------------*/ 
 
@@ -10,6 +10,38 @@ go
 begin transaction;
 go
 /*---------------------------------------------------------------------*/
+
+
+/*---------------------------------------------------------------------*/
+
+/*
+DROP PROCEDURE Procedure_verificarCorreo;
+DROP PROCEDURE Procedure_verificarDocIdentidad;
+DROP PROCEDURE Procedure_eliminarEmpleadoNuevo;
+DROP PROCEDURE Procedure_agregarEmpleadoInterfaz;
+DROP PROCEDURE Procedure_modificarUsuario;
+DROP PROCEDURE Procedure_agregarLugar;
+DROP PROCEDURE Procedure_agregarEmpleado;
+DROP PROCEDURE Procedure_modificarEstadoUsuario;
+DROP PROCEDURE Procedure_llenarCBPais;
+DROP PROCEDURE Procedure_llenarCBEstado;
+DROP PROCEDURE Procedure_llenarCBCiudad;
+DROP PROCEDURE Procedure_agregarRolesUsuario;
+DROP PROCEDURE Procedure_eliminarRolesUsuario;
+DROP PROCEDURE Procedure_obtenerRolesSinAsignar;
+DROP PROCEDURE Procedure_consultarTodosEmpleados;
+DROP PROCEDURE Procedure_consultarEmpleadoUnico;
+DROP PROCEDURE Procedure_consultarEmpleado;
+DROP PROCEDURE Procedure_consultarRolesEmpleado;
+DROP PROCEDURE Procedure_obtenerRolesUsuario;
+DROP PROCEDURE Procedure_consultarDireccionCompleta;
+*/
+
+/*---------------------------------------------------------------------*/
+
+
+
+
 CREATE PROCEDURE Procedure_verificarCorreo
 		@correo	[nvarchar](100)  
 AS 
@@ -28,7 +60,6 @@ END;
 
 go
 
-
 /*---------------------------------------------------------------------*/
 CREATE PROCEDURE Procedure_eliminarEmpleadoNuevo
 @correo varchar (100)
@@ -46,7 +77,8 @@ go
 
 /*---------------------------------------------------------------------*/
 
-/*CREATE PROCEDURE Procedure_agregarEmpleadoInterfaz
+
+CREATE PROCEDURE Procedure_agregarEmpleadoInterfaz
 @docIdentidad [varchar] (100),
 @tipoDocIdentidad [varchar] (100),
 @primerNombre [varchar] (100),
@@ -54,6 +86,7 @@ go
 @primerApellido [varchar] (100),
 @segundoApellido [varchar] (100),
 @fechaNacimiento [varchar] (100),
+@telefono [varchar] (100), 
 
 @idCiudad [int],
 @nombreLugar [varchar] (100),
@@ -66,8 +99,8 @@ go
 @fechaEgreso [varchar] (100)
 
 AS
-DECLARE 
-@idMaxLugar int = 0
+DECLARE @idMaxLugar int = 0
+DECLARE @idPersona int = 0 
 BEGIN
     select @idMaxLugar = Max(LUG_id) from lugar;
 
@@ -75,18 +108,35 @@ BEGIN
 
     INSERT INTO lugar VALUES (@idMaxLugar,@nombreLugar,'Direccion',@idCiudad);
 
-	INSERT INTO [dbo].[PERSONA] (PER_docIdentidad,PER_tipoDocIdentidad,PER_primerNombre,
-PER_segundoNombre,PER_primerApellido,PER_segundoApellido,PER_fechaNacimiento,FK_lugar) VALUES
-(@docIdentidad,@tipoDocIdentidad,@primerNombre,@segundoNombre,@primerApellido,@segundoApellido,Convert(varchar(100),@fechaNacimiento,110),@idMaxLugar)
-
-	INSERT INTO [dbo].[USUARIO] (USU_correo,USU_contrasena,USU_tipo,USU_estado,USU_fechaIngreso,USU_fechaEgreso,FK_persona) 
-	VALUES (@correo,@contrasena,@tipo,@estatus,Convert(varchar(100),@fechaIngreso,110),Convert(varchar(100),@fechaEgreso,110),@docIdentidad)
+	set @idPersona = NEXT VALUE FOR PERSONA_SEQ; 
+	
+	IF (@tipoDocIdentidad='Cedula')
+		BEGIN
+			INSERT INTO PERSONA (PER_id,PER_docIdentidad,PER_primerNombre,
+			PER_segundoNombre,PER_primerApellido,PER_segundoApellido,PER_fechaNacimiento,PER_telefono,FK_estadoTipoDoc,FK_lugar) VALUES
+			(@idPersona,@docIdentidad ,@primerNombre,@segundoNombre,@primerApellido,@segundoApellido,@fechaNacimiento,@telefono,5,@idMaxLugar);
+        END 
+	ELSE 
+		BEGIN
+			INSERT INTO PERSONA (PER_id,PER_docIdentidad,PER_primerNombre,
+			PER_segundoNombre,PER_primerApellido,PER_segundoApellido,PER_fechaNacimiento,PER_telefono,FK_estadoTipoDoc,FK_lugar) VALUES
+			(@idPersona,@docIdentidad ,@primerNombre,@segundoNombre,@primerApellido,@segundoApellido,@fechaNacimiento,@telefono,6,@idMaxLugar);
+		END
+	
+	IF (@tipo = 'Empleado')
+		BEGIN
+			INSERT INTO USUARIO (USU_id,USU_correo,USU_contrasena,USU_fechaIngreso,USU_fechaEgreso,CLI_preguntaSeguridad,CLI_respuestaSeguridad,FK_estadoTipo,FK_estado,FK_persona) 
+			VALUES (NEXT VALUE FOR USUARIO_SEQ,@correo,@contrasena,@fechaIngreso,@fechaEgreso,null,null,4,1,@idPersona);
+		END
+	
+		
+	
 END;
+go
 
-go*/
 
-/*---------------------------------------------------------------------*/
-/*CREATE PROCEDURE Procedure_modificarUsuario
+--------------------------------------------------------------------------------------------------------*/
+ CREATE PROCEDURE Procedure_modificarUsuario
 
 @docIdentidad [varchar] (100),
 @primerNombre [varchar] (100),
@@ -94,18 +144,21 @@ go*/
 @primerApellido [varchar] (100),
 @segundoApellido [varchar] (100),
 @fechaNacimiento [varchar] (100),
-
+@telefono        [varchar] (100),
+@tipoDocIdentidad [varchar] (100),
+@tipo [varchar] (100),  
 @idCiudad [int],
 @correo [varchar] (100),
 @contrasena [varchar] (100),
 @estatus [varchar] (100),
 @fechaEgreso [varchar] (100),
-@nombreLugar [nvarchar](100)
+@nombreLugar [varchar](100)
 
 as
-Declare
-@idLugarDireccion [int] = 0,
-@idMaxLugar [int] = 0
+
+Declare @idLugarDireccion [int] = 0
+DECLARE @idMaxLugar [int] = 0
+DECLARE @idPersona [int] = 0
 begin
 
 	select @idLugarDireccion = LUG_id from lugar where LUG_nombre = @nombreLugar and LUG_tipo = 'Direccion' and FK_lugar = @idCiudad;
@@ -120,32 +173,78 @@ begin
 
 			set @idLugarDireccion = @idMaxLugar;
 		end
+	
+	SELECT @idPersona=PER_id FROM PERSONA WHERE PER_docIdentidad  = @docIdentidad; 
+	
+	
+    IF (@tipoDocIdentidad='Cedula')   
+		BEGIN 
+			UPDATE PERSONA
+				SET 
+				   PER_primerNombre      = @primerNombre,
+				   PER_segundoNombre     = @segundoNombre,
+				   PER_primerApellido    = @primerApellido,   
+				   PER_segundoApellido   = @segundoApellido,
+				   PER_fechaNacimiento   = Convert(varchar(100),@fechaNacimiento,110),
+				   PER_telefono          = @telefono,
+				   FK_estadoTipoDoc      = 5,
+				   FK_lugar				 = @idLugarDireccion
+				WHERE 
+				   PER_docIdentidad      = @docIdentidad;
+       	END 
+		
+	ELSE	
+		BEGIN
+			UPDATE PERSONA
+				SET 
+				   PER_primerNombre      = @primerNombre,
+				   PER_segundoNombre     = @segundoNombre,
+				   PER_primerApellido    = @primerApellido,   
+				   PER_segundoApellido   = @segundoApellido,
+				   PER_fechaNacimiento   = Convert(varchar(100),@fechaNacimiento,110),
+				   PER_telefono          = @telefono,
+				   FK_estadoTipoDoc      = 6,
+				   FK_lugar				 = @idLugarDireccion
+				WHERE 
+				   PER_docIdentidad      = @docIdentidad;
+		END 
+    
+    IF (@tipo='Empleado') AND (@estatus = 'Activado')
+		BEGIN
+			UPDATE USUARIO
+			SET 
+			   USU_contrasena      	 = @contrasena,
+			   FK_estadoTipo         = 4,
+			   FK_estado     		 = 1,
+			   USU_fechaEgreso  	 = Convert(varchar(100),@fechaEgreso,110)   
 
+			WHERE 
+					USU_correo      	  = @correo 
+			   AND  FK_persona            = @idPersona; 
+		END
+		
+	IF (@tipo='Empleado') AND (@estatus = 'Desactivado')
+		BEGIN
+			UPDATE USUARIO
+			SET 
+			   USU_contrasena      	 = @contrasena,
+			   FK_estadoTipo         = 4,
+			   FK_estado     		 = 2,
+			   USU_fechaEgreso  	 = Convert(varchar(100),@fechaEgreso,110)   
 
-UPDATE PERSONA
-	SET 
-	   PER_primerNombre      = @primerNombre,
-	   PER_segundoNombre     = @segundoNombre,
-	   PER_primerApellido    = @primerApellido,   
-	   PER_segundoApellido   = @segundoApellido,
-	   PER_fechaNacimiento   = Convert(varchar(100),@fechaNacimiento,110),
-	   FK_lugar				 = @idLugarDireccion
-	WHERE 
-	   PER_docIdentidad      = @docIdentidad; 
-
-UPDATE USUARIO
-	SET 
-	   USU_contrasena      	 = @contrasena,
-	   USU_estado     		 = @estatus,
-	   USU_fechaEgreso  	 = Convert(varchar(100),@fechaEgreso,110)   
-
-	WHERE 
-	   USU_correo      		 = @correo; 
-
+			WHERE 
+					USU_correo      	  = @correo 
+			   AND  FK_persona            = @idPersona;
+		END
+		
+    
+ 
 end;
 
-go*/
-/*---------------------------------------------------------------------*/
+
+go 
+
+-----------------------------------------------------------------------------------------------------------------------------------
 CREATE PROCEDURE Procedure_agregarLugar
 	@idLugar [int],
 	@nombreLugar [nvarchar](100),
@@ -159,7 +258,8 @@ END;
 
 go 
 /*---------------------------------------------------------------------*/
-/*CREATE PROCEDURE Procedure_agregarEmpleado
+
+CREATE PROCEDURE Procedure_agregarEmpleado
 @docIdentidad [varchar] (100),
 @tipoDocIdentidad [varchar] (100),
 @primerNombre [varchar] (100),
@@ -167,99 +267,91 @@ go
 @primerApellido [varchar] (100),
 @segundoApellido [varchar] (100),
 @fechaNacimiento [varchar] (100),
+@telefono [varchar] (100), 
+
 @fkLugar [int],
+
 
 @correo [varchar] (100),
 @contrasena [varchar] (100),
 @tipo [varchar] (100), 
-@estatus [varchar] (100),
+
 @fechaIngreso [varchar] (100),
-@fechaEgreso [varchar] (100),
-@fkPersona [varchar] (100)
+@fechaEgreso [varchar] (100)
 
 AS
+
+DECLARE @idPersona int = 0 
 BEGIN
-	INSERT INTO [dbo].[PERSONA] (PER_docIdentidad,PER_tipoDocIdentidad,PER_primerNombre,
-PER_segundoNombre,PER_primerApellido,PER_segundoApellido,PER_fechaNacimiento,FK_lugar) VALUES
-(@docIdentidad,@tipoDocIdentidad,@primerNombre,@segundoNombre,@primerApellido,@segundoApellido,Convert(varchar(100),@fechaNacimiento,110),@fkLugar)
+    
 
-	INSERT INTO [dbo].[USUARIO] (USU_correo,USU_contrasena,USU_tipo,USU_estado,USU_fechaIngreso,USU_fechaEgreso,FK_persona) 
-	VALUES (@correo,@contrasena,@tipo,@estatus,Convert(varchar(100),@fechaIngreso,110),Convert(varchar(100),@fechaEgreso,110),@fkPersona)
+	set @idPersona = NEXT VALUE FOR PERSONA_SEQ; 
+	
+	IF (@tipoDocIdentidad='Cedula')
+		BEGIN
+			INSERT INTO PERSONA (PER_id,PER_docIdentidad,PER_primerNombre,
+			PER_segundoNombre,PER_primerApellido,PER_segundoApellido,PER_fechaNacimiento,PER_telefono,FK_estadoTipoDoc,FK_lugar) VALUES
+			(@idPersona,@docIdentidad ,@primerNombre,@segundoNombre,@primerApellido,@segundoApellido,@fechaNacimiento,@telefono,5,@fkLugar);
+        END 
+	ELSE 
+		BEGIN
+			INSERT INTO PERSONA (PER_id,PER_docIdentidad,PER_primerNombre,
+			PER_segundoNombre,PER_primerApellido,PER_segundoApellido,PER_fechaNacimiento,PER_telefono,FK_estadoTipoDoc,FK_lugar) VALUES
+			(@idPersona,@docIdentidad ,@primerNombre,@segundoNombre,@primerApellido,@segundoApellido,@fechaNacimiento,@telefono,6,@fkLugar);
+		END
+	
+	IF (@tipo = 'Empleado')
+		BEGIN
+			INSERT INTO USUARIO (USU_id,USU_correo,USU_contrasena,USU_fechaIngreso,USU_fechaEgreso,CLI_preguntaSeguridad,CLI_respuestaSeguridad,FK_estadoTipo,FK_estado,FK_persona) 
+			VALUES (NEXT VALUE FOR USUARIO_SEQ,@correo,@contrasena,@fechaIngreso,@fechaEgreso,null,null,4,1,@idPersona);
+		END
+	
+		
+	
 END;
-
-go*/
-
-/*---------------------------------------------------------------------*/
-/*CREATE PROCEDURE Procedure_consultarEmpleado 
-(
-    @busqueda varchar (50),
-	@estatus varchar (20)
-)           
-AS 
-SELECT DISTINCT (PER_docIdentidad), PER_tipoDocIdentidad, PER_primerNombre, PER_segundoNombre, PER_primerApellido,
-PER_segundoApellido, PER_fechaNacimiento,USU_correo, USU_estado, USU_fechaIngreso, USU_fechaEgreso
-FROM PERSONA as P, LUGAR as L, USUARIO as U
-WHERE (PER_primerNombre LIKE concat(@busqueda,'%') OR PER_primerApellido LIKE concat(@busqueda,'%') OR USU_estado = @estatus 
-OR CONCAT(PER_primerNombre,CONCAT(' ',PER_primerApellido)) LIKE concat(@busqueda,'%')) 
-AND USU_tipo = 'Empleado' AND U.FK_persona = P.PER_docIdentidad;
-
-go*/
-
-/*---------------------------------------------------------------------*/
-/*CREATE PROCEDURE Procedure_consultarTodosEmpleados
-AS 
-SELECT DISTINCT(PER_docIdentidad), PER_tipoDocIdentidad, PER_primerNombre, PER_segundoNombre, PER_primerApellido,
-PER_segundoApellido, PER_fechaNacimiento,USU_correo, USU_estado, USU_fechaIngreso, USU_fechaEgreso
-FROM PERSONA as P, LUGAR as L, USUARIO as U
-WHERE USU_tipo = 'Empleado' AND U.FK_persona = P.PER_docIdentidad;
-
-go*/
-/*---------------------------------------------------------------------*/
-CREATE PROCEDURE Procedure_consultarRolesEmpleado
-(
-	@usuario varchar (50)
-)
-AS
-SELECT ROL_nombre
-FROM USUARIO_ROL AS UR, ROL AS R, USUARIO as U
-WHERE R.ROL_id = UR.FK_rol AND U.USU_correo = @usuario;
-
 go
+
 /*---------------------------------------------------------------------*/
-CREATE PROCEDURE Procedure_consultarDireccionCompleta
-(@idDireccion  [int])
-AS
-BEGIN
-
-
-       SELECT C.LUG_id FROM LUGAR C, LUGAR D WHERE C.LUG_id = D.FK_lugar and D.LUG_id = @idDireccion and C.LUG_tipo ='Ciudad'
-       union
-	   SELECT E.LUG_id FROM LUGAR E, LUGAR C WHERE E.LUG_id = C.FK_lugar and C.LUG_id = 
-       (SELECT C.LUG_id FROM LUGAR C, LUGAR D WHERE C.LUG_id = D.FK_lugar and D.LUG_id = @idDireccion) and E.LUG_tipo = 'Estado'
-       union
-       SELECT P.LUG_id FROM LUGAR P, LUGAR E WHERE P.LUG_id = E.FK_lugar and E.LUG_id =
-       (SELECT E.LUG_id FROM LUGAR E, LUGAR C WHERE E.LUG_id = C.FK_lugar and C.LUG_id = 
-       (SELECT C.LUG_id FROM LUGAR C, LUGAR D WHERE C.LUG_id = D.FK_lugar and D.LUG_id = @idDireccion)) and P.LUG_tipo = 'País'
-
-END;
-
-go
-/*---------------------------------------------------------------------*/
-/*CREATE PROCEDURE procedure_modificarEstadoUsuario
+ CREATE PROCEDURE Procedure_modificarEstadoUsuario
 (@docIdentidad [varchar] (100))
 AS
+DECLARE @idPersona int = 0
+DECLARE @estadoActual int = 0
 BEGIN
-Update USUARIO set USU_estado = 'Desactivado' WHERE FK_persona = @docIdentidad;
-END;
-go*/
 
-/*---------------------------------------------------------------------*/
+	SELECT @idPersona = PER_id 
+	FROM   PERSONA 
+	WHERE  PER_docIdentidad=@docIdentidad; 
+	
+	SELECT @estadoActual = u.FK_estado    
+	FROM   PERSONA as p, USUARIO as u 
+	WHERE  u.FK_persona=p.PER_id and				
+		   p.PER_docIdentidad=@docIdentidad; 
+	
+	IF (@estadoActual=1)
+		BEGIN
+			Update USUARIO 
+					set FK_estado = 2,
+						USU_fechaEgreso = SYSDATETIME()
+								
+					WHERE FK_persona = @idPersona;
+		END
+	ELSE
+		BEGIN
+			Update USUARIO 
+					set FK_estado = 1,
+					USU_fechaEgreso = null			
+					WHERE FK_persona = @idPersona;
+		END
+END;
+go
+
 CREATE PROCEDURE Procedure_llenarCBPais
 AS
 BEGIN
 	   SELECT LUG_id, LUG_nombre
 	   FROM LUGAR
-	   WHERE LUG_tipo = 'País';
+	   WHERE LUG_tipo = 'Pa�s';
 END;
 
 go
@@ -288,28 +380,6 @@ END;
 go
 
 /*---------------------------------------------------------------------*/
-CREATE PROCEDURE Procedure_obtenerDireccion
-(@idDireccion  [int])
-AS
-BEGIN
-	   SELECT D.LUG_nombre 
-	   FROM LUGAR D
-	   WHERE D.LUG_tipo = 'Direccion' and D.LUG_id = @idDireccion;
-END;
-
-go 
-/*---------------------------------------------------------------------*/
-CREATE PROCEDURE Procedure_obtenerRolesUsuario
-(@correo [varchar] (100))
-AS
-BEGIN
-		SELECT R.ROL_id, R.ROL_nombre
-		FROM USUARIO_ROL UR, ROL R
-		WHERE UR.FK_rol = R.ROL_id and UR.FK_usuario = @correo
-END;
-
-go
-/*---------------------------------------------------------------------*/
 
 CREATE PROCEDURE Procedure_agregarRolesUsuario
 (@correo [varchar] (100),
@@ -334,6 +404,7 @@ BEGIN
 END;
 
 go
+
 /*---------------------------------------------------------------------*/
 CREATE PROCEDURE Procedure_eliminarRolesUsuario
 (@correo [varchar] (100),
@@ -366,33 +437,152 @@ BEGIN
 END;
 
 go
+
 /*---------------------------------------------------------------------*/
-CREATE PROCEDURE Procedure_consultarDireccionConcatenada
-(@idDireccion  [int])
+CREATE PROCEDURE Procedure_consultarTodosEmpleados
+AS 
+SELECT	P.PER_id as Idpersona,
+		E.EST_nombre as NombreDoc,
+		P.PER_docIdentidad as DocIdentidad,
+		P.PER_primerNombre as Pnombre,
+		P.PER_segundoNombre as Snombre,
+		P.PER_primerApellido as Papellido,
+		P.PER_segundoApellido as Sapellido,
+		P.PER_fechaNacimiento as Fnacimiento,
+		P.PER_telefono as Telf,
+		U.USU_correo as Correo, 
+		U.USU_fechaIngreso as Fingreso,
+		U.USU_fechaEgreso as Fegreso,
+		(L4.LUG_tipo +': '+ L4.LUG_nombre + ', ' + L3.LUG_tipo +': '+L3.LUG_nombre + ', ' +L2.LUG_tipo+': '+ L2.LUG_nombre + ', '+L1.LUG_tipo+':'+ L1.LUG_nombre) as Direccion 
+FROM	PERSONA as P,
+		USUARIO as U, 
+		ESTADO as E, 
+		LUGAR as L4, 
+		LUGAR as L3, 
+		LUGAR as L2, 
+		LUGAR as L1
+WHERE	U.FK_estadoTipo=4  AND 
+		P.PER_id=U.FK_persona AND
+		P.FK_estadoTipoDoc=E.EST_id AND 
+		L4.LUG_id=P.FK_lugar AND 
+		L3.LUG_id=L4.FK_lugar AND 
+		L2.LUG_id=L3.FK_lugar AND 
+		L1.LUG_id=L2.FK_lugar;
+go
+/*---------------------------------------------------------------------*/
+
+CREATE PROCEDURE Procedure_consultarEmpleadoUnico 
+(
+    @idPer int
+)           
+AS
+SELECT	P.PER_id as Idpersona,
+		E.EST_nombre as NombreDoc,
+		P.PER_docIdentidad as DocIdentidad,
+		P.PER_primerNombre as Pnombre,
+		P.PER_segundoNombre as Snombre,
+		P.PER_primerApellido as Papellido,
+		P.PER_segundoApellido as Sapellido,
+		P.PER_fechaNacimiento as Fnacimiento,
+		P.PER_telefono as Telf,
+		U.USU_correo as Correo, 
+		U.USU_fechaIngreso as Fingreso,
+		U.USU_fechaEgreso as Fegreso,
+		(L4.LUG_tipo +': '+ L4.LUG_nombre + ', ' + L3.LUG_tipo +': '+L3.LUG_nombre + ', ' +L2.LUG_tipo+': '+ L2.LUG_nombre + ', '+L1.LUG_tipo+':'+ L1.LUG_nombre) as Direccion 
+FROM	PERSONA as P,
+		USUARIO as U, 
+		ESTADO as E, 
+		LUGAR as L4, 
+		LUGAR as L3, 
+		LUGAR as L2, 
+		LUGAR as L1
+WHERE	U.FK_estadoTipo=4  AND 
+		P.PER_id=U.FK_persona AND
+		P.FK_estadoTipoDoc=E.EST_id AND 
+		L4.LUG_id=P.FK_lugar AND 
+		L3.LUG_id=L4.FK_lugar AND 
+		L2.LUG_id=L3.FK_lugar AND 
+		L1.LUG_id=L2.FK_lugar AND
+		P.PER_id=@idPer
+
+Go
+
+
+/*--------------------------------------------------------------*/
+CREATE PROCEDURE Procedure_consultarEmpleado 
+(
+    @busqueda varchar (100)
+)           
+AS
+SELECT	DISTINCT (P.PER_id) as Idpersona,
+		P.PER_docIdentidad as DocIdentidad,
+		P.PER_primerNombre as Pnombre,
+		P.PER_segundoNombre as Snombre,
+		P.PER_primerApellido as Papellido,
+		P.PER_segundoApellido as Sapellido
+FROM	PERSONA as P,
+		USUARIO as U 
+		
+WHERE	U.FK_estadoTipo=4  AND 
+        U.FK_estado = 1    AND 
+		P.PER_id=U.FK_persona AND
+		( UPPER(P.PER_primerNombre) LIKE UPPER(@busqueda) + '%') OR
+		( UPPER(P.PER_primerApellido) LIKE UPPER(@busqueda) + '%')
+ORDER BY P.PER_primerApellido;
+		
+
+Go
+
+
+
+/*--------------------------------------------------------------*/
+
+CREATE PROCEDURE Procedure_consultarRolesEmpleado
+(@Idper [int])
+AS
+SELECT	R.ROL_nombre as NombreRol
+FROM    USUARIO_ROL US,
+        ROL R,
+	USUARIO U
+
+WHERE   R.ROL_id=US.FK_rol AND
+	U.FK_estadoTipo=4 AND
+        US.FK_usuario=U.USU_id AND
+	U.USU_id=@Idper;
+
+go
+
+/*---------------------------------------------------------------------*/
+CREATE PROCEDURE Procedure_obtenerRolesUsuario
+(@IdPer [int])
 AS
 BEGIN
-	   SELECT P.LUG_nombre + ' - ' +  E.LUG_nombre + ' - ' + C.LUG_nombre + ' - ' + D.LUG_nombre  as Direccion 
-	   FROM LUGAR P, LUGAR E, LUGAR C, LUGAR D
-	   WHERE D.FK_lugar = C.LUG_id and D.LUG_id = @idDireccion and C.FK_lugar = E.LUG_id and E.FK_lugar = P.LUG_id 
+    SELECT  R.ROL_nombre
+    FROM    USUARIO_ROL US,
+            ROL R
+    WHERE   R.ROL_id=US.FK_rol AND
+            US.FK_usuario=@IdPer
 END;
 
 go
 
 /*---------------------------------------------------------------------*/
-/*CREATE PROCEDURE Procedure_consultarEmpleadoUnico 
-(
-    @docIdentidad varchar (50)
-)           
-AS 
-SELECT DISTINCT (PER_docIdentidad), PER_tipoDocIdentidad, PER_primerNombre, PER_segundoNombre, PER_primerApellido,
-PER_segundoApellido, PER_fechaNacimiento,P.FK_lugar,USU_correo, USU_estado, USU_fechaIngreso, USU_fechaEgreso, USU_tipo, U.FK_persona
-FROM PERSONA as P, LUGAR as L, USUARIO as U
-WHERE PER_docIdentidad = @docIdentidad AND USU_tipo = 'Empleado' AND U.FK_persona = P.PER_docIdentidad;
-
-Go*/
-
-
-
+CREATE PROCEDURE Procedure_consultarDireccionCompleta
+(@idDireccion  [int]) 
+AS
+SELECT	
+		(L4.LUG_tipo +': '+ L4.LUG_nombre + ', ' + L3.LUG_tipo +': '+L3.LUG_nombre + ', ' +L2.LUG_tipo+': '+ L2.LUG_nombre + ', '+L1.LUG_tipo+':'+ L1.LUG_nombre) as Direccion 
+FROM	 
+		LUGAR as L4, 
+		LUGAR as L3, 
+		LUGAR as L2, 
+		LUGAR as L1
+WHERE	 
+		L4.LUG_id=@idDireccion AND 
+		L3.LUG_id=L4.FK_lugar AND 
+		L2.LUG_id=L3.FK_lugar AND 
+		L1.LUG_id=L2.FK_lugar;
+go
 ----------------------------------------------------------------------------------------				
 ----------------------------EXECUTE DE LUGAR-DIRECCIONES DE PROVEEDOR-------------------
 
@@ -435,7 +625,7 @@ Go*/
 
 
 
-INSERT INTO LUGAR VALUES (18,'Estados Unidos','País',null);
+INSERT INTO LUGAR VALUES (18,'Estados Unidos','Pa�s',null);
 go
 INSERT INTO LUGAR VALUES (19,'Florida','Estado',18);
 go
@@ -476,19 +666,21 @@ go
 INSERT INTO PERSONA VALUES (NEXT VALUE FOR PERSONA_SEQ,'13141516','Gabriel',null,'Gonzales','Contreras','08/28/1991','0412-1864132',5,29);
 
 
-
+/*
+-----------------  Todas las contrasenas son Admin123 -----------------------
+*/
 go
-INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'amandaRodriguez@gmail.com','Amanda123','01/01/2014',null,null,null,4,1,7);
+INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'amandaRodriguez@gmail.com','e64b78fc3bc91bcbc7dc232ba8ec59e0','01/01/2014',null,null,null,4,1,7);
 go
-INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'alejandroVieira@gmail.com','Alejo123','01/01/2014',null,null,null,4,1,8);
+INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'alejandroVieira@gmail.com','e64b78fc3bc91bcbc7dc232ba8ec59e0','01/01/2014',null,null,null,4,1,8);
 go
-INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'vanessaMartinez@gmail.com','Vann123','01/01/2014',null,null,null,4,1,9);
+INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'vanessaMartinez@gmail.com','e64b78fc3bc91bcbc7dc232ba8ec59e0','01/01/2014',null,null,null,4,1,9);
 go
-INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'pabloWestphal@gmail.com','Pablo123','01/01/2014',null,null,null,4,1,10);
+INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'pabloWestphal@gmail.com','e64b78fc3bc91bcbc7dc232ba8ec59e0','01/01/2014',null,null,null,4,1,10);
 go
-INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'andreaPaola@gmail.com','Andre123','01/01/2014',null,null,null,4,1,11);
+INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'andreaPaola@gmail.com','e64b78fc3bc91bcbc7dc232ba8ec59e0','01/01/2014',null,null,null,4,1,11);
 go
-INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'gabrielGonzales@gmail.com','Gabo123','01/01/2014',null,null,null,4,1,12);
+INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'gabrielGonzales@gmail.com','e64b78fc3bc91bcbc7dc232ba8ec59e0','01/01/2014',null,null,null,4,1,12);
 
 
 commit transaction;

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="log_in.Master.cs" Inherits="back_office.Interfaz.temp.Log_In" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="log_in.Master.cs" Inherits="BackOffice.Presentacion.Vistas.Temp.log_in" %>
 
 <!DOCTYPE html>
 
@@ -14,21 +14,21 @@
 
         </title>
 
-        <link href="/comun/resources/css/standards.css" rel="stylesheet" />
-        <link href="/comun/resources/css/log_in.css" rel="stylesheet" />
+        <link href="../../../comun/resources/css/standards.css" rel="stylesheet" />
+        <link href="../../../comun/resources/css/log_in.css" rel="stylesheet" />
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'/>
 
         <asp:ContentPlaceHolder ID="css_place_holder" runat="server">
 
         </asp:ContentPlaceHolder>
 
-        <script src="/comun/resources/js/jquery-1.11.1.js"></script>
+        <script src="../../../comun/resources/js/jquery-1.11.1.js"></script>
 
         <asp:ContentPlaceHolder ID="libs_place_holder" runat="server">
 
         </asp:ContentPlaceHolder>
 
-        <script src="/comun/resources/js/menu_manager.js"></script>
+        <script src="../../../comun/resources/js/menu_manager.js"></script>
 
         <asp:ContentPlaceHolder ID="js_place_holder" runat="server">
 
@@ -41,7 +41,7 @@
         
         <div class="content">
             <header class="login_header">
-                <img class="logo" src="/comun/resources/img/logo-macarro.png"/>
+                <img class="logo" src="../../../comun/resources/img/logo-macarro.png"/>
             </header>
             <div class="title">
                 <h1>Iniciar Sesión</h1>

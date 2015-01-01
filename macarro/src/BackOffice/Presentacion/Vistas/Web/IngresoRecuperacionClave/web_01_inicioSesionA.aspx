@@ -41,7 +41,7 @@
 </table>
 
 <div style="text-align:center"> 
-  <p>  <asp:Button CssClass="Boton01" ID="Button1" runat="server" Text="Iniciar Sesi&oacute;n" OnClick="Button1_Click" /> </p>
+  <p>  <asp:Button CssClass="Boton01" ID="Boton_iniciarSesion" runat="server" Text="Iniciar Sesi&oacute;n" OnClick="Boton_IniciarSesion" /> </p>
 </div>
         <asp:ValidationSummary ID="ValidationSummary1"
                        HeaderText=""

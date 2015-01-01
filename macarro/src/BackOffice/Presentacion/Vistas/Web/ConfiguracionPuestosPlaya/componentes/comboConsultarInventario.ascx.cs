@@ -15,9 +15,9 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya.component
         }
 
         #region PROPIEDADES
-        public string TipoItem()
+        public DropDownList TipoDeItem
         {
-            return this.tipoDeItem.Text;
+            get { return tipoDeItem;}
         }
 
         #endregion

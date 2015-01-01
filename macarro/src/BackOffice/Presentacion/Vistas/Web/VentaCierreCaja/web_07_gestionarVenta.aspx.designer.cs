@@ -13,13 +13,22 @@ namespace back_office.Interfaz.web.VentaCierreCaja {
     public partial class WebForm3 {
         
         /// <summary>
-        /// Control MensajeError.
+        /// Control _mensajeExito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MensajeError;
+        protected global::System.Web.UI.WebControls.Label _mensajeExito;
+        
+        /// <summary>
+        /// Control _mensajeError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label _mensajeError;
         
         /// <summary>
         /// Control tableBuscador.

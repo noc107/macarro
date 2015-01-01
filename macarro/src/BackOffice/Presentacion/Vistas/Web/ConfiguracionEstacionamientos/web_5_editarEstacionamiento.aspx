@@ -15,8 +15,9 @@
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="middle_place_holder" runat="server">
     <h2>Modificar Estacionamiento</h2>
-        <asp:label ID="LabelMensajeExito" runat="server" CssClass="avisoMensajeBot MensajeExito Textocentrado" Visible="false">  Estacionamiento modificado con Éxito </asp:label>
-        <asp:label ID="LabelMensajeError" runat="server" CssClass="avisoMensajeBot MensajeError Textocentrado" Visible="false">  Estacionamiento no modificado </asp:label>
+
+    <asp:Label ID="_mensajeExito" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
+    <asp:Label ID="_mensajeError" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
      
         <asp:Table ID="tabla" runat="server" HorizontalAlign="Center">     
             <asp:TableRow>

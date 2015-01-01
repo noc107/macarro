@@ -6,12 +6,23 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Contratos.ReportesFinancierosExportacion;
+using BackOffice.Presentacion.Presentadores.ReportesFinancierosExportacion;
+
 
 namespace BackOffice.Presentacion.Vistas.Web.ReportesFinancierosExportacion
 {
-	public partial class web_13_ReporteProductos : System.Web.UI.Page
+	public partial class web_13_ReporteProductos : System.Web.UI.Page, IContrato_13_ReporteProductos
 	{
 		DataTable _dataTable = new DataTable ();
+
+        private Presentador_13_ReporteProductos _presentador;
+
+        public web_13_ReporteProductos()
+        {
+            _presentador = new Presentador_13_ReporteProductos(this);
+        }
+
 		/// <summary>
 		/// El metodo Page_Load se encarga de manejar 
 		/// el evento de Click en el boton BuscarBoton.
@@ -42,6 +53,17 @@ namespace BackOffice.Presentacion.Vistas.Web.ReportesFinancierosExportacion
             //ResumenValidaciones.Style.Add ( "font-size", "large" );
 		}
 
+        public Label LabelMensajeExito
+        {
+            get { return _mensajeExito; }
+            set { _mensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return _mensajeError; }
+            set { _mensajeError = value; }
+        }
 
 		/// <summary>
 		/// El metodo ExportarBoton_Click se encarga 

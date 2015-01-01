@@ -5,14 +5,23 @@ using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Contratos.ConfiguracionEstacionamiento;
+using BackOffice.Presentacion.Presentadores.ConfiguracionEstacionamiento;
 
 
 namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionEstacionamientos
 {
-    public partial class web_5_editarEstacionamiento : System.Web.UI.Page
+    public partial class web_5_editarEstacionamiento : System.Web.UI.Page, IContrato_5_editarEstacionamiento
     {
         //List<Estacionamiento> _listaEstacionamiento = new List<Estacionamiento>();
         //private String id;
+
+        private Presentador_5_editarEstacionamiento _presentador;
+
+        public web_5_editarEstacionamiento()
+        {
+            _presentador = new Presentador_5_editarEstacionamiento(this);
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -52,7 +61,50 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionEstacionamientos
             //    }
             //}
         }
-        
+
+        string IContrato_5_editarEstacionamiento.TextboxNombre
+        {
+            get { return tb_nombre.Text; }
+            set { tb_nombre.Text = value; }
+        }
+
+        string IContrato_5_editarEstacionamiento.TextboxCapacidad
+        {
+            get { return tb_Capacidad.Text; }
+            set { tb_Capacidad.Text = value; }
+        }
+
+        string IContrato_5_editarEstacionamiento.TextboxTarifa
+        {
+            get { return tb_Tarifa.Text; }
+            set { tb_Tarifa.Text = value; }
+        }
+
+        string IContrato_5_editarEstacionamiento.TextboxPerdido
+        {
+            get { return tb_tarifaTicketPerdido.Text; }
+            set { tb_tarifaTicketPerdido.Text = value; }
+        }
+
+        int IContrato_5_editarEstacionamiento.TextboxEstado
+        {
+            get { return DropDown_estatus.SelectedIndex; }
+            set { DropDown_estatus.SelectedIndex = value; }
+        }
+
+
+        public Label LabelMensajeExito
+        {
+            get { return _mensajeExito; }
+            set { _mensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return _mensajeError; }
+            set { _mensajeError = value; }
+        }
+
         protected void BotonCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("web_5_gestionarEstacionamiento.aspx");
@@ -85,6 +137,8 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionEstacionamientos
             
         //    //  Seguro que quiere?
         //    Response.Redirect("web_5_gestionarEstacionamiento.aspx");
+
+            _presentador.EventoClickBoton();
 
         }
     }

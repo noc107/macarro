@@ -13,6 +13,32 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya.component
         {
 
         }
+
+
+        #region PROPIEDADES
+
+        public TextBox Fila
+        {
+            get { return fila; }
+        }
+
+        public TextBox Columna
+        {
+            get { return columna; }
+        }
+
+        public TextBox Descripcion
+        {
+            get { return descripcion; }
+        }
+
+        public TextBox Precio
+        {
+            get { return precio; }
+        }
+
+        #endregion
+
         public string filac()
         {
 

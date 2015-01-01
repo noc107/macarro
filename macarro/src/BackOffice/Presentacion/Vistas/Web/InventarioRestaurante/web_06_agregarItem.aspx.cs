@@ -4,11 +4,110 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Presentadores.InventarioRestaurante;
+using BackOffice.Presentacion.Contratos.InventarioRestaurante;
 
 namespace BackOffice.Presentacion.Vistas.Web.InventarioRestaurante
 {
-    public partial class web_06_agregarItem : System.Web.UI.Page
+    public partial class web_06_agregarItem : System.Web.UI.Page, IContrato_06_agregarItem
     {
+        private Presentador_06_agregarItem _presentador;
+
+        public web_06_agregarItem() 
+        {
+            this._presentador = new Presentador_06_agregarItem(this);
+        }
+
+        public TextBox CantidadMinima 
+        {
+            get
+            {
+                return this.tbCantidadMinima;
+            }
+        
+        }
+
+        public TextBox TbNombre
+        {
+            get
+            {
+                return this.Nombre; 
+            }
+        }
+
+        public TextBox TbCantidad
+        {
+            get
+            {
+                return this.Cantidad;
+            }
+        }
+
+        public TextBox Descripcion
+        {
+            get
+            {
+                return this.tbDescripcion;
+            }
+        }
+
+        public TextBox Precio
+        {
+            get
+            {
+                return this.tbPrecio;
+            }
+        }
+
+        public TextBox Precio2
+        {
+            get
+            {
+                return this.tbPrecio2;
+
+            }
+        }
+
+        public DropDownList Proveedor
+        {
+            get
+            {
+                return this.Proveedores;
+            }
+
+            set
+            {
+                this.Proveedores = value;
+            }
+
+        }
+
+        public Label LabelMensajeExito
+        {
+            get
+            {
+                return this.MensajeExito;
+            }
+            set
+            {
+                this.MensajeExito = value;
+            }
+        }
+
+        public Label LabelMensajeError
+        {
+            get
+            {
+                return this.MensajeFallo;
+            }
+            set
+            {
+                this.MensajeFallo = value;
+            }
+        }
+            
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //ProcedimientosItem _procedimiento = new ProcedimientosItem();
@@ -93,6 +192,48 @@ namespace BackOffice.Presentacion.Vistas.Web.InventarioRestaurante
         //    }
         }
 
-        
+
+
+        public TextBox cantidadMinima
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public TextBox nombre
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public TextBox cantidad
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public TextBox descripcion
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public TextBox precioVenta
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public TextBox precioCompra
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public DropDownList proveedor
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

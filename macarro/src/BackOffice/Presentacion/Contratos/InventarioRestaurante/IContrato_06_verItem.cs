@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace BackOffice.Presentacion.Contratos.InventarioRestaurante
 {
-    interface IContrato_06_verItem : IContratoGeneral
+    public interface IContrato_06_verItem : IContratoGeneral
     {
         Label nombreVer { set; }
         Label cantidadVer { set; }

@@ -13,13 +13,22 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya {
     public partial class web_3_agregarServicio {
         
         /// <summary>
-        /// Control LabelMensaje.
+        /// Control _mensajeExito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelMensaje;
+        protected global::System.Web.UI.WebControls.Label _mensajeExito;
+        
+        /// <summary>
+        /// Control _mensajeError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label _mensajeError;
         
         /// <summary>
         /// Control labelNombreServicio.
@@ -301,22 +310,22 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
         
         /// <summary>
-        /// Control label20.
+        /// Control labelTituloHorario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label20;
+        protected global::System.Web.UI.WebControls.Label labelTituloHorario;
         
         /// <summary>
-        /// Control label4.
+        /// Control labeNotaHorario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label4;
+        protected global::System.Web.UI.WebControls.Label labeNotaHorario;
         
         /// <summary>
         /// Control labelHoraInicio.
@@ -427,13 +436,13 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya {
         protected global::System.Web.UI.WebControls.ImageButton removerHorarioListbox;
         
         /// <summary>
-        /// Control ValidationSummary2.
+        /// Control validarCampos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
+        protected global::System.Web.UI.WebControls.ValidationSummary validarCampos;
         
         /// <summary>
         /// Control ButtonAgregar.

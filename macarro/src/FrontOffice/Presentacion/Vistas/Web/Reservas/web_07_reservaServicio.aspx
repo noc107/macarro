@@ -23,6 +23,9 @@
     <asp:Label ID="Label1" runat="server" Text="Se ha guardado correctamente la reserva." Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
    
 <div  id="principal">
+
+         <asp:Label ID="MensajeExito" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
+    
     
      <asp:Table ID="tabla" runat="server" HorizontalAlign="Center" CssClass ="tabla"> 
                <asp:TableRow>
@@ -31,23 +34,7 @@
                         <asp:label ID="label_servicio" runat="server" CssClass="labels">   Nombre Servicio <span>(*)</span>: </asp:label>
                    </asp:TableCell>
                    <asp:TableCell>
-                        <asp:DropDownList ID="tb_servicio" MaxLength="30" runat="server" CssClass="textbox" ></asp:DropDownList>
-                <asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server"
-                    ControlToValidate="tb_servicio"
-                    Text="*"
-                    ErrorMessage="Servicio Requerido"
-                    ForeColor="Red">
-                </asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator id="RegularExpressionValidator2" runat="server" 
-                    ControlToValidate="tb_servicio" 
-                    Text="*"
-                    ErrorMessage="El servicio no debe ser numerico" 
-                    ForeColor="Red" 
-                   ValidationExpression="^[a-zA-Z'.\s]{1,50}">
-              </asp:RegularExpressionValidator>
-
-                      
-
+                        <asp:DropDownList ID="DropDownServicio" MaxLength="30" runat="server" CssClass="textbox" ></asp:DropDownList>
                    
                    </asp:TableCell>
 
@@ -135,11 +122,12 @@
          </asp:Table>
 
     <br />
-      <asp:Button ID="botonAceptar" runat="server" Text="Aceptar" CssClass="Boton"  OnClientClick="return confirm('Quiere Reservar otro Servicio? ¿desea continuar?')" />
+      <asp:Button ID="botonAceptar" runat="server" Text="Aceptar" CssClass="Boton" OnClick="botonAceptar_Click" />
         <asp:Button ID="botonCancelar" runat="server" Text="Cancelar" CssClass="Boton" OnClick="botonCancelar_Click1" />
 
      
-
+    <asp:Label ID="MensajeError" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
+    
     </div>
     <asp:ValidationSummary CssClass="avisoMensaje MensajeError" ID="ValidationSummary1"
                 HeaderText=""

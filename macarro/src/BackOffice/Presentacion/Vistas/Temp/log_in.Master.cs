@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace back_office.Interfaz.temp
+namespace BackOffice.Presentacion.Vistas.Temp
 {
     public partial class Log_In : System.Web.UI.MasterPage
     {

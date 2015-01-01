@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace front_office.view.temp
+namespace FrontOffice.Presentacion.Vistas.Temp
 {
     public partial class master_not_loged : System.Web.UI.MasterPage
     {

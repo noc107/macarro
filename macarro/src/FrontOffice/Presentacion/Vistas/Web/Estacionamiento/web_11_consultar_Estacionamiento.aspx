@@ -15,90 +15,54 @@
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="middle_place_holder" runat="server">
     <h2>Consultar Estacionamiento</h2>
-        <asp:Table ID="tabla" runat="server" HorizontalAlign="Center"> 
-               <asp:TableRow>
-                   <asp:TableCell >
-                        <asp:label ID="label1" runat="server" CssClass="labels">   Estacionamiento (*) : </asp:label>
-                   </asp:TableCell>
-                   <asp:TableCell>
-                            <asp:DropDownList CssClass="combo_box" ID="DropDown_estacionamiento" runat="server">
-                                <asp:ListItem selected="true">Seleccione Estacionamiento</asp:ListItem>
-                                <asp:ListItem>Estacionamiento 1</asp:ListItem>
-                                <asp:ListItem>Estacionamiento 2</asp:ListItem>
-                                <asp:ListItem>Estacionamiento 3</asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" 
-                                runat="server" ControlToValidate ="DropDown_estacionamiento"
-                                ErrorMessage="Seleccione Estacionamiento" 
-                                Text="*"
-                                ForeColor="Red"
-                                InitialValue="Seleccione Estacionamiento">
-                            </asp:RequiredFieldValidator>
-                   </asp:TableCell>
-               </asp:TableRow>  
-                <asp:TableRow ID="fila_nombre" Visible="False">
-                   <asp:TableCell  >
-                        <asp:label ID="label_nombre" runat="server" CssClass="labels">   Nombre : </asp:label>
-                   </asp:TableCell>
-                   <asp:TableCell>
-                        <asp:TextBox ID="tb_fechaHora_entrada" MaxLength="30" runat="server" CssClass="textbox">Est. Playa Sur.</asp:TextBox>
-                   </asp:TableCell>
-                </asp:TableRow>
+     <asp:label ID="_mensajeExito" runat="server" CssClass="avisoMensajeBot MensajeExito Textocentrado" Visible="false">  </asp:label>
+    <asp:label ID="_mensajeError" runat="server" CssClass="avisoMensajeBot MensajeError Textocentrado" Visible="false">  </asp:label>
+        <asp:Table ID="tablaConsultarEst" runat="server" HorizontalAlign="Center" Height="207px" Width="497px"> 
+       <asp:TableRow>
+           
+            <asp:TableCell CssClass="celda">
+                <asp:Label ID="nombreEstacionamiento" runat="server" Text="Nombre Estacionamiento" CssClass="labels" HorizontalAlign="Center"></asp:Label>
+            </asp:TableCell>
+            <asp:TableCell CssClass="celda">
+           <asp:Label ID="_nombreEstacionamiento" runat="server" Text="Nombre" CssClass="labels"></asp:Label>
+            </asp:TableCell>
 
-                <asp:TableRow ID="fila_capacidad" Visible="False">
-                   <asp:TableCell  >
-                        <asp:label ID="label_Capacidad" runat="server" CssClass="labels">   Capacidad : </asp:label>
-                   </asp:TableCell>
-                   <asp:TableCell>
-                        <asp:TextBox ID="TextBox1" MaxLength="30" runat="server" CssClass="textbox"> 100 Puestos</asp:TextBox>
-                   </asp:TableCell>
-               </asp:TableRow>
-
-               <asp:TableRow ID="fila_tarifa" Visible="False">
-                   <asp:TableCell  >
-                        <asp:label ID="label_Tarifa" runat="server" CssClass="labels">   Tarifa Horaria: </asp:label>
-                   </asp:TableCell>
-                   <asp:TableCell>
-                       <asp:TextBox ID="tb_tarifa" MaxLength="30" runat="server" CssClass="textbox"> 3 Bs.</asp:TextBox>
-                   </asp:TableCell>
-               </asp:TableRow>
-
-               <asp:TableRow ID="tarifa_perdido" Visible="False">
-                   <asp:TableCell  >
-                        <asp:label ID="label_tarifaTicketPerdido" runat="server" CssClass="labels">   Tarifa de Ticket Perdido : </asp:label>
-                   </asp:TableCell>
-                   <asp:TableCell>
-                        <asp:TextBox ID="tb_perdido" MaxLength="30" runat="server" CssClass="textbox">300 Bs</asp:TextBox>
-                   </asp:TableCell>
-               </asp:TableRow>
-
-               <asp:TableRow ID="fila_estatus" Visible="False">
-                   <asp:TableCell  >
-                        <asp:label ID="label_estatus" runat="server" CssClass="labels">   Estatus : </asp:label>
-                   </asp:TableCell>
-                   <asp:TableCell>
-                            <asp:TextBox ID="TextBox2" MaxLength="30" runat="server" CssClass="textbox">Activo</asp:TextBox>
-                   </asp:TableCell>
-
-               </asp:TableRow>
-         </asp:Table>
+            <asp:TableCell CssClass="celda">
+                <asp:Label ID="labelDisponible" runat="server" Text="Puestos disponibles: " CssClass="labels"></asp:Label>
+                <asp:Label ID="_disponible" runat="server" Text="disponibles" CssClass="labels"></asp:Label>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell CssClass="celda">
+                <asp:Label ID="LabelCapacidad" runat="server" Text="Capacidad: " CssClass="labels"></asp:Label>
+                <asp:Label ID="_capacidad" runat="server" Text="Label" CssClass="labels"></asp:Label>
+            </asp:TableCell>
+            <asp:TableCell CssClass="celda"></asp:TableCell>
+            <asp:TableCell CssClass="celda">
+                <asp:Label ID="LabelTarifa" runat="server" Text="Tarifa: " CssClass="labels"></asp:Label>
+                <asp:Label ID="_tarifa" runat="server" Text="Label" CssClass="labels"></asp:Label>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label ID="LabelEstado" runat="server" Text="Estado: " CssClass="labels"></asp:Label>
+                <asp:Label ID="_estado" runat="server" Text="Label" CssClass="labels"></asp:Label>
+            </asp:TableCell>
+            <asp:TableCell CssClass="celda"></asp:TableCell>
+            <asp:TableCell CssClass="celda">
+                <asp:Label ID="LabelTicket" runat="server" Text=" Tarifa ticket perdido: " CssClass="labels"></asp:Label>
+                <asp:Label ID="_tarifaPerdido" runat="server" Text="Label" CssClass="labels"></asp:Label>
+            </asp:TableCell>
+        </asp:TableRow>
+       
+    </asp:Table>
+    
     <br />
     <div>
     <div class="boton_centrado">
-            <asp:Button ID="BotonAgregarEstacionamiento" runat="server" CssClass="Boton" Text="Buscar"/>
+            <asp:Button ID="BotonVolver" runat="server" CssClass="Boton" Text="Volver"/>
         </div>
     </div> 
     <br />
-        <asp:Table ID="Table1" runat="server" HorizontalAlign="Center">
-        <asp:TableRow>
-            <asp:TableCell>
-                <asp:ValidationSummary ID="ValidationSummary2"
-                    HeaderText=""
-                    DisplayMode="BulletList"
-                    EnableClientScript="true"
-                    runat="server" 
-                    ForeColor="Red"/>
-            </asp:TableCell>
-        </asp:TableRow>
-    </asp:Table>
+     
 </asp:Content>

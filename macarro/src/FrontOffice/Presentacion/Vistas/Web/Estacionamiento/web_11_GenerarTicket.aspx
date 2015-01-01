@@ -15,68 +15,63 @@
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="middle_place_holder" runat="server">
       <h2>Generar Ticket</h2>
-        <asp:label ID="LabelMensajeExito" runat="server" CssClass="avisoMensajeBot MensajeExito Textocentrado" Visible="false">  Estacionamiento agregado con Éxito </asp:label>
-    <asp:label ID="LabelMensajeError" runat="server" CssClass="avisoMensajeBot MensajeError Textocentrado" Visible="false">  Estacionamiento no Agregado </asp:label>
+        <asp:label ID="_mensajeExito" runat="server" CssClass="avisoMensajeBot MensajeExito Textocentrado" Visible="false">  </asp:label>
+    <asp:label ID="_mensajeError" runat="server" CssClass="avisoMensajeBot MensajeError Textocentrado" Visible="false">   </asp:label>
    
         <asp:Table ID="tabla" runat="server" HorizontalAlign="Center"> 
             <asp:TableRow>
                 <asp:TableCell  Height="50">
-                    <asp:label ID="label2" runat="server" CssClass="labels">   Estacionamiento (*): </asp:label>
+                    <asp:label ID="_labelEstacionamiento" runat="server" CssClass="labels">   Estacionamiento: </asp:label>
                 </asp:TableCell>
-                <asp:TableCell>
-                    <asp:DropDownList CssClass="combo_box" ID="DropDown_estacionamiento" runat="server" AutoPostBack="True" OnSelectedIndexChanged = "comboEstacionamientoSelector">
-                    </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" 
-                                runat="server" ControlToValidate ="DropDown_estacionamiento"
-                                ErrorMessage="Seleccione Estacionamiento" 
-                                Text="*"
-                                ForeColor="Red"
-                                InitialValue="Seleccione Estacionamiento">
-                            </asp:RequiredFieldValidator>
-                </asp:TableCell>
-            </asp:TableRow>   
-            <asp:TableRow>
-                   <asp:TableCell  Height="50">
-                        <asp:label ID="label_tarifaTicketPerdido" runat="server" CssClass="labels">   Placa : </asp:label>
-                   </asp:TableCell>
                    <asp:TableCell>
-                        <asp:TextBox ID="tb_placa" MaxLength="30" runat="server" CssClass="textbox"></asp:TextBox>
+                        <asp:TextBox ID="_textboxEstacionamiento" MaxLength="30" runat="server" CssClass="textbox" Enabled="True" ReadOnly="True"></asp:TextBox>
                         
 
                    </asp:TableCell>
+            </asp:TableRow>   
+            <asp:TableRow>
+                   <asp:TableCell  Height="50">
+                        <asp:label ID="_labelPlaca" runat="server" CssClass="labels">   Placa(*) : </asp:label>
+                   </asp:TableCell>
+                   <asp:TableCell>
+                      <asp:TextBox ID="_textBoxPlaca" MaxLength="30" runat="server" CssClass="textbox"></asp:TextBox>
+                  <%-- Validator del placa --%>
+                         <asp:RegularExpressionValidator ID="expresionRegularPlaca" runat="server" 
+                        ControlToValidate="_textBoxPlaca"
+                        Text="*"
+                        ErrorMessage="No se permiten caracteres especiales."
+                        ValidationExpression="[a-zA-Z0-9ñÑ ,.]{1,20}"
+                        ForeColor="Red">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatoVacio" runat="server"
+                    ControlToValidate="_textBoxPlaca" 
+                    ErrorMessage="Introducir una placa" 
+                    ForeColor="Red"
+                    Text="*"
+                    >
+                </asp:RequiredFieldValidator>
+                    </asp:RegularExpressionValidator>
+
+                   </asp:TableCell>
                </asp:TableRow>          
-            <asp:TableRow>
-                   <asp:TableCell  Height="50">
-                        <asp:label ID="label1" runat="server" CssClass="labels">   Fecha de Entrada : </asp:label>
-                   </asp:TableCell>
-                   <asp:TableCell>
-                        <asp:TextBox ID="tb_fechaEntrada" MaxLength="30" runat="server" CssClass="textbox" ViewStateMode="Inherit" Enabled="False"></asp:TextBox>
-                   </asp:TableCell>
-            </asp:TableRow> 
-            <asp:TableRow>
-                   <asp:TableCell  Height="50">
-                        <asp:label ID="label4" runat="server" CssClass="labels">   Hora de Entrada : </asp:label>
-                   </asp:TableCell>
-                   <asp:TableCell>
-                        <asp:TextBox ID="tb_horaEntrada" MaxLength="30" runat="server" CssClass="textbox" ViewStateMode="Inherit" Enabled="False">12:55 p.m.</asp:TextBox>
-                   </asp:TableCell>
-            </asp:TableRow>  
+           
+         
 
          </asp:Table>
     <br />
     <div class="boton_centrado">
             <asp:Button ID="BotonGenerarTicket" runat="server" CssClass="Boton" Text="Aceptar" OnClick="BotonGenerarTicket_Click"/>
+        
         </div>
     <br />
-    <asp:Table ID="Table2" runat="server" HorizontalAlign="Center">
+     <asp:Table ID="Table1" runat="server" HorizontalAlign="Center">
         <asp:TableRow>
             <asp:TableCell>
-                <asp:ValidationSummary ID="ValidationSummary2"
+                <asp:ValidationSummary ID="ValidationSummary2" CssClass="avisoMensaje MensajeError"
                     HeaderText=""
                     DisplayMode="BulletList"
                     EnableClientScript="true"
                     runat="server" 
-                    ForeColor="Red"/>
+                    />
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>

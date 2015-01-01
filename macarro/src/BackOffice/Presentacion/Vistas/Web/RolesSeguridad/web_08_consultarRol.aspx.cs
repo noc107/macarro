@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using BackOffice.Presentacion.Contratos.RolesSeguridad;
+using BackOffice.Presentacion.Presentadores.RolesSeguridad;
+using BackOffice.Presentacion.Vistas.Web.RolesSeguridad.Recursos;
 
 namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad
 {
-    public partial class web_08_consultarRol : System.Web.UI.Page
+    public partial class web_08_consultarRol : System.Web.UI.Page, IContrato_08_ConsultarRol
     {
         #region Variables de Sesion
         string _correoS;
@@ -17,17 +17,99 @@ namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad
         string _primerApellidoS;
         #endregion
 
+        private Presentador_08_ConsultarRol _presentador;
+
+        /// <summary>
+        /// Constructor de la interfaz e inicializacion del presentador
+        /// </summary>
+        public web_08_consultarRol()
+        {
+            _presentador = new Presentador_08_ConsultarRol(this);
+        }
+
+        /// <summary>
+        /// Metodo que inicia al cargar la interfaz
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (ControlRolAccion.RolActual != null)
-            //{
-            //    cargarInfo();
             //    variableSesion();
-            //}
-            //else
-            //{
-            //    Response.Redirect("web_08_gestionarRoles.aspx");
-            //}
+            try
+            {
+                _presentador.rolActual(Convert.ToInt32(Request.QueryString["r"]));
+                _presentador.llenarInfo();
+            }
+            catch (NullReferenceException)
+            {
+                _presentador.MostrarMensajeError(RecursosInterfazRolesSeguridad.mensajeNoSeleccionado);
+                LabelMensajeError.Visible = true;
+            }
+            catch (SqlException)
+            {
+                _presentador.MostrarMensajeError(RecursosInterfazRolesSeguridad.mensajeConexionBD);
+                LabelMensajeError.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                _presentador.MostrarMensajeError(RecursosInterfazRolesSeguridad.mensajeError + ex.GetType().ToString());
+                LabelMensajeError.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Implementacion del metodo LNombre
+        /// </summary>
+        public Label LNombre
+        {
+            get { return lNombre; }
+            set { lNombre = value; }
+        }
+
+        /// <summary>
+        /// Implementacion del metodo LDescripcion
+        /// </summary>
+        public Label LDescripcion
+        {
+            get { return lDescripcion; }
+            set { lDescripcion = value; }
+        }
+
+        /// <summary>
+        /// Implementacion del metodo LBAcciones
+        /// </summary>
+        public ListBox LBAcciones
+        {
+            get { return ListAcciones; }
+            set { ListAcciones = value; }
+        }
+
+        /// <summary>
+        /// Implementacion del metodo LabelMensajeExito
+        /// </summary>
+        public Label LabelMensajeExito
+        {
+            get { return _mensajeExito; }
+            set { _mensajeExito = value; }
+        }
+
+        /// <summary>
+        /// Implementacion del metodo LabelMensajeError
+        /// </summary>
+        public Label LabelMensajeError
+        {
+            get { return _mensajeError; }
+            set { _mensajeError = value; }
+        }
+   
+        /// <summary>
+        /// Metodo para manejar el evento del boton de regresar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void bVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("web_08_gestionarRoles.aspx");
         }
 
         /// <summary>
@@ -42,57 +124,12 @@ namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad
                 _primerNombreS = (string)(Session["primerNombre"]);
                 _primerApellidoS = (string)(Session["primerApellido"]);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MensajeErrores.Text = "No se han podido cargar los datos de sesion";
-                MensajeErrores.Visible = true;
-                ex.GetType();
+                _presentador.MostrarMensajeError(RecursosInterfazRolesSeguridad.mensajeSesion);
+                LabelMensajeError.Visible = true;
             }
         }
 
-        /// <summary>
-        /// Metodo para cargar la informacion del rol seleccionado
-        /// </summary>
-        ///
-        //private void cargarInfo()
-        //{
-        //    try
-        //    {
-        //        lNombre.Text = ControlRolAccion.RolActual.Nombre;
-        //        lDescripcion.Text = ControlRolAccion.RolActual.Descripcion;
-
-        //        foreach (Accion a in ControlRolAccion.RolActual.Acciones)
-        //        {
-        //            ListAcciones.Items.Add(a.Nombre);
-        //        }
-        //    }
-        //    catch (NullReferenceException ex)
-        //    {
-        //        MensajeErrores.Text = "No se han podido cargar los datos debido a que no hay un item seleccionado";
-        //        MensajeErrores.Visible = true;
-        //        ex.GetType();
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        MensajeErrores.Text = "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos";
-        //        MensajeErrores.Visible = true;
-        //        ex.GetType();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MensajeErrores.Text = "No se han podido cargar los datos. Error " + ex.GetType().ToString();
-        //        MensajeErrores.Visible = true;
-        //    }
-        //}
-
-        /// <summary>
-        /// Metodo para manejar el evento del boton de regresar
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void bVolver_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("web_08_gestionarRoles.aspx");
-        }
     }
 }

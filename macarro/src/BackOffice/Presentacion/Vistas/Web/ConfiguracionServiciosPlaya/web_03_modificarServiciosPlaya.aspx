@@ -18,6 +18,8 @@
 
     <h2 class="centrado subtitulo">Modificar Servicios de Playa</h2>
     <asp:Label CssClass="avisoMensaje" ID="LabelMensaje" runat="server" Text=""></asp:Label>
+    <asp:Label ID="_mensajeExito" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
+    <asp:Label ID="_mensajeError" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
     <br />
          <div class="formulario">
             <div class="formulario-izq">
@@ -181,8 +183,8 @@
             
             <div class="formualrio-der">
                 <div class="formulario-labels-textbox">
-                    <asp:Label CssClass="labels labelsNombres labelHorario" ID="label20" runat="server" Text="Label"><h3 class="tituloHorario">Modificar <br /> Horarios:</h3></asp:Label>
-                        <asp:Label CssClass="notaHorario labels" ID="label4" runat="server" Text="Label">
+                    <asp:Label CssClass="labels labelsNombres labelHorario" ID="ltituloHorario" runat="server" Text="Label"><h3 class="tituloHorario">Modificar <br /> Horarios:</h3></asp:Label>
+                        <asp:Label CssClass="notaHorario labels" ID="notaHorario" runat="server" Text="Label">
                             En horarios aparece la lista de horarios ya agregados.<br />
                             En <span class="fuenteMenos">-</span> elimina el horario seleccionado.<br />
                             En <span class="fuenteMenos">+</span> permite agregar un horario a la lista.
@@ -251,7 +253,7 @@
                      <asp:ImageButton CssClass="imgBotonAgregar botonMas" ID="agregarHorarioListbox" runat="server" CausesValidation="false" title="Permite agregar un horario a la lista" src="../../../comun/resources/img/ModuloServiciosPlaya/agregar.png"  OnClick="agregarHorarioListbox_Click"/>
                      <asp:ImageButton CssClass="imgBoton botonMenos" ID="removerHorarioListbox" runat="server" CausesValidation="false"  title="Elimina el horario seleccionado" src="../../../comun/resources/img/ModuloServiciosPlaya/menos.png" OnClick="removerHorarioListbox_Click"/>
                     <br/>
-                    <asp:Label CssClass="labelHoras labelEstadoServicio labels" ID="label1" runat="server" Text="Label">Estado(*):</asp:Label>                 
+                    <asp:Label CssClass="labelHoras labelEstadoServicio labels" ID="labelEstado" runat="server" Text="Label">Estado(*):</asp:Label>                 
                     <asp:dropdownlist CssClass="comboEstilo combo_box marginDropdownlist cambioCategoria inputTextbox" ID="dropdownlistEstado" runat="server">
                             <asp:listitem Value="true" text="Activado"/>
                             <asp:listitem text="Desactivado" Value="false" />

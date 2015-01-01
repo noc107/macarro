@@ -5,14 +5,35 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using FrontOffice.Presentacion.Contratos.IngresoRecuperacionClave;
+using FrontOffice.Presentacion.Presentadores.IngresoRecuperacionClave;
 
 namespace FrontOffice.Presentacion.Vistas.Web.IngresoRecuperacionClave
 {
-    public partial class web_01_inicioSesion : System.Web.UI.Page
+    public partial class web_01_inicioSesion : System.Web.UI.Page, IContrato_01_inicioSesion
     {
+        private Presentador_01_inicioSesion _presentador;
+        
+        // Variables de sesión para el correo y contraseña
+
+        public web_01_inicioSesion()
+        {
+             _presentador = new Presentador_01_inicioSesion(this);
+        }
+
+        string IContrato_01_inicioSesion.correo
+        {
+            get { return correo.Text; }
+        }
+
+        string IContrato_01_inicioSesion.Contrasena
+        {
+            get { return Contrasena.Text; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // Se inicializan las variables de sesión
         }
 
         /// <summary>
@@ -21,6 +42,10 @@ namespace FrontOffice.Presentacion.Vistas.Web.IngresoRecuperacionClave
         /// </summary>
         protected void Button1_Click(object sender, EventArgs e)
         {
+            _presentador.Boton_IniciarSesion();
+
+        // IMPLEMENTACIÓN DE INICIO DE SESIÓN   
+
         //    LogicaLogin _envioParametros = new LogicaLogin();
 
         //    if (correo.Text != null && Contrasena.Text != null)
@@ -48,6 +73,10 @@ namespace FrontOffice.Presentacion.Vistas.Web.IngresoRecuperacionClave
         ///// </summary>
         protected void BOlvidasteContrasena_Click(object sender, EventArgs e)
         {
+
+            _presentador.BOlvidasteContrasena_Click();
+
+            // IMPLEMENTACIÓN DE OLVIDAR CONTRASEÑA
         //    LogicaLogin _envioParametro = new LogicaLogin();
         //    string _recibeCorreo = _envioParametro.verificoCorreo(correo.Text);
         //    if (_recibeCorreo == correo.Text)
@@ -59,6 +88,28 @@ namespace FrontOffice.Presentacion.Vistas.Web.IngresoRecuperacionClave
         //        Response.Write("Usted no esta registrado");
         }
 
+        public Label LabelMensajeExito
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
+        public Label LabelMensajeError
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

@@ -14,6 +14,20 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya.component
 
         }
         #region PROPIEDADES
+        
+        public TextBox AnchoDePlaya
+        {
+            get { return anchoDeLaPlaya; }
+        }
+
+        public TextBox LargoDePlaya
+        {
+            get { return largoDeLaPlaya; }
+        }
+
+        #endregion
+
+        /*
         public string Ancho()
         {
             return this.anchoDeLaPlaya.Text;
@@ -23,6 +37,6 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya.component
         {
             return this.largoDeLaPlaya.Text;
         }
-        #endregion
+         */
     }
 }

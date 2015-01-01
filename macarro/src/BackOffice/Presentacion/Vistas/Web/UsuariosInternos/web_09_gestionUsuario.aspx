@@ -19,8 +19,8 @@
     <asp:Table ID="Table1" runat="server" HorizontalAlign="Center">
         <asp:TableRow>
             <asp:TableCell ColumnSpan="3" HorizontalAlign="Center">
-                <asp:Label ID="mensajeExito" runat="server" CssClass="avisoMensaje MensajeExito" ></asp:Label>
-                <asp:Label ID="mensajeError" runat="server" CssClass="avisoMensaje MensajeError" ></asp:Label>
+                <asp:Label ID="_mensajeExito" runat="server" CssClass="avisoMensaje MensajeExito" ></asp:Label>
+                <asp:Label ID="_mensajeError" runat="server" CssClass="avisoMensaje MensajeError" ></asp:Label>
             </asp:TableCell>
 
         </asp:TableRow>

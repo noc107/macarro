@@ -5,12 +5,135 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Contratos.UsuariosInternos;
+using BackOffice.Presentacion.Presentadores.UsuariosInternos;
 
 
 namespace BackOffice.Presentacion.Vistas.Web.UsuariosInternos
 {
-    public partial class web_09_modificarUsuario : System.Web.UI.Page
+    public partial class web_09_modificarUsuario : System.Web.UI.Page, IContrato_09_modificarUsuario
     {
+        private Presentador_09_modificarUsuario _presentador;
+
+
+         public web_09_modificarUsuario() 
+        {
+            _presentador = new Presentador_09_modificarUsuario(this);
+        }
+
+        # region Implementación get y set de los atributos del contrato Modificar  Usuario
+
+         TextBox IContrato_09_modificarUsuario.Nombre 
+        {
+            get { return TextBoxNombre; }
+            set { TextBoxNombre = value; }
+        }
+
+         TextBox IContrato_09_modificarUsuario.SegundoNombre
+        {
+            get { return TextBoxSegNombre; }
+            set { TextBoxSegNombre = value; }
+        }
+
+         TextBox IContrato_09_modificarUsuario.Apellido
+        {
+            get { return TextBoxApellido; }
+            set { TextBoxApellido = value; }
+        }
+
+         TextBox IContrato_09_modificarUsuario.SegundoApellido
+        {
+            get { return TextBoxSegApellido; }
+            set { TextBoxSegApellido = value; }
+        }
+
+         DropDownList IContrato_09_modificarUsuario.TipoDocumento 
+        {
+            get { return DropDownListCedula; }
+            set { DropDownListCedula = value; }
+        }
+
+         TextBox IContrato_09_modificarUsuario.Cedula 
+        {
+            get { return TextBoxCedula ; }
+            set { TextBoxCedula = value; }
+        }
+
+         TextBox IContrato_09_modificarUsuario.FechaNacimiento 
+        {
+            get { return TextBoxFechaNac; }
+            set { TextBoxFechaNac = value; }
+        }
+
+         TextBox IContrato_09_modificarUsuario.Correo
+        {
+            get { return TextBoxCorreo; }
+            set { TextBoxCorreo = value; }
+        }
+
+         TextBox IContrato_09_modificarUsuario.Contrasena
+        {
+            get { return TextBoxContraseña; }
+            set { TextBoxContraseña = value; }
+        }
+
+         TextBox IContrato_09_modificarUsuario.VerificarContrasena
+        {
+            get { return TextBoxVerifContraseña; }
+            set { TextBoxVerifContraseña = value; }
+        }
+
+         DropDownList IContrato_09_modificarUsuario.Estatus
+        {
+            get { return CBlistaEstatus; }
+            set { CBlistaEstatus = value; }
+        }
+
+         TextBox IContrato_09_modificarUsuario.Telefono
+        {
+            get { return Telefono; }
+            set { Telefono = value; }
+        }
+
+         DropDownList IContrato_09_modificarUsuario.Pais
+        {
+            get { return DropDownListPais; }
+            set { DropDownListPais = value; }
+        }
+
+         DropDownList IContrato_09_modificarUsuario.Estado
+        {
+            get { return DropDownListEstado; }
+            set { DropDownListEstado = value; }
+        }
+
+         DropDownList IContrato_09_modificarUsuario.Ciudad
+        {
+            get { return DropDownListCiudad; }
+            set { DropDownListCiudad = value; }
+        }
+
+         TextBox IContrato_09_modificarUsuario.Direccion
+        {
+            get { return TextBoxDireccion; }
+            set { TextBoxDireccion = value; }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get { return _mensajeExito; }
+            set { _mensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return _mensajeError; }
+            set { _mensajeError = value; }
+        }
+
+        #endregion
+
+        #region Código Anterior Usuarios Internos
         string _correoS = string.Empty;
         string _docIdentidadS = string.Empty;
         string _primerNombreS = string.Empty;
@@ -42,6 +165,7 @@ namespace BackOffice.Presentacion.Vistas.Web.UsuariosInternos
             //}
             //else
             //    Server.Transfer("../IngresoRecuperacionClave/web_01_inicioSesionA.aspx", false);
+            _presentador.PageLoad(); 
         }
 
         //private void VariableSesion()
@@ -260,8 +384,9 @@ namespace BackOffice.Presentacion.Vistas.Web.UsuariosInternos
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-        //    validatorfechanac.MinimumValue = DateTime.Now.AddYears(-65).ToString("dd/MM/yyyy");
-        //    validatorfechanac.MaximumValue = DateTime.Now.AddYears(-18).ToString("dd/MM/yyyy");
+           validatorfechanac.MinimumValue = DateTime.Now.AddYears(-65).ToString("dd/MM/yyyy");
+            validatorfechanac.MaximumValue = DateTime.Now.AddYears(-18).ToString("dd/MM/yyyy");
         }
+        #endregion
     }
 }

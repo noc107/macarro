@@ -4,12 +4,122 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Contratos.UsuariosInternos;
+using BackOffice.Presentacion.Presentadores.UsuariosInternos;
 
 
 namespace BackOffice.Presentacion.Vistas.Web.UsuariosInternos
 {
-    public partial class web_09_consultarUsuario : System.Web.UI.Page
+    public partial class web_09_consultarUsuario : System.Web.UI.Page, IContrato_09_ConsultarUsuarios
     {
+        private Presentador_09_ConsultarUsuarios _presentador;
+
+        public web_09_consultarUsuario() 
+        {
+            _presentador = new Presentador_09_ConsultarUsuarios(this);
+        }
+
+        #region Get y Set del Contrato ConsultarUsuario
+
+        public Label LabelMensajeExito
+        {
+            get { return _mensajeExito; }
+            set { _mensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return _mensajeError; }
+            set { _mensajeError = value; }
+        }
+
+        Label IContrato_09_ConsultarUsuarios.Nombre
+        {
+            get { return LabelNombreCons; }
+            set { LabelNombreCons = value; }
+        }
+
+        Label IContrato_09_ConsultarUsuarios.SegundoNombre
+        {
+            get { return LabelSegNombreCons; }
+            set { LabelSegNombreCons = value; }
+        }
+
+        Label IContrato_09_ConsultarUsuarios.Apellido
+        {
+            get { return LabelApellidoCons; }
+            set { LabelApellidoCons = value; }
+        }
+
+        Label IContrato_09_ConsultarUsuarios.SegundoApellido
+        {
+            get { return LabelSegApellidoCons; }
+            set { LabelSegApellidoCons = value; }
+        }
+
+        Label IContrato_09_ConsultarUsuarios.TipoDocumento
+        {
+            get { return LabelCedulaTipoCons; }
+            set { LabelCedulaTipoCons = value; }
+        }
+
+        Label IContrato_09_ConsultarUsuarios.Cedula
+        {
+            get { return LabelCedulaCons; }
+            set { LabelCedulaCons = value; }
+        }
+
+        Label IContrato_09_ConsultarUsuarios.FechaNacimiento
+        {
+            get { return LabelFechaNacCons; }
+            set { LabelFechaNacCons = value; }
+        }
+
+        Label IContrato_09_ConsultarUsuarios.Estatus
+        {
+            get { return LabelEstatusCons; }
+            set { LabelEstatusCons = value; }
+        }
+
+        Label IContrato_09_ConsultarUsuarios.Telefono
+        {
+            get { return LabelTelefonoCons; }
+            set { LabelTelefonoCons = value; }
+        }
+
+        Label IContrato_09_ConsultarUsuarios.Correo
+        {
+            get { return LabelCorreoCons; }
+            set { LabelCorreoCons = value; }
+        }
+
+        Label IContrato_09_ConsultarUsuarios.FechaIngreso
+        {
+            get { return LabelFechaIngCons; }
+            set { LabelFechaIngCons = value; }
+        }
+
+        Label IContrato_09_ConsultarUsuarios.FechaEgreso
+        {
+            get { return LabelFechaEgreCons; }
+            set { LabelFechaEgreCons = value; }
+        }
+
+        Label IContrato_09_ConsultarUsuarios.Direccion
+        {
+            get { return LabelDireccionCons; }
+            set { LabelDireccionCons = value; }
+        }
+
+        ListBox IContrato_09_ConsultarUsuarios.ListaCargos 
+        {
+            get { return list_cargos; }
+            set { list_cargos = value; }
+        }
+
+        #endregion
+
+        #region Código Anterior Usuarios Internos
         string _correoS = string.Empty;
         string _docIdentidadS = string.Empty;
         string _primerNombreS = string.Empty;
@@ -96,6 +206,7 @@ namespace BackOffice.Presentacion.Vistas.Web.UsuariosInternos
             //}  
             //else
             //    Server.Transfer("../IngresoRecuperacionClave/web_01_inicioSesionA.aspx", false);
+            _presentador.PageLoad(); 
         }
 
 
@@ -118,7 +229,8 @@ namespace BackOffice.Presentacion.Vistas.Web.UsuariosInternos
 
         protected void volver_consultar(object sender, EventArgs e)
         {
-            Response.Redirect("web_09_gestionUsuario.aspx"); 
+            Response.Redirect("web_09_gestionUsuario.aspx");
         }
+        #endregion
     }
 }

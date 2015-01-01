@@ -18,11 +18,19 @@
 
     <asp:Table ID="Table1" runat="server" HorizontalAlign="Center">
         <asp:TableRow>
-            <asp:TableCell HorizontalAlign="Center">
+             <asp:TableCell ColumnSpan="6" HorizontalAlign="Center" >
+                <asp:label ID="_mensajeExito" runat="server" CssClass="avisoMensaje MensajeExito" Visible="false">  Mensaje de Confirmacion </asp:label>
+               <asp:label ID="_mensajeError" runat="server" CssClass="avisoMensaje MensajeError" Visible="false">  Mensaje de Confirmacion </asp:label>
+                <br />
+            </asp:TableCell>
+        </asp:TableRow>
+
+            <asp:TableRow>
+            <asp:TableCell>
                 <asp:label ID="LabeLstIzq" runat="server" CssClass="labels"> Roles Asignadas: (*) </asp:label>
             </asp:TableCell>
             <asp:TableCell>
-                <asp:listbox ID="lstboxListaAsignado" runat="server" CssClass = "list_box list_box_propio" Width="300">
+                <asp:listbox ID="listboxListaAsignado" runat="server" CssClass = "list_box list_box_propio" Width="300">
                 </asp:listbox>
             </asp:TableCell>
             <asp:TableCell HorizontalAlign="Center">
@@ -34,7 +42,7 @@
                 <asp:label ID="LabeL1" runat="server" CssClass="labels"> Roles disponibles: </asp:label>
             </asp:TableCell>
             <asp:TableCell>
-                <asp:listbox ID="lstboxListaSinAsignar" runat="server" CssClass = "list_box list_box_propio" Width="300">
+                <asp:listbox ID="listboxListaSinAsignar" runat="server" CssClass = "list_box list_box_propio" Width="300">
                 </asp:listbox>
             </asp:TableCell>
             <asp:TableCell HorizontalAlign="Center">

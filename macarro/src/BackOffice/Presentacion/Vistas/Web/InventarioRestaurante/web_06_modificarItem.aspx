@@ -35,9 +35,11 @@
 <asp:Content ID="Content8" ContentPlaceHolderID="middle_place_holder" runat="server">
     <h2>Modificar Item</h2>
     <div id="Mensajes" class="BloqueMensaje">
+
+          <asp:Label ID="MensajeExito" CssClass="avisoMensaje MensajeExito"   runat="server" Text="El item ha sido creado satisfactoriamente" Visible="false" ></asp:Label>
         <asp:Label ID="MensajeFallo" CssClass="avisoMensaje MensajeError" runat="server" Text="El item no ha podido ser modificado debido a que X" Visible="false"></asp:Label>
     </div>
-   <div ID="Formulario1" class="Bloque">
+   <div id="Formulario1" class="Bloque">
 
         <script src="../../../comun/resources/js/jquery-1.11.1.js"></script>
     <script src="../../../comun/resources/js/ModuloInventarioRestaurante/bootstrap.min.js"></script>
@@ -76,9 +78,7 @@
        </asp:RegularExpressionValidator>
        
 
-        <asp:Button ID="Boton1" CssClass="Boton BotonAceptarModificar"  runat="server" Text="Aceptar"   OnClick="Button1_Click" />
-
-        <asp:Button ID="Boton2" CssClass="Boton BotonCancelarModificar" CausesValidation="false" runat="server" Text="Cancelar"  OnClick="Button2_Click" />
+   
 
        
         <asp:Label ID="Label2" CssClass="labels LabelAgregarCantidad"  runat="server" Text="Cantidad (*):"></asp:Label>
@@ -145,8 +145,13 @@
         <asp:Label ID="Label4" CssClass="labels LabelAgregarProveedor"  runat="server"  Text="Proveedor (*): " ></asp:Label>
             <asp:DropDownList ID="Proveedores" CssClass="combo_box ComboProveedor" runat="server" OnSelectedIndexChanged="Unnamed1_SelectedIndexChanged" >
             </asp:DropDownList>
+
+
+            <asp:Button ID="Boton1" CssClass="Boton BotonAceptarModificar"  runat="server" Text="Aceptar"   OnClick="Button1_Click" />
+
+        <asp:Button ID="Boton2" CssClass="Boton BotonCancelarModificar" CausesValidation="false" runat="server" Text="Cancelar"  OnClick="Button2_Click" />
      
-   <asp:ValidationSummary ID="ValidationSummary1" CssClass="avisoMensaje MensajeError"
+              <asp:ValidationSummary ID="ValidationSummary1" CssClass="avisoMensaje MensajeError"
                 style="top:370px;position:absolute;" HeaderText=""
                 DisplayMode="BulletList"
                 EnableClientScript="true"
@@ -171,7 +176,7 @@
 
 
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" >
                      <asp:Button ID="Button1"   runat="server" CausesValidation="false" CssClass="Boton" Text="Aceptar" OnClick="ButtonAceptarModalAumentar_Click"/>
         <asp:Button ID="Button2"   runat="server" Text="Cancelar"  CausesValidation="false" CssClass="Boton" OnClick="ButtonCancelarModalAumentar_Click" />
        
@@ -211,6 +216,9 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
+
+   
 
 
         <asp:ImageButton id="ImageButton1" runat="server" data-target="#modalAgregar" cssclass="mas_menos_info BotonMas"

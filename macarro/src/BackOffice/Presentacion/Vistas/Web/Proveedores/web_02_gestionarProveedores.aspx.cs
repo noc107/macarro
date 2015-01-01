@@ -11,7 +11,7 @@ using BackOffice.Presentacion.Contratos.Proveedores;
 
 namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 {
-    public partial class web_02_gestionarProveedores : System.Web.UI.Page , IContratoGeneral, IContrato_02_gestionarProveedor
+    public partial class web_02_gestionarProveedores : System.Web.UI.Page , IContrato_02_gestionarProveedor
     {
         //LogicaProveedor auxLogica = new LogicaProveedor();
         

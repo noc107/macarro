@@ -6,13 +6,78 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
 using System.Data;
-
+using BackOffice.Presentacion.Presentadores.ConfiguracionServiciosPlaya;
+using BackOffice.Presentacion.Contratos.ConfiguracionServiciosPlaya;
 	
 namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
 {
-    public partial class web_03_consultaServicio : System.Web.UI.Page
+    public partial class web_03_consultaServicio : System.Web.UI.Page, IContrato_03_consultaServicio
     {
-        private DataTable _dt;
+        #region Párametros
+
+        private Presentador_03_consultaServicio _presentador;
+
+        #endregion
+
+        #region Constructor
+
+        public web_03_consultaServicio()
+        {
+            _presentador = new Presentador_03_consultaServicio(this);
+        }
+
+        #endregion
+
+        #region Implementación de IContrato_03_consultaServicio
+
+        public TextBox servicioABuscar
+        {
+            get { return txtBuscar; }
+        }
+
+        public DropDownList estadoDelServicio
+        {
+            get { return listEstado; }
+        }
+
+        public GridView tablaDeServicios
+        {
+            get { return Servicios; }
+            set { Servicios = value; }
+        }
+
+        public ImageButton imagenBoton
+        {
+            get { return imgBuscar; }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public Label LabelMensajeError
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        #endregion
+
+        /** private DataTable _dt;
         private string _nombreServicio;
 
         #region Variables de Sesion
@@ -38,6 +103,9 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
             }
         } 
 
+        **/
+
+        #region Métodos 
         /// <summary>
         /// Cargar gridview con servicios regustrados
         /// </summary>
@@ -45,32 +113,34 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-                //variableSesion();
+            _presentador.cargarPagina();
 
-                //logicaConsultaServicio _consulta;
+            //variableSesion();
 
-                //this.LabelMensaje.Visible = false;
-                //if (Request.QueryString["Mensaje"] != null)
-                //{
-                //    this.LabelMensaje.Visible = true;
-                //    if (Request.QueryString["Mensaje"].Equals("1"))
-                //    {
-                //        this.LabelMensaje.Text = UtilidadMensajes._msgModificacionServicio;
-                //        LabelMensaje.CssClass = "avisoMensaje MensajeExito";
-                //    }
-                //    else
-                //    {
-                //        LabelMensaje.CssClass = "avisoMensaje MensajeError";
-                //        this.LabelMensaje.Text = Request.QueryString["Mensaje"];
-                //    }
-                //}
-   
-                //_consulta = new logicaConsultaServicio();
-                //this._dt = _consulta.buscarServicio(txtBuscar.Text, listEstado.SelectedValue, this.LabelMensaje);
-                
+            //logicaConsultaServicio _consulta;
 
-                //Servicios.DataSource = this._dt;
-                //Servicios.DataBind();
+            //this.LabelMensaje.Visible = false;
+            //if (Request.QueryString["Mensaje"] != null)
+            //{
+            //    this.LabelMensaje.Visible = true;
+            //    if (Request.QueryString["Mensaje"].Equals("1"))
+            //    {
+            //        this.LabelMensaje.Text = UtilidadMensajes._msgModificacionServicio;
+            //        LabelMensaje.CssClass = "avisoMensaje MensajeExito";
+            //    }
+            //    else
+            //    {
+            //        LabelMensaje.CssClass = "avisoMensaje MensajeError";
+            //        this.LabelMensaje.Text = Request.QueryString["Mensaje"];
+            //    }
+            //}
+
+            //_consulta = new logicaConsultaServicio();
+            //this._dt = _consulta.buscarServicio(txtBuscar.Text, listEstado.SelectedValue, this.LabelMensaje);
+
+
+            //Servicios.DataSource = this._dt;
+            //Servicios.DataBind();
                 
 
          }
@@ -82,14 +152,15 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         /// <param name="e"></param>
         protected void Servicios_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-          
-            if (e.CommandName == "Select" || e.CommandName == "Delete" || e.CommandName == "Edit")
-            { 
-                Int16 _servicioIndex;
+            _presentador.Servicios_RowCommand();
 
-                _servicioIndex = Convert.ToInt16(e.CommandArgument);
-                this._nombreServicio = HttpUtility.HtmlDecode(Servicios.Rows[_servicioIndex].Cells[0].Text);
-            }
+            //if (e.CommandName == "Select" || e.CommandName == "Delete" || e.CommandName == "Edit")
+            //{ 
+            //    Int16 _servicioIndex;
+
+            //    _servicioIndex = Convert.ToInt16(e.CommandArgument);
+            //    this._nombreServicio = HttpUtility.HtmlDecode(Servicios.Rows[_servicioIndex].Cells[0].Text);
+            //}
         }
 
         /// <summary>
@@ -100,6 +171,8 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         /// <param name="e"></param>
         protected void Servicios_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            _presentador.Servicios_RowDeleting();
+
         //    logicaConsultaServicio _eliminar;
         //    logicaConsultaServicio _consulta;
 
@@ -125,6 +198,8 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         ///// <param name="e"></param>        
         protected void Servicios_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            _presentador.Servicios_RowEditing();
+
         //    Response.Redirect("web_03_modificarServiciosPlaya.aspx?Servicio=" + this._nombreServicio);
 
         }
@@ -136,6 +211,7 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         ///// <param name="e"></param>
         protected void Servicios_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
+            _presentador.Servicios_SelectedIndexChanging();
 
         //    Response.Redirect("web_03_consultaServicioCompleta.aspx?Servicio=" + this._nombreServicio);
 
@@ -148,7 +224,8 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         ///// <param name="e"></param>
         protected void Servicios_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            
+            _presentador.Servicios_PageIndexChanging();
+
         //    this.Servicios.PageIndex = e.NewPageIndex;
         //    this.Servicios.DataSource = this._dt;
         //    this.Servicios.DataBind();
@@ -161,6 +238,8 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         ///// <param name="e"></param>
         protected void Servicios_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            _presentador.Servicios_RowDataBound();
+
         //    if (e.Row.RowType == DataControlRowType.DataRow)
         //    {
         //        foreach (ImageButton button in e.Row.Cells[4].Controls.OfType<ImageButton>())
@@ -188,6 +267,7 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         ///// <param name="e"></param>
         protected void imgBuscar_Click(object sender, ImageClickEventArgs e)
         {
+            _presentador.imgBuscar_Click();
         //    logicaConsultaServicio _busqueda;
 
         //    _busqueda = new logicaConsultaServicio();
@@ -205,6 +285,8 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
 
 
         }
-        
+
+        #endregion
+
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FrontOffice.Presentacion.Contratos;
+using FrontOffice.Presentacion.Contratos.Reservas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace FrontOffice.Presentacion.Vistas.Web.Reservas
 {
-    public partial class web_07_modificarSombrilla1 : System.Web.UI.Page
+    public partial class web_07_modificarSombrilla1 : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -16,6 +18,7 @@ namespace FrontOffice.Presentacion.Vistas.Web.Reservas
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            
             Response.Redirect("web_07_reservacionSombrilla.aspx");
         }
 
@@ -23,5 +26,7 @@ namespace FrontOffice.Presentacion.Vistas.Web.Reservas
         {
             Response.Redirect("web_07_consultaSombrilla.aspx");
         }
+
+
     }
 }

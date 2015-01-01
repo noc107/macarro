@@ -7,10 +7,10 @@ using System.Web.UI.WebControls;
 
 namespace BackOffice.Presentacion.Contratos.InventarioRestaurante
 {
-    interface IContrato_06_gestionarInventario : IContratoGeneral
+    public interface IContrato_06_gestionarInventario : IContratoGeneral
     {
         GridView gridInventario { set; }
         TextBox buscar { get; }
-        DropDownList listaBuscar { get; }
+        DropDownList listaBuscar { get; set; }
     }
 }

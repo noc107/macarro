@@ -15,7 +15,8 @@
     <script src="../../../comun/resources/js/ModuloServiciosPlaya/moduloServicioPlaya.js"></script>
 
     <h2 class="centrado subtitulo">Agregar Servicios de Playa</h2>
-    <asp:Label CssClass="avisoMensaje MensajeExito" ID="LabelMensaje" runat="server" Visible="false"></asp:Label>
+    <asp:Label ID="_mensajeExito" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
+    <asp:Label CssClass="avisoMensaje MensajeExito" ID="_mensajeError" runat="server" Text="" Visible="false" ></asp:Label>
     <br />
          <div class="formulario">
             <div class="formulario-izq">
@@ -46,6 +47,7 @@
                     
                     <asp:TextBox CssClass="textbox inputTextbox inputTextarea" ID="inputDescripcion" Rows="5" runat="server" TextMode="multiline"  onKeyUp="javascript:Check(this, 100);"
         onChange="javascript:Check(this, 100);"></asp:TextBox>
+
                     <asp:RequiredFieldValidator id="validatorDescripcion" runat="server"
                         ControlToValidate="inputDescripcion"
                         Text="*"
@@ -179,8 +181,8 @@
             
             <div class="formualrio-der">
                 <div class="formulario-labels-textbox">
-                        <asp:Label CssClass="labels labelsNombres labelHorario" ID="label20" runat="server" Text="Label"><h3 class="tituloHorario">Insertar <br /> Horarios:</h3></asp:Label>
-                        <asp:Label CssClass="notaHorario labels" ID="label4" runat="server" Text="Label">
+                        <asp:Label CssClass="labels labelsNombres labelHorario" ID="labelTituloHorario" runat="server" Text="Label"><h3 class="tituloHorario">Insertar <br /> Horarios:</h3></asp:Label>
+                        <asp:Label CssClass="notaHorario labels" ID="labeNotaHorario" runat="server" Text="Label">
                             En horarios aparece la lista de horarios ya agregados.<br />
                             En <span class="fuenteMenos">-</span> elimina el horario seleccionado.<br />
                             En <span class="fuenteMenos">+</span> permite agregar un horario a la lista.
@@ -255,7 +257,7 @@
         <table>
             <tr>
                 <td>
-                   <asp:ValidationSummary CssClass="avisoMensaje MensajeError" ID="ValidationSummary2"
+                   <asp:ValidationSummary CssClass="avisoMensaje MensajeError" ID="validarCampos"
                     HeaderText=""
                     DisplayMode="BulletList"
                     EnableClientScript="true"

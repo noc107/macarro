@@ -17,7 +17,9 @@
 <asp:Content ID="Content7" ContentPlaceHolderID="middle_place_holder" runat="server">
     <h2>Factura</h2>
  
-       <asp:Label ID="MensajeErrores" runat="server"  Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
+       <asp:Label ID="_mensajeError" runat="server"  Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
+       <asp:Label ID="_mensajeExito" runat="server"  Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
+
   
       <div id="contFactura">
 

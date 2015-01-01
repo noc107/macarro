@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BackOffice.Presentacion.Contratos.ConfiguracionServiciosPlaya;
+using BackOffice.Presentacion.Presentadores.ConfiguracionServiciosPlaya;
+using BackOffice.Presentacion.Contratos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +11,164 @@ using System.Web.UI.WebControls;
 
 namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
 {
-    public partial class web_3_agregarServicio : System.Web.UI.Page
+    public partial class web_3_agregarServicio : System.Web.UI.Page, IContrato_3_agregarServicio
     {
+
+        private Presentador_3_agregarServicio _presentadorAgregarServicio;
+
+        #region Implementa contrato, IContrato_3_agregarServicio
+
+        public TextBox NombreServicio
+        {
+            get { return inputNombreServcio; }
+        }
+
+        public TextBox DescripcionServicio
+        {
+            get { return inputDescripcion; }
+        }
+
+        public TextBox OtraCategoria
+        {
+            get { return inputCategoriaOtro; }
+        }
+
+        public TextBox LugarRetiro
+        {
+            get { return inputLugarRetiro; }
+        }
+
+        public TextBox Cantidad
+        {
+            get { return inputCantidad; }
+        }
+
+        public TextBox Capacidad
+        {
+            get { return inputCapacidad; }
+        }
+
+        public TextBox Costo
+        {
+            get { return inputCosto; }
+        }
+
+        public TextBox HoraInicio
+        {
+            get { return timePickerInicio; }
+        }
+
+        public TextBox HoraFin
+        {
+            get { return timePickerFin; }
+        }
+
+        public ListBox Horarios
+        {
+            get { return listboxHorario; }
+        }
+
+        public DropDownList ListaCategorias
+        {
+            get { return dropdownlistCategoria; }
+        }
+
+        public Label lNombreServicio
+        {
+            set { labelNombreServicio = value; }
+        }
+
+        public Label lDescripcion
+        {
+            set { labelDescripcion = value; }
+        }
+
+        public Label lCategoria
+        {
+            set { labelCategoria = value; }
+        }
+
+        public Label lOtraCategoria
+        {
+            set { LabelCategoriaOtro = value; }
+        }
+
+        public Label lLugarRetiro
+        {
+            set { labelLugarRetiro = value; }
+        }
+
+        public Label lCantidad
+        {
+            set { labelCantidad = value; }
+        }
+
+        public Label lCapacidad
+        {
+            set { labelCapacidad = value; }
+        }
+
+        public Label lCosto
+        {
+            set { labelCosto = value; }
+        }
+
+        public Label TituloHorario
+        {
+            set { labelTituloHorario = value; }
+        }
+
+        public Label NotaHorario
+        {
+            set { labeNotaHorario = value; }
+        }
+
+        public Label lHoraInicio
+        {
+            set { labelHoraInicio = value; }
+        }
+
+        public Label ErrorEliminarHorario
+        {
+            set { mensajeErrorEliminarHorario = value; }
+        }
+
+        public Label HorarioRepetido
+        {
+            set { mensajeHorarioRepetido = value; }
+        }
+
+        public Label LHorario
+        {
+            set { labelHorario = value; }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get { return _mensajeExito; }
+            set { _mensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return _mensajeError; }
+            set { _mensajeError = value; }
+        }
+
+        #endregion
+
+
+        #region Constructor
+
+        public web_3_agregarServicio()
+        {
+            this._presentadorAgregarServicio = new Presentador_3_agregarServicio(this);
+        }
+
+        #endregion
+
+
+        #region _2daEntrega
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,7 +205,7 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
             _datos[2] = this.inputCapacidad.Text;
             _datos[3] = this.inputCantidad.Text;
             _datos[4] = this.inputCosto.Text;
-            
+
             return _datos;
         }
 
@@ -58,25 +217,25 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         /// </summary>
         protected void ButtonAgregar_Click(object sender, EventArgs e)
         {
-        //    string[] _datos = new string[7];
-        //    HorarioServicio[] _horarios = new HorarioServicio[this.listboxHorario.Items.Count];
-        //    int _contador = 0;
-        //    string[] horas;
-        //    Servicio _servicio;
-        //    LogicaAgregarServicio _logicaServicio = new LogicaAgregarServicio();
-            
-        //    this.ButtonAgregar.Enabled = false;
-        //    _datos = this.llenarDatos(_datos);
-        //    foreach (ListItem item in this.listboxHorario.Items)
-        //    {
-        //        horas = item.Text.Split(new string[] {" a "}, StringSplitOptions.None);
-        //        _horarios[_contador] = new HorarioServicio(DateTime.Parse(horas[0]),DateTime.Parse(horas[1]));
-        //        _contador++;
-        //    }
-        //    _servicio = new Servicio(_datos,_horarios);
-        //    _logicaServicio.agregarServicio(_servicio, this.LabelMensaje);
-        //    this.ButtonAgregar.Enabled = true;     
-        //    //this.borrarCampos();
+            //    string[] _datos = new string[7];
+            //    HorarioServicio[] _horarios = new HorarioServicio[this.listboxHorario.Items.Count];
+            //    int _contador = 0;
+            //    string[] horas;
+            //    Servicio _servicio;
+            //    LogicaAgregarServicio _logicaServicio = new LogicaAgregarServicio();
+
+            //    this.ButtonAgregar.Enabled = false;
+            //    _datos = this.llenarDatos(_datos);
+            //    foreach (ListItem item in this.listboxHorario.Items)
+            //    {
+            //        horas = item.Text.Split(new string[] {" a "}, StringSplitOptions.None);
+            //        _horarios[_contador] = new HorarioServicio(DateTime.Parse(horas[0]),DateTime.Parse(horas[1]));
+            //        _contador++;
+            //    }
+            //    _servicio = new Servicio(_datos,_horarios);
+            //    _logicaServicio.agregarServicio(_servicio, this.LabelMensaje);
+            //    this.ButtonAgregar.Enabled = true;     
+            //    //this.borrarCampos();
         }
 
 
@@ -208,5 +367,9 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         //        this.dropdownlistCategoria.Items.Add(_itemCat);
         //    }
         //}
+
+        #endregion
+
+
     }
 }

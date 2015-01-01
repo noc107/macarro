@@ -13,6 +13,15 @@ namespace FrontOffice.Presentacion.Vistas.Web.Reservas {
     public partial class web_07_reservacionSombrilla {
         
         /// <summary>
+        /// MensajeExito control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MensajeExito;
+        
+        /// <summary>
         /// Image1 control.
         /// </summary>
         /// <remarks>
@@ -31,22 +40,22 @@ namespace FrontOffice.Presentacion.Vistas.Web.Reservas {
         protected global::System.Web.UI.WebControls.Table tabla;
         
         /// <summary>
-        /// lseleccion control.
+        /// lfecha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lseleccion;
+        protected global::System.Web.UI.WebControls.Label lfecha;
         
         /// <summary>
-        /// l_puesto control.
+        /// l_fecha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox l_puesto;
+        protected global::System.Web.UI.WebControls.Label l_fecha;
         
         /// <summary>
         /// lprecio control.
@@ -83,5 +92,14 @@ namespace FrontOffice.Presentacion.Vistas.Web.Reservas {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button botonCancelar;
+        
+        /// <summary>
+        /// MensajeError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MensajeError;
     }
 }

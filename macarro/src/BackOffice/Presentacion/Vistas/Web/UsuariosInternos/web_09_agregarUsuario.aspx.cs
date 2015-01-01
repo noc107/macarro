@@ -4,12 +4,119 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Contratos.UsuariosInternos;
+using BackOffice.Presentacion.Presentadores.UsuariosInternos;
+
 
 
 namespace BackOffice.Presentacion.Vistas.Web.UsuariosInternos
 {
-    public partial class web_09_agregarUsuario : System.Web.UI.Page
+    public partial class web_09_agregarUsuario : System.Web.UI.Page,IContrato_09_AgregarUsuario
     {
+       
+        private Presentador_09_agregarUsuario _presentador;
+
+
+        public web_09_agregarUsuario() 
+        {
+            _presentador = new Presentador_09_agregarUsuario(this);
+        }
+
+        # region Implementación get y set de los atributos del contrato Agregar  Usuario
+
+        public Label LabelMensajeExito
+        {
+            get { return _mensajeExito; }
+            set { _mensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return _mensajeError; }
+            set { _mensajeError = value; }
+        }
+
+        TextBox IContrato_09_AgregarUsuario.PrimerNombre 
+        {
+            get { return TextBoxNombre; }
+            set { TextBoxNombre = value; }
+        }
+
+        TextBox IContrato_09_AgregarUsuario.SegundoNombre
+        {
+            get { return TextBoxSegNombre; }
+            set { TextBoxSegNombre = value; }
+        }
+
+        TextBox IContrato_09_AgregarUsuario.PrimerApellido
+        {
+            get { return TextBoxApellido; }
+            set { TextBoxApellido = value; }
+        }
+
+        TextBox IContrato_09_AgregarUsuario.SegundoApellido
+        {
+            get { return TextBoxSegApellido; }
+            set { TextBoxSegApellido = value; }
+        }
+
+        DropDownList IContrato_09_AgregarUsuario.TipoDocumentacion
+        {
+            get { return DropDownListDocumento; }
+            set { DropDownListDocumento = value; }
+        }
+
+        TextBox IContrato_09_AgregarUsuario.Cedula
+        {
+            get { return TextBoxCedula; }
+            set { TextBoxCedula = value; }
+        }
+
+        TextBox IContrato_09_AgregarUsuario.FechaNacimiento
+        {
+            get { return TextBoxFechaNac; }
+            set { TextBoxFechaNac = value; }
+        }
+
+        TextBox IContrato_09_AgregarUsuario.Correo
+        {
+            get { return TextBoxCorreo; }
+            set { TextBoxCorreo = value; }
+        }
+
+        TextBox IContrato_09_AgregarUsuario.Telefono
+        {
+            get { return TextBoxTelefono; }
+            set { TextBoxTelefono = value; }
+        }
+
+        DropDownList IContrato_09_AgregarUsuario.Pais 
+        {
+            get { return DropDownListPais; }
+            set { DropDownListPais = value; }
+        }
+
+        DropDownList IContrato_09_AgregarUsuario.Estado
+        {
+            get { return DropDownListEstado; }
+            set { DropDownListEstado = value; }
+        }
+
+        DropDownList IContrato_09_AgregarUsuario.Ciudad
+        {
+            get { return DropDownListCiudad; }
+            set { DropDownListCiudad = value; }
+        }
+
+        TextBox IContrato_09_AgregarUsuario.Direccion
+        {
+            get { return TextBoxDireccion; }
+            set { TextBoxDireccion = value; }
+        }
+               
+        #endregion
+
+        #region Código Anterior Usuarios Internos
         string _correoS = string.Empty;
         string _docIdentidadS = string.Empty;
         string _primerNombreS = string.Empty;
@@ -32,6 +139,7 @@ namespace BackOffice.Presentacion.Vistas.Web.UsuariosInternos
             //}
             //else
             //    Server.Transfer("../IngresoRecuperacionClave/web_01_inicioSesionA.aspx", false);
+            _presentador.PageLoad(); 
 
         }
 
@@ -225,5 +333,6 @@ namespace BackOffice.Presentacion.Vistas.Web.UsuariosInternos
         //    _direccion = TextBoxDireccion.Text;
         //    return _empleado;
         //}
+        #endregion
     }
 }

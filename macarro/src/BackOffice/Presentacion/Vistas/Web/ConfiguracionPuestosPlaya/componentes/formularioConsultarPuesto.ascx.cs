@@ -12,73 +12,70 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya.component
     {
 
 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Fila.Enabled = false;
+            Columna.Enabled = false;
+
+        }
+
+        #region PROPIEDADES
+        
+        public RadioButtonList Opciones 
+        {
+            get { return listaDeOpciones; }
+        }
+
+        public TextBox Fila 
+        {
+            get { return fila; } 
+        }
+
+        public TextBox Columna
+        {
+            get { return columna; }
+        }
+
+        #endregion
+
+
         #region validacion
         protected void listaDeOpciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listaDeOpciones.SelectedValue == "0")
+            if (Opciones.SelectedValue == "0")
             {
-                fila.Text = "";
-                columna.Text = "";
-                fila.Enabled = false;
-                columna.Enabled = false;
+                Fila.Text = "";
+                Fila.Enabled = false;
+                Columna.Text = "";
+                Columna.Enabled = false;
 
             }
-            if (listaDeOpciones.SelectedValue == "1")
+            if (Opciones.SelectedValue == "1")
             {
-                columna.Text = "";
-                fila.Enabled = true;
-                columna.Enabled = false;
-            }
-            
-            if (listaDeOpciones.SelectedValue == "2")
-            {
-                fila.Text = "";
-                fila.Enabled = false;
-                columna.Enabled = true;
-
-            }
-            if (listaDeOpciones.SelectedValue == "3")
-            {
-                fila.Enabled = true;
-                columna.Enabled = true;
-
+                Fila.Enabled = true;
+                Columna.Text = "";
+                Columna.Enabled = false;
             }
 
+            if (Opciones.SelectedValue == "2")
+            {
+                Fila.Text = "";
+                Fila.Enabled = false;
+                Columna.Enabled = true;
+            }
+            if (Opciones.SelectedValue == "3")
+            {
+                Fila.Enabled = true;
+                Columna.Enabled = true;
+            }
 
         }
 
         #endregion
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            fila.Enabled = false;
-            columna.Enabled = false;
-
-        }
-
-        public string filar()
-        {
-
-            return this.fila.Text;
-        }
-
-        
-        public string radio()
-        {
-            return listaDeOpciones.SelectedValue.ToString();
-        }
+       
 
 
-        public void pintar(String e)
-        {
-            this.fila.Enabled = true;
-            this.fila.Text=e;
-        }
-
-        public string columnar()
-        {
-            return this.columna.Text;
-        }
 
 
     }

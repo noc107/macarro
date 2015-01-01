@@ -85,13 +85,22 @@ namespace BackOffice.Presentacion.Vistas.Web.ReportesFinancierosExportacion {
         protected global::System.Web.UI.WebControls.Button ExportarBoton;
         
         /// <summary>
-        /// MensajeError control.
+        /// _mensajeExito control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MensajeError;
+        protected global::System.Web.UI.WebControls.Label _mensajeExito;
+        
+        /// <summary>
+        /// _mensajeError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label _mensajeError;
         
         /// <summary>
         /// Table3 control.

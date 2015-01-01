@@ -13,22 +13,22 @@ namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad {
     public partial class web_08_editarRol {
         
         /// <summary>
-        /// Control MensajeExitoso.
+        /// Control _mensajeExito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MensajeExitoso;
+        protected global::System.Web.UI.WebControls.Label _mensajeExito;
         
         /// <summary>
-        /// Control MensajeErrores.
+        /// Control _mensajeError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MensajeErrores;
+        protected global::System.Web.UI.WebControls.Label _mensajeError;
         
         /// <summary>
         /// Control Table1.

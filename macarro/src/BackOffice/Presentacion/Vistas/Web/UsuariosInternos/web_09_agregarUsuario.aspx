@@ -21,8 +21,8 @@
     <asp:Table ID="Table1" runat="server" HorizontalAlign="Center"> 
        <asp:TableRow>
            <asp:TableCell ColumnSpan="6" HorizontalAlign="Center" >
-               <asp:label ID="mensajeExito" runat="server" CssClass="avisoMensaje MensajeExito" Visible="false">  Mensaje de Confirmacion </asp:label>
-               <asp:label ID="mensajeError" runat="server" CssClass="avisoMensaje MensajeError" Visible="false">  Mensaje de Confirmacion </asp:label>
+               <asp:label ID="_mensajeExito" runat="server" CssClass="avisoMensaje MensajeExito" Visible="false">  Mensaje de Confirmacion </asp:label>
+               <asp:label ID="_mensajeError" runat="server" CssClass="avisoMensaje MensajeError" Visible="false">  Mensaje de Confirmacion </asp:label>
                <br />
            </asp:TableCell>
        </asp:TableRow>
@@ -181,10 +181,33 @@
         
         </asp:TableRow>
            <asp:TableRow >  
-                <asp:TableCell >
-                    <br />
-                    <asp:label ID="Label3" runat="server" CssClass="labels" Font-Bold="true">   Dirección <span>(*)</span>  : </asp:label>
-                </asp:TableCell>
+                
+                <asp:TableCell>
+                <asp:label ID="LabelTelefono" runat="server" CssClass="labels">   Teléfono <span>(*)</span>  : </asp:label>
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox CssClass="textbox caja" ID="TextBoxTelefono" runat="server"></asp:TextBox>
+            </asp:TableCell>
+               <asp:TableCell>
+                <asp:regularexpressionvalidator CssClass="asterisco" ID="RegularExpressionValidator11" runat="server" 
+                    ControlToValidate= "TextBoxTelefono" 
+                    ErrorMessage="Formato de teléfono no valido: (XX)-YYY-ZZZZZZZ"
+                    Text="*" 
+                    ForeColor= "Red"
+                    ValidationExpression="\(\d{2}\)\-\d{3}\-\d{7}"> </asp:regularexpressionvalidator>
+            <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator11" 
+                    runat="server" ControlToValidate ="TextBoxTelefono"
+                    ErrorMessage="Telefono requerido." 
+                    Text="*"
+                    ForeColor="Red"> </asp:RequiredFieldValidator> 
+                
+            </asp:TableCell> 
+
+
+               
+               
+              
+
         </asp:TableRow>
         
         <asp:TableRow>

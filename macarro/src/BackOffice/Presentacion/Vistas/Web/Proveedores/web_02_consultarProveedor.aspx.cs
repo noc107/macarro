@@ -10,7 +10,7 @@ using BackOffice.Presentacion.Presentadores.Proveedores;
 
 namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 {
-    public partial class web_02_consultarProveedor : System.Web.UI.Page , IContratoGeneral, IContrato_02_consultarProveedor
+    public partial class web_02_consultarProveedor : System.Web.UI.Page , IContrato_02_consultarProveedor
     {
         //ProveedorBD auxBD = new ProveedorBD();
         Presentador_02_consultarProveedor _presentador;

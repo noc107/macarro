@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace front_office.view.temp {
+namespace FrontOffice.Presentacion.Vistas.Temp {
     
     
     public partial class master_not_loged {

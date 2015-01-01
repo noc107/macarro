@@ -1,4 +1,4 @@
-use MACARRO
+﻿use MACARRO
 go
 begin transaction;
 go
@@ -29,7 +29,8 @@ go
 -----------------------------------------------------------------------------------------------------
 
 -------------------------------------- REGISTRAR CLIENTE:-------------------------------------READY--
-/*CREATE PROCEDURE [dbo].[Procedure_RegistrarCliente]
+/*
+CREATE PROCEDURE [dbo].[Procedure_RegistrarCliente]
 @nombreLugar [varchar] (100),
 
 @docIdentidad [varchar] (100),
@@ -77,7 +78,8 @@ BEGIN
 CLI_preguntaSeguridad,CLI_respuestaSeguridad,FK_persona) VALUES (NEXT VALUE FOR USUARIO_SEQ,@correo,@contrasena,@tipo,@estado,@fechaIngreso,
 @fechaEgreso,@preguntaSeguridad,@respuestaSeguridad,@IDpersona);
 END;
-go*/
+go
+*/
 -----------------------------------------------------------------------------------------------------
 
 -------------------------------------- CAMBIAR CONTRASEÑA: -----------------------------------READY--
@@ -242,7 +244,6 @@ CREATE PROCEDURE [dbo].[Procedure_insertarClienteEmpleado]
 @fechaEgreso [datetime],
 @preguntaSeguridad [varchar] (100),
 @respuestaSeguridad [varchar] (100),
-@fkPersona [varchar] (100),
 @telefono [varchar] (100)
 
 AS
@@ -439,76 +440,38 @@ EXEC Procedure_insertarLugar 12, 'Zona industrial de Cloris Urb. Terrazas del Es
 /*--------------------------------------------------------------------------------------- 
                                         PERSONA - USUARIO
 -----------------------------------------------------------------------------------------*/ 
-insert into persona VALUES (NEXT VALUE FOR PERSONA_SEQ, '18293923', 'Ruben', 'Alenjadro', 'Perez', 'Ortega', '02-12-1987', '0412-369-65-16', 5, 7);
-INSERT INTO PERSONA VALUES (NEXT VALUE FOR PERSONA_SEQ, '17293840', 'Manuel', 'Jose', 'Sanchez', 'Hurtado', '03-01-1988', '0212-111-12-12',5,8);
-INSERT INTO PERSONA VALUES (NEXT VALUE FOR PERSONA_SEQ, '7283928', 'Mariana', 'Carolina', 'Marcano', 'Sosa', '12-12-1967', '0424-123-23-23',5,9); 
-INSERT INTO PERSONA VALUES (NEXT VALUE FOR PERSONA_SEQ, '20238394', 'Leyda', null, 'Castro', 'Centeno', '11-08-1994', '0416-333-45-45', 5,10);
-INSERT INTO PERSONA VALUES (NEXT VALUE FOR PERSONA_SEQ, '17282930', 'Juan', 'Manuel', 'Rodriguez', 'Serrano', '10-18-1980', '0412-666-54-32', 5,11);
-INSERT INTO PERSONA VALUES (NEXT VALUE FOR PERSONA_SEQ, '18123451', 'Yolymar', 'Alejandra', 'Bucherenick', 'Ortuno', '08-29-1991', '0414-128-61-69',5,12);
 
-INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ, 'rubenalej@gmail.com', '736f907006c60320b8b8a643c21af99b',NULL,NULL, '¿Cuál es la ciudad de nacimiento su madre?', 
-'c9fa5b8cb3b197ae5ce4baf8415a375b',3,1,1);
-/*resp Caracas*/
-/*clave Ruben123*/
-INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ, 'manueljos@hotmail.com', '1a715d422dbc1e399c325e68d667e37a', null, null, '¿Cuál es el nombre del colegio donde estudio?',
-'8da6e9a7bf25b6b0f94b53fbe40e607b', 3,1,2);
-/*resp Colegio San Agustin*/
-/*clave Manu123*/
-INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ, 'marianacarol@gmail.com', '17bcc025953711a979d446104dfd46d5', null, null, '¿Cuál es la profesión de su abuela materna?',
-'7ce9374eb453f1f756aee5be837238af', 3,1,3);
-/*resp Licenciada*/
-/*Clave Mari123*/
-
-INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'leydacenteno@gmail.com', 'c49600113542f2479f7ca195a8e638a5', null, null, '¿Cuál era su caricatura favorita en su infancia?',
-'bdf3dbb0bab2c3985e8ef41b3b90e702',3,1,4);
-/*resp vaca y pollito*/
-/*Clave Leyda123*/
-
-INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ, 'juanmanuel@gmail.com', 'a31add0c8535719a165e2fad450c4cf6', null, null, '¿Cuál es el segundo nombre de su padre?',
-'65314e903461a614229ea5a2099d758e',3,1,5);
-/*resp Manuel*/
-/*Clave Juan123*/
-
-INSERT INTO USUARIO VALUES (NEXT VALUE FOR USUARIO_SEQ,'ybucherenick@gmail.com', 'cbf2997a7f96a7a45a556bb083c0698a9',null,null, '¿Cuál es el nombre de su abuelo paterno?',
-'ba7c67da85547e39bfd38837f54bab31', 3,1,6);
-/*resp Enrique*/
-/*Clave Yoly123*/
-
-
-
-
-
-/*EXEC Procedure_insertarClienteEmpleado '18293923', 'Cedula', 'Ruben', 'Alenjadro', 
+EXEC Procedure_insertarClienteEmpleado '18293923', 'Cedula', 'Ruben', 'Alenjadro', 
 'Perez', 'Ortega', '02-12-1987', 7, 'rubenalej@gmail.com', '736f907006c60320b8b8a643c21af99b',
 'Cliente', 'Activado', null, null, '¿Cuál es la ciudad de nacimiento su madre?', 
-'Caracas', 1,'0412-369-65-16';*/
+'Caracas','0412-369-65-16';
+/*clave Ruben123*/
 
-/*EXEC Procedure_insertarClienteEmpleado '17293840', 'Cedula', 'Manuel', 'Jose', 
+
+EXEC Procedure_insertarClienteEmpleado '17293840', 'Cedula', 'Manuel', 'Jose', 
 'Sanchez', 'Hurtado', '03-01-1988', 8, 'manueljos@hotmail.com', '1a715d422dbc1e399c325e68d667e37a',
 'Cliente', 'Activado', null, null, '¿Cuál es el nombre del colegio donde estudio?', 
-'colegio San Agustín', '17293840';*/
-
-/*EXEC Procedure_insertarClienteEmpleado '7283928', 'Cedula', 'Mariana', 'Carolina', 
+'colegio San Agustín', '04128547844';
+/*clave Manu123*/
+EXEC Procedure_insertarClienteEmpleado '7283928', 'Cedula', 'Mariana', 'Carolina', 
 'Marcano', 'Sosa', '12-12-1967', 9, 'marianacarol@gmail.com', '17bcc025953711a979d446104dfd46d5', 
 'Cliente', 'Activado', null, null, '¿Cuál es la profesión de su abuela materna?', 
-'Licenciada', '7283928';*/
-
-/*EXEC Procedure_insertarClienteEmpleado '20238394', 'Cedula', 'Leyda', null, 'Castro', 
+'Licenciada', '02127895487';
+/*Clave Mari123*/
+EXEC Procedure_insertarClienteEmpleado '20238394', 'Cedula', 'Leyda', null, 'Castro', 
 'Centeno', '11-08-1994', 10, 'leydacenteno@gmail.com', 'c49600113542f2479f7ca195a8e638a5', 'Cliente', 
 'Activado', null, null, '¿Cuál era su caricatura favorita en su infancia?', 'Vaca y Pollito', 
-'20238394';*/
+'0219896545';
 /*Clave Leyda123*/
-
-/*EXEC Procedure_insertarClienteEmpleado '17282930', 'Cedula', 'Juan', 'Manuel', 
+EXEC Procedure_insertarClienteEmpleado '17282930', 'Cedula', 'Juan', 'Manuel', 
 'Rodriguez', 'Serrano', '10-18-1980', 11, 'juanmanuel@gmail.com', 'a31add0c8535719a165e2fad450c4cf6', 
 'Cliente', 'Activado', null, null, '¿Cuál es el segundo nombre de su padre?', 
-'Manuel', '17282930';*/
+'Manuel', '0412548965';
 /*Clave Juan123*/
-
-/*EXEC Procedure_insertarClienteEmpleado '092583247', 'Pasaporte', 'Yolymar', 'Alejandra', 
+EXEC Procedure_insertarClienteEmpleado '092583247', 'Pasaporte', 'Yolymar', 'Alejandra', 
 'Bucherenick', 'Ortuno', '08-29-1991', 12, 'ybucherenick@gmail.com', 
 'cbf2997a7f96a7a45a556bb083c0698a9', 'Cliente', 'Activado', null, null, '¿Cuál es el nombre de su abuelo paterno?', 
-'Enrique', '092583247';*/
+'Enrique', '04167453354';
 /*Clave Yoly123*/
 commit transaction;
 go

@@ -4,14 +4,113 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Text;
+using System.Data;
+using BackOffice.Presentacion.Presentadores.ConfiguracionServiciosPlaya;
+using BackOffice.Presentacion.Contratos.ConfiguracionServiciosPlaya;
 
 namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
 {
-    public partial class web_03_consultaServicioCompleta : System.Web.UI.Page
+    public partial class web_03_consultaServicioCompleta : System.Web.UI.Page, IContrato_03_consultaServicioCompleta
     {
+
+        #region Párametros
+
+        private Presentador_03_consultaServicioCompleta _presentador;
+
+        #endregion 
+
+        #region Constructor
+
+        public web_03_consultaServicioCompleta()
+        {
+            _presentador = new Presentador_03_consultaServicioCompleta(this);
+        }
+
+        #endregion
+
+        #region Implementación de IContrato_03_consultaServicioCompleta
+
+        public Label nombreServicio
+        {
+            set { NombreServcio = value; } 
+        }
+
+        public Label descripcionServicio
+        {
+            set { Descripcion = value; }
+        }
+
+        public Label categoriaServicio
+        {
+            set { Categoria = value; }
+        }
+
+        public Label lugarRetiroServicio
+        {
+            set { LugarRetiro = value; }
+        }
+
+        public Label cantidadServicio
+        {
+            set { Cantidad = value; }
+        }
+
+        public Label capacidadServicio
+        {
+            set { Capacidad = value; }
+        }
+
+        public Label costoServicio
+        {
+            set { Costo = value; }
+        }
+
+        public Label horarioServicio
+        {
+            set { Horario = value; }
+        }
+
+        public Label estadoServicio
+        {
+            set { Estado = value; }
+        }
+
+        public Button volver
+        {
+            get { return VolverConsulta; }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public Label LabelMensajeError
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        #endregion
+
         //private LogicaModificarServicio _consultaServicio;
         //Servicio _servicio;
+
+        #region Métodos
 
         /// <summary>
         /// Carga de datos de un servicio particular al cargar la pagina
@@ -20,6 +119,9 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            _presentador.cargarPagina();
+            _presentador.mostrarDatosServicio();
+
             //string _correoS = (string)(Session["correo"]);
             //string _docIdentidadS = (string)(Session["docIdentidad"]);
             //string _primerNombreS = (string)(Session["primerNombre"]);
@@ -146,6 +248,8 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionServiciosPlaya
         {
             Response.Redirect("web_03_consultaServicio.aspx");
         }
+
+        #endregion
 
     }
 }

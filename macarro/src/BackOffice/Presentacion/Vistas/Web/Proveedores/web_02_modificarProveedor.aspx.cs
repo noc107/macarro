@@ -11,7 +11,7 @@ using BackOffice.Presentacion.Presentadores.Proveedores;
 
 namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 {
-    public partial class web_02_modificarProveedor : System.Web.UI.Page , IContratoGeneral , IContrato_02_modificarProveedor
+    public partial class web_02_modificarProveedor : System.Web.UI.Page , IContrato_02_modificarProveedor
     {
         //LogicaProveedor _auxLogica = new LogicaProveedor();
         //ProveedorBD auxDatos = new ProveedorBD();

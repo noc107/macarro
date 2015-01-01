@@ -20,8 +20,8 @@
     <asp:Table ID="Table1" runat="server" HorizontalAlign="Center"> 
        <asp:TableRow>
            <asp:TableCell ColumnSpan="6" HorizontalAlign="Center" >
-               <asp:label ID="mensajeExito" runat="server" CssClass="avisoMensaje MensajeExito" Visible="false">  Mensaje de Confirmacion </asp:label>
-               <asp:label ID="mensajeError" runat="server" CssClass="avisoMensaje MensajeError" Visible="false">  Mensaje de Confirmacion </asp:label>
+               <asp:label ID="_mensajeExito" runat="server" CssClass="avisoMensaje MensajeExito" Visible="false">  Mensaje de Confirmacion </asp:label>
+               <asp:label ID="_mensajeError" runat="server" CssClass="avisoMensaje MensajeError" Visible="false">  Mensaje de Confirmacion </asp:label>
                <br />
            </asp:TableCell>
        </asp:TableRow>
@@ -104,6 +104,16 @@
         </asp:TableRow>
        
          <asp:TableRow>
+            <asp:TableCell  Height="50">
+                <asp:label ID="LabelTelefono" runat="server" CssClass="labels">  Teléfono: </asp:label>
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:label  ID="LabelTelefonoCons" runat="server" > </asp:label>
+            </asp:TableCell>
+        </asp:TableRow>
+
+
+        <asp:TableRow>
             <asp:TableCell  Height="50">
                 <asp:label ID="LabelCorreo" runat="server" CssClass="labels">  E-mail: </asp:label>
             </asp:TableCell>

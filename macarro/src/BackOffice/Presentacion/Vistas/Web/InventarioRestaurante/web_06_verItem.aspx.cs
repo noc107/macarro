@@ -1,15 +1,84 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Contratos.InventarioRestaurante;
+using BackOffice.Presentacion.Presentadores.InventarioRestaurante;
 
 namespace BackOffice.Presentacion.Vistas.Web.InventarioRestaurante
 {
-    public partial class web_06_verItem : System.Web.UI.Page
+    public partial class web_06_verItem : System.Web.UI.Page ,IContrato_06_verItem 
     {
+
+        private Presentador_06_verItem _presentador;
+
+        public web_06_verItem()
+        {
+            _presentador = new Presentador_06_verItem(this);
+        }
+
+        public Label Nombre
+        {
+            set
+            {
+                this.lbNombreVer = value;
+            }
+        }
+
+        public Label Cantidad
+        {
+            set
+            {
+                this.lbCantidadVer = value;
+            }
+        }
+
+        public Label Descripcion
+        {
+            set
+            {
+                this.lbDescripcionVer = value;
+            }
+        }
+
+        public Label PrecioVenta
+        {
+            set
+            {
+                this.lbPrecio = value;
+            }
+        }
+
+        public Label PrecioCompra
+        {
+            set
+            {
+                this.lbPrecio2 = value;
+            }
+        }
+
+        public Label Proveedor
+        {
+            set
+            {
+                this.lbProveedor = value;
+            }
+        }
+
+        public ListBox Actualizaciones
+        {
+            set
+            {
+                this.ListBox1 = value;
+            }
+        }
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
           //  int idItem = web_06_gestionarInventario.idItemSeleccionado;   //id del item seleccionado en la ventana gestion
@@ -53,6 +122,65 @@ namespace BackOffice.Presentacion.Vistas.Web.InventarioRestaurante
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect("web_06_gestionarInventario.aspx");
+        }
+
+        public Label nombreVer
+        {
+            set { throw new NotImplementedException(); }
+        }
+
+        public Label cantidadVer
+        {
+            set { throw new NotImplementedException(); }
+        }
+
+        public Label descripcionVer
+        {
+            set { throw new NotImplementedException(); }
+        }
+
+        public Label precioVentaVer
+        {
+            set { throw new NotImplementedException(); }
+        }
+
+        public Label precioCompraVer
+        {
+            set { throw new NotImplementedException(); }
+        }
+
+        public Label proveedorVer
+        {
+            set { throw new NotImplementedException(); }
+        }
+
+        public ListBox actualizaciones
+        {
+            set { throw new NotImplementedException(); }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public Label LabelMensajeError
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

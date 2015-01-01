@@ -10,25 +10,25 @@
 namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad {
     
     
-    public partial class Agregar_Rol {
+    public partial class web_08_agregarRol {
         
         /// <summary>
-        /// Control MensajeExitoso.
+        /// Control _mensajeExito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MensajeExitoso;
+        protected global::System.Web.UI.WebControls.Label _mensajeExito;
         
         /// <summary>
-        /// Control MensajeErrores.
+        /// Control _mensajeError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MensajeErrores;
+        protected global::System.Web.UI.WebControls.Label _mensajeError;
         
         /// <summary>
         /// Control Table1.
@@ -40,13 +40,13 @@ namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad {
         protected global::System.Web.UI.WebControls.Table Table1;
         
         /// <summary>
-        /// Control Nombre.
+        /// Control LNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Nombre;
+        protected global::System.Web.UI.WebControls.Label LNombre;
         
         /// <summary>
         /// Control TextBoxNombre.
@@ -76,13 +76,13 @@ namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator TBNombre_Validator_Letras;
         
         /// <summary>
-        /// Control Descripcion.
+        /// Control LDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Descripcion;
+        protected global::System.Web.UI.WebControls.Label LDescripcion;
         
         /// <summary>
         /// Control TextBoxDescripcion.
@@ -112,13 +112,13 @@ namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator TBDescripcion_Validator_Letras;
         
         /// <summary>
-        /// Control AccionesDisponibles.
+        /// Control LAccionesDisponibles.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AccionesDisponibles;
+        protected global::System.Web.UI.WebControls.Label LAccionesDisponibles;
         
         /// <summary>
         /// Control ListaAccionesDisponibles.
@@ -139,13 +139,13 @@ namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad {
         protected global::System.Web.UI.WebControls.ImageButton ButtonAgregarAccion;
         
         /// <summary>
-        /// Control AccionesAsignadas.
+        /// Control LAccionesAsignadas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AccionesAsignadas;
+        protected global::System.Web.UI.WebControls.Label LAccionesAsignadas;
         
         /// <summary>
         /// Control ListaAccionesAsignadas.

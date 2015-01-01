@@ -5,13 +5,134 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using BackOffice.Presentacion.Contratos.ConfiguracionPuestosPlaya;
+using BackOffice.Presentacion.Presentadores.ConfiguracionPuestosPlaya;
 
 
 namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya
 {
-    public partial class web_2_consultarPuesto : System.Web.UI.Page
+    public partial class web_2_consultarPuesto : System.Web.UI.Page , IContrato_2_consultarPuesto
     {
+        #region Presentador
+        private Presentador_2_consultarPuesto _presentador;
+        #endregion
 
+        #region Implementacion de Contrato
+
+        public RadioButtonList RadioOpciones
+        {
+            get { return formularioConsultarPuesto.Opciones; }
+        }
+
+        public TextBox CampoFila
+        {
+            get { return formularioConsultarPuesto.Fila; }
+        }
+
+        public TextBox CampoColumna
+        {
+            get { return formularioConsultarPuesto.Columna; }
+        }
+
+        public Button BtnBuscar
+        {
+            get { return botonBuscar; }
+        }
+
+        public GridView GridPuestos
+        {
+            get { return GV_ConsultarPuesto; }
+        }
+
+        public Button BtnModificar
+        {
+            get { return Modificar; }
+        }
+
+        public Button BtnEliminar
+        {
+            get { return Eliminar; }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get { return mensajeDeEstado.mensajeExito; }
+            set { mensajeDeEstado.mensajeExito = value; }
+        }
+
+        public Label LabelMensajeError
+        {
+            get { return mensajeDeEstado.mensajeError; }
+            set { mensajeDeEstado.mensajeError = value; }
+        }
+
+        #endregion
+
+        #region constructor
+        public web_2_consultarPuesto()
+        {
+            _presentador = new Presentador_2_consultarPuesto(this);
+        }
+        #endregion
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Evento que activa el buscar los puestos.
+        /// </summary>
+        protected void botonBuscar_Click(object sender, EventArgs e)
+        {
+            _presentador.EventoClickConsultarPuesto();
+        }
+
+        /// <summary>
+        /// Evento que se dispara cuando se selecciona una fila.
+        /// </summary>
+        protected void GridView_ConsultarPuesto_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int idPuesto = 0;
+
+            if (e.CommandName.Equals(RecursosInterfaz.AccionUpdate))
+            {
+                Response.Redirect(_presentador.EventoModificar()); 
+            }
+
+            if (e.CommandName.Equals(RecursosInterfaz.AccionDelete))
+            {
+                _presentador.EventoEliminarPuestoSeleccionado(idPuesto);
+            }
+        }
+
+        /// <summary>
+        /// Evento de paginacion.
+        /// </summary>
+        protected void GvPuestoPageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridPuestos.PageIndex = e.NewPageIndex;
+            _presentador.EventoClickConsultarPuesto();
+        }
+
+        /// <summary>
+        /// Modifica todo la tabla.
+        /// </summary>
+        protected void Modificar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(_presentador.EventoModificar()); 
+        }
+
+        /// <summary>
+        /// Elimina todo los registros.
+        /// </summary>
+        protected void Eliminar_Click(object sender, EventArgs e)
+        {
+            _presentador.EventoEliminarFilaColumna();            
+        }
+
+        #region CodigoAnterior
+        /*
         // atributos de la clase
         #region atributos
         private string _fila;
@@ -391,7 +512,8 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya
 
         //#endregion
 
-       
-
+       */
+        #endregion        
+    
     }
 }

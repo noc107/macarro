@@ -16,42 +16,26 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya.component
         }
 
         #region PROPIEDADES
-        
-        public TextBox getPrecio()
+        public TextBox Precio
         {
-            return this.precio;                   
+            get { return precio; }
         }
 
-        public void setPrecio(string valor) 
+        public DropDownList Estado
         {
-            this.precio.Text = valor;
-        }
+            get { return estadoDelItem; }
+        }        
 
-        public DropDownList getEstado()
+        public TextBox Descripcion
         {
-            return this.estadoDelItem;
-        }
-
-        public void setEstado(string valor)
-        {
-            this.estadoDelItem.Text = valor;
-        }
-
-        public TextBox getDescripcion()
-        {
-            return this.descripcion;
-        }
-
-        public void setDescripcion(string valor)
-        {
-            this.descripcion.Text = valor;
+           get { return descripcion; }
         }
 
         #endregion
 
         protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            if (estadoDelItem.Enabled == false)
+            if (Estado.Enabled == false)
             { 
                 foreach (BaseValidator val in Page.Validators)
                 {
@@ -62,7 +46,7 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya.component
                 }
             }
 
-            if (descripcion.Enabled == false)
+            if (Descripcion.Enabled == false)
             {
                 foreach (BaseValidator val in Page.Validators)
                 {

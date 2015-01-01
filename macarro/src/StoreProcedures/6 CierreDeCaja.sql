@@ -92,7 +92,7 @@ AS
 BEGIN
 	SELECT USU_correo From USUARIO;
 END;
-
+go
 -- CONSULTA PLATOS, TICKET, SERVICIOS DE UN USUARIO PARA FACTURAR --
 CREATE PROCEDURE Procedure_buscarFacturacion
     @_busqueda [nvarchar] (100),
@@ -212,4 +212,3 @@ GO
 commit transaction;
 go
 	
-

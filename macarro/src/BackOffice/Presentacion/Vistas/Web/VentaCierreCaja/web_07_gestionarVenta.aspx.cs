@@ -1,27 +1,33 @@
 ﻿using System;
-//using back_office.Excepciones.RolesSeguridad;
-//using back_office.Logica.RolesSeguridad;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-//using back_office.Dominio;
-//using back_office.Logica.VentaCierreCaja;
+using BackOffice.Presentacion.Contratos;
+using BackOffice.Presentacion.Contratos.VentaCierreCaja;
+using BackOffice.Presentacion.Presentadores.VentaCierreCaja;
 
 namespace back_office.Interfaz.web.VentaCierreCaja
 {
 
-
-    public partial class WebForm3 : System.Web.UI.Page
+    public partial class WebForm3 : System.Web.UI.Page, IContrato_07_GestionarVenta
     {
-        #region Variables de Sesion
+        /*#region Variables de Sesion
         string _correoS;
         string _docIdentidadS;
         string _primerNombreS;
         string _primerApellidoS;
-        #endregion
+        #endregion*/
+
+        private Presentador_07_GestionarVenta _presentadorGestionarVenta;
+
+        public WebForm3()
+        {
+            this._presentadorGestionarVenta = new Presentador_07_GestionarVenta(this);
+        }
 
        /* public static List<Factura> _listaFactura;
         private Factura _selectedFactura;*/
@@ -142,14 +148,65 @@ namespace back_office.Interfaz.web.VentaCierreCaja
             get { return _selectedFactura; }
         }*/
 
-        protected void ButtonCierreDiario_Click(object sender, EventArgs e)
+        public DropDownList listaEstadoBuscador
         {
-         //   Response.Redirect("web_07_cerrarCajaDiario.aspx");
+            get
+            {
+                return this.listEstado;
+            }
+            set
+            {
+                this.listEstado = value;
+            }
         }
 
-        protected void ButtonCierreMensual_Click(object sender, EventArgs e)
+        public TextBox TBoxBuscador
         {
-        //    Response.Redirect("web_07_cerrarCajaMensual.aspx");
+            get
+            {
+                return this.txtBuscar;
+            }
+            set
+            {
+                this.txtBuscar = value;
+            }
         }
+
+        public GridView GridVentas
+        {
+            get
+            {
+                return this.Ventas;
+            }
+            set
+            {
+                this.Ventas = value;
+            }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get
+            {
+                return this._mensajeExito;
+            }
+            set
+            {
+                this._mensajeExito = value;
+            }
+        }
+
+        public Label LabelMensajeError
+        {
+            get
+            {
+                return this._mensajeError;
+            }
+            set
+            {
+                this._mensajeError = value;
+            }
+        }
+
     }
 }

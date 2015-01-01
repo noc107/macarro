@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace front_office.Interfaz.web
+namespace FrontOffice.Presentacion.Vistas.Web
 {
     public partial class noIntegradoNoIniciado : System.Web.UI.Page
     {

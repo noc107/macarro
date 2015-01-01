@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BackOffice.Presentacion.Contratos.RolesSeguridad;
+using BackOffice.Presentacion.Presentadores.RolesSeguridad;
+using BackOffice.Presentacion.Vistas.Web.RolesSeguridad.Recursos;
+//using BackOffice.Excepciones.RolesSeguridad;
 
 namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad
 {
-    public partial class Agregar_Rol : System.Web.UI.Page
+    public partial class web_08_agregarRol : System.Web.UI.Page, IContrato_08_AgregarRol
     {
         #region Variables de Sesion
         string _correoS;
@@ -16,61 +18,97 @@ namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad
         string _primerNombreS;
         string _primerApellidoS;
         #endregion
+        private Presentador_08_AgregarRol _presentador;
 
-        protected void Page_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Constructor de la interfaz e inicializacion del presentador
+        /// </summary>
+        public web_08_agregarRol()
         {
-            //if (!Page.IsPostBack)
-            //{
-            //    cargarInfo();
-            //    variableSesion();
-            //}
+            _presentador = new Presentador_08_AgregarRol(this);
         }
 
         /// <summary>
-        /// Metodo para cargar las variables de sesion
+        /// Metodo que inicia al cargar la interfaz
         /// </summary>
-        private void variableSesion()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Page_Load(object sender, EventArgs e)
         {
+            //    variableSesion();
             try
             {
-                _correoS = (string)(Session["correo"]);
-                _docIdentidadS = (string)(Session["docIdentidad"]);
-                _primerNombreS = (string)(Session["primerNombre"]);
-                _primerApellidoS = (string)(Session["primerApellido"]);
+                if (!Page.IsPostBack)
+                {
+                    _presentador.llenarInfo();
+                }
+            }
+            catch (SqlException)
+            {
+                _presentador.MostrarMensajeError(RecursosInterfazRolesSeguridad.mensajeConexionBD);
+                LabelMensajeError.Visible = true;
             }
             catch (Exception ex)
             {
-                MensajeErrores.Text = "No se han podido cargar los datos de sesion";
-                MensajeErrores.Visible = true;
-                ex.GetType();
+                _presentador.MostrarMensajeError(RecursosInterfazRolesSeguridad.mensajeError + ex.GetType().ToString());
+                LabelMensajeError.Visible = true;
             }
         }
 
         /// <summary>
-        /// Metodo para cargar las acciones disponibles
+        /// Implementacion del metodo TBNombre
         /// </summary>
-        private void cargarInfo()
+        public TextBox TBNombre
         {
-            //try
-            //{
-            //    foreach (Accion a in ControlRolAccion.listaGeneralAcciones())
-            //    {
-            //        ListaAccionesDisponibles.Items.Add(a.Nombre);
-            //    }
-            //}
-            //catch (SqlException ex)
-            //{
-            //    MensajeErrores.Text = "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos";
-            //    MensajeErrores.Visible = true;
-            //    ex.GetType();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MensajeErrores.Text = "No se han podido cargar los datos. Error " + ex.GetType().ToString();
-            //    MensajeErrores.Visible = true;
-            //}
+            get { return TextBoxNombre; }
+            set { TextBoxNombre = value; }
 
         }
+
+        /// <summary>
+        /// Implementacion del metodo TBDescripcion
+        /// </summary>
+        public TextBox TBDescripcion
+        {
+            get { return TextBoxDescripcion; }
+            set { TextBoxDescripcion = value; }
+        }
+
+        /// <summary>
+        /// Implementacion del metodo LBAccionesDisponibles
+        /// </summary>
+        public ListBox LBAccionesDisponibles
+        {
+            get { return ListaAccionesDisponibles; }
+            set { ListaAccionesDisponibles = value; }
+        }
+
+        /// <summary>
+        /// Implementacion del metodo LBAccionesAsignadas
+        /// </summary>
+        public ListBox LBAccionesAsignadas
+        {
+            get { return ListaAccionesAsignadas; }
+            set { ListaAccionesAsignadas = value; }
+        }
+
+        /// <summary>
+        /// Implementacion del metodo LabelMensajeExito
+        /// </summary>
+        public Label LabelMensajeExito
+        {
+            get { return _mensajeExito; }
+            set { _mensajeExito = value; }
+        }
+
+        /// <summary>
+        /// Implementacion del metodo LabelMensajeError
+        /// </summary>
+        public Label LabelMensajeError
+        {
+            get { return _mensajeError; }
+            set { _mensajeError = value; }
+        }       
 
         /// <summary>
         /// Metodo para manejar elvento del boton aceptar
@@ -79,32 +117,32 @@ namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad
         /// <param name="e"></param>
         protected void Aceptar_Click(object sender, EventArgs e)
         {
-        //    try
-        //    {
-        //        if (!ControlRolAccion.verificarRol(TextBoxNombre.Text))
-        //        {
-        //            MensajeErrores.Visible = false;
-        //            ControlRolAccion.agregarRol(TextBoxNombre.Text, TextBoxDescripcion.Text, ListaAccionesDisponibles);
+            try
+            {
+                if (!_presentador.VerificarRol(TextBoxNombre.Text))
+                {
+                    _presentador.EventoAceptar_Click();
 
-        //            MensajeExitoso.Text = "El ítem ha sido creado satisfactoriamente";
-        //            MensajeExitoso.Visible = true;
-        //        }
-        //        else
-        //        {
-        //            MensajeErrores.Text = "Este rol ya está registrado en el sistema";
-        //            MensajeErrores.Visible = true;
-        //        }
-        //    }
-        //    catch (ExcepcionListAccionVacia ex)
-        //    {
-        //        MensajeErrores.Text = ex.Message;
-        //        MensajeErrores.Visible = true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MensajeErrores.Text = "No se han podido cargar los datos. Error " + ex.GetType().ToString();
-        //        MensajeErrores.Visible = true;
-        //    }
+                    _presentador.MostrarMensajeExito(RecursosInterfazRolesSeguridad.mensajeAgregado);
+                    LabelMensajeExito.Visible = true;
+                }
+                else
+                {
+                    _presentador.MostrarMensajeError(RecursosInterfazRolesSeguridad.mensajeRegistrado);
+                    LabelMensajeError.Visible = true;
+                    LabelMensajeExito.Visible = false;
+                }
+            }
+            //catch (ExcepcionListAccionVacia ex)
+            //{
+            //    _presentador.MostrarMensajeError(ex.Message);
+            //    LabelMensajeError.Visible = true;
+            //}
+            catch (Exception ex)
+            {
+                _presentador.MostrarMensajeError(RecursosInterfazRolesSeguridad.mensajeError + ex.GetType().ToString());
+                LabelMensajeError.Visible = true;
+            }
         }
 
         /// <summary>
@@ -118,22 +156,18 @@ namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad
             {
                 if (ListaAccionesDisponibles.SelectedIndex != -1)
                 {
-                    MensajeErrores.Visible = false;
-                    ListaAccionesAsignadas.Items.Add(ListaAccionesDisponibles.SelectedItem);
-                    ListaAccionesDisponibles.Items.RemoveAt(ListaAccionesDisponibles.SelectedIndex);
-                    ListaAccionesDisponibles.ClearSelection();
-                    ListaAccionesAsignadas.ClearSelection();
+                    _presentador.EventoAgregar_Click();
                 }
                 else
                 {
-                    MensajeErrores.Text = "Seleccione un elemento a agregar";
-                    MensajeErrores.Visible = true;
+                    _presentador.MostrarMensajeError(RecursosInterfazRolesSeguridad.mensajeElemento);
+                    LabelMensajeError.Visible = true;
                 }
             }
             catch (Exception ex)
             {
-                MensajeErrores.Text = "No se han podido cargar los datos. Error " + ex.GetType().ToString();
-                MensajeErrores.Visible = true;
+                _presentador.MostrarMensajeError(RecursosInterfazRolesSeguridad.mensajeError + ex.GetType().ToString());
+                LabelMensajeError.Visible = true;
             }
 
         }
@@ -149,22 +183,37 @@ namespace BackOffice.Presentacion.Vistas.Web.RolesSeguridad
             {
                 if (ListaAccionesAsignadas.SelectedIndex != -1)
                 {
-                    MensajeErrores.Visible = false;
-                    ListaAccionesDisponibles.Items.Add(ListaAccionesAsignadas.SelectedItem);
-                    ListaAccionesAsignadas.Items.RemoveAt(ListaAccionesAsignadas.SelectedIndex);
-                    ListaAccionesAsignadas.ClearSelection();
-                    ListaAccionesDisponibles.ClearSelection();
+                    _presentador.EventoQuitar_Click();
                 }
                 else
                 {
-                    MensajeErrores.Text = "Seleccione un elemento a eliminar";
-                    MensajeErrores.Visible = true;
+                    _presentador.MostrarMensajeError(RecursosInterfazRolesSeguridad.mensajeElemento);
+                    LabelMensajeError.Visible = true;
                 }
             }
             catch (Exception ex)
             {
-                MensajeErrores.Text = "No se han podido cargar los datos. Error " + ex.GetType().ToString();
-                MensajeErrores.Visible = true;
+                _presentador.MostrarMensajeError(RecursosInterfazRolesSeguridad.mensajeError + ex.GetType().ToString());
+                LabelMensajeError.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Metodo para cargar las variables de sesion
+        /// </summary>
+        private void variableSesion()
+        {
+            try
+            {
+                _correoS = (string)(Session["correo"]);
+                _docIdentidadS = (string)(Session["docIdentidad"]);
+                _primerNombreS = (string)(Session["primerNombre"]);
+                _primerApellidoS = (string)(Session["primerApellido"]);
+            }
+            catch (Exception)
+            {
+                _presentador.MostrarMensajeError(RecursosInterfazRolesSeguridad.mensajeSesion);
+                LabelMensajeError.Visible = true;
             }
         }
 

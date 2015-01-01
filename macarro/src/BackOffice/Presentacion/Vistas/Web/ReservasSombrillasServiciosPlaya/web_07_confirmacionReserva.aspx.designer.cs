@@ -13,6 +13,15 @@ namespace BackOffice.Presentacion.Vistas.Web.ReservasSombrillasServiciosPlaya {
     public partial class web_07_confirmacionReserva {
         
         /// <summary>
+        /// MensajeExito control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MensajeExito;
+        
+        /// <summary>
         /// MV_ListaUsuario control.
         /// </summary>
         /// <remarks>
@@ -31,13 +40,49 @@ namespace BackOffice.Presentacion.Vistas.Web.ReservasSombrillasServiciosPlaya {
         protected global::System.Web.UI.WebControls.View GV_Usuario;
         
         /// <summary>
-        /// GridView control.
+        /// Tabla control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView;
+        protected global::System.Web.UI.WebControls.GridView Tabla;
+        
+        /// <summary>
+        /// Tabla2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Tabla2;
+        
+        /// <summary>
+        /// Table1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table Table1;
+        
+        /// <summary>
+        /// TableRow2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow TableRow2;
+        
+        /// <summary>
+        /// Estado_Reserva control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Estado_Reserva;
         
         /// <summary>
         /// ddlConfirmar control.
@@ -49,6 +94,24 @@ namespace BackOffice.Presentacion.Vistas.Web.ReservasSombrillasServiciosPlaya {
         protected global::System.Web.UI.WebControls.DropDownList ddlConfirmar;
         
         /// <summary>
+        /// TableRow1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow TableRow1;
+        
+        /// <summary>
+        /// TableCell1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell1;
+        
+        /// <summary>
         /// botonAceptar control.
         /// </summary>
         /// <remarks>
@@ -56,5 +119,23 @@ namespace BackOffice.Presentacion.Vistas.Web.ReservasSombrillasServiciosPlaya {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button botonAceptar;
+        
+        /// <summary>
+        /// TableCell2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell TableCell2;
+        
+        /// <summary>
+        /// botonCancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonCancelar;
     }
 }

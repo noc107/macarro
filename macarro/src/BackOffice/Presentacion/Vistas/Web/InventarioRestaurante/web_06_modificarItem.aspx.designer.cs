@@ -13,6 +13,15 @@ namespace BackOffice.Presentacion.Vistas.Web.InventarioRestaurante {
     public partial class web_06_modificarItem {
         
         /// <summary>
+        /// MensajeExito control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MensajeExito;
+        
+        /// <summary>
         /// MensajeFallo control.
         /// </summary>
         /// <remarks>
@@ -56,24 +65,6 @@ namespace BackOffice.Presentacion.Vistas.Web.InventarioRestaurante {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator Validator9;
-        
-        /// <summary>
-        /// Boton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Boton1;
-        
-        /// <summary>
-        /// Boton2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Boton2;
         
         /// <summary>
         /// Label2 control.
@@ -236,6 +227,24 @@ namespace BackOffice.Presentacion.Vistas.Web.InventarioRestaurante {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList Proveedores;
+        
+        /// <summary>
+        /// Boton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Boton1;
+        
+        /// <summary>
+        /// Boton2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Boton2;
         
         /// <summary>
         /// ValidationSummary1 control.

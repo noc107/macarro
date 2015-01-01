@@ -22,6 +22,15 @@ namespace FrontOffice.Presentacion.Vistas.Web.Reservas {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
+        /// MensajeExito control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MensajeExito;
+        
+        /// <summary>
         /// tabla control.
         /// </summary>
         /// <remarks>
@@ -40,31 +49,13 @@ namespace FrontOffice.Presentacion.Vistas.Web.Reservas {
         protected global::System.Web.UI.WebControls.Label label_servicio;
         
         /// <summary>
-        /// tb_servicio control.
+        /// DropDownServicio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList tb_servicio;
-        
-        /// <summary>
-        /// RequiredFieldValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
-        /// RegularExpressionValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownServicio;
         
         /// <summary>
         /// label_cantidad control.
@@ -209,6 +200,15 @@ namespace FrontOffice.Presentacion.Vistas.Web.Reservas {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button botonCancelar;
+        
+        /// <summary>
+        /// MensajeError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MensajeError;
         
         /// <summary>
         /// ValidationSummary1 control.

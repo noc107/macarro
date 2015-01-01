@@ -2,8 +2,9 @@
     Inherits="BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya.web_2_consultarInventario" 
     MasterPageFile="~/Presentacion/Vistas/Temp/back_office_temp.Master"%>
 
-<%@ Register Src="~/Presentacion/Vistas/Web/ConfiguracionPuestosPlaya/componentes/comboConsultarInventario.ascx" TagPrefix="uc1" TagName="comboConsultarInventario" %>
 <%@ Register Src="~/Presentacion/Vistas/Web/ConfiguracionPuestosPlaya/componentes/mensajeDeEstado.ascx" TagPrefix="uc1" TagName="mensajeDeEstado" %>
+<%@ Register Src="~/Presentacion/Vistas/Web/ConfiguracionPuestosPlaya/componentes/comboConsultarInventario.ascx" TagPrefix="uc1" TagName="comboConsultarInventario" %>
+
 
 
 
@@ -25,7 +26,7 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
         <uc1:mensajeDeEstado runat="server" id="mensajeDeEstado" />
-        <uc1:comboConsultarInventario runat="server" id="comboConsultarInventario" />
+        <uc1:comboConsultarInventario runat="server" ID="comboConsultarInventario" />
      <div>
         <div class="btn_aceptar_posicion">
             <asp:Button ID="botonAceptar"  OnClick="ConsultarListaInventario"  runat="server" Text="Aceptar" CssClass="Boton"/>

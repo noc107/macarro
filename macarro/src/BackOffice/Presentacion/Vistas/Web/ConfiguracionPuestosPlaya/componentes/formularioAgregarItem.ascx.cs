@@ -14,6 +14,24 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya.component
 
         }
         #region PROPIEDADES
+        
+        public DropDownList TipoDeItem
+        {
+            get { return tipoDeItem; }
+        }
+
+        public TextBox Precio
+        {
+            get { return precio; }
+        }
+
+        public TextBox CantidadItem
+        {
+            get { return cantidad; }
+        }
+
+        #endregion
+        /*
         public string Precio()
         {
             return this.precio.Text;
@@ -26,6 +44,6 @@ namespace BackOffice.Presentacion.Vistas.Web.ConfiguracionPuestosPlaya.component
         {
             return this.tipoDeItem.SelectedValue;
         }
-        #endregion
+         */
     }
 }

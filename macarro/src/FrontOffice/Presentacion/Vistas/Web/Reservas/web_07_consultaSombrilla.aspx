@@ -25,7 +25,8 @@
   
 
     <div >
-
+         <asp:Label ID="MensajeExito" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeExito"></asp:Label>
+    
             <asp:Table ID="Table1" runat="server" HorizontalAlign="Center">
         
         <asp:TableRow>
@@ -70,7 +71,7 @@
          <asp:MultiView ID="MV_ListaUsuario" runat="server" ActiveViewIndex="0" Visible="true">
                 <asp:View ID="GV_Usuario" runat="server">
 
-                    <asp:GridView ID="GridViewUsuario" CssClass="mGrid" AllowPaging="True" HorizontalAlign ="Center" runat="server" 
+                    <asp:GridView ID="GridViewUsuario" CssClass="mGrid" AllowPaging="False" HorizontalAlign ="Center" runat="server" 
                                             BorderStyle="None"  AllowSorting="true" GridLines="None" AutoGenerateColumns="False"  
                                              Width="520px" ForeColor="#99CCFF" PageSize="4" OnRowDataBound="GV_RowDataBound">
                      
@@ -78,13 +79,9 @@
                        <AlternatingRowStyle CssClass="alt" />
                          <Columns>
                              
-                            <asp:BoundField HeaderText="Puesto" DataField="Puesto" ItemStyle-Width="200px" ItemStyle-HorizontalAlign="Center"></asp:BoundField>
+                            <asp:BoundField HeaderText="Reserva" DataField="Reserva" ItemStyle-Width="200px" ItemStyle-HorizontalAlign="Center"></asp:BoundField>
                              
                             <asp:BoundField HeaderText="Fecha" DataField="Fecha"  ItemStyle-Width="200px" ItemStyle-HorizontalAlign="Center"></asp:BoundField>
-
-                               <asp:BoundField HeaderText="Hora Inicio" DataField="Hora Inicio"  ItemStyle-Width="200px" ItemStyle-HorizontalAlign="Center"></asp:BoundField>
-
-                               <asp:BoundField HeaderText="Hora Fin" DataField="Hora Inicio"  ItemStyle-Width="200px" ItemStyle-HorizontalAlign="Center"></asp:BoundField>
 
                             <asp:BoundField HeaderText="Acciones" DataField="Acciones"  ItemStyle-Width="200px" ItemStyle-HorizontalAlign="Center"></asp:BoundField>
 
@@ -95,6 +92,9 @@
 
                 </asp:View>
             </asp:MultiView>
+
+            <asp:Label ID="MensajeError" runat="server" Text="" Visible="false" CssClass="avisoMensaje MensajeError"></asp:Label>
+    
 
 
        </div>

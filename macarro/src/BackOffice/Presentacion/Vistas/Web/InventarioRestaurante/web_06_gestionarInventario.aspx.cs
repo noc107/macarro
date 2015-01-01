@@ -6,12 +6,79 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using BackOffice.Presentacion.Presentadores.InventarioRestaurante;
+using BackOffice.Presentacion.Contratos.InventarioRestaurante;
 
 
 namespace BackOffice.Presentacion.Vistas.Web.InventarioRestaurante
 {
-    public partial class web_06_gestionarInventario : System.Web.UI.Page
+    public partial class web_06_gestionarInventario : System.Web.UI.Page , IContrato_06_gestionarInventario
     {
+        private Presentador_06_gestionarInventario _presentador;
+
+        public web_06_gestionarInventario()
+        {
+            _presentador = new Presentador_06_gestionarInventario(this);
+        }
+
+        public TextBox Buscar
+        {
+            get
+            {
+                return this.tbBuscar;
+            }
+        }
+
+
+        public DropDownList Parametro
+        {
+            get
+            {
+                return this.ddParametro;
+            }
+            set
+            {
+                this.ddParametro = value;
+
+            }
+
+        }
+
+        public GridView Grid
+        {
+            set
+            {
+                this.gdRows = value;
+
+            }
+        }
+
+        public Label LabelMensajeExito
+        {
+            get
+            {
+                return this.MensajeExito;
+            }
+            set
+            {
+                this.MensajeExito = value;
+            }
+        }
+
+        public Label LabelMensajeError
+        {
+            get
+            {
+                return this.MensajeFallo;
+            }
+            set
+            {
+                this.MensajeFallo = value;
+            }
+        }
+            
+
+
         #region Variables de Sesion
         string _correoS;
         string _docIdentidadS;
@@ -360,5 +427,27 @@ namespace BackOffice.Presentacion.Vistas.Web.InventarioRestaurante
         }
 
 
+
+        public GridView gridInventario
+        {
+            set { throw new NotImplementedException(); }
+        }
+
+        public TextBox buscar
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public DropDownList listaBuscar
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }
