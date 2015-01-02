@@ -72,5 +72,19 @@ namespace BackOffice.Dominio.Fabrica
             return new InventarioPlaya(precio,tipo);
         }
         #endregion
+
+        #region Proveedores
+
+        public static Entidad ObtenerProveedor()
+        {
+            return new Proveedor();
+        }
+
+        public static Entidad ObtenerProveedor(string nombre, string apellido)
+        {
+            return new Persona(nombre, apellido);
+        }
+
+        #endregion
     }
 }

@@ -18,7 +18,8 @@ namespace BackOffice.FuenteDatos.Dao
             try
             {
                 if (_conexion == null)
-                    _conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["MACARRO"].ConnectionString);
+                    _conexion = new SqlConnection("Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\AEDM07\\Documents\\[DS]\\macarro\\src\\App_Data\\MACARRO.mdf");
+                    //_conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["MACARRO"].ConnectionString);
             }
             catch (Exception ex)
             {

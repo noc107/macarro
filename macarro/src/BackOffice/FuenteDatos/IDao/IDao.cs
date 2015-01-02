@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BackOffice.FuenteDatos.IDao
 {
-    public interface IDao<Parametro, Resultado>
+    public interface IDao<Parametro, Resultado, Resultado2>
     {
         Resultado Agregar(Parametro parametro);
         Resultado Modificar(Parametro parametro);
-        Resultado ConsultarXId(int id);
-        List<Resultado> ConsultarTodos();
+        Resultado2 ConsultarXId(int id);
+        List<Resultado2> ConsultarTodos();
     }
 }

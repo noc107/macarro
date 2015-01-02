@@ -29,11 +29,7 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
          
         protected void Page_Load(object sender, EventArgs e)
         {
-            //String s = Request.QueryString["p"];
-            //Proveedor p = auxBD.consultarProveedorBD(s);
-            //List<Item> i = auxBD.consultarItemsProveedorBD(s);
-            //CargarProveedor(p);
-            //CargarItems(i);
+
         }
 
         /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
@@ -46,56 +42,67 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
   
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("web_02_gestionarProveedores.aspx");
+            //Response.Redirect("web_02_gestionarProveedores.aspx");
+            _presentador.EventoBotonConsultar();   //Este metodo debe ser invocado desde el gestionar boton consultar
         }
 
         Label IContrato_02_consultarProveedor.Rif
         {
+            get {return Rif; }
             set { Rif = value; }
         }
 
         Label IContrato_02_consultarProveedor.RazonSocial
         {
+            get { return RazonSocial; }
             set { RazonSocial = value; }
         }
 
         Label IContrato_02_consultarProveedor.Correo
         {
+            get { return Correo; }
             set { Correo = value; }
         }
 
         Label IContrato_02_consultarProveedor.PaginaWeb
         {
+            get { return PaginaWeb; }
             set { PaginaWeb = value; }
         }
 
         Label IContrato_02_consultarProveedor.Telefono
         {
+            get { return Telefono; }
             set { Telefono = value; }
         }
 
         Label IContrato_02_consultarProveedor.FechaContrato
         {
+            get { return FechaContrato; }
             set { FechaContrato = value; }
         }
 
         Label IContrato_02_consultarProveedor.Direccion
         {
+            get { return Direccion; }
             set { Direccion = value; }
         }
 
         Label IContrato_02_consultarProveedor.Pais
         {
+            get { return Pais; }
             set { Pais = value; }
         }
 
         Label IContrato_02_consultarProveedor.Estado
         {
+            get { return Estado; }
             set { Estado = value; }
         }
 
         Label IContrato_02_consultarProveedor.Ciudad
         {
+            get { return Ciudad; }
             set { Ciudad = value; }
         }
 

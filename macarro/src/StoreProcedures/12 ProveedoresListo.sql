@@ -102,12 +102,12 @@ GO
 ------------------Procedure_consultarProveedorGeneral------------------------
 
 CREATE PROCEDURE Procedure_consultarProveedorGeneral
-	@_proRif                   [nvarchar]       (50)
+	@_proId                   [int]     
 AS
   BEGIN
-	   SELECT PRO_rif,PRO_correo,PRO_fechaContrato,PRO_paginaWeb,PRO_razonSocial,PRO_telefono
+	   SELECT PRO_id, PRO_rif,PRO_razonSocial, PRO_correo,PRO_paginaWeb,PRO_fechaContrato,PRO_telefono,FK_lugar
 	   FROM PROVEEDOR
-	   WHERE PRO_rif = @_proRif;
+	   WHERE PRO_id = @_proId;
   END
 
 

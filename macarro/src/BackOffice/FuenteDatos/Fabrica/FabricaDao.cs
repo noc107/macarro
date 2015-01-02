@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BackOffice.FuenteDatos.Dao.Proveedores;
+using BackOffice.FuenteDatos.IDao.Proveedores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -36,6 +38,11 @@ namespace BackOffice.FuenteDatos.Fabrica
         #endregion
 
         #region Proveedores
+
+        public static IDaoProveedor ObtenerDaoProveedor()
+        {
+            return new DaoProveedor();
+        }
 
         #endregion
 

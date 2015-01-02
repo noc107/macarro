@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using BackOffice.LogicaNegocio.Comandos.ConfiguracionPuestosPlaya;
+using BackOffice.LogicaNegocio.Comandos.Proveedores;
 
 namespace BackOffice.LogicaNegocio.Fabrica
 {
@@ -76,6 +77,11 @@ namespace BackOffice.LogicaNegocio.Fabrica
         #endregion
 
         #region Proveedores
+
+        public static Comando<int, Entidad> ObtenerComandoConsultarProveedor()
+        {
+            return new ComandoConsultarProveedor();
+        }
 
         #endregion
 
