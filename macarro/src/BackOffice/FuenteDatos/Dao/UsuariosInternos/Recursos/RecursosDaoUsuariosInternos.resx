@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ParametroBusqueda" xml:space="preserve">
+    <value>@busqueda</value>
+  </data>
+  <data name="ParametroContrasena" xml:space="preserve">
+    <value>@contrasena</value>
+  </data>
+  <data name="ParametroCorreo" xml:space="preserve">
+    <value>@correo</value>
+  </data>
+  <data name="ParametroDocIdentidad" xml:space="preserve">
+    <value>@docIdentidad</value>
+    <comment>Número de Cédula o Pasaporte del Empleado</comment>
+  </data>
+  <data name="ParametroEstatus" xml:space="preserve">
+    <value>@estatus</value>
+  </data>
+  <data name="ParametroFechaEgreso" xml:space="preserve">
+    <value>@fechaEgreso</value>
+  </data>
+  <data name="ParametroFechaIngreso" xml:space="preserve">
+    <value>@fechaIngreso</value>
+  </data>
+  <data name="ParametroFechaNacimiento" xml:space="preserve">
+    <value>@fechaNacimiento</value>
+  </data>
+  <data name="ParametroFkLugar" xml:space="preserve">
+    <value>@fkLugar</value>
+  </data>
+  <data name="ParametroIdCiudad" xml:space="preserve">
+    <value>@idCiudad</value>
+  </data>
+  <data name="ParametroIdDireccion" xml:space="preserve">
+    <value>@idDireccion</value>
+  </data>
+  <data name="ParametroIdEstado" xml:space="preserve">
+    <value>@idEstado</value>
+  </data>
+  <data name="ParametroIdLugar" xml:space="preserve">
+    <value>@idLugar</value>
+  </data>
+  <data name="ParametroIdPais" xml:space="preserve">
+    <value>@idPais</value>
+  </data>
+  <data name="ParametroIdPersona" xml:space="preserve">
+    <value>@IdPer</value>
+  </data>
+  <data name="ParametroIdRol" xml:space="preserve">
+    <value>@idRol</value>
+  </data>
+  <data name="ParametroNombreLugar" xml:space="preserve">
+    <value>@nombreLugar</value>
+  </data>
+  <data name="ParametroPrimerApellido" xml:space="preserve">
+    <value>@primerApellido</value>
+  </data>
+  <data name="ParametroPrimerNombre" xml:space="preserve">
+    <value>@primerNombre</value>
+    <comment>Primer Nombre del Empleado</comment>
+  </data>
+  <data name="ParametroSegundoApellido" xml:space="preserve">
+    <value>@segundoApellido</value>
+    <comment>Segundo Apellido del Empleado</comment>
+  </data>
+  <data name="ParametroSegundoNombre" xml:space="preserve">
+    <value>@segundoNombre</value>
+  </data>
+  <data name="ParametroTelefono" xml:space="preserve">
+    <value>@telefono</value>
+  </data>
+  <data name="ParametroTipoDocIdentidad" xml:space="preserve">
+    <value>@tipoDocIdentidad</value>
+  </data>
+  <data name="ParametroTipoLugar" xml:space="preserve">
+    <value>@tipoLugar</value>
+  </data>
+  <data name="ProcedimientoAgregarEmpleado" xml:space="preserve">
+    <value>Procedure_agregarEmpleado</value>
+  </data>
+  <data name="ProcedimientoAgregarEmpleadoInterfaz" xml:space="preserve">
+    <value>Procedure_agregarEmpleadoInterfaz</value>
+  </data>
+  <data name="ProcedimientoAgregarLugar" xml:space="preserve">
+    <value>Procedure_agregarLugar</value>
+  </data>
+  <data name="ProcedimientoAgregarRolesUsuario" xml:space="preserve">
+    <value>Procedure_agregarRolesUsuario</value>
+  </data>
+  <data name="ProcedimientoConsultarDireccionCompleta" xml:space="preserve">
+    <value>Procedure_consultarDireccionCompleta</value>
+  </data>
+  <data name="ProcedimientoConsultarEmpleado" xml:space="preserve">
+    <value>Procedure_consultarEmpleado</value>
+  </data>
+  <data name="ProcedimientoConsultarEmpleadoUnico" xml:space="preserve">
+    <value>Procedure_consultarEmpleadoUnico</value>
+  </data>
+  <data name="ProcedimientoConsultarRolesEmpleado" xml:space="preserve">
+    <value>Procedure_consultarRolesEmpleado</value>
+  </data>
+  <data name="ProcedimientoConsultarTodosEmpleados" xml:space="preserve">
+    <value>Procedure_consultarTodosEmpleados</value>
+  </data>
+  <data name="ProcedimientoEliminarEmpleadoNuevo" xml:space="preserve">
+    <value>Procedure_eliminarEmpleadoNuevo</value>
+  </data>
+  <data name="ProcedimientoEliminarRolesUsuario" xml:space="preserve">
+    <value>Procedure_eliminarRolesUsuario</value>
+  </data>
+  <data name="ProcedimientoLlenarCBCiudad" xml:space="preserve">
+    <value>Procedure_llenarCBCiudad</value>
+  </data>
+  <data name="ProcedimientoLlenarCBEstado" xml:space="preserve">
+    <value>Procedure_llenarCBEstado</value>
+  </data>
+  <data name="ProcedimientoLlenarCBPais" xml:space="preserve">
+    <value>Procedure_llenarCBPais</value>
+  </data>
+  <data name="ProcedimientoModificarEmpleado" xml:space="preserve">
+    <value>Procedure_modificarUsuario</value>
+  </data>
+  <data name="ProcedimientoModificarEstadoUsuario" xml:space="preserve">
+    <value>Procedure_modificarEstadoUsuario</value>
+  </data>
+  <data name="ProcedimientoObtenerDireccion" xml:space="preserve">
+    <value>Procedure_obtenerDireccion</value>
+  </data>
+  <data name="ProcedimientoObtenerRolesSinAsignar" xml:space="preserve">
+    <value>Procedure_obtenerRolesSinAsignar</value>
+  </data>
+  <data name="ProcedimientoObtenerRolesUsuario" xml:space="preserve">
+    <value>Procedure_obtenerRolesUsuario</value>
+  </data>
+  <data name="ProcedimientoVerificarCorreo" xml:space="preserve">
+    <value>Procedure_verificarCorreo</value>
+  </data>
+  <data name="ProcedimientoVerificarDocIdentidad" xml:space="preserve">
+    <value>Procedure_verificarDocIdentidad</value>
+  </data>
+</root>
