@@ -255,6 +255,35 @@ namespace BackOffice.LogicaNegocio.Fabrica
             return new ComandoConsultarProveedor();
         }
 
+        public static Comando<Entidad, bool> ObtenerComandoAgregarProveedor()
+        {
+            return new ComandoAgregarProveedor();
+        }
+
+        public static Comando<string, List<string>> ObtenerComandoEstadosDePais() 
+        {
+            return new ComandoCambioPais();
+        }
+        public static Comando<string, List<string>> ObtenerComandoPaisesTodos() 
+        {
+            return new ComandoObtenerPaisesTodos();
+        }
+
+        public static Comando<string, List<string>> ObtenerComandoEstadosTodos() 
+        {
+            return new ComandoObtenerTodosLosEstados();
+        }
+
+        public static Comando<string, List<string>> ObtenerComandoCiudadesTodas() 
+        {
+            return new ComandoObtenerTodasLasCiudades();
+        }
+
+        public static Comando<string, List<string>> ObtenerComandoCiudadesDeEstado() 
+        {
+            return new ComandoCambioEstado();    
+        }
+
         public static Comando<string, List<Entidad>> ObtenerComandoCargarGVProveedores()
         {
             return new ComandoCargarGVProveedores();

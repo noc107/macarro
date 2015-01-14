@@ -25,7 +25,7 @@
 }
 .divArriba {
     margin:auto; 
-    height: 375px; 
+    height: 423px; 
     width: 1100px;
 }
 .divIzquierdo {
@@ -77,3 +77,130 @@
 }
 
 
+.rif {
+    position:absolute;
+    top: 169px;
+    left: 92px;
+}
+
+.razonsocial {
+    position:absolute;
+    top: 227px;
+    left: 90px;
+}
+.correo {
+    position:absolute;
+    top: 289px;
+    left: 89px;
+}
+.paginaweb {
+    position:absolute;
+    top: 351px;
+    left: 92px;
+}
+.telefono {
+    position:absolute;
+    top: 410px;
+    left: 90px;
+}
+.contrato {
+    position:absolute;
+    top: 170px;
+    left: 540px;
+}
+
+.pais {
+    position:absolute;
+    top: 231px;
+    left: 555px;
+}
+
+.estado {
+    position:absolute;
+    top: 292px;
+    left: 551px;
+}
+
+.ciudad {
+    position:absolute;
+    top: 354px;
+    left: 556px;
+}
+
+.direccion {
+    position:absolute;
+    top: 412px;
+    left: 551px;
+}
+
+.tbpais {
+    position:absolute;
+    top: 218px;
+    left: 684px;
+}
+
+.tbestado {
+    position:absolute;
+    top: 279px;
+    left: 683px;
+}
+
+.tbciudad {
+    position:absolute;
+    top: 342px;
+    left: 685px;
+}
+
+.tbdireccion {
+    position:absolute;
+    top: 393px;
+    left: 686px;
+}
+
+.botonaceptar {
+    position:absolute;
+    top: 479px;
+    left: 432px;
+}
+
+.botonregresar {
+    position:absolute;
+    top: 482px;
+    left: 609px;
+}
+
+.tbrif {
+    position:absolute;
+    top: 150px;
+    left: 205px;
+}
+
+.tbrazonsocial {
+    position:absolute;
+    top: 208px;
+    left: 207px;
+}
+
+.tbcorreo {
+    position:absolute;
+    top: 270px;
+    left: 208px;
+}
+
+.tbpaginaweb {
+    position:absolute;
+    top: 333px;
+    left: 210px;
+}
+
+.tbtelefono {
+    position:absolute;
+    top: 391px;
+    left: 210px;
+}
+
+.tbcontrato {
+    position:absolute;
+    top: 150px;
+    left: 683px;
+}

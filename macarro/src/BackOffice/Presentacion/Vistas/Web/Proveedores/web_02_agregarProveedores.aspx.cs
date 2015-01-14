@@ -25,10 +25,17 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
         public web_02_agregarProveedores() 
         {
             _presentador = new Presentador_02_agregarProveedores(this);
+            
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {   
+                _presentador.cargarPaises();
+                _presentador.cargarEstados();
+                _presentador.cargarCiudades();
+            }
             //_auxLogica.InicializarMensaje(Mensaje);
             //LlenarGridViewItems(GridItems);
             //LlenarDropDownList(_Pais);
@@ -69,12 +76,10 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
         /// 
         protected void Aceptar_Click(object sender, EventArgs e)
         {
-        //    //Tomar valores de los textbox para asignarselos al proveedor
-        //    if (TomarValoresTexbox())
-        //    {
-        //        _auxLogica.MensajeExitoAgregar(Mensaje);
-        //    }
+            _presentador.EventoClickBotonAceptar();
         }
+
+       
 
         TextBox IContrato_02_agregarProveedores.Rif
         {
@@ -126,11 +131,11 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             get { return _Ciudad; }
         }
 
-        GridView IContrato_02_agregarProveedores.Items 
+       /* GridView IContrato_02_agregarProveedores.Items 
         {
             get { return GridItems; }
         }
-
+       */ 
         public Label LabelMensajeExito
         {
             get { return Mensaje; }
@@ -141,6 +146,21 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
         {
             get { return Mensaje; }
             set { Mensaje = value; }
+        }
+
+        protected void _Pais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _presentador.EventoCambioPais();
+        }
+
+        protected void _Ciudad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void _Estado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _presentador.EventoCambioEstado();
         }
 
 

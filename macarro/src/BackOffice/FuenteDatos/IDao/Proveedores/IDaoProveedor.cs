@@ -11,6 +11,10 @@ namespace BackOffice.FuenteDatos.IDao.Proveedores
     {
         bool eliminarProveedor(int id);
         List<Entidad> ConsultarTodosBusq(string busqueda);
-
+        List<string> EstadosDePais(string parametro);
+        List<string> CiudadesDeEstado(string parametro);
+        List<string> ConsultarTodosPaises(string parametro);
+        List<string> ConsultarTodosEstados(string parametro);
+        List<string> ConsultarTodasCiudades(string parametro);
     }
 }

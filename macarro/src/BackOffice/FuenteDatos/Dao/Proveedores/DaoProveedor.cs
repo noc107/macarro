@@ -209,12 +209,196 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
 
         bool IDao.IDao<Entidad, bool, Entidad>.Agregar(Entidad parametro)
         {
-            throw new NotImplementedException();
+            Proveedor _proveedor = (Proveedor)parametro;
+            SqlCommand comando = new SqlCommand("Procedure_AlmacenarProveedor", IniciarConexion());
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.Add(new SqlParameter("_proRif", _proveedor.Rif));
+            comando.Parameters.Add(new SqlParameter("_proRazonSocial", _proveedor.RazonSocial));
+            comando.Parameters.Add(new SqlParameter("_proCorreo", _proveedor.Correo));
+            comando.Parameters.Add(new SqlParameter("_proPaginaWeb", _proveedor.PagWeb));
+            comando.Parameters.Add(new SqlParameter("_proFechaContrato", DateTime.Parse(_proveedor.FechaContrato)));
+            comando.Parameters.Add(new SqlParameter("_proTelefono", _proveedor.Telefono));
+            comando.Parameters.Add(new SqlParameter("_proDireccion", _proveedor.IdLugar));
+            comando.Parameters.Add(new SqlParameter("_proEstado", _proveedor.estado));
+            SqlDataReader _lectura;
+
+            try
+            {
+                IniciarConexion().Open();
+                _lectura = comando.ExecuteReader();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+            return false;   
         }
 
         bool IDao.IDao<Entidad, bool, Entidad>.Modificar(Entidad parametro)
         {
             throw new NotImplementedException();
+        }
+
+        public List<string> EstadosDePais(string parametro) 
+        {
+            List<string> estados = new List<string>();
+            SqlDataReader reader;
+
+            try
+            {
+                SqlConnection _cn = IniciarConexion();
+                _cn.Open();
+                SqlCommand _comando = new SqlCommand("Procedure_ObtenerEstadosPais", _cn);
+                _comando.CommandType = System.Data.CommandType.StoredProcedure;
+                _comando.Parameters.Add(new SqlParameter("_paramBusq", parametro));
+                reader = _comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    estados.Add(reader.GetString(0).ToString());
+                }
+
+                return estados;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
+
+        public List<string> CiudadesDeEstado(string parametro)
+        {
+            List<string> ciudades = new List<string>();
+            SqlDataReader reader;
+
+            try
+            {
+                SqlConnection _cn = IniciarConexion();
+                _cn.Open();
+                SqlCommand _comando = new SqlCommand("Procedure_ObtenerCiudadesEstado", _cn);
+                _comando.CommandType = System.Data.CommandType.StoredProcedure;
+                _comando.Parameters.Add(new SqlParameter("_paramBusq", parametro));
+                reader = _comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ciudades.Add(reader.GetString(0).ToString());
+                }
+
+                return ciudades;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
+
+        public List<string> ConsultarTodosPaises(string parametro) 
+        {
+            List<string> Paises =  new List<string>();
+            SqlDataReader reader;
+
+            try
+            {
+                SqlConnection _cn = IniciarConexion();
+                _cn.Open();
+                SqlCommand _comando = new SqlCommand("Procedure_ObtenerTodosLosPaises", _cn);
+                _comando.CommandType = System.Data.CommandType.StoredProcedure;
+                reader = _comando.ExecuteReader();
+               // int i = 0;
+                while (reader.Read())
+                {
+                    Paises.Add(reader.GetString(0).ToString());
+                   // i = i + 1;
+                }
+
+                return Paises;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
+
+
+        public List<string> ConsultarTodosEstados(string parametro)
+        {
+            List<string> Estados = new List<string>();
+            SqlDataReader reader;
+
+            try
+            {
+                SqlConnection _cn = IniciarConexion();
+                _cn.Open();
+                SqlCommand _comando = new SqlCommand("Procedure_ObtenerTodosLosEstados", _cn);
+                _comando.CommandType = System.Data.CommandType.StoredProcedure;
+                reader = _comando.ExecuteReader();
+                // int i = 0;
+                while (reader.Read())
+                {
+                    Estados.Add(reader.GetString(0).ToString());
+                    // i = i + 1;
+                }
+
+                return Estados;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
+
+
+        public List<string> ConsultarTodasCiudades(string parametro)
+        {
+            List<string> Ciudades = new List<string>();
+            SqlDataReader reader;
+
+            try
+            {
+                SqlConnection _cn = IniciarConexion();
+                _cn.Open();
+                SqlCommand _comando = new SqlCommand("Procedure_ObtenerTodosLasCiudades", _cn);
+                _comando.CommandType = System.Data.CommandType.StoredProcedure;
+                reader = _comando.ExecuteReader();
+                // int i = 0;
+                while (reader.Read())
+                {
+                    Ciudades.Add(reader.GetString(0).ToString());
+                    // i = i + 1;
+                }
+
+                return Ciudades;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
         }
     }
     }
