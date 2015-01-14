@@ -10,6 +10,6 @@ namespace FrontOffice.Presentacion.Contratos.Configuracionestacionamiento
     {
 
         TextBox Placa { get; set; }
-        TextBox Estacionamiento { get; set; }
+        Label Estacionamiento { get; set; }
     }
 }

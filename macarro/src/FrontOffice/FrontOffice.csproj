@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{51164D7C-F99E-4BEE-AA96-C711CC7E35DA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FrontOffice</RootNamespace>
+    <AssemblyName>FrontOffice</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa">
+      <HintPath>..\lib\itextsharp.pdfa.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xtra">
+      <HintPath>..\lib\itextsharp.xtra.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\MACARRO.mdf" />
+    <Content Include="App_Data\MACARRO_log.ldf">
+      <DependentUpon>MACARRO.mdf</DependentUpon>
+    </Content>
+    <Content Include="comun\resources\css\Estacionamiento\estilo.css" />
+    <Content Include="comun\resources\css\IngresoRecuperacionClave\modulo01.css" />
+    <Content Include="comun\resources\css\Inicio.css" />
+    <Content Include="comun\resources\css\jquery.bxslider.css" />
+    <Content Include="comun\resources\css\loged_in.css" />
+    <Content Include="comun\resources\css\Membresia\estilo.css" />
+    <Content Include="comun\resources\css\ModuloMenuRestaurante\Estilos.css" />
+    <Content Include="comun\resources\css\no_iniciado.css" />
+    <Content Include="comun\resources\css\Reservas\estilo.css" />
+    <Content Include="comun\resources\css\standards.css" />
+    <Content Include="comun\resources\img\agregar.png" />
+    <Content Include="comun\resources\img\bg_body.jpg" />
+    <Content Include="comun\resources\img\bg_footer.jpg" />
+    <Content Include="comun\resources\img\bg_header.jpg" />
+    <Content Include="comun\resources\img\bx_loader.gif" />
+    <Content Include="comun\resources\img\Calendar-Date-01-128 %281%29.png" />
+    <Content Include="comun\resources\img\controls.png" />
+    <Content Include="comun\resources\img\cuadrados.png" />
+    <Content Include="comun\resources\img\cuadradosPlayaGris.png" />
+    <Content Include="comun\resources\img\cuadradosPlayaRojo.png" />
+    <Content Include="comun\resources\img\cuadradosVerde.png" />
+    <Content Include="comun\resources\img\Data-Edit-128.png" />
+    <Content Include="comun\resources\img\dropdown.png" />
+    <Content Include="comun\resources\img\Garbage-Closed-128.png" />
+    <Content Include="comun\resources\img\grd_alt.png" />
+    <Content Include="comun\resources\img\grd_head.png" />
+    <Content Include="comun\resources\img\grd_pgr.png" />
+    <Content Include="comun\resources\img\icon-buscar.png" />
+    <Content Include="comun\resources\img\info.png" />
+    <Content Include="comun\resources\img\IngresoRecuperacionClave\fondo.gif" />
+    <Content Include="comun\resources\img\logo-macarro.png" />
+    <Content Include="comun\resources\img\logo.png" />
+    <Content Include="comun\resources\img\logo2.png" />
+    <Content Include="comun\resources\img\Logout-128.png" />
+    <Content Include="comun\resources\img\menos.png" />
+    <Content Include="comun\resources\img\menuf.png" />
+    <Content Include="comun\resources\img\pic1Slider.jpg" />
+    <Content Include="comun\resources\img\pic2Slider.jpg" />
+    <Content Include="comun\resources\img\pic3Slider.jpg" />
+    <Content Include="comun\resources\img\pic4Slider.jpg" />
+    <Content Include="comun\resources\img\Playa.jpg" />
+    <Content Include="comun\resources\img\publicidad_ejemplo.jpg" />
+    <Content Include="comun\resources\img\sort_asc.png" />
+    <Content Include="comun\resources\img\sort_both.png" />
+    <Content Include="comun\resources\img\User-Profile-128.png" />
+    <Content Include="comun\resources\img\View-128.png" />
+    <Content Include="comun\resources\js\jquery-1.11.1.js" />
+    <Content Include="comun\resources\js\jquery.bxslider.js" />
+    <Content Include="comun\resources\js\jquery.bxslider.min.js" />
+    <Content Include="comun\resources\js\jquery.easing.1.3.js" />
+    <Content Include="comun\resources\js\jquery.fitvids.js" />
+    <Content Include="comun\resources\js\menu_manager.js" />
+    <Content Include="comun\resources\js\slider.js" />
+    <Content Include="Excepciones\ExcepcionesComando\ConfiguracionEstacionamientos\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesComando\IngresoRecuperacionClave\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesComando\Membresia\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesComando\Menu\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesComando\Reservas\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesDao\ConfiguracionEstacionamientos\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesDao\IngresoRecuperacionClave\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesDao\Membresia\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesDao\Menu\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesDao\Reservas\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesPresentacion\ConfiguracionEstacionamientos\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesPresentacion\IngresoRecuperacionClave\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesPresentacion\Membresia\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesPresentacion\Menu\Lee.txt" />
+    <Content Include="Excepciones\ExcepcionesPresentacion\Reservas\Lee.txt" />
+    <Content Include="FuenteDatos\Dao\IngresoRecuperacionClave\Lee.txt" />
+    <Content Include="FuenteDatos\Dao\Membresia\Lee.txt" />
+    <Content Include="FuenteDatos\Dao\Menu\Lee.txt" />
+    <Content Include="FuenteDatos\Dao\Reservas\Lee.txt" />
+    <Content Include="FuenteDatos\IDao\IngresoRecuperacionClave\Lee.txt" />
+    <Content Include="FuenteDatos\IDao\Membresia\Lee.txt" />
+    <Content Include="FuenteDatos\IDao\Menu\Lee.txt" />
+    <Content Include="FuenteDatos\IDao\Reservas\Lee.txt" />
+    <Content Include="Global.asax" />
+    <Content Include="log4net.xml" />
+    <Content Include="LogicaNegocio\Comandos\IngresoRecuperacionClave\Lee.txt" />
+    <Content Include="LogicaNegocio\Comandos\Membresia\Lee.txt" />
+    <Content Include="LogicaNegocio\Comandos\Menu\Lee.txt" />
+    <Content Include="LogicaNegocio\Comandos\Reservas\Lee.txt" />
+    <Content Include="Presentacion\Contratos\Membresia\texto.txt" />
+    <Content Include="Presentacion\Contratos\Menu\texto.txt" />
+    <Content Include="Presentacion\Presentadores\Membresia\texto.txt" />
+    <Content Include="Presentacion\Presentadores\Menu\texto.txt" />
+    <Content Include="Presentacion\Vistas\Web\Configuracionestacionamientos\web_11_CobrarTicket.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Configuracionestacionamientos\web_11_consultar_Estacionamiento.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Configuracionestacionamientos\web_11_GenerarTicket.aspx" />
+    <Content Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_bienvenido.aspx" />
+    <Content Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_inicioSesion.aspx" />
+    <Content Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_modificar.aspx" />
+    <Content Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_preguntaSeguridad.aspx" />
+    <Content Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_recuperarContrasena.aspx" />
+    <Content Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_registro.aspx" />
+    <Content Include="Presentacion\Vistas\Web\inicio.aspx" />
+    <Content Include="Presentacion\Vistas\Web\inicio_no_logeado.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Membresia\texto.txt" />
+    <Content Include="Presentacion\Vistas\Web\Membresia\web_12_consultarMembresia.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Membresia\web_12_detallePago.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Membresia\web_12_pagos.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Membresia\web_12_reactivarMembresia.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Menu\web_05_consultarSeccionProducto.aspx" />
+    <Content Include="Presentacion\Vistas\Web\noIntegradoIniciado.aspx" />
+    <Content Include="Presentacion\Vistas\Web\noIntegradoNoIniciado.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Reservas\web_07_consultaReservaServicio.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Reservas\web_07_consultaSombrilla.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Reservas\web_07_modificarReservaServicio.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Reservas\web_07_reservacionSombrilla.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Reservas\web_07_reservacionSombrilla1.aspx" />
+    <Content Include="Presentacion\Vistas\Web\Reservas\web_07_reservaServicio.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dominio\Entidad.cs" />
+    <Compile Include="Dominio\Entidades\Estacionamiento.cs" />
+    <Compile Include="Dominio\Entidades\Estado.cs" />
+    <Compile Include="Dominio\Entidades\Hash.cs" />
+    <Compile Include="Dominio\Entidades\ImagenPdf.cs" />
+    <Compile Include="Dominio\Entidades\Membresia.cs" />
+    <Compile Include="Dominio\Entidades\Pago.cs" />
+    <Compile Include="Dominio\Entidades\ParrafoPdf.cs" />
+    <Compile Include="Dominio\Entidades\Persona.cs" />
+    <Compile Include="Dominio\Entidades\Reserva.cs" />
+    <Compile Include="Dominio\Entidades\ReservaPlaya.cs" />
+    <Compile Include="Dominio\Entidades\ReservaPuesto.cs" />
+    <Compile Include="Dominio\Entidades\ReservaReserva_Puesto.cs" />
+    <Compile Include="Dominio\Entidades\ReservaServicio.cs" />
+    <Compile Include="Dominio\Entidades\TablaPdf.cs" />
+    <Compile Include="Dominio\Entidades\Tarjeta.cs" />
+    <Compile Include="Dominio\Entidades\Ticket.cs" />
+    <Compile Include="Dominio\Entidades\Usuario.cs" />
+    <Compile Include="Dominio\Fabrica\FabricaEntidad.cs" />
+    <Compile Include="Excepciones\ExcepcionesComando\ExcepcionComando.cs" />
+    <Compile Include="Excepciones\ExcepcionesComando\IngresoRecuperacionClave\ExcepcionComandoPersona.cs" />
+    <Compile Include="Excepciones\ExcepcionesComando\IngresoRecuperacionClave\ExcepcionComandoUsuario.cs" />
+    <Compile Include="Excepciones\ExcepcionesDao\ExcepcionDao.cs" />
+    <Compile Include="Excepciones\ExcepcionesDao\IngresoRecuperacionClave\ExcepcionDaoInicio.cs" />
+    <Compile Include="Excepciones\ExcepcionesPresentacion\ExcepcionPresentacion.cs" />
+    <Compile Include="Excepciones\ExcepcionGeneral.cs" />
+    <Compile Include="Excepciones\Logger.cs" />
+    <Compile Include="FuenteDatos\Dao\ConfiguracionEstacionamientos\DaoEstacionamiento.cs" />
+    <Compile Include="FuenteDatos\Dao\ConfiguracionEstacionamientos\DaoTicket.cs" />
+    <Compile Include="FuenteDatos\Dao\ConfiguracionEstacionamientos\Recurso\RecursoDaoConfiguracionEstacionamiento.Designer.cs" />
+    <Compile Include="FuenteDatos\Dao\Dao.cs" />
+    <Compile Include="FuenteDatos\Dao\IngresoRecuperacionClave\DaoInicio.cs" />
+    <Compile Include="FuenteDatos\Dao\IngresoRecuperacionClave\Recursos\RecursosDaoIngresoRecuperacionClave.Designer.cs" />
+    <Compile Include="FuenteDatos\Dao\Membresia\DaoMembresia.cs" />
+    <Compile Include="FuenteDatos\Dao\Membresia\DaoPago.cs" />
+    <Compile Include="FuenteDatos\Dao\Membresia\DaoTarjeta.cs" />
+    <Compile Include="FuenteDatos\Dao\Reservas\DaoReserva.cs" />
+    <Compile Include="FuenteDatos\Dao\Reservas\DaoReservaPlaya.cs" />
+    <Compile Include="FuenteDatos\Dao\Reservas\DaoReservaPuesto.cs" />
+    <Compile Include="FuenteDatos\Dao\Reservas\DaoReservaReserva_Puesto.cs" />
+    <Compile Include="FuenteDatos\Dao\Reservas\DaoReservaServicio.cs" />
+    <Compile Include="FuenteDatos\Fabrica\FabricaDao.cs" />
+    <Compile Include="FuenteDatos\IDao\ConfiguracionEstacionamientos\IDaoEstacionamiento.cs" />
+    <Compile Include="FuenteDatos\IDao\ConfiguracionEstacionamientos\IDaoTicket.cs" />
+    <Compile Include="FuenteDatos\IDao\IDao.cs" />
+    <Compile Include="FuenteDatos\IDao\IngresoRecuperacionClave\IDaoIniciarSesion.cs" />
+    <Compile Include="FuenteDatos\IDao\Membresia\IDaoMembresia.cs" />
+    <Compile Include="FuenteDatos\IDao\Membresia\IDaoPago.cs" />
+    <Compile Include="FuenteDatos\IDao\Membresia\IDaoTarjeta.cs" />
+    <Compile Include="FuenteDatos\IDao\Reservas\IDaoReserva.cs" />
+    <Compile Include="FuenteDatos\IDao\Reservas\IDaoReservaPlaya.cs" />
+    <Compile Include="FuenteDatos\IDao\Reservas\IDaoReservaPuesto.cs" />
+    <Compile Include="FuenteDatos\IDao\Reservas\IDaoReservaReserva_Puesto.cs" />
+    <Compile Include="FuenteDatos\IDao\Reservas\IDaoReservaServicio.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="LogicaNegocio\Comando.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ConfiguracionEstacionamientos\ComandoCobrarTicket.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ConfiguracionEstacionamientos\ComandoCobrarTicketPorNumeroTicket.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ConfiguracionEstacionamientos\ComandoConsultarEstacionamiento.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ConfiguracionEstacionamientos\ComandoConsultarTicket.cs" />
+    <Compile Include="LogicaNegocio\Comandos\ConfiguracionEstacionamientos\ComandoGenerarTicket.cs" />
+    <Compile Include="LogicaNegocio\Comandos\IngresoRecuperacionClave\ComandoPersonaInicio.cs" />
+    <Compile Include="LogicaNegocio\Comandos\IngresoRecuperacionClave\ComandoUsuarioInicio.cs" />
+    <Compile Include="LogicaNegocio\Comandos\IngresoRecuperacionClave\Recursos\RecursosComandoInicioRecuperacionClave.Designer.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Membresia\ComandoConsultaDetallePago.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Membresia\ComandoConsultarMembresia.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Membresia\ComandoConsultarPagosPorIdYFecha.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Membresia\ComandoConsultarTodosLosPagos.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Membresia\ComandoConsultaTarjeta.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Membresia\ComandoGenerarCarnetPdf.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoConsultarCantidadServiciosDisponibles.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoConsultarReservaMayorAHoy.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoConsultarReservaPlaya.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoConsultarReservaPuesto.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoConsultarReservaReservaPuesto_Incio_Fin_Playa.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoConsultarReservaReserva_PuestoPorPlayaReserva.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoConsultarReservaSecuencia.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoConsultarReservaServicio.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoConsultarReservaServicioXID.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoConsultarReservaXID.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoConsultarServicios.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoEliminarReservaReserva.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoEliminarReservaReserva_Puesto.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoInsertarReservaReserva_Puesto.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoInsertarReservaServicio.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoInsertarReservaSinSecuencia.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoModificarReservaServicio.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoModificarStatusReserva.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\ComandoVerificarHorarioServicio.cs" />
+    <Compile Include="LogicaNegocio\Comandos\Reservas\CommandoEliminarReservaReserva_PuestoFactores.cs" />
+    <Compile Include="LogicaNegocio\Fabrica\FabricaComando.cs" />
+    <Compile Include="Presentacion\Contratos\Configuracionestacionamiento\IContrato_11_CobrarTicket.cs" />
+    <Compile Include="Presentacion\Contratos\Configuracionestacionamiento\IContrato_11_consultar_Estacionamiento.cs" />
+    <Compile Include="Presentacion\Contratos\Configuracionestacionamiento\IContrato_11_GenerarTicket.cs" />
+    <Compile Include="Presentacion\Contratos\IContratoGeneral.cs" />
+    <Compile Include="Presentacion\Contratos\IngresoRecuperacionClave\IContrato_01_inicioSesion.cs" />
+    <Compile Include="Presentacion\Contratos\IngresoRecuperacionClave\IContrato_01_modificar.cs" />
+    <Compile Include="Presentacion\Contratos\IngresoRecuperacionClave\IContrato_01_preguntaSeguridad.cs" />
+    <Compile Include="Presentacion\Contratos\IngresoRecuperacionClave\IContrato_01_recuperarContrasena.cs" />
+    <Compile Include="Presentacion\Contratos\IngresoRecuperacionClave\IContrato_01_registro.cs" />
+    <Compile Include="Presentacion\Contratos\Membresia\IContrato_12_consultarMembresia.cs" />
+    <Compile Include="Presentacion\Contratos\Membresia\IContrato_12_detallePago.cs" />
+    <Compile Include="Presentacion\Contratos\Membresia\IContrato_12_pagos.cs" />
+    <Compile Include="Presentacion\Contratos\Membresia\IContrato_12_reactivarMembresia.cs" />
+    <Compile Include="Presentacion\Contratos\Reservas\IContratoConsultaReservaServicio.cs" />
+    <Compile Include="Presentacion\Contratos\Reservas\IContratoConsultaSombrilla.cs" />
+    <Compile Include="Presentacion\Contratos\Reservas\IContratoModificarReservaServicio.cs" />
+    <Compile Include="Presentacion\Contratos\Reservas\IContratoReservacionSombrilla.cs" />
+    <Compile Include="Presentacion\Contratos\Reservas\IContratoReservaServicio.cs" />
+    <Compile Include="Presentacion\Presentadores\Configuracionestacionamiento\Presentador_11_CobrarTicket.cs" />
+    <Compile Include="Presentacion\Presentadores\Configuracionestacionamiento\Presentador_11_consultar_Estacionamiento.cs" />
+    <Compile Include="Presentacion\Presentadores\Configuracionestacionamiento\Presentador_11_GenerarTicket.cs" />
+    <Compile Include="Presentacion\Presentadores\Configuracionestacionamiento\RecursoPresentadorEstacionamiento.Designer.cs" />
+    <Compile Include="Presentacion\Presentadores\IngresoRecuperacionClave\Presentador_01_inicioSesion.cs" />
+    <Compile Include="Presentacion\Presentadores\IngresoRecuperacionClave\Presentador_01_modificar.cs" />
+    <Compile Include="Presentacion\Presentadores\IngresoRecuperacionClave\Presentador_01_preguntaSeguridad.cs" />
+    <Compile Include="Presentacion\Presentadores\IngresoRecuperacionClave\Presentador_01_recuperarContrasena.cs" />
+    <Compile Include="Presentacion\Presentadores\IngresoRecuperacionClave\Presentador_01_registro.cs" />
+    <Compile Include="Presentacion\Presentadores\Membresia\Presentador_12_consultarMembresia.cs" />
+    <Compile Include="Presentacion\Presentadores\Membresia\Presentador_12_detallePago.cs" />
+    <Compile Include="Presentacion\Presentadores\Membresia\Presentador_12_pagos.cs" />
+    <Compile Include="Presentacion\Presentadores\Membresia\Presentador_12_reactivarMembresia.cs" />
+    <Compile Include="Presentacion\Presentadores\PresentadorGeneral.cs" />
+    <Compile Include="Presentacion\Presentadores\Reservas\PresentadorConsultaReservaServicio.cs" />
+    <Compile Include="Presentacion\Presentadores\Reservas\PresentadorConsultaSombrilla.cs" />
+    <Compile Include="Presentacion\Presentadores\Reservas\PresentadorModificarReservaServicio.cs" />
+    <Compile Include="Presentacion\Presentadores\Reservas\PresentadorReservacionSombrilla.cs" />
+    <Compile Include="Presentacion\Presentadores\Reservas\PresentadorReservaServicio.cs" />
+    <Compile Include="Presentacion\Vistas\Temp\master_loged_in.Master.cs">
+      <DependentUpon>master_loged_in.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Temp\master_loged_in.Master.designer.cs">
+      <DependentUpon>master_loged_in.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Temp\master_not_loged.Master.cs">
+      <DependentUpon>master_not_loged.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Temp\master_not_loged.Master.designer.cs">
+      <DependentUpon>master_not_loged.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Configuracionestacionamientos\web_11_CobrarTicket.aspx.cs">
+      <DependentUpon>web_11_CobrarTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Configuracionestacionamientos\web_11_CobrarTicket.aspx.designer.cs">
+      <DependentUpon>web_11_CobrarTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Configuracionestacionamientos\web_11_consultar_Estacionamiento.aspx.cs">
+      <DependentUpon>web_11_consultar_Estacionamiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Configuracionestacionamientos\web_11_consultar_Estacionamiento.aspx.designer.cs">
+      <DependentUpon>web_11_consultar_Estacionamiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Configuracionestacionamientos\web_11_GenerarTicket.aspx.cs">
+      <DependentUpon>web_11_GenerarTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Configuracionestacionamientos\web_11_GenerarTicket.aspx.designer.cs">
+      <DependentUpon>web_11_GenerarTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_bienvenido.aspx.cs">
+      <DependentUpon>web_01_bienvenido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_bienvenido.aspx.designer.cs">
+      <DependentUpon>web_01_bienvenido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_inicioSesion.aspx.cs">
+      <DependentUpon>web_01_inicioSesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_inicioSesion.aspx.designer.cs">
+      <DependentUpon>web_01_inicioSesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_modificar.aspx.cs">
+      <DependentUpon>web_01_modificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_modificar.aspx.designer.cs">
+      <DependentUpon>web_01_modificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_preguntaSeguridad.aspx.cs">
+      <DependentUpon>web_01_preguntaSeguridad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_preguntaSeguridad.aspx.designer.cs">
+      <DependentUpon>web_01_preguntaSeguridad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_recuperarContrasena.aspx.cs">
+      <DependentUpon>web_01_recuperarContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_recuperarContrasena.aspx.designer.cs">
+      <DependentUpon>web_01_recuperarContrasena.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_registro.aspx.cs">
+      <DependentUpon>web_01_registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\IngresoRecuperacionClave\web_01_registro.aspx.designer.cs">
+      <DependentUpon>web_01_registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\inicio.aspx.cs">
+      <DependentUpon>inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\inicio.aspx.designer.cs">
+      <DependentUpon>inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\inicio_no_logeado.aspx.cs">
+      <DependentUpon>inicio_no_logeado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\inicio_no_logeado.aspx.designer.cs">
+      <DependentUpon>inicio_no_logeado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Membresia\web_12_consultarMembresia.aspx.cs">
+      <DependentUpon>web_12_consultarMembresia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Membresia\web_12_consultarMembresia.aspx.designer.cs">
+      <DependentUpon>web_12_consultarMembresia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Membresia\web_12_detallePago.aspx.cs">
+      <DependentUpon>web_12_detallePago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Membresia\web_12_detallePago.aspx.designer.cs">
+      <DependentUpon>web_12_detallePago.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Membresia\web_12_pagos.aspx.cs">
+      <DependentUpon>web_12_pagos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Membresia\web_12_pagos.aspx.designer.cs">
+      <DependentUpon>web_12_pagos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Membresia\web_12_reactivarMembresia.aspx.cs">
+      <DependentUpon>web_12_reactivarMembresia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Membresia\web_12_reactivarMembresia.aspx.designer.cs">
+      <DependentUpon>web_12_reactivarMembresia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Menu\web_05_consultarSeccionProducto.aspx.cs">
+      <DependentUpon>web_05_consultarSeccionProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Menu\web_05_consultarSeccionProducto.aspx.designer.cs">
+      <DependentUpon>web_05_consultarSeccionProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\noIntegradoIniciado.aspx.cs">
+      <DependentUpon>noIntegradoIniciado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\noIntegradoIniciado.aspx.designer.cs">
+      <DependentUpon>noIntegradoIniciado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\noIntegradoNoIniciado.aspx.cs">
+      <DependentUpon>noIntegradoNoIniciado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\noIntegradoNoIniciado.aspx.designer.cs">
+      <DependentUpon>noIntegradoNoIniciado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Reservas\web_07_consultaReservaServicio.aspx.cs">
+      <DependentUpon>web_07_consultaReservaServicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Reservas\web_07_consultaReservaServicio.aspx.designer.cs">
+      <DependentUpon>web_07_consultaReservaServicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Reservas\web_07_consultaSombrilla.aspx.cs">
+      <DependentUpon>web_07_consultaSombrilla.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Reservas\web_07_consultaSombrilla.aspx.designer.cs">
+      <DependentUpon>web_07_consultaSombrilla.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Reservas\web_07_modificarReservaServicio.aspx.cs">
+      <DependentUpon>web_07_modificarReservaServicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Reservas\web_07_modificarReservaServicio.aspx.designer.cs">
+      <DependentUpon>web_07_modificarReservaServicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Reservas\web_07_reservacionSombrilla.aspx.cs">
+      <DependentUpon>web_07_reservacionSombrilla.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Reservas\web_07_reservacionSombrilla.aspx.designer.cs">
+      <DependentUpon>web_07_reservacionSombrilla.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Reservas\web_07_reservacionSombrilla1.aspx.cs">
+      <DependentUpon>web_07_reservacionSombrilla1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Reservas\web_07_reservacionSombrilla1.aspx.designer.cs">
+      <DependentUpon>web_07_reservacionSombrilla1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Reservas\web_07_reservaServicio.aspx.cs">
+      <DependentUpon>web_07_reservaServicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Vistas\Web\Reservas\web_07_reservaServicio.aspx.designer.cs">
+      <DependentUpon>web_07_reservaServicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Presentacion\Vistas\Temp\master_loged_in.Master" />
+    <Content Include="Presentacion\Vistas\Temp\master_not_loged.Master" />
+    <Content Include="packages.config" />
+    <Content Include="FuenteDatos\Dao\ConfiguracionEstacionamientos\Recurso\desktop.ini" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FuenteDatos\Dao\ConfiguracionEstacionamientos\Recurso\RecursoDaoConfiguracionEstacionamiento.resx" />
+    <EmbeddedResource Include="FuenteDatos\Dao\IngresoRecuperacionClave\Recursos\RecursosDaoIngresoRecuperacionClave.resx" />
+    <EmbeddedResource Include="LogicaNegocio\Comandos\IngresoRecuperacionClave\Recursos\RecursosComandoInicioRecuperacionClave.resx" />
+    <EmbeddedResource Include="Presentacion\Presentadores\Configuracionestacionamiento\RecursoPresentadorEstacionamiento.resx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53459/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

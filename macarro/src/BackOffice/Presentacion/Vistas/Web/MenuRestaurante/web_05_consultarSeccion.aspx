@@ -37,7 +37,7 @@
                     </asp:TableCell>
 
                     <asp:TableCell ID="TableCell16" runat="server">
-                        <asp:Label ID="lbNombre" runat="server" CssClass="labels"></asp:Label>
+                        <asp:Label ID="_nombre" runat="server" CssClass="labels"></asp:Label>
                     </asp:TableCell>
                 </asp:TableRow>
 
@@ -47,7 +47,7 @@
                     </asp:TableCell>
 
                     <asp:TableCell ID="TableCell18" runat="server">
-                        <asp:Label ID="lbDescripcion" runat="server" Text="" CssClass="labels"></asp:Label>
+                        <asp:Label ID="_descripcion" runat="server" Text="" CssClass="labels"></asp:Label>
                     </asp:TableCell>
                 </asp:TableRow>
 

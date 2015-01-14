@@ -6,10 +6,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using FrontOffice.Presentacion.Contratos.Configuracionestacionamiento;
-using FrontOffice.Presentacion.Presentadores.ConfiguracionEstacionamiento;
+using FrontOffice.Presentacion.Presentadores.Configuracionestacionamiento;
 using FrontOffice.Dominio.Entidades;
 
-namespace FrontOffice.Presentacion.Vistas.Web.ConfiguracionEstacionamiento
+namespace FrontOffice.Presentacion.Vistas.Web.Configuracionestacionamientos
 {
     public partial class web_11_consultar_Estacionamiento : System.Web.UI.Page , IContrato_11_consultar_Estacionamiento
     {

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BackOffice.FuenteDatos.IDao.InventarioRestaurante
 {
-    interface IDao_06_inventarioRestaurante : IDao<Entidad, bool, Entidad>
+    public interface IDao_06_inventarioRestaurante : IDao<Entidad, bool, Entidad>
     {
         DataTable VerRazonesSocialesBD();
     }

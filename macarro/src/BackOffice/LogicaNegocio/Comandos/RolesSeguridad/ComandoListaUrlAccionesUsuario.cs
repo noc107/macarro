@@ -1,6 +1,11 @@
 ﻿using BackOffice.Dominio;
+using BackOffice.Excepciones;
+using BackOffice.Excepciones.ExcepcionesComando.RolesSeguridad;
+using BackOffice.Excepciones.ExcepcionesDao;
+using BackOffice.Excepciones.ExcepcionesDao.RolesSeguridad;
 using BackOffice.FuenteDatos.Fabrica;
 using BackOffice.FuenteDatos.IDao.RolesSeguridad;
+using BackOffice.LogicaNegocio.Comandos.RolesSeguridad.Recursos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +30,37 @@ namespace BackOffice.LogicaNegocio.Comandos.RolesSeguridad
 
                 return _daoMenu.ListaUrlAccionesUsuario(parametro);
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionComandoListaUrlAccionesUsuario exComandoListaUrlAccionesUsuario = new ExcepcionComandoListaUrlAccionesUsuario
+                    (RecursosComandoRolesSeguridad.CodigoNullReferenceException,
+                    RecursosComandoRolesSeguridad.ClaseComandoListaUrlAccionesUsuario,
+                    RecursosComandoRolesSeguridad.MetodoEjecutar,
+                    RecursosComandoRolesSeguridad.MensajeNullReferenceException,
+                    e);
+                Logger.EscribirEnLogger(exComandoListaUrlAccionesUsuario);
+
+                throw exComandoListaUrlAccionesUsuario;
+            }
+            catch (ExcepcionDaoMenu e)
+            {
+                ExcepcionComandoListaUrlAccionesUsuario exComandoListaUrlAccionesUsuario = new ExcepcionComandoListaUrlAccionesUsuario
+                    (e.Codigo, e.Clase, e.Metodo, e.Mensaje, e);
+                Logger.EscribirEnLogger(exComandoListaUrlAccionesUsuario);
+
+                throw exComandoListaUrlAccionesUsuario;
+            }
+            catch (ExcepcionDao e)
+            {
+                ExcepcionComandoListaUrlAccionesUsuario exComandoListaUrlAccionesUsuario = new ExcepcionComandoListaUrlAccionesUsuario
+                    (RecursosComandoRolesSeguridad.CodigoGeneralError,
+                    RecursosComandoRolesSeguridad.ClaseComandoListaUrlAccionesUsuario,
+                    RecursosComandoRolesSeguridad.MetodoEjecutar,
+                    RecursosComandoRolesSeguridad.MensajeGeneralError,
+                    e);
+                Logger.EscribirEnLogger(exComandoListaUrlAccionesUsuario);
+
+                throw exComandoListaUrlAccionesUsuario;
             }
         }
     }

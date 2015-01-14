@@ -4,11 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using FrontOffice.Presentacion.Contratos.Estacionamiento;
-using FrontOffice.Presentacion.Presentadores.ConfiguracionEstacionamiento;
+using FrontOffice.Presentacion.Contratos.Configuracionestacionamiento;
+using FrontOffice.Presentacion.Presentadores.Configuracionestacionamiento;
+using FrontOffice.Presentacion.Presentadores.Configuracionestacionamiento;
 
 
-namespace FrontOffice.Presentacion.Vistas.Web.ConfiguracionEstacionamiento
+namespace FrontOffice.Presentacion.Vistas.Web.Configuracionestacionamientos
 {
     public partial class web_11_CobrarTicket : System.Web.UI.Page , IContrato_11_CobrarTicket
     {
@@ -81,7 +82,7 @@ namespace FrontOffice.Presentacion.Vistas.Web.ConfiguracionEstacionamiento
 
         protected void BotonPagarEstacionamiento_Click(object sender, EventArgs e)
         {
-            _presentador.EventoClickCobrar();
+            _presentador.EventoClickCobrar(DropDown_estado.SelectedItem.Text.ToString());
         }
 
         protected void DropDown_estado_SelectedIndexChanged(object sender, EventArgs e)

@@ -13,6 +13,33 @@ namespace FrontOffice.Presentacion.Vistas.Web.Membresia {
     public partial class web_12_reactivarMembresia {
         
         /// <summary>
+        /// Link1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Link1;
+        
+        /// <summary>
+        /// Link2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Link2;
+        
+        /// <summary>
+        /// Link3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Link3;
+        
+        /// <summary>
         /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
@@ -38,6 +65,15 @@ namespace FrontOffice.Presentacion.Vistas.Web.Membresia {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label _mensajeError;
+        
+        /// <summary>
+        /// Carnet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Carnet;
         
         /// <summary>
         /// headerCarnetLogo control.
@@ -175,22 +211,76 @@ namespace FrontOffice.Presentacion.Vistas.Web.Membresia {
         protected global::System.Web.UI.WebControls.Label _numeroCarnet;
         
         /// <summary>
-        /// _cambiarFoto control.
+        /// PanelCancelarUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button _cambiarFoto;
+        protected global::System.Web.UI.UpdatePanel PanelCancelarUpload;
         
         /// <summary>
-        /// _pathImagen control.
+        /// FileUpload1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _pathImagen;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        
+        /// <summary>
+        /// CancelarUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CancelarUpload;
+        
+        /// <summary>
+        /// RegularExpCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel RegularExpCancel;
+        
+        /// <summary>
+        /// ValidadorImagen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ValidadorImagen;
+        
+        /// <summary>
+        /// MvListaPagos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.MultiView MvListaPagos;
+        
+        /// <summary>
+        /// ViewPagos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View ViewPagos;
+        
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// _gridTarjetasUsadas control.
@@ -202,13 +292,13 @@ namespace FrontOffice.Presentacion.Vistas.Web.Membresia {
         protected global::System.Web.UI.WebControls.GridView _gridTarjetasUsadas;
         
         /// <summary>
-        /// _tarjetaElegidaEnGrid control.
+        /// UpdateProgress1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox _tarjetaElegidaEnGrid;
+        protected global::System.Web.UI.UpdateProgress UpdateProgress1;
         
         /// <summary>
         /// UpdatePanel2 control.
@@ -229,13 +319,13 @@ namespace FrontOffice.Presentacion.Vistas.Web.Membresia {
         protected global::System.Web.UI.WebControls.Button _agregarTarjeta;
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// UpdatePanel3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
         
         /// <summary>
         /// formularios control.

@@ -13,5 +13,6 @@ namespace FrontOffice.FuenteDatos.IDao.Reservas
 
         int ObtenerSecuencia();
         bool InsertarReservaSinSecuencia(string[] data);
+        Boolean ModificarStatusReserva(Entidad parametro);
     }
 }

@@ -25,6 +25,24 @@ namespace BackOffice.Dominio.Entidades
         {
             _lineas = new List<LineaFactura>();
         }
+
+        public Factura(int _idFactura, DateTime _fecha, float _subtotal, float _total)
+        {
+            this._idFactura = _idFactura;
+            this._fecha = _fecha;
+            this._subTotal = _subtotal;
+            this._total = _total;
+
+        }
+
+        public Factura(int _idFactura, float _subtotal, float _total)
+        {
+            this._idFactura = _idFactura;
+             this._subTotal = _subtotal;
+            this._total = _total;
+
+        }
+
         #endregion
 
         #region Propiedades

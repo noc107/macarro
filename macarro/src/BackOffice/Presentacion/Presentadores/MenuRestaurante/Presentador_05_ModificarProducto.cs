@@ -26,10 +26,10 @@ namespace BackOffice.Presentacion.Presentadores.MenuRestaurante
         }
 
 
-        public void EventoAceptar_Click()
+        public void EventoAceptar_Click(int id)
         {
             Entidad plato = FabricaEntidad.ObtenerPlato();
-            ((Plato)plato).Id = 1;
+            ((Plato)plato).Id = id;
             ((Plato)plato).Nombre = _vista.nombre.Text;
             ((Plato)plato).Precio = float.Parse(_vista.precio.Text);
             ((Plato)plato).Descripcion = _vista.descripcion.Text;
@@ -37,6 +37,21 @@ namespace BackOffice.Presentacion.Presentadores.MenuRestaurante
             Comando<Entidad, bool> ComandoModificarPlato;
             ComandoModificarPlato = FabricaComando.ObtenerComandoModificarPlato();
             ComandoModificarPlato.Ejecutar(plato);
+        }
+
+        /// <summary>
+        /// Metodo para mostrar la informacion de la seccion
+        /// </summary>
+        public void EventoConsultar(int _pla)
+        {
+
+            Comando<int, Entidad> ComandoConsultarPlato;
+            ComandoConsultarPlato = FabricaComando.ObtenerComandoConsultarPlato();
+            Entidad PlatoActual = ComandoConsultarPlato.Ejecutar(_pla);
+
+            _vista.nombre.Text = ((Plato)PlatoActual).Nombre;
+            _vista.descripcion.Text = ((Plato)PlatoActual).Descripcion;
+            _vista.precio.Text = ((Plato)PlatoActual).Precio.ToString();
         }
     }
 }

@@ -9,6 +9,6 @@ namespace BackOffice.Presentacion.Contratos.MenuRestaurante
 {
     public interface IContrato_05_GestionarPlato : IContratoGeneral
     {
-        GridView gestionarProducto { get; set; }
+        GridView GVPlatos { get; set; }
     }
 }

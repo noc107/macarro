@@ -14,6 +14,8 @@ namespace FrontOffice.Dominio.Entidades
         private int ReservaServicio_Cantidad;
         private int ReservaServicio_Total;
         private int ReservaServicio_FK_Horario;
+        private int ReservaServicio_FK_Reserva;
+
 
         public int reservaServicio_id
         {
@@ -49,6 +51,11 @@ namespace FrontOffice.Dominio.Entidades
         {
             get { return ReservaServicio_FK_Horario; }
             set { ReservaServicio_FK_Horario = value; }
+        }
+        public int reservaServicio_FK_Reserva
+        {
+            get { return ReservaServicio_FK_Reserva; }
+            set { ReservaServicio_FK_Reserva = value; }
         }
 
         public int reservaServicio_Total

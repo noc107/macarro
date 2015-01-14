@@ -117,7 +117,73 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="excepcionFKRol" xml:space="preserve">
+  <data name="ClaseDaoAccion" xml:space="preserve">
+    <value>DaoAccion</value>
+  </data>
+  <data name="ClaseDaoMenu" xml:space="preserve">
+    <value>DaoMenu</value>
+  </data>
+  <data name="ClaseDaoRol" xml:space="preserve">
+    <value>DaoRol</value>
+  </data>
+  <data name="CodigoFKRolException" xml:space="preserve">
+    <value>RS_08_001</value>
+  </data>
+  <data name="CodigoGeneralError" xml:space="preserve">
+    <value>RS_08_004</value>
+  </data>
+  <data name="CodigoNullReferenceException" xml:space="preserve">
+    <value>RS_08_002</value>
+  </data>
+  <data name="CodigoSQLException" xml:space="preserve">
+    <value>RS_08_003</value>
+  </data>
+  <data name="MensajeFKRolException" xml:space="preserve">
     <value>El ítem no ha podido ser eliminado debido a que está referenciado en uno o más registros de otra u otras tablas</value>
+  </data>
+  <data name="MensajeGeneralError" xml:space="preserve">
+    <value>No se han podido cargar los datos debido a un error</value>
+  </data>
+  <data name="MensajeNullReferenceException" xml:space="preserve">
+    <value>No se han podido cargar los datos debido a que hay una referencia nula</value>
+  </data>
+  <data name="MensajeSQLException" xml:space="preserve">
+    <value>No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos</value>
+  </data>
+  <data name="MetodoAddChildItems" xml:space="preserve">
+    <value>AddChildItems</value>
+  </data>
+  <data name="MetodoAgregar" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="MetodoConsultarMenuMaster" xml:space="preserve">
+    <value>ConsultarMenuMaster</value>
+  </data>
+  <data name="MetodoConsultarRol" xml:space="preserve">
+    <value>ConsultarRol</value>
+  </data>
+  <data name="MetodoConsultarSecuencia" xml:space="preserve">
+    <value>ConsultarSecuencia</value>
+  </data>
+  <data name="MetodoConsultarTodos" xml:space="preserve">
+    <value>ConsultarTodos</value>
+  </data>
+  <data name="MetodoConsultarXId" xml:space="preserve">
+    <value>ConsultarXId</value>
+  </data>
+  <data name="MetodoEliminarRol" xml:space="preserve">
+    <value>EliminarRol</value>
+  </data>
+  <data name="MetodoListaAccionesUsuario" xml:space="preserve">
+    <value>ListaAccionesUsuario</value>
+  </data>
+  <data name="MetodoListaIdsAccionesUsuario" xml:space="preserve">
+    <value>ListaIdsAccionesUsuario</value>
+  </data>
+  <data name="MetodoListaUrlAccionesUsuario" xml:space="preserve">
+    <value>ListaUrlAccionesUsuario</value>
+  </data>
+  <data name="MetodoModificar" xml:space="preserve">
+    <value>Modificar</value>
   </data>
 </root>

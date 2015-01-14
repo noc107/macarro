@@ -1,6 +1,9 @@
 ﻿using BackOffice.Dominio;
 using BackOffice.Dominio.Entidades;
 using BackOffice.Dominio.Fabrica;
+using BackOffice.Excepciones;
+using BackOffice.Excepciones.ExcepcionesDao.RolesSeguridad;
+using BackOffice.FuenteDatos.Dao.RolesSeguridad.Recursos;
 using BackOffice.FuenteDatos.IDao.RolesSeguridad;
 using System;
 using System.Collections.Generic;
@@ -38,9 +41,38 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
                 return acciones;
 
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionDaoAccion exDaoAccion = new ExcepcionDaoAccion(RecursosDaoRolesSeguridad.CodigoNullReferenceException,
+                                                RecursosDaoRolesSeguridad.ClaseDaoAccion,
+                                                RecursosDaoRolesSeguridad.MetodoConsultarTodos,
+                                                RecursosDaoRolesSeguridad.MensajeNullReferenceException,
+                                                e);
+                Logger.EscribirEnLogger(exDaoAccion);
+
+                throw exDaoAccion;
+            }
+            catch (SqlException e)
+            {
+                ExcepcionDaoAccion exDaoAccion = new ExcepcionDaoAccion(RecursosDaoRolesSeguridad.CodigoSQLException,
+                                                RecursosDaoRolesSeguridad.ClaseDaoAccion,
+                                                RecursosDaoRolesSeguridad.MetodoConsultarTodos,
+                                                RecursosDaoRolesSeguridad.MensajeSQLException,
+                                                e);
+                Logger.EscribirEnLogger(exDaoAccion);
+
+                throw exDaoAccion;
+            }
+            catch (Exception e)
+            {
+                ExcepcionDaoAccion exDaoAccion = new ExcepcionDaoAccion(RecursosDaoRolesSeguridad.CodigoGeneralError,
+                                                RecursosDaoRolesSeguridad.ClaseDaoAccion,
+                                                RecursosDaoRolesSeguridad.MetodoConsultarTodos,
+                                                RecursosDaoRolesSeguridad.MensajeGeneralError,
+                                                e);
+                Logger.EscribirEnLogger(exDaoAccion);
+
+                throw exDaoAccion;
             }
             finally
             {
@@ -51,9 +83,9 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
         /// <summary>
         /// Metodo para agregar una accion en la base de datos. No implementado
         /// </summary>
-        /// <param name="rol">accion a agregar</param>
+        /// <param name="accion">accion a agregar</param>
         /// <returns>bool si agrego la accion</returns>
-        public bool Agregar(Entidad rol)
+        public bool Agregar(Entidad accion)
         {
             throw new NotImplementedException();
 

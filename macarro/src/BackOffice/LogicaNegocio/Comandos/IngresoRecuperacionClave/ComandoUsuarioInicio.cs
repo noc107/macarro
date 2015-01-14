@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using BackOffice.Dominio;
+using BackOffice.Excepciones.ExcepcionesComando.IngresoRecuperacionClave;
+using BackOffice.Excepciones.ExcepcionesDao;
+using BackOffice.Excepciones.ExcepcionesDao.IngresoRecuperacionClave;
 using BackOffice.FuenteDatos.Fabrica;
 using BackOffice.FuenteDatos.IDao.IngresoRecuperacionClave;
+using BackOffice.LogicaNegocio.Comandos.IngresoRecuperacionClave.Recursos;
 
 namespace BackOffice.LogicaNegocio.Comandos.IngresoRecuperacionClave
 {
@@ -27,9 +31,25 @@ namespace BackOffice.LogicaNegocio.Comandos.IngresoRecuperacionClave
                 return _daoIniciarSesion.verificarDatos(parametro);
 
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                Console.WriteLine(ex.ToString()); 
+                throw new ExcepcionComandoUsuario(RecursosComandoInicioRecuperacionClave.CodigoNullReferenceException,
+                                                     RecursosComandoInicioRecuperacionClave.ClaseComandoUsuarioInicio,
+                                                     RecursosComandoInicioRecuperacionClave.MetodoEjecutar,
+                                                     RecursosComandoInicioRecuperacionClave.MensajeNullReferenceException,
+                                                     e);
+            }
+            catch (ExcepcionDaoInicio e)
+            {
+                throw new ExcepcionComandoUsuario(e.Codigo, e.Clase, e.Metodo, e.Mensaje, e);
+            }
+            catch (ExcepcionDao e)
+            {
+                throw new ExcepcionComandoUsuario(RecursosComandoInicioRecuperacionClave.CodigoGeneralError,
+                                                     RecursosComandoInicioRecuperacionClave.ClaseComandoUsuarioInicio,
+                                                     RecursosComandoInicioRecuperacionClave.MetodoEjecutar,
+                                                     RecursosComandoInicioRecuperacionClave.MensajeGeneralError,
+                                                     e);
             }
             return null; 
         }

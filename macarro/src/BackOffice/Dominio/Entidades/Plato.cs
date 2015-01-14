@@ -49,9 +49,19 @@ namespace BackOffice.Dominio.Entidades
             set { _seccion = value; }
         }
 
+        
+
         #endregion
 
         #region Constructores
+
+        public Plato(int id, string nombre, float precio, string descripcion)
+        {
+            _id = id;
+            _nombre = nombre;
+            _precio = precio;
+            _descripcion = descripcion;
+        }
 
         public Plato(int id, string nombre, float precio, string descripcion, string seccion)
         {
@@ -68,7 +78,6 @@ namespace BackOffice.Dominio.Entidades
             _nombre = "";
             _precio = -1;
             _descripcion = "";
-            _seccion = "";
         }
 
         #endregion

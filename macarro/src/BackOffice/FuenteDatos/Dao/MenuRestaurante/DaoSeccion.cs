@@ -9,6 +9,7 @@ using BackOffice.Dominio.Entidades;
 using BackOffice.Dominio.Fabrica;
 using BackOffice.FuenteDatos.IDao.MenuRestaurante;
 
+
 namespace BackOffice.FuenteDatos.Dao.MenuRestaurante
 {
     public class DaoSeccion : Dao, IDaoSeccion
@@ -119,6 +120,42 @@ namespace BackOffice.FuenteDatos.Dao.MenuRestaurante
             }
         }
 
+        public List<Entidad> ConsultarTodos()
+        {
+            List<Entidad> secciones = new List<Entidad>();
+            SqlDataReader reader; 
+            
+            try
+            {
+
+                SqlConnection _cn = IniciarConexion();
+                _cn.Open();
+                SqlCommand _comando = new SqlCommand("Procedure_consultarTodasLasSecciones", _cn);
+                _comando.CommandType = System.Data.CommandType.StoredProcedure;
+                reader = _comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    secciones.Add((Seccion)FabricaEntidad.ObtenerSeccion((int)reader[0], (string)reader[1], (string)reader[2]));
+                }
+
+                return secciones;
+
+            }
+           
+            catch (Exception e)
+            {
+                return null;
+              
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
+
+
+
 
         public Entidad ConsultarXId(int id)
         {
@@ -129,9 +166,6 @@ namespace BackOffice.FuenteDatos.Dao.MenuRestaurante
         {
             throw new NotImplementedException();
         }*/
-        public List<Entidad> ConsultarTodos()
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

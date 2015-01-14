@@ -95,5 +95,107 @@ namespace BackOffice.FuenteDatos.Dao.VentaCierreCaja.Recursos {
                 return ResourceManager.GetString("ProcedimientoVerificarCorreo", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_consultarFaacturas.
+        /// </summary>
+        internal static string ProcedimientoConsultarFacturas
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedimientoConsultarFacturas", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a @_busqueda.
+        /// </summary>
+        internal static string ParametroBusqueda
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroBusqueda", resourceCulture);
+            }
+        }
+       
+        /// <summary>
+        ///   Busca una cadena traducida similar a @_estado.
+        /// </summary>
+        internal static string ParametroEstado
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroEstado", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_eliminarFaactura.
+        /// </summary>
+        internal static string ProcedimientoEliminarFacturas
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedimientoEliminarFacturas", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a @_nroFactura.
+        /// </summary>
+        internal static string ParametroNroFactura
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroNroFactura", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a RetVal.
+        /// </summary>
+        internal static string ParametroRetorno
+        {
+            get
+            {
+                return ResourceManager.GetString("ParametroRetorno", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_datoFactura.
+        /// </summary>
+        internal static string ProcedimientoDatosBasicosFactura
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedimientoDatosBasicosFactura", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_datosClienteFactura.
+        /// </summary>
+        internal static string ProcedimientoDatosCliente
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedimientoDatosCliente", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Busca una cadena traducida similar a Procedure_consultarLineaFactura.
+        /// </summary>
+        internal static string ProcedimientoLineasFacturas
+        {
+            get
+            {
+                return ResourceManager.GetString("ProcedimientoLineasFacturas", resourceCulture);
+            }
+        }
+
+
     }
 }

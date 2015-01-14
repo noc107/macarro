@@ -69,7 +69,7 @@ namespace FrontOffice.FuenteDatos.Dao.Membresia
             Entidad w;
             Persona x;
 
-            x =(Persona) FabricaEntidad.ObtenerPersona();
+            x = (Persona)FabricaEntidad.ObtenerPersonaInicio();
             x.Id=Id;
             x.nombre=_objeto.GetString(0);
             x.apellido=_objeto.GetString(1);

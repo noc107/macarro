@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
 
-namespace FrontOffice.Presentacion.Contratos.Estacionamiento
+namespace FrontOffice.Presentacion.Contratos.Configuracionestacionamiento
 {
     public interface IContrato_11_CobrarTicket : IContratoGeneral
     {

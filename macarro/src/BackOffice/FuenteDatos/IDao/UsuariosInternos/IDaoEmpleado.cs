@@ -10,5 +10,7 @@ namespace BackOffice.FuenteDatos.IDao.UsuariosInternos
    public interface IDaoEmpleado:  IDao<Entidad,bool,Entidad>
     {
        List<string> ConsultarRolesEmpleado(int parametro);
+       List<Entidad> LlenarCBEstatusUsuario();
+       bool ModificarPerfilEmpleado(Entidad parametro);
     }
 }

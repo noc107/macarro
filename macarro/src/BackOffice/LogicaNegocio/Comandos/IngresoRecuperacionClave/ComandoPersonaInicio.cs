@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using BackOffice.Dominio;
+using BackOffice.Excepciones.ExcepcionesComando.IngresoRecuperacionClave;
+using BackOffice.Excepciones.ExcepcionesDao;
+using BackOffice.Excepciones.ExcepcionesDao.IngresoRecuperacionClave;
 using BackOffice.FuenteDatos.Fabrica;
 using BackOffice.FuenteDatos.IDao.IngresoRecuperacionClave;
+using BackOffice.LogicaNegocio.Comandos.IngresoRecuperacionClave.Recursos;
 
 namespace BackOffice.LogicaNegocio.Comandos.IngresoRecuperacionClave
 {
@@ -27,9 +31,25 @@ namespace BackOffice.LogicaNegocio.Comandos.IngresoRecuperacionClave
                 return _daoIniciarSesion.verificarDatosPersona(parametro);
 
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                Console.WriteLine(ex.ToString());
+                throw new ExcepcionComandoPersona(RecursosComandoInicioRecuperacionClave.CodigoNullReferenceException,
+                                                     RecursosComandoInicioRecuperacionClave.ClaseComandoPersonaInicio,
+                                                     RecursosComandoInicioRecuperacionClave.MetodoEjecutar,
+                                                     RecursosComandoInicioRecuperacionClave.MensajeNullReferenceException,
+                                                     e);
+            }
+            catch (ExcepcionDaoInicio e)
+            {
+                throw new ExcepcionComandoPersona(e.Codigo, e.Clase, e.Metodo, e.Mensaje, e);
+            }
+            catch (ExcepcionDao e)
+            {
+                throw new ExcepcionComandoPersona(RecursosComandoInicioRecuperacionClave.CodigoGeneralError,
+                                                     RecursosComandoInicioRecuperacionClave.ClaseComandoPersonaInicio,
+                                                     RecursosComandoInicioRecuperacionClave.MetodoEjecutar,
+                                                     RecursosComandoInicioRecuperacionClave.MensajeGeneralError,
+                                                     e);
             }
             return null;
         }

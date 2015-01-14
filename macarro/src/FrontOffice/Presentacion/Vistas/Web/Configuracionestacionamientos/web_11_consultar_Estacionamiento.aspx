@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Presentacion/Vistas/Temp/master_loged_in.Master" UnobtrusiveValidationMode="None" AutoEventWireup="true" CodeBehind="web_11_consultar_Estacionamiento.aspx.cs" Inherits="FrontOffice.Presentacion.Vistas.Web.ConfiguracionEstacionamiento.web_11_consultar_Estacionamiento"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Presentacion/Vistas/Temp/master_loged_in.Master" UnobtrusiveValidationMode="None" AutoEventWireup="true" CodeBehind="web_11_consultar_Estacionamiento.aspx.cs" Inherits="FrontOffice.Presentacion.Vistas.Web.Configuracionestacionamientos.web_11_consultar_Estacionamiento"  %>
 <asp:Content ID="Content1" ContentPlaceHolderID="title_place_holder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="css_place_holder" runat="server">

@@ -17,7 +17,7 @@ namespace FrontOffice.LogicaNegocio.Comandos.Reservas
                 IDaoReservaServicio _daoReservaServicio;
                 _daoReservaServicio = FabricaDao.ObtenerDaoReservaServicio();
 
-                return _daoReservaServicio.ConsultarReservaServicioXCorreo(parametro);
+                return _daoReservaServicio.ConsultarTodoXCorreo(parametro);
 
             }
             catch (Exception e)

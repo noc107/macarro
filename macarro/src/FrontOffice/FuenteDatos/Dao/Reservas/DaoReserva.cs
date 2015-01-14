@@ -13,6 +13,8 @@ namespace FrontOffice.FuenteDatos.Dao.Reservas
 {
     public class DaoReserva : Dao , IDaoReserva
     {
+        private Entidad _reserva = FabricaEntidad.ObtenerReserva();
+
         public bool InsertarReservaSinSecuencia(string[] data)
         {
             SqlCommand comando = new SqlCommand("InsertarReservaSinSecuencia", IniciarConexion());
@@ -37,6 +39,7 @@ namespace FrontOffice.FuenteDatos.Dao.Reservas
                 CerrarConexion();
             }
         }
+
         public int ObtenerSecuencia()
         {
             List<Entidad> _listaReservaServicio = new List<Entidad>();
@@ -63,6 +66,7 @@ namespace FrontOffice.FuenteDatos.Dao.Reservas
             }
             return 0; 
         }
+
         public List<Entidad> ConsultarReservasMayorANow(string _correo)
         {
             List<Entidad> _listaReservaServicio = new List<Entidad>();
@@ -99,6 +103,7 @@ namespace FrontOffice.FuenteDatos.Dao.Reservas
             }
             return null;  
         }
+
         public bool EliminarReserva(int _idReserva)
         {
             List<Entidad> _listaReservaPuesto = new List<Entidad>();
@@ -125,13 +130,13 @@ namespace FrontOffice.FuenteDatos.Dao.Reservas
 
         private Reserva ObtenerBDReader(SqlDataReader objetoBD)
         {
-            Reserva _reservaPlayaPuesto = (Reserva)FabricaEntidad.ObtenerReserva();
+            Reserva _reserva = (Reserva)FabricaEntidad.ObtenerReserva();
             try
             {
-                _reservaPlayaPuesto.reserva_id = objetoBD.GetInt32(0);
-                _reservaPlayaPuesto.reserva_fecha = objetoBD.GetDateTime(1);
-                _reservaPlayaPuesto.fK__usuario = objetoBD.GetString(2);
-                _reservaPlayaPuesto.fK_estado = objetoBD.GetString(3);
+                _reserva.reserva_id = objetoBD.GetInt32(0);
+                _reserva.reserva_fecha = objetoBD.GetDateTime(1);
+                _reserva.fK__usuario = objetoBD.GetString(3);
+                _reserva.fK_estado = objetoBD.GetString(2);
             }
             catch (Exception ex)
             {
@@ -139,27 +144,116 @@ namespace FrontOffice.FuenteDatos.Dao.Reservas
                 string c = ex.ToString();
 
             }
-            return _reservaPlayaPuesto;
+            return _reserva;
         }
 
         public Boolean Agregar(Entidad parametro)
         {
-            return true;
+            Reserva _r = (Reserva) parametro;
+
+            SqlCommand _cmd;
+            _cmd = new SqlCommand("Procedure_insertarReserva", IniciarConexion());
+            _cmd.CommandType = CommandType.StoredProcedure;
+            _cmd.Parameters.Add(new SqlParameter("@_resId", _r.reserva_id));
+            _cmd.Parameters.Add(new SqlParameter("@_resFecha", _r.reserva_fecha));
+            _cmd.Parameters.Add(new SqlParameter("@_fkUsuario ", _r.fK__usuario));
+            _cmd.Parameters.Add(new SqlParameter("@_fkEstado ", _r.fK_estado));
+
+            try
+            {
+                IniciarConexion().Open();
+                _cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                string hola = ex.ToString();
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
+
+        public Boolean ModificarStatusReserva(Entidad parametro)
+        {
+            try
+            {
+                Reserva _r = (Reserva)parametro;
+
+                int _reservaIDQuery = _r.reserva_id;
+                string _estadoReserva = _r.fK_estado;
+
+                SqlCommand _cmd;
+
+                IniciarConexion().Open();
+
+                _cmd = new SqlCommand("Procedure_cambiarStatusReserva", IniciarConexion());
+                _cmd.CommandType = CommandType.StoredProcedure;
+                _cmd.Parameters.Add(new SqlParameter("@_resID", Convert.ToInt32(_reservaIDQuery)));
+                _cmd.Parameters.Add(new SqlParameter("@_estadoReserva", _estadoReserva));
+
+
+                _cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
         }
 
         public Boolean Modificar(Entidad parametro)
         {
-            return true;
+            throw new NotImplementedException();
         }
 
         public Entidad ConsultarXId(int _id)
         {
+            SqlCommand comando = new SqlCommand("ConsultarSoloReservaPorID", IniciarConexion());
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.Add(new SqlParameter("_reservaID ", _id));
+
+
+            SqlDataReader _lectura;
+
+            try
+            {
+                IniciarConexion().Open();
+                _lectura = comando.ExecuteReader();
+
+                while (_lectura.Read())
+                {
+
+                    _reserva = ObtenerBDReader(_lectura);
+                }
+
+                return _reserva;
+            }
+            catch (Exception ex)
+            {
+                string hola = ex.ToString();
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                CerrarConexion();
+            }
             return null;
         }
 
         public List<Dominio.Entidad> ConsultarTodos()
         {
+            
+
             throw new NotImplementedException();
         }
+
     }
 }

@@ -62,14 +62,256 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad.Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error en la BD al eliminar.
+        ///   Looks up a localized string similar to CodigoFKRolException.
         /// </summary>
-        internal static string excepcionFKRol
+        internal static string CodigoFKRolException
         {
-            get {
-                return ResourceManager.GetString("excepcionFKRol", resourceCulture);
+            get
+            {
+                return ResourceManager.GetString("CodigoFKRolException", resourceCulture);
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to CodigoNullReferenceException.
+        /// </summary>
+        internal static string CodigoNullReferenceException
+        {
+            get
+            {
+                return ResourceManager.GetString("CodigoNullReferenceException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to CodigoSQLException.
+        /// </summary>
+        internal static string CodigoSQLException
+        {
+            get
+            {
+                return ResourceManager.GetString("CodigoSQLException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to CodigoGeneralError.
+        /// </summary>
+        internal static string CodigoGeneralError
+        {
+            get
+            {
+                return ResourceManager.GetString("CodigoGeneralError", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MensajeFKRolException.
+        /// </summary>
+        internal static string MensajeFKRolException
+        {
+            get
+            {
+                return ResourceManager.GetString("MensajeFKRolException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MensajeNullReferenceException.
+        /// </summary>
+        internal static string MensajeNullReferenceException
+        {
+            get
+            {
+                return ResourceManager.GetString("MensajeNullReferenceException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MensajeSQLException.
+        /// </summary>
+        internal static string MensajeSQLException
+        {
+            get
+            {
+                return ResourceManager.GetString("MensajeSQLException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MensajeGeneralError.
+        /// </summary>
+        internal static string MensajeGeneralError
+        {
+            get
+            {
+                return ResourceManager.GetString("MensajeGeneralError", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MetodoAgregar.
+        /// </summary>
+        internal static string MetodoAgregar
+        {
+            get
+            {
+                return ResourceManager.GetString("MetodoAgregar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MetodoModificar.
+        /// </summary>
+        internal static string MetodoModificar
+        {
+            get
+            {
+                return ResourceManager.GetString("MetodoModificar", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MetodoEliminarRol.
+        /// </summary>
+        internal static string MetodoEliminarRol
+        {
+            get
+            {
+                return ResourceManager.GetString("MetodoEliminarRol", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MetodoConsultarTodos.
+        /// </summary>
+        internal static string MetodoConsultarTodos
+        {
+            get
+            {
+                return ResourceManager.GetString("MetodoConsultarTodos", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MetodoConsultarSecuencia.
+        /// </summary>
+        internal static string MetodoConsultarSecuencia
+        {
+            get
+            {
+                return ResourceManager.GetString("MetodoConsultarSecuencia", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MetodoConsultarRol.
+        /// </summary>
+        internal static string MetodoConsultarRol
+        {
+            get
+            {
+                return ResourceManager.GetString("MetodoConsultarRol", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MetodoConsultarXId.
+        /// </summary>
+        internal static string MetodoConsultarXId
+        {
+            get
+            {
+                return ResourceManager.GetString("MetodoConsultarXId", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MetodoConsultarMenuMaster.
+        /// </summary>
+        internal static string MetodoConsultarMenuMaster
+        {
+            get
+            {
+                return ResourceManager.GetString("MetodoConsultarMenuMaster", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MetodoAddChildItems.
+        /// </summary>
+        internal static string MetodoAddChildItems
+        {
+            get
+            {
+                return ResourceManager.GetString("MetodoAddChildItems", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MetodoListaIdsAccionesUsuario.
+        /// </summary>
+        internal static string MetodoListaIdsAccionesUsuario
+        {
+            get
+            {
+                return ResourceManager.GetString("MetodoListaIdsAccionesUsuario", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MetodoListaUrlAccionesUsuario.
+        /// </summary>
+        internal static string MetodoListaUrlAccionesUsuario
+        {
+            get
+            {
+                return ResourceManager.GetString("MetodoListaUrlAccionesUsuario", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MetodoListaAccionesUsuario.
+        /// </summary>
+        internal static string MetodoListaAccionesUsuario
+        {
+            get
+            {
+                return ResourceManager.GetString("MetodoListaAccionesUsuario", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ClaseDaoRol.
+        /// </summary>
+        internal static string ClaseDaoRol
+        {
+            get
+            {
+                return ResourceManager.GetString("ClaseDaoRol", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ClaseDaoAccion.
+        /// </summary>
+        internal static string ClaseDaoAccion
+        {
+            get
+            {
+                return ResourceManager.GetString("ClaseDaoAccion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ClaseDaoMenu.
+        /// </summary>
+        internal static string ClaseDaoMenu
+        {
+            get
+            {
+                return ResourceManager.GetString("ClaseDaoMenu", resourceCulture);
+            }
+        }
     }
 }

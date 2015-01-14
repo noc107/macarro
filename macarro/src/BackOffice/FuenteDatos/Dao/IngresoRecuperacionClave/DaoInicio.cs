@@ -7,6 +7,8 @@ using System.Web;
 using BackOffice.Dominio;
 using BackOffice.Dominio.Entidades;
 using BackOffice.Dominio.Fabrica;
+using BackOffice.Excepciones.ExcepcionesDao.IngresoRecuperacionClave;
+using BackOffice.FuenteDatos.Dao.IngresoRecuperacionClave.Recursos;
 using BackOffice.FuenteDatos.IDao.IngresoRecuperacionClave;
 
 namespace BackOffice.FuenteDatos.Dao.IngresoRecuperacionClave
@@ -31,17 +33,46 @@ namespace BackOffice.FuenteDatos.Dao.IngresoRecuperacionClave
             {
                 IniciarConexion().Open();
                 reader = _comando.ExecuteReader();
-                if (reader.Read())
+                //  Comentario agregado para el manejo de Excepciones.
+                 if (reader.Read())
                 {
                     usuarioRetornado.Correo = reader["USU_correo"].ToString();
-                    usuarioRetornado.Id = int.Parse(reader["USU_id"].ToString());       
+                    usuarioRetornado.Id = int.Parse(reader["USU_id"].ToString());
                 }
 
                 return usuarioRetornado;
             }
+            catch (NullReferenceException e)
+            {
+                throw new ExcepcionDaoInicio(RecursosDaoIngresoRecuperacionClave.CodigoNullReferenceException,
+                                          RecursosDaoIngresoRecuperacionClave.ClaseDaoInicio,
+                                          RecursosDaoIngresoRecuperacionClave.MetodoVerificarDatos,
+                                          RecursosDaoIngresoRecuperacionClave.MensajeNullReferenceException,
+                                          e);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new ExcepcionDaoInicio(RecursosDaoIngresoRecuperacionClave.CodigoNullReferenceException,
+                                          RecursosDaoIngresoRecuperacionClave.ClaseDaoInicio,
+                                          RecursosDaoIngresoRecuperacionClave.MetodoVerificarDatos,
+                                          RecursosDaoIngresoRecuperacionClave.MensajeNullReferenceException,
+                                          e);
+            }
+            catch (SqlException e)
+            {
+                throw new ExcepcionDaoInicio(RecursosDaoIngresoRecuperacionClave.CodigoSQLException,
+                                          RecursosDaoIngresoRecuperacionClave.ClaseDaoInicio,
+                                          RecursosDaoIngresoRecuperacionClave.MetodoVerificarDatos,
+                                          RecursosDaoIngresoRecuperacionClave.MensajeSQLException,
+                                          e);
+            }
             catch (Exception e)
             {
-                return usuarioRetornado;
+                throw new ExcepcionDaoInicio(RecursosDaoIngresoRecuperacionClave.CodigoGeneralError,
+                                          RecursosDaoIngresoRecuperacionClave.ClaseDaoInicio,
+                                          RecursosDaoIngresoRecuperacionClave.MetodoVerificarDatos,
+                                          RecursosDaoIngresoRecuperacionClave.MensajeGeneralError,
+                                          e);
             }
             finally
             {
@@ -76,9 +107,37 @@ namespace BackOffice.FuenteDatos.Dao.IngresoRecuperacionClave
 
                 return personaRetornado;
             }
+            catch (NullReferenceException e)
+            {
+                throw new ExcepcionDaoInicio(RecursosDaoIngresoRecuperacionClave.CodigoNullReferenceException,
+                                          RecursosDaoIngresoRecuperacionClave.ClaseDaoInicio,
+                                          RecursosDaoIngresoRecuperacionClave.MetodoVerificarDatosPersona,
+                                          RecursosDaoIngresoRecuperacionClave.MensajeNullReferenceException,
+                                          e);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new ExcepcionDaoInicio(RecursosDaoIngresoRecuperacionClave.CodigoNullReferenceException,
+                                          RecursosDaoIngresoRecuperacionClave.ClaseDaoInicio,
+                                          RecursosDaoIngresoRecuperacionClave.MetodoVerificarDatosPersona,
+                                          RecursosDaoIngresoRecuperacionClave.MensajeNullReferenceException,
+                                          e);
+            }
+            catch (SqlException e)
+            {
+                throw new ExcepcionDaoInicio(RecursosDaoIngresoRecuperacionClave.CodigoSQLException,
+                                          RecursosDaoIngresoRecuperacionClave.ClaseDaoInicio,
+                                          RecursosDaoIngresoRecuperacionClave.MetodoVerificarDatosPersona,
+                                          RecursosDaoIngresoRecuperacionClave.MensajeSQLException,
+                                          e);
+            }
             catch (Exception e)
             {
-                return personaRetornado;
+                throw new ExcepcionDaoInicio(RecursosDaoIngresoRecuperacionClave.CodigoGeneralError,
+                                          RecursosDaoIngresoRecuperacionClave.ClaseDaoInicio,
+                                          RecursosDaoIngresoRecuperacionClave.MetodoVerificarDatosPersona,
+                                          RecursosDaoIngresoRecuperacionClave.MensajeGeneralError,
+                                          e);
             }
             finally
             {

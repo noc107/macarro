@@ -1,6 +1,9 @@
 ﻿using BackOffice.Dominio;
 using BackOffice.Dominio.Entidades;
 using BackOffice.Dominio.Fabrica;
+using BackOffice.Excepciones;
+using BackOffice.Excepciones.ExcepcionesComando.RolesSeguridad;
+using BackOffice.Excepciones.ExcepcionesDao.RolesSeguridad;
 using BackOffice.FuenteDatos.Dao.RolesSeguridad.Recursos;
 using BackOffice.FuenteDatos.IDao.RolesSeguridad;
 using System;
@@ -53,9 +56,38 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
                 }
                 return true;
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoNullReferenceException,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoAgregar,
+                                          RecursosDaoRolesSeguridad.MensajeNullReferenceException,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
+            }
+            catch (SqlException e)
+            {
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoSQLException,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoAgregar,
+                                          RecursosDaoRolesSeguridad.MensajeSQLException,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
+            }
+            catch (Exception e)
+            {
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoGeneralError,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoAgregar,
+                                          RecursosDaoRolesSeguridad.MensajeGeneralError,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
             }
             finally
             {
@@ -104,9 +136,38 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
                 }
                 return true;
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoNullReferenceException,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoModificar,
+                                          RecursosDaoRolesSeguridad.MensajeNullReferenceException,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
+            }
+            catch (SqlException e)
+            {
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoSQLException,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoModificar,
+                                          RecursosDaoRolesSeguridad.MensajeSQLException,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
+            }
+            catch (Exception e)
+            {
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoGeneralError,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoModificar,
+                                          RecursosDaoRolesSeguridad.MensajeGeneralError,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
             }
             finally
             {
@@ -138,9 +199,38 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
 
                 return roles;
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoNullReferenceException,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoConsultarTodos,
+                                          RecursosDaoRolesSeguridad.MensajeNullReferenceException,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
+            }
+            catch (SqlException e)
+            {
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoSQLException,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoConsultarTodos,
+                                          RecursosDaoRolesSeguridad.MensajeSQLException,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
+            }
+            catch (Exception e)
+            {
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoGeneralError,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoConsultarTodos,
+                                          RecursosDaoRolesSeguridad.MensajeGeneralError,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
             }
             finally
             {
@@ -171,9 +261,38 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
 
                 return secuenciaActual;
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoNullReferenceException,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoConsultarSecuencia,
+                                          RecursosDaoRolesSeguridad.MensajeNullReferenceException,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
+            }
+            catch (SqlException e)
+            {
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoSQLException,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoConsultarSecuencia,
+                                          RecursosDaoRolesSeguridad.MensajeSQLException,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
+            }
+            catch (Exception e)
+            {
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoGeneralError,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoConsultarSecuencia,
+                                          RecursosDaoRolesSeguridad.MensajeGeneralError,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
             }
             finally
             {
@@ -207,9 +326,38 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
 
                 return acciones;
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoNullReferenceException,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoConsultarRol,
+                                          RecursosDaoRolesSeguridad.MensajeNullReferenceException,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
+            }
+            catch (SqlException e)
+            {
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoSQLException,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoConsultarRol,
+                                          RecursosDaoRolesSeguridad.MensajeSQLException,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
+            }
+            catch (Exception e)
+            {
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoGeneralError,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoConsultarRol,
+                                          RecursosDaoRolesSeguridad.MensajeGeneralError,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
             }
             finally
             {
@@ -251,13 +399,52 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
                 }
                 else
                 {
-                    //throw new ExcepcionFKRol(RecursosDaoRolesSeguridad.excepcionFKRol);
-                    return false; //mientras no estan las excepciones
+                    throw new ExcepcionFKRol(RecursosDaoRolesSeguridad.CodigoFKRolException,
+                                             RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                             RecursosDaoRolesSeguridad.MetodoEliminarRol,
+                                             RecursosDaoRolesSeguridad.MensajeFKRolException,
+                                             new Exception());
                 }
             }
-            catch (Exception ex)
+            catch (ExcepcionFKRol e)
             {
-                throw ex;
+                ExcepcionFKRol exDaoRol = new ExcepcionFKRol(e.Codigo, e.Clase, e.Metodo, e.Message, e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
+            }
+            catch (NullReferenceException e)
+            {
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoNullReferenceException,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoEliminarRol,
+                                          RecursosDaoRolesSeguridad.MensajeNullReferenceException,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
+            }
+            catch (SqlException e)
+            {
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoSQLException,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoEliminarRol,
+                                          RecursosDaoRolesSeguridad.MensajeSQLException,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
+            }
+            catch (Exception e)
+            {
+                ExcepcionDaoRol exDaoRol = new ExcepcionDaoRol(RecursosDaoRolesSeguridad.CodigoGeneralError,
+                                          RecursosDaoRolesSeguridad.ClaseDaoRol,
+                                          RecursosDaoRolesSeguridad.MetodoEliminarRol,
+                                          RecursosDaoRolesSeguridad.MensajeGeneralError,
+                                          e);
+                Logger.EscribirEnLogger(exDaoRol);
+
+                throw exDaoRol;
             }
             finally
             {
@@ -266,7 +453,7 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
         }
 
         /// <summary>
-        /// Metodo para consultar rol por id no implementado
+        /// Metodo para consultar rol por id. No implementado
         /// </summary>
         /// <param name="id">id del rol</param>
         /// <returns>rol consultado</returns>

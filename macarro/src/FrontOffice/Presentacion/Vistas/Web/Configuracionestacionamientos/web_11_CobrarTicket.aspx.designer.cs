@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FrontOffice.Presentacion.Vistas.Web.ConfiguracionEstacionamiento {
+namespace FrontOffice.Presentacion.Vistas.Web.Configuracionestacionamientos {
     
     
     public partial class web_11_CobrarTicket {

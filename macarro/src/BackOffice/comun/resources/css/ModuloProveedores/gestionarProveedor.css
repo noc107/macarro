@@ -1,0 +1,65 @@
+﻿.centrar {
+    text-align:center;
+}
+.subtitulo {
+    color:#2980B9;
+}
+.divPrincipal {
+    margin:auto;
+    width:1000px;
+    height: 586px;
+}
+.divBoton {
+    clear:both; 
+    margin:auto; 
+    padding:20px; 
+    width: 130px;
+}
+.tabla {
+    margin:50px;
+}
+.ancho {
+     width:200px;
+}
+.imagen {
+    Height="50px";
+    Width="50px";
+}
+
+.tbBuscar {
+     position:absolute;
+     width:274px;
+    top: 116px;
+    left: 171px;
+}
+
+.botonBuscar {
+     position:absolute;
+    top: 126px;
+    left: 709px;
+    bottom: 537px;
+}
+
+.comboBuscar {
+     position:absolute;
+    top: 116px;
+    left: 532px;
+}
+
+.labelEstado {
+     position:absolute;
+    top: 136px;
+    left: 479px;
+}
+
+.gridProveedores {
+     position:absolute;
+    top: 197px;
+    left: 115px;
+}
+
+.botonRegresar {
+     position:absolute;
+    top: 608px;
+    left: 473px;
+}

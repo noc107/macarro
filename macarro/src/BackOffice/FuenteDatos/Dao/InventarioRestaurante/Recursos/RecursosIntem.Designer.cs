@@ -59,9 +59,42 @@ namespace BackOffice.FuenteDatos.Dao.InventarioRestaurante.Recursos {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to @_guardarItemCantidad.
+        ///   Looks up a localized string similar to @_actualizacionCantidad.
+        /// </summary>
+        internal static string parametroActualizacionCantidad
+        {
+            get
+            {
+                return ResourceManager.GetString("parametroActualizacionCantidad", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to @_actualizacionFecha.
+        /// </summary>
+        internal static string parametroActualizacionFecha
+        {
+            get
+            {
+                return ResourceManager.GetString("parametroActualizacionFecha", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to @_actualizacionId.
+        /// </summary>
+        internal static string parametroActualizacionId
+        {
+            get
+            {
+                return ResourceManager.GetString("parametroActualizacionId", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to @_itemCantidad.
         /// </summary>
         internal static string parametroCantidad {
             get {
@@ -70,7 +103,7 @@ namespace BackOffice.FuenteDatos.Dao.InventarioRestaurante.Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @_guardarItemCantidadMinima.
+        ///   Looks up a localized string similar to @_inventarioItemCantidadMinima.
         /// </summary>
         internal static string parametroCantidadMinima {
             get {
@@ -79,14 +112,25 @@ namespace BackOffice.FuenteDatos.Dao.InventarioRestaurante.Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @_guardarItemDescripcion.
+        ///   Looks up a localized string similar to @_itemDescripcion.
         /// </summary>
         internal static string parametroDescripcion {
             get {
                 return ResourceManager.GetString("parametroDescripcion", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to @_itemEstado.
+        /// </summary>
+        internal static string parametroEstado
+        {
+            get
+            {
+                return ResourceManager.GetString("parametroEstado", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to @_guardarItemFechaCompra.
         /// </summary>
@@ -95,9 +139,31 @@ namespace BackOffice.FuenteDatos.Dao.InventarioRestaurante.Recursos {
                 return ResourceManager.GetString("parametroFechaCompra", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to @_guardarItemNombre.
+        ///   Looks up a localized string similar to @_inventarioItemId.
+        /// </summary>
+        internal static string parametroInventarioId
+        {
+            get
+            {
+                return ResourceManager.GetString("parametroInventarioId", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to @_itemId.
+        /// </summary>
+        internal static string parametroItemId
+        {
+            get
+            {
+                return ResourceManager.GetString("parametroItemId", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to @_itemNombre.
         /// </summary>
         internal static string parametroNombre {
             get {
@@ -106,7 +172,7 @@ namespace BackOffice.FuenteDatos.Dao.InventarioRestaurante.Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @_guardarItemPrecioCompra.
+        ///   Looks up a localized string similar to @_itemPrecioCompra.
         /// </summary>
         internal static string parametroPrecioCompra {
             get {
@@ -115,7 +181,7 @@ namespace BackOffice.FuenteDatos.Dao.InventarioRestaurante.Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @_guardarItemPrecioVenta.
+        ///   Looks up a localized string similar to @_itemPrecioVenta.
         /// </summary>
         internal static string parametroPrecioVenta {
             get {
@@ -124,11 +190,22 @@ namespace BackOffice.FuenteDatos.Dao.InventarioRestaurante.Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @_guardarItemProveedor.
+        ///   Looks up a localized string similar to @_razonProveedor.
         /// </summary>
         internal static string parametroProveedor {
             get {
                 return ResourceManager.GetString("parametroProveedor", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to @_resultado.
+        /// </summary>
+        internal static string parametroResultado
+        {
+            get
+            {
+                return ResourceManager.GetString("parametroResultado", resourceCulture);
             }
         }
         

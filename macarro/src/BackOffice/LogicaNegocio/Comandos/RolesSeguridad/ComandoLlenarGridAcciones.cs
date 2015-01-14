@@ -1,6 +1,11 @@
 ﻿using BackOffice.Dominio;
+using BackOffice.Excepciones;
+using BackOffice.Excepciones.ExcepcionesComando.RolesSeguridad;
+using BackOffice.Excepciones.ExcepcionesDao;
+using BackOffice.Excepciones.ExcepcionesDao.RolesSeguridad;
 using BackOffice.FuenteDatos.Fabrica;
 using BackOffice.FuenteDatos.IDao.RolesSeguridad;
+using BackOffice.LogicaNegocio.Comandos.RolesSeguridad.Recursos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +30,37 @@ namespace BackOffice.LogicaNegocio.Comandos.RolesSeguridad
 
                 return _daoAccion.ConsultarTodos();
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionComandoLlenarGridAcciones exComandoLlenarGridAcciones = new ExcepcionComandoLlenarGridAcciones
+                    (RecursosComandoRolesSeguridad.CodigoNullReferenceException,
+                    RecursosComandoRolesSeguridad.ClaseComandoLlenarGridAcciones,
+                    RecursosComandoRolesSeguridad.MetodoEjecutar,
+                    RecursosComandoRolesSeguridad.MensajeNullReferenceException,
+                    e);
+                Logger.EscribirEnLogger(exComandoLlenarGridAcciones);
+
+                throw exComandoLlenarGridAcciones;
+            }
+            catch (ExcepcionDaoAccion e)
+            {
+                ExcepcionComandoLlenarGridAcciones exComandoLlenarGridAcciones = new ExcepcionComandoLlenarGridAcciones
+                    (e.Codigo, e.Clase, e.Metodo, e.Mensaje, e);
+                Logger.EscribirEnLogger(exComandoLlenarGridAcciones);
+
+                throw exComandoLlenarGridAcciones;
+            }
+            catch (ExcepcionDao e)
+            {
+                ExcepcionComandoLlenarGridAcciones exComandoLlenarGridAcciones = new ExcepcionComandoLlenarGridAcciones
+                    (RecursosComandoRolesSeguridad.CodigoGeneralError,
+                    RecursosComandoRolesSeguridad.ClaseComandoLlenarGridAcciones,
+                    RecursosComandoRolesSeguridad.MetodoEjecutar,
+                    RecursosComandoRolesSeguridad.MensajeGeneralError,
+                    e);
+                Logger.EscribirEnLogger(exComandoLlenarGridAcciones);
+
+                throw exComandoLlenarGridAcciones;
             }
         }
     

@@ -24,7 +24,7 @@
                     <asp:label ID="_labelEstacionamiento" runat="server" CssClass="labels">   Estacionamiento: </asp:label>
                 </asp:TableCell>
                    <asp:TableCell>
-                        <asp:TextBox ID="_textboxEstacionamiento" MaxLength="30" runat="server" CssClass="textbox" Enabled="True" ReadOnly="True"></asp:TextBox>
+                        <asp:label ID="_nombreEstacionamiento" runat="server" CssClass="labels"> </asp:label>
                         
 
                    </asp:TableCell>
@@ -34,7 +34,7 @@
                         <asp:label ID="_labelPlaca" runat="server" CssClass="labels">   Placa(*) : </asp:label>
                    </asp:TableCell>
                    <asp:TableCell>
-                      <asp:TextBox ID="_textBoxPlaca" MaxLength="30" runat="server" CssClass="textbox"></asp:TextBox>
+                      <asp:TextBox ID="_textBoxPlaca" MaxLength="8" runat="server" CssClass="textbox"></asp:TextBox>
                   <%-- Validator del placa --%>
                          <asp:RegularExpressionValidator ID="expresionRegularPlaca" runat="server" 
                         ControlToValidate="_textBoxPlaca"
@@ -42,6 +42,13 @@
                         ErrorMessage="No se permiten caracteres especiales."
                         ValidationExpression="[a-zA-Z0-9ñÑ ,.]{1,20}"
                         ForeColor="Red">
+                        </asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="expresionRegularPlaca2" runat="server"             
+                        ErrorMessage="Debe ingresar hasta un maximo de 8 caracteres"            
+                        ValidationExpression="^([\S\s]{0,10})$"             
+                        ControlToValidate="_textBoxPlaca"            
+                        ForeColor="Red"
+                        Text="*">
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatoVacio" runat="server"
                     ControlToValidate="_textBoxPlaca" 
                     ErrorMessage="Introducir una placa" 

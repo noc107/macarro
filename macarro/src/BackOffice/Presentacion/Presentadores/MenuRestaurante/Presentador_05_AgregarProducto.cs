@@ -8,6 +8,8 @@ using BackOffice.Dominio.Fabrica;
 using BackOffice.LogicaNegocio;
 using BackOffice.LogicaNegocio.Fabrica;
 using BackOffice.Presentacion.Contratos.MenuRestaurante;
+using BackOffice.Excepciones;
+using BackOffice.Excepciones.ExcepcionesComando;
 
 namespace BackOffice.Presentacion.Presentadores.MenuRestaurante
 {
@@ -24,6 +26,30 @@ namespace BackOffice.Presentacion.Presentadores.MenuRestaurante
         {
             _vista = vistaGestionMenu;
         }
+
+        public void llenarInfo()
+        {
+            try
+            {
+                Comando<bool, List<Entidad>> ComandoObtenerSecciones;
+                ComandoObtenerSecciones = FabricaComando.ObtenerComandoLlenarSecciones();
+
+                Comando<List<Entidad>, List<string>> ComandoLista;
+                ComandoLista = FabricaComando.ObtenerComandoLista();
+
+                foreach (string a in ComandoLista.Ejecutar((ComandoObtenerSecciones.Ejecutar(true))))
+                {
+                    _vista.seccion.Items.Add(a);
+                }
+            }
+            catch (ExcepcionComando e)
+            {
+                _vista.LabelMensajeError.Visible = true;
+                MostrarMensajeError(e.Mensaje);
+                Logger.EscribirEnLogger(e);
+            }
+        }
+
 
         public void EventoAceptar_Click()
         {

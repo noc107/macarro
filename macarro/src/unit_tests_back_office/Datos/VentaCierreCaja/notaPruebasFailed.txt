@@ -1,0 +1,6 @@
+LOS TEST pruebaCalcularSaldoAnteriorDiario y pruebaCalcularSaldoAnteriorMensual
+
+Saldrán como FAILED  ya que para la prueba se tomo la fecha de la entrega
+ya sea el 13 o luego y para ese entonces hay nuevos montos insertados (el 12)
+o sea la prueba dara passed luego del 12.
+

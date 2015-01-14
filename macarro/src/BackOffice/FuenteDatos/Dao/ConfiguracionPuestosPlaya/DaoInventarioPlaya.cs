@@ -6,6 +6,7 @@ using BackOffice.FuenteDatos.IDao.ConfiguracionPuestosPlaya;
 using BackOffice.Dominio;
 using BackOffice.Dominio.Fabrica;
 using BackOffice.Dominio.Entidades;
+using BackOffice.Excepciones;
 using BackOffice.Excepciones.ExcepcionesDao.ConfiguracionPuestosPlaya;
 
 namespace BackOffice.FuenteDatos.Dao.ConfiguracionPuestosPlaya
@@ -50,27 +51,37 @@ namespace BackOffice.FuenteDatos.Dao.ConfiguracionPuestosPlaya
             }
             catch (NullReferenceException e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorNullReference,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorNullReference,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoConsultarInventarioTipo,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya;
             }
             catch (SqlException e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorSql,
+
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorSql,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoConsultarInventarioTipo,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya;                
             }
             catch (Exception e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorGeneral,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorGeneral,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoConsultarInventarioTipo,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya; 
             }
             finally
             {
@@ -100,27 +111,37 @@ namespace BackOffice.FuenteDatos.Dao.ConfiguracionPuestosPlaya
             }
             catch (NullReferenceException e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorNullReference,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorNullReference,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoEliminarItemSeleccionado,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya;                
             }
             catch (SqlException e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorSql,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorSql,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoEliminarItemSeleccionado,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya;                
             }
             catch (Exception e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorGeneral,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorGeneral,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoEliminarItemSeleccionado,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya; 
+
             }
             finally
             {
@@ -167,27 +188,36 @@ namespace BackOffice.FuenteDatos.Dao.ConfiguracionPuestosPlaya
             }
             catch (NullReferenceException e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorNullReference,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorNullReference,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoModificar,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya; 
             }
             catch (SqlException e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorSql,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorSql,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoModificar,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya; 
             }
             catch (Exception e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorGeneral,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorGeneral,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoModificar,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya; 
             }
             finally
             {
@@ -224,27 +254,36 @@ namespace BackOffice.FuenteDatos.Dao.ConfiguracionPuestosPlaya
             }
             catch (NullReferenceException e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorNullReference,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorNullReference,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoConsultarXId,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya; 
             }
             catch (SqlException e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorSql,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorSql,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoConsultarXId,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya; 
             }
             catch (Exception e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorGeneral,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorGeneral,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoConsultarXId,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya; 
             }
             finally
             {
@@ -278,27 +317,37 @@ namespace BackOffice.FuenteDatos.Dao.ConfiguracionPuestosPlaya
             }
             catch (NullReferenceException e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorNullReference,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorNullReference,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoConsultarEstadosInventario,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya;                 
             }
             catch (SqlException e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorSql,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorSql,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoConsultarEstadosInventario,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya;  
             }
             catch (Exception e)
             {
-                throw new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorGeneral,
+                ExcepcionDaoInventarioPlaya exDaoInventarioPlaya = new ExcepcionDaoInventarioPlaya(RecursosDao.CodigoErrorGeneral,
                                                       RecursosDao.ClaseDaoInventarioPlaya,
                                                       RecursosDao.MetodoConsultarEstadosInventario,
                                                       RecursosDao.MensajeErrorExcepcion,
                                                       e);
+                Logger.EscribirEnLogger(exDaoInventarioPlaya);
+
+                throw exDaoInventarioPlaya;
+                
             }
             finally
             {

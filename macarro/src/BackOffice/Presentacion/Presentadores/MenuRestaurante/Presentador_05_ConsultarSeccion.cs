@@ -36,8 +36,8 @@ namespace BackOffice.Presentacion.Presentadores.MenuRestaurante
             ComandoConsultarSeccion = FabricaComando.ObtenerComandoConsultarSeccion();
             Entidad SeccionActual = ComandoConsultarSeccion.Ejecutar(1);
 
-            _vista.lNombre.Text = ((Seccion)SeccionActual).Nombre;
-            _vista.lDescripcion.Text = ((Seccion)SeccionActual).Descripcion;
+            _vista.nombre.Text = ((Seccion)SeccionActual).Nombre;
+            _vista.descripcion.Text = ((Seccion)SeccionActual).Descripcion;
         }
     }
 }

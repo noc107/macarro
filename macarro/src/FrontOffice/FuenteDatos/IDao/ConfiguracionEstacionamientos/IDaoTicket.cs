@@ -9,5 +9,8 @@ namespace FrontOffice.FuenteDatos.IDao.ConfiguracionEstacionamientos
     public interface IDaoTicket : IDao<Entidad, Boolean, Entidad>
     
     {
+         Entidad VerificarXplaca(string placa);
+         Boolean ModificarXticket(Entidad ticket);
+         Boolean ModificarXplaca(Entidad parametro);
     }
 }

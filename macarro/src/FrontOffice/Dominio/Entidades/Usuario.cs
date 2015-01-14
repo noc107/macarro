@@ -103,5 +103,12 @@ namespace FrontOffice.Dominio.Entidades
             _estatus = estatus;
             //_cargos = cargos;
         }
+
+        public Usuario(string correo, string contrasena)
+        {
+            _correo = correo;
+            _contrasena = contrasena;
+
+        }
     }
 }

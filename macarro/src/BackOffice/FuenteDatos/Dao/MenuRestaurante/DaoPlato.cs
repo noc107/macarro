@@ -11,7 +11,7 @@ using BackOffice.FuenteDatos.IDao.MenuRestaurante;
 
 namespace BackOffice.FuenteDatos.Dao.MenuRestaurante
 {
-    public class DaoPlato : Dao,IDaoPlato
+    public class DaoPlato : Dao, IDaoPlato
     {
         /// <summary>
         /// Metodo para obtener un plato particular de la base de datos
@@ -26,7 +26,7 @@ namespace BackOffice.FuenteDatos.Dao.MenuRestaurante
             {
                 SqlConnection _cn = IniciarConexion();
                 _cn.Open();
-                SqlCommand _comando = new SqlCommand("Procedure_ConsultarPlato", _cn);
+                SqlCommand _comando = new SqlCommand("Procedure_consultarPlato", _cn);
                 _comando.Parameters.Add(new SqlParameter("@_PlaId", SqlDbType.Int));
                 _comando.Parameters["@_plaId"].Value = id;
                 _comando.CommandType = System.Data.CommandType.StoredProcedure;
@@ -34,7 +34,8 @@ namespace BackOffice.FuenteDatos.Dao.MenuRestaurante
 
                 while (reader.Read())
                 {
-                    plato = (Plato)FabricaEntidad.ObtenerPlato((int)reader[0], (string)reader[1], (float)reader[2], (string)reader[3], (string)reader[4]);
+                    //plato = (Plato)FabricaEntidad.ObtenerPlato((int)reader[0], (string)reader[1], (float)reader[2], (string)reader[3]);
+                    plato = (Plato)FabricaEntidad.ObtenerPlato((int)reader[0], (string)reader[1], float.Parse(reader[2].ToString()), (string)reader[3]);
                 }
 
                 return plato;
@@ -86,7 +87,7 @@ namespace BackOffice.FuenteDatos.Dao.MenuRestaurante
             finally
             {
                 CerrarConexion();
-            }       
+            }
         }
 
         /// <summary>
@@ -107,14 +108,14 @@ namespace BackOffice.FuenteDatos.Dao.MenuRestaurante
                 _comando.Parameters.Add(new SqlParameter("@_plaPrecio", SqlDbType.Float));
                 _comando.Parameters.Add(new SqlParameter("@_plaDescripcion", SqlDbType.VarChar));
                 _comando.Parameters.Add(new SqlParameter("@_plaEstado", SqlDbType.Int));
-                _comando.Parameters.Add(new SqlParameter("@_plaSeccion", SqlDbType.Int));
+                _comando.Parameters.Add(new SqlParameter("@_fkSeccion", SqlDbType.Int));
 
                 _comando.Parameters["@_plaId"].Value = ((Plato)plato).Id;
                 _comando.Parameters["@_plaNombre"].Value = ((Plato)plato).Nombre;
                 _comando.Parameters["@_plaPrecio"].Value = ((Plato)plato).Precio;
                 _comando.Parameters["@_plaDescripcion"].Value = ((Plato)plato).Descripcion;
                 _comando.Parameters["@_plaEstado"].Value = 19;
-                _comando.Parameters["@_seccionId"].Value = 1;//Cambiar metodo de recepcion
+                _comando.Parameters["@_fkSeccion"].Value = 1;//Cambiar metodo de recepcion
 
                 _comando.CommandType = System.Data.CommandType.StoredProcedure;
                 _comando.ExecuteNonQuery();
@@ -136,14 +137,42 @@ namespace BackOffice.FuenteDatos.Dao.MenuRestaurante
         {
             throw new NotImplementedException();
         }
-        
-       /* public bool Modificar(Entidad plato)
-        {
-            throw new NotImplementedException();
-        }*/
+
+        /// <summary>
+        /// Metodo para obtener todos los platos de la base de datos
+        /// </summary>
+        /// <returns>Lista de platos</returns>
         public List<Entidad> ConsultarTodos()
         {
-            throw new NotImplementedException();
+            List<Entidad> platos = new List<Entidad>();
+            
+            SqlDataReader reader;
+
+            int i = 0;
+
+            try
+            {
+                SqlConnection _cn = IniciarConexion();
+                _cn.Open();
+                SqlCommand _comando = new SqlCommand("Procedure_consultarTodosLosPlatos", _cn);
+                _comando.CommandType = System.Data.CommandType.StoredProcedure;
+                reader = _comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    platos.Add((Plato)FabricaEntidad.ObtenerPlato((int)reader[0], (string)reader[1], float.Parse(reader[2].ToString()), (string)reader[3], (string)reader[4]));
+                }
+
+                return platos;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
         }
     }
 }

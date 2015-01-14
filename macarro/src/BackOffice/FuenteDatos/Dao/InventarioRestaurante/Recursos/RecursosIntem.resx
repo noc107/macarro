@@ -118,28 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="parametroCantidad" xml:space="preserve">
-    <value>@_guardarItemCantidad</value>
+    <value>@_itemCantidad</value>
   </data>
   <data name="parametroCantidadMinima" xml:space="preserve">
-    <value>@_guardarItemCantidadMinima</value>
+    <value>@_inventarioItemCantidadMinima</value>
   </data>
   <data name="parametroDescripcion" xml:space="preserve">
-    <value>@_guardarItemDescripcion</value>
+    <value>@_itemDescripcion</value>
   </data>
   <data name="parametroFechaCompra" xml:space="preserve">
     <value>@_guardarItemFechaCompra</value>
   </data>
   <data name="parametroNombre" xml:space="preserve">
-    <value>@_guardarItemNombre</value>
+    <value>@_itemNombre</value>
   </data>
   <data name="parametroPrecioCompra" xml:space="preserve">
-    <value>@_guardarItemPrecioCompra</value>
+    <value>@_itemPrecioCompra</value>
   </data>
   <data name="parametroPrecioVenta" xml:space="preserve">
-    <value>@_guardarItemPrecioVenta</value>
+    <value>@_itemPrecioVenta</value>
   </data>
   <data name="parametroProveedor" xml:space="preserve">
-    <value>@_guardarItemProveedor</value>
+    <value>@_razonProveedor</value>
   </data>
   <data name="ProcedimientoAgregar" xml:space="preserve">
     <value>Procedure_guardarItem</value>
@@ -155,5 +155,26 @@
   </data>
   <data name="ProcedimientoVerRazonesSociales" xml:space="preserve">
     <value>Procedure_proveedorInfo</value>
+  </data>
+  <data name="parametroActualizacionCantidad" xml:space="preserve">
+    <value>@_actualizacionCantidad</value>
+  </data>
+  <data name="parametroActualizacionFecha" xml:space="preserve">
+    <value>@_actualizacionFecha</value>
+  </data>
+  <data name="parametroActualizacionId" xml:space="preserve">
+    <value>@_actualizacionId</value>
+  </data>
+  <data name="parametroEstado" xml:space="preserve">
+    <value>@_itemEstado</value>
+  </data>
+  <data name="parametroInventarioId" xml:space="preserve">
+    <value>@_inventarioItemId</value>
+  </data>
+  <data name="parametroItemId" xml:space="preserve">
+    <value>@_itemId</value>
+  </data>
+  <data name="parametroResultado" xml:space="preserve">
+    <value>@_resultado</value>
   </data>
 </root>

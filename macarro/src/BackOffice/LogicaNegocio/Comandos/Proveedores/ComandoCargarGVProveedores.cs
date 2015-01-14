@@ -8,16 +8,16 @@ using System.Web;
 
 namespace BackOffice.LogicaNegocio.Comandos.Proveedores
 {
-    public class ComandoCargarGVProveedores : Comando<bool, List<Entidad>>
+    public class ComandoCargarGVProveedores : Comando<string, List<Entidad>>
     {
-        public override List<Entidad> Ejecutar(bool parametro)
+        public override List<Entidad> Ejecutar(string parametro)
         {
             try
             {
                 IDaoProveedor _daoProveedor;
                 _daoProveedor = FabricaDao.ObtenerDaoProveedor();
 
-                return _daoProveedor.ConsultarTodos();
+                return _daoProveedor.ConsultarTodosBusq(parametro);
             }
             catch (Exception ex)
             {

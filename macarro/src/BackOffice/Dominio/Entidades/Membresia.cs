@@ -19,15 +19,14 @@ namespace BackOffice.Dominio.Entidades
         private List<Pago> _pagos;
 
         #region Constructores
-        public Membresia(Persona usuario, Int32 id, DateTime fAdmision, DateTime fVencimiento, float costo, float descAplicado, string telefono, string estado, List<Pago> pagos)
+        public Membresia(Persona usuario, Int32 id, DateTime fAdmision, DateTime fVencimiento, float costo, float descAplicado, string estado, List<Pago> pagos)
         {
             _usuario = usuario;
             _id = id;
             _fAdmision = fAdmision;
             _fVencimiento = fVencimiento;
             _costo = costo;
-            _descAplicado = descAplicado;
-            _telefono = telefono;
+            _descAplicado = descAplicado;            
             _estado = estado;
             _pagos = pagos;
         }
@@ -39,11 +38,18 @@ namespace BackOffice.Dominio.Entidades
             _fAdmision = DateTime.Now;
             _fVencimiento = DateTime.Now;
             _costo = 0;
-            _descAplicado = 0;
-            _telefono = string.Empty;
+            _descAplicado = 0;            
             _estado = string.Empty;
             _pagos = null;
         }
+
+        //constructor para datos necesarios en pago
+        public Membresia(Persona usuario, Int32 id, List<Pago> pagos)
+        {
+            _usuario = usuario;
+            _id = id;
+            _pagos = pagos;
+        }        
 
         #endregion
 
@@ -77,12 +83,7 @@ namespace BackOffice.Dominio.Entidades
         {
             get { return _descAplicado; }
             set { _descAplicado = value; }
-        }
-        public string telefono
-        {
-            get { return _telefono; }
-            set { _telefono = value; }
-        }
+        }        
         public string estado
         {
             get { return _estado; }

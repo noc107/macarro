@@ -1,0 +1,18 @@
+﻿.nombreEst {
+    font-size:1.3em;
+    
+}
+
+.tabla {
+    width:600px;
+    height:600px;
+    margin:0 auto;
+}
+
+.celda {
+    width:200px;
+    height:150px;
+    text-align:center;
+}
+
+

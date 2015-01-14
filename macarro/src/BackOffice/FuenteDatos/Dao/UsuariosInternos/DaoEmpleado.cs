@@ -30,6 +30,50 @@ namespace BackOffice.FuenteDatos.Dao.UsuariosInternos
         }
 
 
+        public bool ModificarPerfilEmpleado(Entidad parametro) 
+        {
+            bool _respuesta = false;
+            SqlDataReader _lector;
+            Persona _persona = parametro as Persona;
+
+            try
+            {
+                SqlCommand _comando = new SqlCommand("Procedure_perfilUsuario", IniciarConexion());
+                _comando.CommandType = CommandType.StoredProcedure;
+                _comando.Parameters.Add(new SqlParameter("@IdPer", _persona.Id));
+                _comando.Parameters.Add(new SqlParameter("@docIdentidad", _persona.Cedula));
+                _comando.Parameters.Add(new SqlParameter("@primerNombre", _persona.Nombre));
+                _comando.Parameters.Add(new SqlParameter("@segundoNombre", _persona.SegundoNombre));
+                _comando.Parameters.Add(new SqlParameter("@primerApellido", _persona.Apellido));
+                _comando.Parameters.Add(new SqlParameter("@segundoApellido", _persona.SegundoApellido));
+                _comando.Parameters.Add(new SqlParameter("@fechaNacimiento", _persona.FechaNacimiento));
+                _comando.Parameters.Add(new SqlParameter("@telefono", _persona.Telefono));
+                _comando.Parameters.Add(new SqlParameter("@idCiudad", _persona.FkLugar));
+                _comando.Parameters.Add(new SqlParameter("@correo", _persona.UsuarioAsociado.Correo));
+                _comando.Parameters.Add(new SqlParameter("@contrasena", _persona.UsuarioAsociado.Contrasena));
+
+                _comando.Parameters.Add(new SqlParameter("@nombreLugar", _persona.NombreLugar));
+
+
+                IniciarConexion().Open();
+                _lector = _comando.ExecuteReader();
+                _respuesta = true;
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                CerrarConexion();
+            }
+
+            return _respuesta;
+        }
+
         /// <summary>
         /// Actualiza los datos del Empleado en la BD
         /// </summary>
@@ -159,6 +203,41 @@ namespace BackOffice.FuenteDatos.Dao.UsuariosInternos
              return _listaCargos;
         
         }
+
+        public List<Entidad> LlenarCBEstatusUsuario()
+        {
+            List<Entidad> _listaEstatus = new List<Entidad>();
+            try
+            {
+                SqlCommand _comando = new SqlCommand("Procedure_llenarCBEstatusUsuario", IniciarConexion());
+
+                _comando.CommandType = CommandType.StoredProcedure;
+                
+
+
+                SqlDataReader lector;
+
+                IniciarConexion().Open();
+                lector = _comando.ExecuteReader();
+                while (lector.Read())
+                {
+                    Estado estatus = AsignarEstatus(lector);
+                    if (estatus != null)
+                    {
+                        _listaEstatus.Add(estatus);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+            return _listaEstatus;
+        }
       
 
            
@@ -196,7 +275,11 @@ namespace BackOffice.FuenteDatos.Dao.UsuariosInternos
              _personaEmpleado.UsuarioAsociado.Correo = objetoBD.GetString(9);
              _personaEmpleado.UsuarioAsociado.Estatus = objetoBD.GetString(10);
              _personaEmpleado.UsuarioAsociado.FechaIngreso = objetoBD.GetDateTime(11);
+
+
              _personaEmpleado.UsuarioAsociado.FechaEgreso = objetoBD.GetDateTime(12);
+
+
              _personaEmpleado.NombreLugar = objetoBD.GetString(13);
              _personaEmpleado.FkLugar = objetoBD.GetInt32(14); 
 
@@ -220,6 +303,24 @@ namespace BackOffice.FuenteDatos.Dao.UsuariosInternos
 
             return _rolEmpleado.Nombre ; 
             
+        }
+
+
+        /// <summary>
+        /// Asigna un objeto de la BD a un nombre de un estado de Usuaio
+        /// según la posición específica del procedimiento 
+        /// procedure_llenarCBEstatusUsuario 
+        /// </summary>
+        /// <param name="objeto">Objeto de tipo BD</param>
+        /// <returns>El nombre del estatus </returns>
+        private Estado AsignarEstatus(SqlDataReader objeto) 
+        {
+            Estado _usuarioEstatus = (Estado)FabricaEntidad.ObtenerEstado();
+
+            _usuarioEstatus.Id = objeto.GetInt32(0);
+            _usuarioEstatus.Titulo = objeto.GetString(1);
+
+            return _usuarioEstatus; 
         }
         
 

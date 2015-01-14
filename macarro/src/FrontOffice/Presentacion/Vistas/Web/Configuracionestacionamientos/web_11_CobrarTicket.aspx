@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Presentacion/Vistas/Temp/master_loged_in.Master" UnobtrusiveValidationMode="None" AutoEventWireup="true" CodeBehind="web_11_CobrarTicket.aspx.cs" Inherits="FrontOffice.Presentacion.Vistas.Web.ConfiguracionEstacionamiento.web_11_CobrarTicket" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Presentacion/Vistas/Temp/master_loged_in.Master" UnobtrusiveValidationMode="None" AutoEventWireup="true" CodeBehind="web_11_CobrarTicket.aspx.cs" Inherits="FrontOffice.Presentacion.Vistas.Web.Configuracionestacionamientos.web_11_CobrarTicket" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="title_place_holder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="css_place_holder" runat="server">
@@ -30,7 +30,7 @@
                    </asp:TableCell>
                    <asp:TableCell>
                             <asp:DropDownList CssClass="combo_box" ID="DropDown_estado" runat="server" OnSelectedIndexChanged="DropDown_estado_SelectedIndexChanged"  AutoPostBack="true" >
-                                <asp:ListItem selected="true">Seleccione</asp:ListItem>
+                                <asp:ListItem selected="true" Value="0">Seleccione</asp:ListItem>
                                 <asp:ListItem Value="1" Text="NO"> </asp:ListItem>
                                 <asp:ListItem Value="2" Text="SI"></asp:ListItem>
                             </asp:DropDownList>
@@ -43,7 +43,7 @@
                                 Text="*"
                                 ForeColor="Red"
                               
-                                InitialValue="Seleccione">
+                                InitialValue="0">
                             </asp:RequiredFieldValidator>
                    </asp:TableCell>
              </asp:TableRow>    
@@ -52,7 +52,7 @@
                         <asp:label ID="_labelNumeroTicket" runat="server" CssClass="labels" Visible="false">   Ticket (*) : </asp:label>
                    </asp:TableCell>
                    <asp:TableCell>
-                        <asp:TextBox ID="_textboxNumeroTicket" MaxLength="30" runat="server" CssClass="textbox" Visible="false"></asp:TextBox>
+                        <asp:TextBox ID="_textboxNumeroTicket" MaxLength="4" runat="server" CssClass="textbox" Visible="false"></asp:TextBox>
                        <%-- Validator del ticket --%>
                          <asp:RegularExpressionValidator 
                             ID="RegularExpressionValidatorCaracteres" 
@@ -80,7 +80,7 @@
                         <asp:label ID="_labelPlaca" runat="server" CssClass="labels" Visible="false">   Placa (*) : </asp:label>
                    </asp:TableCell>
                  <asp:TableCell >
-                <asp:TextBox ID="_textboxPlaca" MaxLength="30" runat="server" CssClass="textbox" Visible="false"> </asp:TextBox>
+                <asp:TextBox ID="_textboxPlaca" MaxLength="8" runat="server" CssClass="textbox" Visible="false"> </asp:TextBox>
                        <%-- Validator del placa --%>
                          <asp:RegularExpressionValidator 
                             ID="RegularExpressionValidator1" 
@@ -108,7 +108,7 @@
          </asp:Table>
     <br />
     <div class="boton_centrado">
-            <asp:Button ID="BotonPagarEstacionamiento" runat="server" CssClass="Boton BotonMargin" Text="Cobrar" Visible="true"  />
+            <asp:Button ID="BotonPagarEstacionamiento" runat="server" CssClass="Boton BotonMargin" Text="Cobrar" Visible="true"   OnClick="BotonPagarEstacionamiento_Click"/>
         </div> 
     <br />
         <asp:Table ID="Table1" runat="server" HorizontalAlign="Center">

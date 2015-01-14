@@ -25,11 +25,11 @@ namespace FrontOffice.Presentacion.Vistas.Web.Configuracionestacionamiento
             set { _textBoxPlaca = value; }
         }
 
-        public TextBox Estacionamiento
+        public Label Estacionamiento
         {
-            get { return _textboxEstacionamiento; }
+            get { return _nombreEstacionamiento; }
 
-            set { _textboxEstacionamiento = value; }
+            set { _nombreEstacionamiento = value; }
         }
 
         public Label LabelMensajeExito
@@ -62,18 +62,27 @@ namespace FrontOffice.Presentacion.Vistas.Web.Configuracionestacionamiento
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
            
-
+                _presentador.EsconderMensajes();
+                _presentador.PageLoad();
+            
         }
 
         protected void BotonGenerarTicket_Click(object sender, EventArgs e)
         {
-            _presentador.EventoClickAceptar(_textBoxPlaca.Text);
+            expresionRegularPlaca.Validate();
+            if (expresionRegularPlaca.IsValid == true)
+            {
+                _presentador.EsconderMensajes();
+                if (!_presentador.PageLoad())
+
+                    _presentador.EventoClickAceptar(_textBoxPlaca.Text);
+            }
+            
         }
 
 
-        
+    
 
 
       

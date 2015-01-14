@@ -12,9 +12,10 @@ namespace FrontOffice.Dominio.Entidades
         private DateTime _salida;
         private string _placa;
         private int _fkEstado;
-
-      
         private int _fkEstacionamiento;
+        private string _estado;
+
+    
 
      
 
@@ -28,24 +29,41 @@ namespace FrontOffice.Dominio.Entidades
         }
 
 
-        public Ticket(int id, DateTime entrada, DateTime salida, string placa)
+        public Ticket(int id, DateTime entrada, DateTime salida, string placa,int fkEstacionamiento, string estado)
         {
             _id= id;
            _entrada = entrada;
            _salida = salida;
            _placa = placa;
+           _fkEstacionamiento = fkEstacionamiento;
+           _estado = estado;
         
-        
+        }
+        public Ticket(int id, DateTime entrada ,string placa, int fkEstacionamiento, string estado)
+        {
+            _id = id;
+            _entrada = entrada;
+            _placa = placa;
+            _fkEstacionamiento = fkEstacionamiento;
+            _estado = estado;
+
         }
 
         public Ticket(string placa) 
         
         {
             _placa = placa;
-            _id = 0;
-          
+            _id = 0;   
             _fkEstado = 20;
             _fkEstacionamiento=1;
+        }
+
+        public Ticket(string placa, int fkEstado)
+        {
+            _placa = placa;
+            _id = 0;
+            _fkEstado = fkEstado;
+            _fkEstacionamiento = 1;
         }
         #region Propiedades
 
@@ -84,6 +102,12 @@ namespace FrontOffice.Dominio.Entidades
         {
             get { return _fkEstado; }
             set { _fkEstado = value; }
+        }
+
+        public string Estado
+        {
+            get { return _estado; }
+            set { _estado = value; }
         }
         #endregion 
 

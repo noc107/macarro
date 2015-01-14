@@ -35,5 +35,20 @@ namespace BackOffice.Presentacion.Presentadores.MenuRestaurante
             ComandoModificarSeccion = FabricaComando.ObtenerComandoModificarSeccion();
             ComandoModificarSeccion.Ejecutar(seccion);
         }
+
+
+        /// <summary>
+        /// Metodo para mostrar la informacion de la seccion
+        /// </summary>
+        public void EventoConsultar(int _sec)
+        {
+
+            Comando<int, Entidad> ComandoConsultarSeccion;
+            ComandoConsultarSeccion = FabricaComando.ObtenerComandoConsultarSeccion();
+            Entidad SeccionActual = ComandoConsultarSeccion.Ejecutar(_sec);
+
+            _vista.nombre.Text = ((Seccion)SeccionActual).Nombre;
+            _vista.descripcion.Text = ((Seccion)SeccionActual).Descripcion;
+        }
     }
 }

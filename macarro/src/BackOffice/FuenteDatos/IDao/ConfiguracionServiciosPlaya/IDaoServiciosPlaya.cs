@@ -11,5 +11,7 @@ namespace BackOffice.FuenteDatos.IDao.ConfiguracionServiciosPlaya
     public interface IDaoServiciosPlaya : IDao<Entidad, bool, Entidad>
     {
         Entidad ConsultarServicioCompleto(string parametro);
+        List<Entidad> ConsultarServicios(Entidad parametro);
+        bool EliminarServicioPlaya(string parametro);
     }
 }

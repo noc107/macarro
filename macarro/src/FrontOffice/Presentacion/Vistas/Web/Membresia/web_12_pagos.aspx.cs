@@ -85,12 +85,7 @@ namespace FrontOffice.Presentacion.Vistas.Web.Membresia
 
         protected void _gridPagosHechos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            switch (e.CommandName){
-                case "Ver":
-                    _presentador.EventoClickDetallePago(sender,e);
-                    break;
-            }
-            
+            _presentador._gridPagosHechos_RowCommand(sender, e);   
         }
 
         protected void busqueda_Click(object sender, ImageClickEventArgs e)

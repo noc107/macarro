@@ -9,6 +9,7 @@ namespace BackOffice.FuenteDatos.IDao.GestionVentaMembresia
 {
     public interface IDaoMembresia : IDao<Entidad, Boolean, Entidad>
     {
+        List<Entidad> ConsultarMembresias(string _cadenaGenerica);                
     }
     
 }

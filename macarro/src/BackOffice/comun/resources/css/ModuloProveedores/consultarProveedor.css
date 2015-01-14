@@ -1,0 +1,146 @@
+﻿.centrar {
+    text-align:center;
+}
+.subtitulo {
+    color:#2980B9;
+}
+.etiquetaDerecha {
+    float:right;
+    margin-right:20px;
+    padding:10px;
+}
+.etiquetaIzquierda {
+    float:left;
+    margin-left:20px;
+    padding:10px;
+}
+.divArriba {
+    margin:auto; 
+    height: 350px; 
+    width: 1000px;
+}
+.divIzquierdo {
+    float: left; 
+    height: 300px; 
+    width: 500px;
+}
+.divDerecho {
+    float: left; 
+    height: 300px; 
+    width: 500px;
+}
+.divAbajo {
+    height: 300px; 
+    width: 800px; 
+    margin:auto; 
+    clear:both;
+}
+.tabla {
+    margin-left:100px;
+    width:600px;
+}
+.divBoton {
+    clear:both; 
+    margin:auto; 
+    padding:20px; 
+    width: 130px;
+}
+
+.rif {
+    position:absolute;
+    top: 122px;
+    left: 275px;
+}
+
+.rif1 {
+    position:absolute;
+    top: 122px;
+    left: 319px;
+}
+
+.nombre {
+    position:absolute;
+    top: 174px;
+    left: 275px;
+    height: 18px;
+}
+
+.nombre1 {
+    position:absolute;
+    top: 174px;
+    left: 382px;
+}
+
+.pagweb {
+    position:absolute;
+    top: 172px;
+    left: 595px;
+}
+
+.pagweb1 {
+    position:absolute;
+    top: 171px;
+    left: 700px;
+}
+
+.contrato {
+    position:absolute;
+    top: 228px;
+    left: 276px;
+}
+
+.contrato1 {
+    position:absolute;
+    top: 229px;
+    left: 404px;
+}
+
+
+.estado {
+    position:absolute;
+    top: 283px;
+    left: 276px;
+}
+
+.estado1 {
+    position:absolute;
+    top: 284px;
+    left: 345px;
+}
+
+.direccion {
+    position:absolute;
+    top: 281px;
+    left: 596px;
+    width:360px
+}
+
+.gridItems {
+    position:absolute;
+    top: 382px;
+    left: 158px;
+}
+
+.correo {
+    position:absolute;
+    top: 120px;
+    left: 595px;
+}
+
+.correo1 {
+    position:absolute;
+    top: 120px;
+    left: 669px;
+}
+
+.telefono {
+    position:absolute;
+    top: 227px;
+    left: 595px;
+}
+
+.telefono1 {
+    position:absolute;
+    top: 228px;
+    left: 678px;
+}

@@ -113,7 +113,30 @@ namespace BackOffice.LogicaNegocio.Comandos.ConfiguracionPuestosPlaya {
                 return ResourceManager.GetString("ClaseComandoEliminarItemSeleccionado", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to ComandoConsultarPuesto.
+        /// </summary>
+        internal static string ClaseComandoConsultarPuesto
+        {
+            get
+            {
+                return ResourceManager.GetString("ClaseComandoConsultarPuesto", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to ComandoActualizarPuesto.
+        /// </summary>
+        internal static string ClaseComandoActualizarPuesto
+        {
+            get
+            {
+                return ResourceManager.GetString("ClaseComandoActualizarPuesto", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to CPP_02_001.
         /// </summary>

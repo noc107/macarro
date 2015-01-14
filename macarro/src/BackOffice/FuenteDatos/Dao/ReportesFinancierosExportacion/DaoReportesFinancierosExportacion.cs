@@ -5,12 +5,12 @@ using System.Web;
 using BackOffice.FuenteDatos.IDao.ReportesFinancierosExportacion;
 using System.Data;
 using System.Data.SqlClient;
+using BackOffice.Excepciones.ExcepcionesDao.ReportesFinancierosExportacion;
 
 namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
 {
     public class DaoReportesFinancierosExportacion : Dao, IDaoReportesFinancierosExportacion
     {
-
         /// <summary>
         /// El metodo GetDatosActivos extrae de la BD a travez de un query
         /// el numero de usuarios estan activos y usuarios inactivos. 
@@ -21,30 +21,45 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
         /// </returns>
         public DataTable GetDatosActivos()
         {
-            
             DataTable _tablaDatos = new DataTable();
-            SqlDataAdapter _adaptadorSql;
+            SqlDataAdapter _adaptadorSql = new SqlDataAdapter();
+            SqlCommand _comandoSql;
             try
             {
-                string _queryString =
-                                    "select (select count(*) from USUARIO u where u.FK_estado = 1) " +
-                                    "as Activos , (select count(*) from USUARIO u " +
-                                    "where u.FK_estado = 2) as Inactivos";
-                _adaptadorSql = new SqlDataAdapter(_queryString,IniciarConexion());
+                _comandoSql = new SqlCommand("ReporteUsuarioActivoInactivo", IniciarConexion());
+                _comandoSql.CommandType = CommandType.StoredProcedure;
+                _adaptadorSql.SelectCommand = _comandoSql;
                 _adaptadorSql.Fill(_tablaDatos);
             }
+            catch (SqlException e)
+            {
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoSqlException,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosActivos,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorSql, e);
+            }
+
             catch (Exception ex)
-            {   /*
+            {
+
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoErrorGeneral,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosActivos,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorGeneral, ex);
+                /*
                 string _mensaje = "Se Perdió Conexión con la Base de Datos - Intentelo Más Tarde";
                 back_office.Excepciones.
                 ReportesFinancierosExportacion.
                 ExcepcionBaseDatos
                 _excepcion = new back_office.Excepciones.
-                                 ReportesFinancierosExportacion.ExcepcionBaseDatos(_mensaje);*/
-                //throw _excepcion;
-                throw ex;
+                                 ReportesFinancierosExportacion.ExcepcionBaseDatos(_mensaje);
+                throw _excepcion;
+                */
             }
-            CerrarConexion();
+            finally
+            {
+                CerrarConexion();
+            }
             return _tablaDatos;
         }
         /// <summary>
@@ -59,20 +74,30 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
         public DataTable GetDatosRoles()
         {
             DataTable _tablaDatos = new DataTable();
-            SqlDataAdapter _adapterSql;
+            SqlDataAdapter _adaptadorSql = new SqlDataAdapter();
+            SqlCommand _comandoSql;
             try
             {
-                string _queryString =
-                             "select count(*) as cantidad,(select r2.rol_nombre from rol r2 " +
-                             "where r2.rol_id = r.rol_id) as rol " +
-                             "from usuario u,usuario_rol ur,rol r " +
-                             "where u.usu_id = ur.fk_usuario and ur.fk_rol = r.rol_id " +
-                             "group by (r.rol_id)";
-                _adapterSql = new SqlDataAdapter(_queryString,IniciarConexion());
-                _adapterSql.Fill(_tablaDatos);
+                _comandoSql = new SqlCommand("ReporteRolesCantidadUsuariosAsignadosAlRol", IniciarConexion());
+                _comandoSql.CommandType = CommandType.StoredProcedure;
+                _adaptadorSql.SelectCommand = _comandoSql;
+                _adaptadorSql.Fill(_tablaDatos);
             }
+            catch (SqlException e)
+            {
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoSqlException,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosRoles,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorSql, e);
+            }
+
             catch (Exception ex)
             {
+
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoErrorGeneral,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosRoles,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorGeneral, ex);
                 /*
                 string _mensaje = "Se Perdió Conexión con la Base de Datos - Intentelo Más Tarde";
                 back_office.Excepciones.
@@ -82,9 +107,11 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
                                  ReportesFinancierosExportacion.ExcepcionBaseDatos(_mensaje);
                 throw _excepcion;
                 */
-                throw ex;
             }
-            CerrarConexion();
+            finally
+            {
+                CerrarConexion();
+            }
             return _tablaDatos;
         }
         /// <summary>
@@ -98,22 +125,31 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
         /// </returns>
         public DataTable GetDatosProveedores()
         {
-            SqlDataAdapter _adaptadorSql;
             DataTable _tablaDatos = new DataTable();
+            SqlDataAdapter _adaptadorSql = new SqlDataAdapter();
+            SqlCommand _comandoSql;
             try
             {
-                string _queryString =
-                                    "select (select p.pro_razonsocial from proveedor p where p.PRO_rif = pro.PRO_rif) as nombre " +
-                                    ",SUM(proinv.PRO_INV_cantidad) as cantidad,i.ITE_nombre " +
-                                    "from proveedor pro, PROV_INVENTARIO proinv, ITEM_INVENTARIO iv,item i " +
-                                    "where iv.FK_item = i.ITE_id and proinv.FK_item_inventario = iv.ITE_INV_id " +
-                                    "and pro.PRO_id = proinv.FK_proveedor " +
-                                    "group by pro.PRO_rif,i.ITE_nombre";
-                _adaptadorSql = new SqlDataAdapter(_queryString,IniciarConexion());
+                _comandoSql = new SqlCommand("ReporteProveedorItemsVendidosYCantidad", IniciarConexion());
+                _comandoSql.CommandType = CommandType.StoredProcedure;
+                _adaptadorSql.SelectCommand = _comandoSql;
                 _adaptadorSql.Fill(_tablaDatos);
             }
+            catch (SqlException e)
+            {
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoSqlException,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosProveedores,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorSql, e);
+            }
+
             catch (Exception ex)
             {
+
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoErrorGeneral,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosProveedores,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorGeneral, ex);
                 /*
                 string _mensaje = "Se Perdió Conexión con la Base de Datos - Intentelo Más Tarde";
                 back_office.Excepciones.
@@ -123,9 +159,11 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
                                  ReportesFinancierosExportacion.ExcepcionBaseDatos(_mensaje);
                 throw _excepcion;
                 */
-                throw ex;
             }
-            CerrarConexion();
+            finally
+            {
+                CerrarConexion();
+            }
             return _tablaDatos;
         }
         /// <summary>
@@ -139,19 +177,31 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
         /// </returns>
         public DataTable GetDatosProductos()
         {
-            SqlDataAdapter _adaptadorSql;
             DataTable _tablaDatos = new DataTable();
+            SqlDataAdapter _adaptadorSql = new SqlDataAdapter();
+            SqlCommand _comandoSql;
             try
             {
-                string _queryString =
-                                    "select i.ite_nombre,iv.ite_inv_cantidad,iv.ite_inv_cantidadmin " +
-                                    "from item_inventario iv ,item i " +
-                                    "where i.ite_id=iv.fk_item ";
-                _adaptadorSql = new SqlDataAdapter(_queryString,IniciarConexion());
+                _comandoSql = new SqlCommand("ReporteProductoCantidadActualYMinima", IniciarConexion());
+                _comandoSql.CommandType = CommandType.StoredProcedure;
+                _adaptadorSql.SelectCommand = _comandoSql;
                 _adaptadorSql.Fill(_tablaDatos);
             }
+            catch (SqlException e)
+            {
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoSqlException,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosProductos,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorSql, e);
+            }
+
             catch (Exception ex)
             {
+
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoErrorGeneral,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosProductos,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorGeneral, ex);
                 /*
                 string _mensaje = "Se Perdió Conexión con la Base de Datos - Intentelo Más Tarde";
                 back_office.Excepciones.
@@ -161,9 +211,11 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
                                  ReportesFinancierosExportacion.ExcepcionBaseDatos(_mensaje);
                 throw _excepcion;
                 */
-                throw ex;
             }
-            CerrarConexion();
+            finally
+            {
+                CerrarConexion();
+            }
             return _tablaDatos;
         }
         /// <summary>
@@ -187,19 +239,32 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
         public DataTable GetDatosIngresosMembresia(string _fechaini, string _fechafin)
         {
             DataTable _tablaDatos = new DataTable();
-            SqlDataAdapter _adaptadorSql;
+            SqlDataAdapter _adaptadorSql = new SqlDataAdapter();
+            SqlCommand _comandoSql;
             try
             {
-                string _queryString =
-                                    "select sum(p.pag_monto) as ingreso,format(p.pag_fecha,'yyyy, MM, dd')  as fecha " +
-                                    "from Pago p " +
-                                    "where p.pag_fecha >= '" + _fechaini + "' and p.pag_fecha<= '" + _fechafin + "' " +
-                                    "group by p.pag_fecha ";
-                _adaptadorSql = new SqlDataAdapter(_queryString,IniciarConexion());
+                _comandoSql = new SqlCommand("ReporteIngresosPorMembresiaConFecha", IniciarConexion());
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechaini", _fechaini));
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechafin", _fechafin));
+                _comandoSql.CommandType = CommandType.StoredProcedure;
+                _adaptadorSql.SelectCommand = _comandoSql;
                 _adaptadorSql.Fill(_tablaDatos);
             }
+            catch (SqlException e)
+            {
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoSqlException,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosIngresosMembresia,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorSql, e);
+            }
+
             catch (Exception ex)
             {
+
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoErrorGeneral,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosIngresosMembresia,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorGeneral, ex);
                 /*
                 string _mensaje = "Se Perdió Conexión con la Base de Datos - Intentelo Más Tarde";
                 back_office.Excepciones.
@@ -209,7 +274,6 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
                                  ReportesFinancierosExportacion.ExcepcionBaseDatos(_mensaje);
                 throw _excepcion;
                 */
-                throw ex;
             }
             return _tablaDatos;
         }
@@ -234,23 +298,32 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
         public DataTable GetDatosIngresosSombrilla(string _fechaini, string _fechafin)
         {
             DataTable _tablaDatos = new DataTable();
-            SqlDataAdapter _adapterSql;
+            SqlDataAdapter _adaptadorSql = new SqlDataAdapter();
+            SqlCommand _comandoSql;
             try
             {
-                string _queryString =
-                                    "select format(f.FAC_fecha,'yyyy, MM, dd') as fecha, " +
-                                    "sum(s.ser_costo*rs.res_ser_cantidad) as ingreso " +
-                                    "from factura f, linea_factura lf, servicio s, horario h, reserva_servicio rs ,"+
-                                    "reserva r where lf.fk_reserva_servicio=rs.res_ser_id and rs.fk_horario=h.hor_id "+
-                                    "and s.ser_id=h.fk_servicio and lf.fk_factura=f.fac_id "+
-                                    "and rs.fk_reserva=r.res_id and " +
-                                    "(f.fac_fecha>='" + _fechaini + "'  and f.fac_fecha<='" + _fechafin + "') " +
-                                    "group by f.fac_fecha";
-                _adapterSql = new SqlDataAdapter(_queryString,IniciarConexion());
-                _adapterSql.Fill(_tablaDatos);
+                _comandoSql = new SqlCommand("ReporteIngresosPorPuestoSombrillaConFecha", IniciarConexion());
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechaini", _fechaini));
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechafin", _fechafin));
+                _comandoSql.CommandType = CommandType.StoredProcedure;
+                _adaptadorSql.SelectCommand = _comandoSql;
+                _adaptadorSql.Fill(_tablaDatos);
             }
+            catch (SqlException e)
+            {
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoSqlException,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosIngresosSombrilla,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorSql, e);
+            }
+
             catch (Exception ex)
             {
+
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoErrorGeneral,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosIngresosSombrilla,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorGeneral, ex);
                 /*
                 string _mensaje = "Se Perdió Conexión con la Base de Datos - Intentelo Más Tarde";
                 back_office.Excepciones.
@@ -260,11 +333,9 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
                                  ReportesFinancierosExportacion.ExcepcionBaseDatos(_mensaje);
                 throw _excepcion;
                 */
-                throw ex;
             }
             return _tablaDatos;
         }
-
         /// <summary>
         /// El metodo GetDatosIngresosRestaurante extrae de la BD a travez de un query
         /// el monto de los ingresos que genera el puesto de restaurante
@@ -286,21 +357,32 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
         public DataTable GetDatosIngresosRestaurante(string _fechaini, string _fechafin)
         {
             DataTable _tablaDatos = new DataTable();
-            SqlDataAdapter _adapterSql;
+            SqlDataAdapter _adaptadorSql = new SqlDataAdapter();
+            SqlCommand _comandoSql;
             try
             {
-                string _queryString =
-                                    "select format(f.FAC_fecha,'yyyy, MM, dd') as fecha, " +
-                                    "sum(p.pla_precio*lf.lin_fac_cantidad) as ingreso " +
-                                    "from factura f, linea_factura lf, plato p  " +
-                                    "where p.pla_id=lf.fk_plato and lf.fk_factura=f.fac_id and " +
-                                    "(f.fac_fecha>='" + _fechaini + "'  and f.fac_fecha<='" + _fechafin + "') " +
-                                    "group by f.fac_fecha";
-                _adapterSql = new SqlDataAdapter(_queryString,IniciarConexion());
-                _adapterSql.Fill(_tablaDatos);
+                _comandoSql = new SqlCommand("ReporteIngresosPorPuestoRestauranteConFecha", IniciarConexion());
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechaini", _fechaini));
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechafin", _fechafin));
+                _comandoSql.CommandType = CommandType.StoredProcedure;
+                _adaptadorSql.SelectCommand = _comandoSql;
+                _adaptadorSql.Fill(_tablaDatos);
             }
+            catch (SqlException e)
+            {
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoSqlException,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosIngresosRestaurante,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorSql, e);
+            }
+
             catch (Exception ex)
             {
+
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoErrorGeneral,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosIngresosRestaurante,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorGeneral, ex);
                 /*
                 string _mensaje = "Se Perdió Conexión con la Base de Datos - Intentelo Más Tarde";
                 back_office.Excepciones.
@@ -310,11 +392,9 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
                                  ReportesFinancierosExportacion.ExcepcionBaseDatos(_mensaje);
                 throw _excepcion;
                 */
-                throw ex;
             }
             return _tablaDatos;
         }
-
         /// <summary>
         /// El metodo GetDatosIngresosServicio extrae de la BD a travez de un query
         /// el monto de los ingresos que genera el puesto de servicios
@@ -336,21 +416,32 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
         public DataTable GetDatosIngresosServicio(string _fechaini, string _fechafin)
         {
             DataTable _tablaDatos = new DataTable();
-            SqlDataAdapter _adapterSql;
+            SqlDataAdapter _adaptadorSql = new SqlDataAdapter();
+            SqlCommand _comandoSql;
             try
             {
-                string _queryString =
-                                    "select format(f.FAC_fecha,'yyyy, MM, dd') as fecha, " +
-                                    "sum(s.ser_costo*lf.lin_fac_cantidad) as ingreso " +
-                                    "from factura f, linea_factura lf, reserva_servicio rs, horario h, servicio s " +
-                                    "where lf.fk_reserva_servicio=rs.res_ser_id and rs.fk_horario=h.hor_id and s.ser_id=h.fk_servicio and lf.fk_factura=f.fac_id and " +
-                                    "(f.fac_fecha>='" + _fechaini + "'  and f.fac_fecha<='" + _fechafin + "') " +
-                                    "group by f.fac_fecha";
-                _adapterSql = new SqlDataAdapter(_queryString,IniciarConexion());
-                _adapterSql.Fill(_tablaDatos);
+                _comandoSql = new SqlCommand("ReporteIngresosPorPuestoServicioConFecha", IniciarConexion());
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechaini", _fechaini));
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechafin", _fechafin));
+                _comandoSql.CommandType = CommandType.StoredProcedure;
+                _adaptadorSql.SelectCommand = _comandoSql;
+                _adaptadorSql.Fill(_tablaDatos);
             }
+            catch (SqlException e)
+            {
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoSqlException,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosIngresosServicio,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorSql, e);
+            }
+
             catch (Exception ex)
             {
+
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoErrorGeneral,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosIngresosServicio,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorGeneral, ex);
                 /*
                 string _mensaje = "Se Perdió Conexión con la Base de Datos - Intentelo Más Tarde";
                 back_office.Excepciones.
@@ -360,11 +451,9 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
                                  ReportesFinancierosExportacion.ExcepcionBaseDatos(_mensaje);
                 throw _excepcion;
                 */
-                throw ex;
             }
             return _tablaDatos;
         }
-
         /// <summary>
         /// El metodo GetDatosEstacionamiento extrae de la BD a travez de un query
         /// el monto de los ingresos que genera el puesto de servicios
@@ -386,25 +475,33 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
         public DataTable GetDatosIngresosEstacionamiento(string _fechaini, string _fechafin)
         {
             DataTable _tablaDatos = new DataTable();
-            SqlDataAdapter _adapterSql;
-
+            SqlDataAdapter _adaptadorSql = new SqlDataAdapter();
+            SqlCommand _comandoSql;
             try
             {
-                string _queryString =
-                                    "select format(f.FAC_fecha,'yyyy, MM, dd') as fecha, " +
-                                    "sum(e.est_tarifa*DATEDIFF(mi, t.TIC_fechaEntrada," +
-                                    "t.TIC_fechaSalida)) as ingreso  " +
-                                    "from factura f, linea_factura lf, ticket t, estacionamiento e " +
-                                    "where lf.fk_factura=f.fac_id and t.tic_id=lf.fk_ticket " +
-                                    "and t.fk_estacionamiento=e.est_id and " +
-                                    "(f.fac_fecha>='" + _fechaini + "'  and f.fac_fecha<='" + _fechafin + "') " +
-                                    "group by f.fac_fecha";
-                _adapterSql = new SqlDataAdapter(_queryString,IniciarConexion());
-                _adapterSql.Fill(_tablaDatos);
-
+                _comandoSql = new SqlCommand("ReporteIngresosPorPuestoEstacionamientoConFecha", IniciarConexion());
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechaini", _fechaini));
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechafin", _fechafin));
+                _comandoSql.CommandType = CommandType.StoredProcedure;
+                _adaptadorSql.SelectCommand = _comandoSql;
+                _adaptadorSql.Fill(_tablaDatos);
             }
+            
+            catch (SqlException e)
+            {
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoSqlException,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosIngresosEstacionamiento,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorSql, e);
+            }
+
             catch (Exception ex)
             {
+
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoErrorGeneral,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosIngresosEstacionamiento,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorGeneral, ex);
                 /*
                 string _mensaje = "Se Perdió Conexión con la Base de Datos - Intentelo Más Tarde";
                 back_office.Excepciones.
@@ -413,8 +510,7 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
                 _excepcion = new back_office.Excepciones.
                                  ReportesFinancierosExportacion.ExcepcionBaseDatos(_mensaje);
                 throw _excepcion;
-                */
-                throw ex;
+                */              
             }
             return _tablaDatos;
         }
@@ -438,21 +534,32 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
         public DataTable GetDatosBebidas(string _fechaini, string _fechafin)
         {
             DataTable _tablaDatos = new DataTable();
+            SqlDataAdapter _adaptadorSql = new SqlDataAdapter();
+            SqlCommand _comandoSql;
             try
             {
-                SqlDataAdapter _adaptadorSql;
-                string _queryString =
-                                    "select p.PLA_nombre, sum(lf.lin_fac_cantidad*p.pla_precio) as ingresos " +
-                                    "from Plato p,linea_factura lf,seccion s,factura f " +
-                                    "where p.pla_id=lf.fk_plato and s.sec_id = p.fk_seccion and " +
-                                    "f.fac_id=lf.fk_factura and s.sec_nombre ='Bebidas' and " +
-                                    "f.fac_fecha >=  '" + _fechaini + "' and f.fac_fecha <='" + _fechafin + "' " +
-                                    "group by p.PLA_nombre";
-                _adaptadorSql = new SqlDataAdapter(_queryString,IniciarConexion());
+                _comandoSql = new SqlCommand("ReporteIngresosPorBebidasConFecha", IniciarConexion());
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechaini", _fechaini));
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechafin", _fechafin));
+                _comandoSql.CommandType = CommandType.StoredProcedure;
+                _adaptadorSql.SelectCommand = _comandoSql;
                 _adaptadorSql.Fill(_tablaDatos);
             }
+            catch (SqlException e)
+            {
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoSqlException,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosBebidas,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorSql, e);
+            }
+
             catch (Exception ex)
             {
+
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoErrorGeneral,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosBebidas,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorGeneral, ex);
                 /*
                 string _mensaje = "Se Perdió Conexión con la Base de Datos - Intentelo Más Tarde";
                 back_office.Excepciones.
@@ -462,13 +569,13 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
                                  ReportesFinancierosExportacion.ExcepcionBaseDatos(_mensaje);
                 throw _excepcion;
                 */
-                throw ex;
             }
-            CerrarConexion();
+            finally
+            {
+                CerrarConexion();
+            }
             return _tablaDatos;
         }
-
-
         /// <summary>
         /// El metodo GetDataPlatos extrae de la BD a travez de un query 
         /// el nombre y ingresos de los platos dentro de la BD 
@@ -489,21 +596,32 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
         public DataTable GetDatosComidas(string _fechaini, string _fechafin)
         {
             DataTable _tablaDatos = new DataTable();
-            SqlDataAdapter _adaptadorSql;
+            SqlDataAdapter _adaptadorSql = new SqlDataAdapter();
+            SqlCommand _comandoSql;
             try
             {
-                string _queryString =
-                                    "select p.PLA_nombre, sum(lf.lin_fac_cantidad*p.pla_precio) as ingresos " +
-                                    "from Plato p,linea_factura lf,seccion s,factura f " +
-                                    "where p.pla_id=lf.fk_plato and s.sec_id = p.fk_seccion and " +
-                                    "f.fac_id=lf.fk_factura and s.sec_nombre !='Bebidas' and " +
-                                    "f.fac_fecha >=  '" + _fechaini + "' and f.fac_fecha <='" + _fechafin + "' " +
-                                    "group by p.PLA_nombre";
-                _adaptadorSql = new SqlDataAdapter(_queryString,IniciarConexion());
+                _comandoSql = new SqlCommand("ReporteIngresosPorPlatosConFecha", IniciarConexion());
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechaini", _fechaini));
+                _comandoSql.Parameters.Add(new SqlParameter("@_fechafin", _fechafin));
+                _comandoSql.CommandType = CommandType.StoredProcedure;
+                _adaptadorSql.SelectCommand = _comandoSql;
                 _adaptadorSql.Fill(_tablaDatos);
             }
+            catch (SqlException e)
+            {
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoSqlException,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosComidas,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorSql, e);
+            }
+
             catch (Exception ex)
             {
+
+                throw new ExcepcionDaoReportesFinancierosExportacion(RecurosDaoReportesFinancierosExportacion.CodigoErrorGeneral,
+                    RecurosDaoReportesFinancierosExportacion.ClaseDaoReportesFinancierosExportacion,
+                    RecurosDaoReportesFinancierosExportacion.MetodoGetDatosComidas,
+                    RecurosDaoReportesFinancierosExportacion.MensajeErrorGeneral, ex);
                 /*
                 string _mensaje = "Se Perdió Conexión con la Base de Datos - Intentelo Más Tarde";
                 back_office.Excepciones.
@@ -513,9 +631,11 @@ namespace BackOffice.FuenteDatos.Dao.ReportesFinancierosExportacion
                                  ReportesFinancierosExportacion.ExcepcionBaseDatos(_mensaje);
                 throw _excepcion;
                 */
-                throw ex;
             }
-            CerrarConexion();
+            finally
+            {
+                CerrarConexion();
+            }
             return _tablaDatos;
         }
     }

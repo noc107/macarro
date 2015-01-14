@@ -15,16 +15,16 @@ namespace BackOffice.Presentacion.Vistas.Web.MenuRestaurante
 
         private Presentador_05_ConsultarSeccion _presentador;
 
-         public web_05_consultarSeccion()
+        public web_05_consultarSeccion()
         {
             _presentador = new Presentador_05_ConsultarSeccion(this);
         }
 
-         /// <summary>
-         /// Metodo que se ejecuta al cargar la interfaz
-         /// </summary>
-         /// <param name="sender"></param>
-         /// <param name="e"></param>
+        /// <summary>
+        /// Metodo que se ejecuta al cargar la interfaz
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -32,26 +32,26 @@ namespace BackOffice.Presentacion.Vistas.Web.MenuRestaurante
                 _presentador.EventoConsultar();
             }
             catch (Exception ex)
-            { 
+            {
             }
         }
 
         /// <summary>
         /// Implementacion del metodo lbNombre
         /// </summary>
-        public Label lNombre
+        public Label nombre
         {
-            get { return lNombre; }
-            set { lNombre = value; }
+            get { return _nombre; }
+            set { _nombre = value; }
         }
 
         /// <summary>
         /// Implementacion del metodo lbDescripcion
         /// </summary>
-        public Label lDescripcion
+        public Label descripcion
         {
-            get { return lDescripcion; }
-            set { lDescripcion = value; }
+            get { return _descripcion; }
+            set { _descripcion = value; }
         }
 
         /// <summary>

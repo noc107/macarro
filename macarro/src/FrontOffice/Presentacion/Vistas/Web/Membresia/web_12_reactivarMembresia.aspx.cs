@@ -50,6 +50,11 @@ namespace FrontOffice.Presentacion.Vistas.Web.Membresia
             get { return _apellido; }
             set { _apellido = value; }
         }
+        public Label numeroCarnet
+        {
+            get { return _numeroCarnet; }
+            set { _numeroCarnet = value; }
+        }
         public Label fechaNacimiento
         {
             get { return _fechaNacimiento; }
@@ -80,11 +85,6 @@ namespace FrontOffice.Presentacion.Vistas.Web.Membresia
             get { return _numeroTelefono; }
             set { _numeroTelefono = value; }
         }
-        public Label numeroCarnet
-        {
-            get { return _numeroCarnet; }
-            set { _numeroCarnet = value; }
-        }
         public Image foto
         {
             get { return _foto; }
@@ -100,16 +100,16 @@ namespace FrontOffice.Presentacion.Vistas.Web.Membresia
             get { return _cancelar; }
             set { _cancelar = value; }
         }
-        public Button cambiarFoto
-        {
-            get { return _cambiarFoto; }
-            set { _cambiarFoto = value; }
-        }
-        public TextBox FotoPath
-        {
-            get { return _pathImagen; }
-            set { _pathImagen = value; }
-        }
+        //public Button cambiarFoto
+        //{
+        //    get { return _cambiarFoto; }
+        //    set { _cambiarFoto = value; }
+        //}
+        //public TextBox FotoPath
+        //{
+        //    get { return _pathImagen; }
+        //    set { _pathImagen = value; }
+        //}
         public TextBox numeroTarjeta
         {
             get { return _numeroTarjeta; }
@@ -145,11 +145,6 @@ namespace FrontOffice.Presentacion.Vistas.Web.Membresia
             get { return _gridTarjetasUsadas; }
             set { _gridTarjetasUsadas = value; }
         }
-        public CheckBox tarjetaElegidaEnGrid
-        {
-            get { return _tarjetaElegidaEnGrid; }
-            set { _tarjetaElegidaEnGrid = value; }
-        }
         public Button agregarTarjeta
         {
             get { return _agregarTarjeta; }
@@ -159,7 +154,14 @@ namespace FrontOffice.Presentacion.Vistas.Web.Membresia
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                _presentador.Page_Load();
+            }
+            else
+            {
+                    this.FileUpload1.DataBind();
+            }
         }
 
         protected void _cambiarFoto_Click(object sender, EventArgs e)
@@ -183,25 +185,22 @@ namespace FrontOffice.Presentacion.Vistas.Web.Membresia
             _presentador.EventoClickAgregarTarjeta();
         }
 
-        protected void _gridTarjetasUsadas_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-
-        }
 
         protected void _gridTarjetasUsadas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            _presentador._gridTarjetasUsadas_PageIndexChanging(sender, e);
         }
 
-        protected void _gridTarjetasUsadas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        protected void _tarjetaElegidaEnGrid_CheckedChanged(object sender, System.EventArgs e)
         {
-
+            _presentador.QuitarCheckALosDemas(sender, e);  
         }
 
-        protected void _gridTarjetasUsadas_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void CancelarUpload_Click(object sender, EventArgs e)
         {
+            this.FileUpload1.Dispose();
+        }
 
-        }   
 
     }
 }

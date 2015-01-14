@@ -10,6 +10,9 @@ using BackOffice.Dominio.Entidades;
 using BackOffice.Dominio.Fabrica;
 using BackOffice.FuenteDatos.Fabrica;
 using BackOffice.FuenteDatos.IDao.RolesSeguridad;
+using BackOffice.Excepciones.ExcepcionesDao.RolesSeguridad;
+using BackOffice.FuenteDatos.Dao.RolesSeguridad.Recursos;
+using BackOffice.Excepciones;
 
 namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
 {
@@ -17,10 +20,10 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
     {
 
         /// <summary>
-        /// 
+        /// Metodo para obtener los item del menu de la aplicacion
         /// </summary>
-        /// <param name="usuario"></param>
-        /// <returns></returns>
+        /// <param name="usuario">el usuario loggeado</param>
+        /// <returns>el menu</returns>
         public Menu ConsultarMenuMaster(string usuario)
         {
 
@@ -54,16 +57,42 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
                     menuItem.ImageUrl = "~/comun/resources/img/dropdown.png";
                     menuBar.Items.Add(menuItem);
                     AddChildItems(table, menuItem);
-                }
-
-                       
-                
+                } 
 
                 return menuBar;
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoNullReferenceException,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoConsultarMenuMaster,
+                                           RecursosDaoRolesSeguridad.MensajeNullReferenceException,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
+            }
+            catch (SqlException e)
+            {
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoSQLException,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoConsultarMenuMaster,
+                                           RecursosDaoRolesSeguridad.MensajeSQLException,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
+            }
+            catch (Exception e)
+            {
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoGeneralError,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoConsultarMenuMaster,
+                                           RecursosDaoRolesSeguridad.MensajeGeneralError,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
             }
             finally
             {
@@ -72,29 +101,50 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
 
         }
 
-
-
         /// <summary>
-        /// 
+        /// Metodo para obtener los subitems del menu
         /// </summary>
-        /// <param name="table"></param>
-        /// <param name="menuItem"></param>
+        /// <param name="table">tabla de los items del menu</param>
+        /// <param name="menuItem">subitems</param>
         private void AddChildItems(DataTable table, MenuItem menuItem)
         {
             DataView viewItem = new DataView(table);
-            viewItem.RowFilter = "MEN_MAS_id_padre=" + menuItem.Value;
-            foreach (DataRowView childView in viewItem)
+            try
             {
-                MenuItem childItem = new MenuItem(childView["MEN_MAS_texto"].ToString(),
-                childView["MEN_MAS_id"].ToString());
-                childItem.NavigateUrl = childView["MEN_MAS_url"].ToString();
-                menuItem.ChildItems.Add(childItem);
-                AddChildItems(table, childItem);
+                viewItem.RowFilter = "MEN_MAS_id_padre=" + menuItem.Value;
+                foreach (DataRowView childView in viewItem)
+                {
+                    MenuItem childItem = new MenuItem(childView["MEN_MAS_texto"].ToString(),
+                    childView["MEN_MAS_id"].ToString());
+                    childItem.NavigateUrl = childView["MEN_MAS_url"].ToString();
+                    menuItem.ChildItems.Add(childItem);
+                    AddChildItems(table, childItem);
+                }
+            }
+            catch (NullReferenceException e)
+            {
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoNullReferenceException,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoAddChildItems,
+                                           RecursosDaoRolesSeguridad.MensajeNullReferenceException,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
+            }
+            catch (Exception e)
+            {
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoGeneralError,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoAddChildItems,
+                                           RecursosDaoRolesSeguridad.MensajeGeneralError,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
             }
         }
 
-               
-        
         /// <summary>
         /// Metodo para obtener los ids de menu de las acciones segun cada rol de un usuario
         /// para ser utilizado en la consulta SQL que trae los items del menu que el usuario
@@ -158,9 +208,38 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
 
                 return ids;
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoNullReferenceException,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoListaIdsAccionesUsuario,
+                                           RecursosDaoRolesSeguridad.MensajeNullReferenceException,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
+            }
+            catch (SqlException e)
+            {
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoSQLException,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoListaIdsAccionesUsuario,
+                                           RecursosDaoRolesSeguridad.MensajeSQLException,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
+            }
+            catch (Exception e)
+            {
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoGeneralError,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoListaIdsAccionesUsuario,
+                                           RecursosDaoRolesSeguridad.MensajeGeneralError,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
             }
             finally
             {
@@ -221,9 +300,38 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
 
                 return listaUrl;
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoNullReferenceException,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoListaUrlAccionesUsuario,
+                                           RecursosDaoRolesSeguridad.MensajeNullReferenceException,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
+            }
+            catch (SqlException e)
+            {
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoSQLException,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoListaUrlAccionesUsuario,
+                                           RecursosDaoRolesSeguridad.MensajeSQLException,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
+            }
+            catch (Exception e)
+            {
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoGeneralError,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoListaUrlAccionesUsuario,
+                                           RecursosDaoRolesSeguridad.MensajeGeneralError,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
             }
             finally
             {
@@ -283,9 +391,38 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
 
                 return listaAccionString;
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoNullReferenceException,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoListaAccionesUsuario,
+                                           RecursosDaoRolesSeguridad.MensajeNullReferenceException,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
+            }
+            catch (SqlException e)
+            {
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoSQLException,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoListaAccionesUsuario,
+                                           RecursosDaoRolesSeguridad.MensajeSQLException,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
+            }
+            catch (Exception e)
+            {
+                ExcepcionDaoMenu exDaoMenu = new ExcepcionDaoMenu(RecursosDaoRolesSeguridad.CodigoGeneralError,
+                                           RecursosDaoRolesSeguridad.ClaseDaoMenu,
+                                           RecursosDaoRolesSeguridad.MetodoListaAccionesUsuario,
+                                           RecursosDaoRolesSeguridad.MensajeGeneralError,
+                                           e);
+                Logger.EscribirEnLogger(exDaoMenu);
+
+                throw exDaoMenu;
             }
             finally
             {
@@ -295,19 +432,19 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
 
 
         /// <summary>
-        /// 
+        /// Metodo para consiltar el menu. No implementado
         /// </summary>
-        /// <returns></returns>
+        /// <returns>el menu</returns>
         public List<bool> ConsultarTodos()
         {
             throw new NotImplementedException();
         }
 
         /// <summary>
-        /// 
+        /// Metodo para agregar al menu. No implementado
         /// </summary>
-        /// <param name="menu"></param>
-        /// <returns></returns>
+        /// <param name="menu">el item</param>
+        /// <returns>el menu</returns>
         public Menu Agregar(string menu)
         {
             throw new NotImplementedException();
@@ -315,10 +452,10 @@ namespace BackOffice.FuenteDatos.Dao.RolesSeguridad
         }
 
         /// <summary>
-        /// 
+        /// Metodo para modificar el menu. No implementado
         /// </summary>
-        /// <param name="menu"></param>
-        /// <returns></returns>
+        /// <param name="menu">el item</param>
+        /// <returns>el menu</returns>
         public Menu Modificar(string menu)
         {
             throw new NotImplementedException();

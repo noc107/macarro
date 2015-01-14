@@ -1,7 +1,12 @@
 ﻿using BackOffice.Dominio;
 using BackOffice.Dominio.Entidades;
+using BackOffice.Excepciones;
+using BackOffice.Excepciones.ExcepcionesComando.RolesSeguridad;
+using BackOffice.Excepciones.ExcepcionesDao;
+using BackOffice.Excepciones.ExcepcionesDao.RolesSeguridad;
 using BackOffice.FuenteDatos.Fabrica;
 using BackOffice.FuenteDatos.IDao.RolesSeguridad;
+using BackOffice.LogicaNegocio.Comandos.RolesSeguridad.Recursos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,10 +35,39 @@ namespace BackOffice.LogicaNegocio.Comandos.RolesSeguridad
 
                 return RolActual;
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionComandoObtenerRolActual exComandoObtenerRolActual = new ExcepcionComandoObtenerRolActual
+                    (RecursosComandoRolesSeguridad.CodigoNullReferenceException,
+                    RecursosComandoRolesSeguridad.ClaseComandoObtenerRolActual,
+                    RecursosComandoRolesSeguridad.MetodoEjecutar,
+                    RecursosComandoRolesSeguridad.MensajeNullReferenceException,
+                    e);
+                Logger.EscribirEnLogger(exComandoObtenerRolActual);
+
+                throw exComandoObtenerRolActual;
             }
+            catch (ExcepcionDaoRol e)
+            {
+                ExcepcionComandoObtenerRolActual exComandoObtenerRolActual = new ExcepcionComandoObtenerRolActual
+                    (e.Codigo, e.Clase, e.Metodo, e.Mensaje, e);
+                Logger.EscribirEnLogger(exComandoObtenerRolActual);
+
+                throw exComandoObtenerRolActual;
+            }
+            catch (ExcepcionDao e)
+            {
+                ExcepcionComandoObtenerRolActual exComandoObtenerRolActual = new ExcepcionComandoObtenerRolActual
+                    (RecursosComandoRolesSeguridad.CodigoGeneralError,
+                    RecursosComandoRolesSeguridad.ClaseComandoObtenerRolActual,
+                    RecursosComandoRolesSeguridad.MetodoEjecutar,
+                    RecursosComandoRolesSeguridad.MensajeGeneralError,
+                    e);
+                Logger.EscribirEnLogger(exComandoObtenerRolActual);
+
+                throw exComandoObtenerRolActual;
+            }
+        
 
         }
     }

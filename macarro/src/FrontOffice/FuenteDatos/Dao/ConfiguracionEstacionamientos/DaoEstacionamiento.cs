@@ -17,9 +17,9 @@ namespace FrontOffice.FuenteDatos.Dao.ConfiguracionEstacionamientos
 
         public Dominio.Entidad ConsultarXId(int id)
         {
-            SqlCommand comando = new SqlCommand("[dbo].Procedure_consultarEstacionamiento", IniciarConexion());
+            SqlCommand comando = new SqlCommand(Recurso.RecursoDaoConfiguracionEstacionamiento.ProcedimientoConsultarEstacionamiento, IniciarConexion());
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.Add(new SqlParameter("@_EST_id", id));
+            comando.Parameters.Add(new SqlParameter(Recurso.RecursoDaoConfiguracionEstacionamiento.ParametroIdEstacionamiento, id));
 
             SqlDataReader _lectura;
          
@@ -51,8 +51,8 @@ namespace FrontOffice.FuenteDatos.Dao.ConfiguracionEstacionamientos
 
         private Entidad ObtenerBDReader(SqlDataReader objetoBD)
         {
-         ;
-         Entidad estacionamiento = FabricaEntidad.ObtenerEstacionamiento(objetoBD.GetInt32(0), objetoBD.GetString(1).ToString(), objetoBD.GetInt32(2), (float)(objetoBD.GetDouble(3)), (float)objetoBD.GetDouble(4), objetoBD.GetInt32(5), objetoBD.GetInt32(6));
+         
+         Entidad estacionamiento = FabricaEntidad.ObtenerEstacionamiento(objetoBD.GetInt32(0), objetoBD.GetString(1).ToString(), objetoBD.GetInt32(2), (float)(objetoBD.GetDouble(3)), (float)objetoBD.GetDouble(4), objetoBD.GetInt32(5), objetoBD.GetInt32(6),objetoBD.GetString(7));
 
                
             return estacionamiento;

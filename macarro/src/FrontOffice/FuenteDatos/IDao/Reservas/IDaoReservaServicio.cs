@@ -8,7 +8,11 @@ namespace FrontOffice.FuenteDatos.IDao.Reservas
 {
     public interface IDaoReservaServicio : IDao<Entidad, Boolean, Entidad>
     {
-        List<Entidad> ConsultarReservaServicioXCorreo(string _correo);
+        List<Entidad> ConsultarTodoXCorreo(string _correo);
+        int ConsultarCantidadServiciosDisponibles(string[] _horario);
+
+        List<string> ConsultarServicios();
+        int VerificarHorario(string[] _horario);
 
     }
 }

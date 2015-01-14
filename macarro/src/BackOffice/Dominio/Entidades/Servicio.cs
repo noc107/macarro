@@ -34,6 +34,45 @@ namespace BackOffice.Dominio.Entidades
             this._listaHorarios = _listaHorarios;
         }
 
+        public Servicio()
+        {
+            _nombre = string.Empty;
+            _descripcion = string.Empty;
+            _cantidad = 0;
+            _capacidad = 0;
+            _costo = 0;
+            _lugarRetiro = string.Empty;
+
+            _estado = string.Empty;
+            _categoria = string.Empty;
+        }
+
+        public Servicio(string nombre, string estado)
+        {
+            _nombre = nombre;
+            _descripcion = string.Empty;
+            _cantidad = 0;
+            _capacidad = 0;
+            _costo = 0;
+            _lugarRetiro = string.Empty;
+
+            _estado = estado;
+            _categoria = string.Empty;
+        }
+
+        public Servicio(string nombre, string descripcion, string estado)
+        {
+            _nombre = nombre;
+            _descripcion = descripcion;
+            _cantidad = 0;
+            _capacidad = 0;
+            _costo = 0;
+            _lugarRetiro = string.Empty;
+
+            _estado = estado;
+            _categoria = string.Empty;
+        }
+
         #endregion
 
         #region Get y Set

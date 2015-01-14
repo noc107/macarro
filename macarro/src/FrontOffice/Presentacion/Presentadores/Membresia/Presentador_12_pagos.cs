@@ -131,7 +131,12 @@ namespace FrontOffice.Presentacion.Presentadores.Membresia
 
         public void _gridPagosHechos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
+            switch (e.CommandName)
+            {
+                case "Ver":
+                    EventoClickDetallePago(sender, e);
+                    break;
+            }
         }
 
         public void _gridPagosHechos_PageIndexChanging(object sender, GridViewPageEventArgs e)

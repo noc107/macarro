@@ -1,7 +1,12 @@
 ﻿using BackOffice.Dominio;
 using BackOffice.Dominio.Entidades;
+using BackOffice.Excepciones;
+using BackOffice.Excepciones.ExcepcionesComando.RolesSeguridad;
+using BackOffice.Excepciones.ExcepcionesDao;
+using BackOffice.Excepciones.ExcepcionesDao.RolesSeguridad;
 using BackOffice.FuenteDatos.Fabrica;
 using BackOffice.FuenteDatos.IDao.RolesSeguridad;
+using BackOffice.LogicaNegocio.Comandos.RolesSeguridad.Recursos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,9 +36,37 @@ namespace BackOffice.LogicaNegocio.Comandos.RolesSeguridad
 
                 return false;
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                throw ex;
+                ExcepcionComandoVerificarRol exComandoVerificarRol = new ExcepcionComandoVerificarRol
+                    (RecursosComandoRolesSeguridad.CodigoNullReferenceException,
+                    RecursosComandoRolesSeguridad.ClaseComandoVerificarRol,
+                    RecursosComandoRolesSeguridad.MetodoEjecutar,
+                    RecursosComandoRolesSeguridad.MensajeNullReferenceException,
+                    e);
+                Logger.EscribirEnLogger(exComandoVerificarRol);
+
+                throw exComandoVerificarRol;
+            }
+            catch (ExcepcionDaoRol e)
+            {
+                ExcepcionComandoVerificarRol exComandoVerificarRol = new ExcepcionComandoVerificarRol
+                    (e.Codigo, e.Clase, e.Metodo, e.Mensaje, e);
+                Logger.EscribirEnLogger(exComandoVerificarRol);
+
+                throw exComandoVerificarRol;
+            }
+            catch (ExcepcionDao e)
+            {
+                ExcepcionComandoVerificarRol exComandoVerificarRol = new ExcepcionComandoVerificarRol
+                    (RecursosComandoRolesSeguridad.CodigoGeneralError,
+                    RecursosComandoRolesSeguridad.ClaseComandoVerificarRol,
+                    RecursosComandoRolesSeguridad.MetodoEjecutar,
+                    RecursosComandoRolesSeguridad.MensajeGeneralError,
+                    e);
+                Logger.EscribirEnLogger(exComandoVerificarRol);
+
+                throw exComandoVerificarRol;
             }
         }
     }

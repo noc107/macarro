@@ -17,3 +17,4 @@ C:\Users\AEDM07\Documents\[DS]\macarro\src\BackOffice\obj\Debug\BackOffice.Prese
 C:\Users\AEDM07\Documents\[DS]\macarro\src\BackOffice\obj\Debug\BackOffice.Presentacion.Vistas.Web.UsuariosInternos.Recursos.RecursosInterfazUsuariosInternos.resources
 C:\Users\AEDM07\Documents\[DS]\macarro\src\BackOffice\obj\Debug\BackOffice.LogicaNegocio.Comandos.ConfiguracionPuestosPlaya.RecursosComando.resources
 C:\Users\AEDM07\Documents\[DS]\macarro\src\BackOffice\obj\Debug\BackOffice.Presentacion.Presentadores.UsuariosInternos.RecursosPresentadorUsuariosInternos.resources
+C:\Users\AEDM07\Documents\[DS]\macarro\src\BackOffice\obj\Debug\BackOffice.LogicaNegocio.Comandos.RolesSeguridad.Recursos.RecursosComandoRolesSeguridad.resources

@@ -1,7 +1,12 @@
 ﻿using BackOffice.Dominio;
 using BackOffice.Dominio.Entidades;
+using BackOffice.Excepciones;
+using BackOffice.Excepciones.ExcepcionesComando.RolesSeguridad;
+using BackOffice.Excepciones.ExcepcionesDao;
+using BackOffice.Excepciones.ExcepcionesDao.RolesSeguridad;
 using BackOffice.FuenteDatos.Fabrica;
 using BackOffice.FuenteDatos.IDao.RolesSeguridad;
+using BackOffice.LogicaNegocio.Comandos.RolesSeguridad.Recursos;
 using BackOffice.LogicaNegocio.Fabrica;
 using System;
 using System.Collections.Generic;
@@ -31,9 +36,45 @@ namespace BackOffice.LogicaNegocio.Comandos.RolesSeguridad
 
                 return _daoRol.EliminarRol(RolActual);
             }
-            catch (Exception ex)
+            catch (ExcepcionFKRol e) 
             {
-                throw ex;
+                ExcepcionComandoEliminarRol exComandoEliminarRol = new ExcepcionComandoEliminarRol
+                    (e.Codigo, e.Clase, e.Metodo, e.Mensaje, e);
+                Logger.EscribirEnLogger(exComandoEliminarRol);
+
+                throw exComandoEliminarRol;
+            }
+            catch (NullReferenceException e)
+            {
+                ExcepcionComandoEliminarRol exComandoEliminarRol = new ExcepcionComandoEliminarRol
+                    (RecursosComandoRolesSeguridad.CodigoNullReferenceException,
+                    RecursosComandoRolesSeguridad.ClaseComandoEliminarRol,
+                    RecursosComandoRolesSeguridad.MetodoEjecutar,
+                    RecursosComandoRolesSeguridad.MensajeNullReferenceException,
+                    e);
+                Logger.EscribirEnLogger(exComandoEliminarRol);
+
+                throw exComandoEliminarRol;
+            }
+            catch (ExcepcionDaoRol e)
+            {
+                ExcepcionComandoEliminarRol exComandoEliminarRol = new ExcepcionComandoEliminarRol
+                    (e.Codigo, e.Clase, e.Metodo, e.Mensaje, e);
+                Logger.EscribirEnLogger(exComandoEliminarRol);
+
+                throw exComandoEliminarRol;
+            }
+            catch (ExcepcionDao e)
+            {
+                ExcepcionComandoEliminarRol exComandoEliminarRol = new ExcepcionComandoEliminarRol
+                    (RecursosComandoRolesSeguridad.CodigoGeneralError,
+                    RecursosComandoRolesSeguridad.ClaseComandoEliminarRol,
+                    RecursosComandoRolesSeguridad.MetodoEjecutar,
+                    RecursosComandoRolesSeguridad.MensajeGeneralError,
+                    e);
+                Logger.EscribirEnLogger(exComandoEliminarRol);
+
+                throw exComandoEliminarRol;
             }
         }
     

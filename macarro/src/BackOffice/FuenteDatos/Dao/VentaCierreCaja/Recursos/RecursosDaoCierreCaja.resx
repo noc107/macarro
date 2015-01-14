@@ -117,14 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ParametroBusqueda" xml:space="preserve">
+    <value>@_busqueda</value>
+  </data>
   <data name="ParametroCorreo" xml:space="preserve">
     <value>@correo</value>
+  </data>
+  <data name="ParametroEstado" xml:space="preserve">
+    <value>@_estado</value>
+  </data>
+  <data name="ParametroNroFactura" xml:space="preserve">
+    <value>@_nroFactura</value>
+  </data>
+  <data name="ParametroRetorno" xml:space="preserve">
+    <value>RetVal</value>
   </data>
   <data name="ProcedimientoConsultarCorreosClientes" xml:space="preserve">
     <value>Procedure_buscarCorreosClientes</value>
   </data>
+  <data name="ProcedimientoConsultarFacturas" xml:space="preserve">
+    <value>Procedure_consultarFacturas</value>
+  </data>
+  <data name="ProcedimientoDatosBasicosFactura" xml:space="preserve">
+    <value>Procedure_datosFactura</value>
+  </data>
+  <data name="ProcedimientoDatosCliente" xml:space="preserve">
+    <value>Procedure_datosClienteFactura</value>
+  </data>
+  <data name="ProcedimientoEliminarFacturas" xml:space="preserve">
+    <value>Procedure_eliminarFactura</value>
+  </data>
   <data name="ProcedimientoGridServicios" xml:space="preserve">
     <value>Procedure_consultarGridPorCorreo</value>
+  </data>
+  <data name="ProcedimientoLineasFacturas" xml:space="preserve">
+    <value>Procedure_consultarLineaFactura</value>
   </data>
   <data name="ProcedimientoVerificarCorreo" xml:space="preserve">
     <value>Procedure_verificarCorreoUsuario</value>

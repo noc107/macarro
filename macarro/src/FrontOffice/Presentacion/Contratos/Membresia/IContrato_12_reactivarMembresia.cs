@@ -16,14 +16,15 @@ namespace FrontOffice.Presentacion.Contratos.Membresia
         Label tipoDocumentoIdentidad { get; set; }
         Label numeroDocumentoIdentidad { get; set; }
         Label numeroTelefono { get; set; }
+        Label fechaVencimiento { get; set; }
         Image foto { get; set; }
         Panel formulariosM { get; set; }
+        Label numeroCarnet { get; set; }
         //Dato a llenar para el carnet
-        Button cambiarFoto { get; }
-        TextBox FotoPath { get; }
+       // Button cambiarFoto { get; }
+        //TextBox FotoPath { get; }
         //Escoger una tarjeta ya usada
         GridView gridTarjetasUsadas { get; set; }
-        CheckBox tarjetaElegidaEnGrid { get; }
         Button agregarTarjeta { get; }
 
         //Datos para llenar con referencia al Pago sera invisible excepto el monto

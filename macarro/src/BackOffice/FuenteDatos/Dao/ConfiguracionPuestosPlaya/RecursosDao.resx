@@ -117,32 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="parametroInvDescripcion" xml:space="preserve">
-    <value>@_invDescripcion</value>
+  <data name="columna" xml:space="preserve">
+    <value>COLUMNA</value>
   </data>
-  <data name="parametroInvEstado" xml:space="preserve">
-    <value>@_invEstado</value>
+  <data name="descripcion" xml:space="preserve">
+    <value>DESCRIPCION</value>
   </data>
-  <data name="parametroInvId" xml:space="preserve">
-    <value>@_invId</value>
+  <data name="descripcionPar" xml:space="preserve">
+    <value>@_pueDescripcion</value>
   </data>
-  <data name="parametroInvPrecio" xml:space="preserve">
-    <value>@_invPrecio</value>
+  <data name="estadoPar" xml:space="preserve">
+    <value>@_pueEstado</value>
   </data>
-  <data name="parametroInvTipo" xml:space="preserve">
-    <value>@_invTipo</value>
+  <data name="fila" xml:space="preserve">
+    <value>FILA</value>
   </data>
-  <data name="ProcedimientoActualizarInventario" xml:space="preserve">
-    <value>Procedure_actualizarInventario</value>
+  <data name="precio" xml:space="preserve">
+    <value>PRECIO</value>
   </data>
-  <data name="ProcedimientoConsultarEstadosInv" xml:space="preserve">
-    <value>Procedure_consultarInventarioEstados</value>
+  <data name="precioPar" xml:space="preserve">
+    <value>@_puePrecio</value>
   </data>
-  <data name="procedimientoConsultarInventarioTipo" xml:space="preserve">
-    <value>Procedure_consultarInventario</value>
+  <data name="ProcedimientoActualizarPuesto" xml:space="preserve">
+    <value>Procedure_actualizarPuesto</value>
   </data>
-  <data name="ProcedimientoEliminarInventario" xml:space="preserve">
-    <value>Procedure_EliminarInventario</value>
+  <data name="_columnaparametro" xml:space="preserve">
+    <value>@_pueColumna</value>
+  </data>
+  <data name="_estado" xml:space="preserve">
+    <value>Activado</value>
+  </data>
+  <data name="_Estadoparametro" xml:space="preserve">
+    <value>@_pueEstado</value>
+  </data>
+  <data name="_filaparametro" xml:space="preserve">
+    <value>@_pueFila</value>
+  </data>
+  <data name="_funcionConsultarPuesto" xml:space="preserve">
+    <value>Procedure_consultarPuesto</value>
+  </data>
+  <data name="_Resultado" xml:space="preserve">
+    <value>Resultado</value>
   </data>
   <data name="ClaseDaoInventarioPlaya" xml:space="preserve">
     <value>InventarioDaoPlaya</value>
@@ -155,6 +170,15 @@
   </data>
   <data name="CodigoErrorSql" xml:space="preserve">
     <value>CPP_02_002</value>
+  </data>
+  <data name="columna1" xml:space="preserve">
+    <value>COLUMNA</value>
+  </data>
+  <data name="descripcion1" xml:space="preserve">
+    <value>DESCRIPCION</value>
+  </data>
+  <data name="fila1" xml:space="preserve">
+    <value>FILA</value>
   </data>
   <data name="MensajeErrorExcepcion" xml:space="preserve">
     <value>En estos momentos no podemos atender su solicitud. Por favor intente mas tarde</value>
@@ -173,5 +197,50 @@
   </data>
   <data name="MetodoModificar" xml:space="preserve">
     <value>Modificar</value>
+  </data>
+  <data name="parametroInvDescripcion" xml:space="preserve">
+    <value>@_invDescripcion</value>
+  </data>
+  <data name="parametroInvEstado" xml:space="preserve">
+    <value>@_invEstado</value>
+  </data>
+  <data name="parametroInvId" xml:space="preserve">
+    <value>@_invId</value>
+  </data>
+  <data name="parametroInvPrecio" xml:space="preserve">
+    <value>@_invPrecio</value>
+  </data>
+  <data name="parametroInvTipo" xml:space="preserve">
+    <value>@_invTipo</value>
+  </data>
+  <data name="precio1" xml:space="preserve">
+    <value>PRECIO</value>
+  </data>
+  <data name="ProcedimientoActualizarInventario" xml:space="preserve">
+    <value>Procedure_actualizarInventario</value>
+  </data>
+  <data name="ProcedimientoConsultarEstadosInv" xml:space="preserve">
+    <value>Procedure_consultarInventarioEstados</value>
+  </data>
+  <data name="procedimientoConsultarInventarioTipo" xml:space="preserve">
+    <value>Procedure_consultarInventario</value>
+  </data>
+  <data name="ProcedimientoEliminarInventario" xml:space="preserve">
+    <value>Procedure_EliminarInventario</value>
+  </data>
+  <data name="ClaseDaoPuestoPlaya" xml:space="preserve">
+    <value>DaoPuestoPlaya</value>
+  </data>
+  <data name="MetodoActualizacionPuesto" xml:space="preserve">
+    <value>ActualizacionPuesto</value>
+  </data>
+  <data name="MetodoConsultarPuesto" xml:space="preserve">
+    <value>ConsultarPuesto</value>
+  </data>
+  <data name="MetodoCrearArregloPuesto" xml:space="preserve">
+    <value>CrearArregloPuesto</value>
+  </data>
+  <data name="MetodoCrearPuesto" xml:space="preserve">
+    <value>CrearPuesto</value>
   </data>
 </root>

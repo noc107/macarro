@@ -15,10 +15,9 @@ namespace FrontOffice.FuenteDatos.Dao.Reservas
     {
         private Entidad _reservaServicio = FabricaEntidad.ObtenerReserva();
 
-
-        public List<Entidad> ConsultarReservaServicioXCorreo(string _correo)
+        public List<Entidad> ConsultarTodoXCorreo(string _correo)
         {
-            List<Entidad> _listaReservaServicio = new List<Entidad>();
+            List<Entidad> _listaReserva = new List<Entidad>();
             SqlCommand comando = new SqlCommand("ConsultarReservaPorCorreoUsuario", IniciarConexion());
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.Add(new SqlParameter("_correo", _correo));
@@ -35,11 +34,11 @@ namespace FrontOffice.FuenteDatos.Dao.Reservas
                     _reservaServicio = ObtenerBDReader(_lectura);
                     if (_reservaServicio != null)
                     {
-                        _listaReservaServicio.Add(_reservaServicio);
+                        _listaReserva.Add(_reservaServicio);
                     }
                 }
 
-                return _listaReservaServicio;
+                return _listaReserva;
             }
             catch (Exception ex)
             {
@@ -50,84 +49,24 @@ namespace FrontOffice.FuenteDatos.Dao.Reservas
             {
                 CerrarConexion();
             }
-            return null;  
+            return null;
         }
 
-        private Reserva ObtenerBDReader(SqlDataReader objetoBD)
+        private ReservaServicio ObtenerBDReader(SqlDataReader objetoBD)
         {
-            Reserva _reservaServicio = (Reserva)FabricaEntidad.ObtenerReserva();
+            ReservaServicio _reservaServicio = (ReservaServicio)FabricaEntidad.ObtenerReservaServicio();
             try
             {
-                if (objetoBD.GetInt32(0) != 0)
-                {
-                    _reservaServicio.reserva_id = objetoBD.GetInt32(0);
-                }
-                else
-                {
-                    _reservaServicio.reserva_id = 0;
-                }
+                   _reservaServicio.reservaServicio_id = objetoBD.GetInt32(1);
+                   _reservaServicio.reservaServicio_Nombre = objetoBD.GetString(2);
+                   _reservaServicio.reservaServicio_HoraInicio = objetoBD.GetDateTime(3);
+                   _reservaServicio.reservaServicio_HoraFin = objetoBD.GetDateTime(4);
+                   _reservaServicio.reservaServicio_Cantidad = objetoBD.GetInt32(5);
+                   _reservaServicio.reservaServicio_Total = Convert.ToInt32(objetoBD.GetDouble(6));
+                   _reservaServicio.reservaServicio_FK_Horario = objetoBD.GetInt32(7);
+                   _reservaServicio.reservaServicio_FK_Reserva = objetoBD.GetInt32(0);
+              }
 
-
-                if (objetoBD.GetString(1) != null)
-                {
-                    _reservaServicio.reserva_Servicio.reservaServicio_Nombre = objetoBD.GetString(1);
-                }
-                else
-                {
-                    _reservaServicio.reserva_Servicio.reservaServicio_Nombre = string.Empty;
-                }
-
-
-                if (objetoBD.GetDateTime(2) != null)
-                {
-                    _reservaServicio.reserva_Servicio.reservaServicio_HoraInicio = objetoBD.GetDateTime(2);
-                }
-                else
-                {
-                    _reservaServicio.reserva_Servicio.reservaServicio_HoraInicio = System.DateTime.Now;
-                }
-
-
-                if (objetoBD.GetDateTime(3) != null)
-                {
-                    _reservaServicio.reserva_Servicio.reservaServicio_HoraFin = objetoBD.GetDateTime(3);
-                }
-                else
-                {
-                    _reservaServicio.reserva_Servicio.reservaServicio_HoraFin = System.DateTime.Now;
-                }
-
-                if (objetoBD.GetInt32(4) != 0)
-                {
-                    _reservaServicio.reserva_Servicio.reservaServicio_Cantidad = objetoBD.GetInt32(4);
-                }
-                else
-                {
-                    _reservaServicio.reserva_Servicio.reservaServicio_Cantidad = 0;
-                }
-
-
-                if (objetoBD.GetDouble(5)!= null)
-                {
-                    _reservaServicio.reserva_Servicio.reservaServicio_Total = Convert.ToInt32(objetoBD.GetDouble(5));
-                }
-                else
-                {
-                    _reservaServicio.reserva_Servicio.reservaServicio_Total = 0;
-                }
-
-
-                if (objetoBD.GetString(6) != null)
-                {
-                    _reservaServicio.fK_estado = objetoBD.GetString(6);
-                }
-                else
-                {
-                    _reservaServicio.fK_estado = string.Empty;
-                }
-
-
-            }
             catch (Exception ex)
             {
                 string s = ex.ToString();
@@ -137,24 +76,209 @@ namespace FrontOffice.FuenteDatos.Dao.Reservas
             return _reservaServicio;
         }
 
+        public int ConsultarCantidadServiciosDisponibles(string[] _horario)
+        {
+            SqlCommand _cmd;
+            _cmd = new SqlCommand("CantidadDisponibleServicio", IniciarConexion());
+            _cmd.CommandType = CommandType.StoredProcedure;
+            _cmd.Parameters.Add(new SqlParameter("@_nombreServicio", _horario[0]));
+            _cmd.Parameters.Add(new SqlParameter("@_horaInicio ", _horario[1]));
+            _cmd.Parameters.Add(new SqlParameter("@_horaFin", _horario[2]));
+
+            var returnParameter = _cmd.Parameters.Add("@_cantidad", SqlDbType.Int);
+
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+
+            try
+            {
+                IniciarConexion().Open();
+                _cmd.ExecuteNonQuery();
+                var _result = returnParameter.Value;
+                return (Convert.ToInt32(_result));
+            }
+            catch (Exception ex)
+            {
+                string hola = ex.ToString();
+                Console.WriteLine(ex.ToString());
+                return (-1000);
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+
+        }
+
         public Boolean Agregar(Entidad parametro)
         {
-            return true;
+            ReservaServicio _rs = (ReservaServicio)parametro;
+
+            SqlCommand _cmd;
+            _cmd = new SqlCommand("InsertarReservaServicio", IniciarConexion());
+            _cmd.CommandType = CommandType.StoredProcedure;
+            _cmd.Parameters.Add(new SqlParameter("@_nombreServicio", _rs.reservaServicio_Nombre));
+            _cmd.Parameters.Add(new SqlParameter("@_resHoraInicio", _rs.reservaServicio_HoraInicio));
+            _cmd.Parameters.Add(new SqlParameter("@_resHoraFin ", _rs.reservaServicio_HoraFin));
+            _cmd.Parameters.Add(new SqlParameter("@_resSerCantidad", _rs.reservaServicio_Cantidad));          
+            _cmd.Parameters.Add(new SqlParameter("@_fkResId", _rs.reservaServicio_FK_Reserva));
+
+            try
+            {
+                IniciarConexion().Open();
+                _cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                string hola = ex.ToString();
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
         }
 
         public Boolean Modificar(Entidad parametro)
         {
-            return true;
+            ReservaServicio _rs = (ReservaServicio)parametro;
+
+            SqlCommand _cmd;
+
+            _cmd = new SqlCommand("ModificarReserva", IniciarConexion());
+            _cmd.CommandType = CommandType.StoredProcedure;
+            _cmd.Parameters.Add(new SqlParameter("@_reservaID", Convert.ToInt32(_rs.reservaServicio_FK_Reserva)));
+            _cmd.Parameters.Add(new SqlParameter("@_nombreServicio", _rs.reservaServicio_Nombre));
+            _cmd.Parameters.Add(new SqlParameter("@_cantidad", Convert.ToInt32(_rs.reservaServicio_Cantidad)));
+            _cmd.Parameters.Add(new SqlParameter("@_horaInicio ", _rs.reservaServicio_HoraInicio));
+            _cmd.Parameters.Add(new SqlParameter("@_horaFin", _rs.reservaServicio_HoraFin));
+
+            try
+            {
+                IniciarConexion().Open();
+                _cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                string hola = ex.ToString();
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+
         }
 
         public Entidad ConsultarXId(int _id)
         {
+            List<Entidad> _listaReserva = new List<Entidad>();
+            SqlCommand comando = new SqlCommand("ConsultarReservaPorIDReserva", IniciarConexion());
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.Add(new SqlParameter("_reservaID ", _id));
+
+
+            SqlDataReader _lectura;
+
+            try
+            {
+                IniciarConexion().Open();
+                _lectura = comando.ExecuteReader();
+
+                while (_lectura.Read())
+                {
+                    _reservaServicio = ObtenerBDReader(_lectura);
+                }
+
+                return _reservaServicio;
+            }
+            catch (Exception ex)
+            {
+                string hola = ex.ToString();
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                CerrarConexion();
+            }
             return null;
         }
 
         public List<Dominio.Entidad> ConsultarTodos()
         {
             throw new NotImplementedException();
+        }
+
+        public List<string> ConsultarServicios()
+        {
+            List<string> _listaServicios = new List<string>();
+            SqlCommand comando = new SqlCommand("ConsultarServicios", IniciarConexion());
+            comando.CommandType = CommandType.StoredProcedure;
+
+
+            SqlDataReader _lectura;
+
+            try
+            {
+                IniciarConexion().Open();
+                _lectura = comando.ExecuteReader();
+                while (_lectura.Read())
+                {
+                    _reservaServicio = ObtenerBDReader(_lectura);
+                    if (_reservaServicio != null)
+                    {
+                        _listaServicios.Add(_lectura.GetString(0));
+                    }
+                }
+
+                return _listaServicios;
+            }
+            catch (Exception ex)
+            {
+                string hola = ex.ToString();
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+            return _listaServicios;
+        }
+
+        public int VerificarHorario(string[] _horario)
+        {
+            SqlCommand _cmd;
+            _cmd = new SqlCommand("VerificarHorario", IniciarConexion());
+            _cmd.CommandType = CommandType.StoredProcedure;
+            _cmd.Parameters.Add(new SqlParameter("@_nombreServicio", _horario[0]));
+            _cmd.Parameters.Add(new SqlParameter("@_horaInicio ", _horario[1]));
+            _cmd.Parameters.Add(new SqlParameter("@_horaFin", _horario[2]));
+
+            var returnParameter = _cmd.Parameters.Add("@_horarioFLAG", SqlDbType.Int);
+
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+
+            try
+            {
+                IniciarConexion().Open();
+                _cmd.ExecuteNonQuery();
+                var _result = returnParameter.Value;
+                return (Convert.ToInt32(_result));
+            }
+            catch (Exception ex)
+            {
+                string hola = ex.ToString();
+                Console.WriteLine(ex.ToString());
+                return 0;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+
         }
     }
 }

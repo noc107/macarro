@@ -14,8 +14,9 @@ namespace FrontOffice.Dominio.Entidades
         private float _ticketPerdido;
         private int _estado;
         private int _disponible;
+        private string _NombreEstado;
 
-     
+       
        
 
        
@@ -32,7 +33,7 @@ namespace FrontOffice.Dominio.Entidades
         }
 
 
-        public Estacionamiento(int id, string nombre, int capacidad, float tarifa, float ticketPerdido , int estado, int disponible)
+        public Estacionamiento(int id, string nombre, int capacidad, float tarifa, float ticketPerdido , int estado, int disponible, string nombreEstado)
         {
             _id = id;
             _nombre= nombre;
@@ -41,6 +42,7 @@ namespace FrontOffice.Dominio.Entidades
             _ticketPerdido = ticketPerdido;
               _estado = estado;
               _disponible = disponible;
+              _NombreEstado = nombreEstado;
         
 
         }
@@ -91,6 +93,13 @@ namespace FrontOffice.Dominio.Entidades
             set { _disponible = value; }
         }
 
+        public string NombreEstado
+        {
+            get { return _NombreEstado; }
+            set { _NombreEstado = value; }
+        }
+
+     
         #endregion 
 
     }

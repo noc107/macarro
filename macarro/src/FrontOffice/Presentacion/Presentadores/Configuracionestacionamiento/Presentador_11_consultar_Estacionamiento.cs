@@ -10,7 +10,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
 
-namespace FrontOffice.Presentacion.Presentadores.ConfiguracionEstacionamiento
+namespace FrontOffice.Presentacion.Presentadores.Configuracionestacionamiento
 {
     public class Presentador_11_consultar_Estacionamiento : PresentadorGeneral
     {
@@ -67,7 +67,7 @@ namespace FrontOffice.Presentacion.Presentadores.ConfiguracionEstacionamiento
                 _vista.LabelCapacidad.Text = est.Capacidad.ToString();
                 _vista.LabelTarifa.Text = est.Tarifa.ToString();
                 _vista.LabelPerdido.Text = est.TicketPerdido.ToString();
-                _vista.LabelEstado.Text = "Activado";
+                _vista.LabelEstado.Text = est.NombreEstado.ToString();
                 _vista.LabelDisponible.Text = est.Disponible.ToString();
                 
             }
