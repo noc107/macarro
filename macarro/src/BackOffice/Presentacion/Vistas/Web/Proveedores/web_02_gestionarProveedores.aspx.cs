@@ -37,7 +37,7 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 	            }
 	            if (e.CommandName == "Modificar")
 	            {
-                    Response.Redirect("web_06_modificarProveedor.aspx?r=" + _presentador.ObtenerIdProveedorSeleccionado_Click(e));
+                    Response.Redirect("web_02_modificarProveedor.aspx?r=" + _presentador.ObtenerIdProveedorSeleccionado_Click(e));
 	            }
 	            if (e.CommandName == "Eliminar")
 	            {

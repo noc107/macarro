@@ -241,7 +241,34 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
 
         bool IDao.IDao<Entidad, bool, Entidad>.Modificar(Entidad parametro)
         {
-            throw new NotImplementedException();
+            Proveedor _proveedor = (Proveedor)parametro;
+            SqlCommand comando = new SqlCommand("Procedure_modificarProveedor", IniciarConexion());
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.Add(new SqlParameter("_proRif", _proveedor.Rif));
+            comando.Parameters.Add(new SqlParameter("_proRazonSocial", _proveedor.RazonSocial));
+            comando.Parameters.Add(new SqlParameter("_proCorreo", _proveedor.Correo));
+            comando.Parameters.Add(new SqlParameter("_proPaginaWeb", _proveedor.PagWeb));
+            comando.Parameters.Add(new SqlParameter("_proFechaContrato", DateTime.Parse(_proveedor.FechaContrato)));
+            comando.Parameters.Add(new SqlParameter("_proTelefono", _proveedor.Telefono));
+            comando.Parameters.Add(new SqlParameter("_proDireccion", _proveedor.IdLugar));
+            comando.Parameters.Add(new SqlParameter("_proEstado", _proveedor.estado));
+            SqlDataReader _lectura;
+
+            try
+            {
+                IniciarConexion().Open();
+                _lectura = comando.ExecuteReader();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+            return false;   
         }
 
         public List<string> EstadosDePais(string parametro) 
@@ -400,5 +427,6 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
                 CerrarConexion();
             }
         }
+
     }
     }

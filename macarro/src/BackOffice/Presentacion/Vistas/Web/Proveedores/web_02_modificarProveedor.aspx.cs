@@ -13,8 +13,6 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 {
     public partial class web_02_modificarProveedor : System.Web.UI.Page , IContrato_02_modificarProveedor
     {
-        //LogicaProveedor _auxLogica = new LogicaProveedor();
-        //ProveedorBD auxDatos = new ProveedorBD();
         Presentador_02_modificarProveedor _presentador;
 
         public web_02_modificarProveedor() 
@@ -24,10 +22,17 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                _presentador.cargarPaises();
+                _presentador.cargarEstados();
+                _presentador.cargarCiudades();
+            }
+            _presentador.EventoBotonConsultar(Convert.ToInt32(Request.QueryString["r"]));   
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+
+        protected void Regresar_Click(object sender, EventArgs e)
         {
             Response.Redirect("web_02_gestionarProveedores.aspx");
         }
@@ -52,16 +57,16 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             set { Rif = value; }
         }
 
-        TextBox IContrato_02_modificarProveedor.RazonSocial
-        {
-            get { return RazonSocial; }
-            set { RazonSocial = value; }
-        }
-
         TextBox IContrato_02_modificarProveedor.Correo
         {
             get { return Correo; }
             set { Correo = value; }
+        }
+
+        TextBox IContrato_02_modificarProveedor.RazonS
+        {
+            get { return RazonS; }
+            set { RazonS = value; }
         }
 
         TextBox IContrato_02_modificarProveedor.PaginaWeb
@@ -106,12 +111,6 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             set { Ciudad = value; }
         }
 
-        GridView IContrato_02_modificarProveedor.Items
-        {
-            get { return GridItems; }
-            set { GridItems = value; }
-        }
-
         public Label LabelMensajeExito
         {
             get { return Mensaje; }
@@ -123,5 +122,28 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             get { return Mensaje; }
             set { Mensaje = value; }
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            _presentador.EventoClickBotonAceptar();
+        }
+
+
+        //protected void _Pais_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    _presentador.EventoCambioPais();
+        //}
+
+        //protected void _Ciudad_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    _presentador.EventoCambioCiudad();
+        //}
+
+        //protected void _Estado_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    _presentador.EventoCambioEstado();
+        //}
+
+
     }
 }

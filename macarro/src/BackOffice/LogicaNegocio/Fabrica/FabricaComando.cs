@@ -294,6 +294,11 @@ namespace BackOffice.LogicaNegocio.Fabrica
             return new ComandoEliminarProveedor();
         }
 
+        public static Comando<Entidad, bool> ObtenerComandoModificarProveedor()
+        {
+            return new ComandoModificarProveedor();
+        }
+
         #endregion
 
         #region ReportesFinancierosExportacion

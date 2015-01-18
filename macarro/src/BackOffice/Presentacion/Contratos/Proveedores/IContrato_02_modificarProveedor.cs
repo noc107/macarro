@@ -10,7 +10,7 @@ namespace BackOffice.Presentacion.Contratos.Proveedores
     public interface IContrato_02_modificarProveedor : IContratoGeneral
     {
         TextBox Rif { get; set; }
-        TextBox RazonSocial { get; set; }
+        TextBox RazonS { get; set; }
         TextBox Correo { get; set; }
         TextBox PaginaWeb { get; set; }
         TextBox Telefono { get; set; }
@@ -19,7 +19,6 @@ namespace BackOffice.Presentacion.Contratos.Proveedores
         DropDownList Estado { get; set; }
         DropDownList Ciudad { get; set; }
         TextBox Direccion { get; set; }
-        GridView Items { get; set; }
 
     }
 }
