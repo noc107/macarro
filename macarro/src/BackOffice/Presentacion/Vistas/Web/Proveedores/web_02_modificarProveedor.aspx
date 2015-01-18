@@ -12,14 +12,14 @@
     <asp:Label CssClass="avisomensaje" ID="Mensaje" runat="server"  Visible="False"></asp:Label>
     <div class="divArriba">
         
-            <asp:Label CssClass="labels etiqueta" ID="Label1" runat="server" Text="RIF (*):"></asp:Label>
-            <asp:Label CssClass="labels etiqueta" ID="Label3" runat="server" Text="Razón Social (*):"></asp:Label>
-            <asp:Label CssClass="labels etiqueta" ID="Label7" runat="server" Text="Pagina Web:"></asp:Label>
-            <asp:Label CssClass="labels etiqueta" ID="Label9" runat="server" Text="Telefono (*):"></asp:Label>
-            <asp:Label CssClass="labels etiqueta" ID="Label11" runat="server" Text="Fecha Contrato (*):"></asp:Label>
+            <asp:Label CssClass="labels rif" ID="Label1" runat="server" Text="RIF (*):"></asp:Label>
+            <asp:Label CssClass="labels razonsocial" ID="Label3" runat="server" Text="Razón Social (*):"></asp:Label>
+            <asp:Label CssClass="labels paginaweb" ID="Label7" runat="server" Text="Pagina Web:"></asp:Label>
+            <asp:Label CssClass="labels telefono" ID="Label9" runat="server" Text="Telefono (*):"></asp:Label>
+            <asp:Label CssClass="labels contrato" ID="Label11" runat="server" Text="Fecha Contrato (*):"></asp:Label>
         
       
-            <asp:TextBox CssClass="textbox caja" ID="Rif" runat="server" Enabled="False"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbrif" ID="Rif" runat="server" Enabled="False"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator1" 
                     runat="server" ControlToValidate ="Rif"
                     ErrorMessage="RIF requerido." 
@@ -27,7 +27,7 @@
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
             <br />
-            <asp:TextBox CssClass="textbox caja" ID="RazonS" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbrazonsocial" ID="RazonS" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator2" 
                     runat="server" ControlToValidate ="RazonS"
                     ErrorMessage="Razon Social requerido." 
@@ -56,9 +56,9 @@
                     ForeColor= "Red"
                     ValidationExpression="(http(s)?://)?([\w-]+\.)+[\w-]+(/[\w- ;,./?%&=]*)?">
             </asp:regularexpressionvalidator>
-            <asp:TextBox CssClass="textbox caja" ID="PaginaWeb" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbpaginaweb" ID="PaginaWeb" runat="server"></asp:TextBox>
             <br />
-            <asp:TextBox CssClass="textbox caja" ID="Telefono" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbtelefono" ID="Telefono" runat="server"></asp:TextBox>
             <asp:regularexpressionvalidator CssClass="asterisco" ID="RegularExpressionValidator11" runat="server" 
                     ControlToValidate= "Telefono" 
                     ErrorMessage="Formato de teléfono no valido: (XX)-YYY-ZZZZZZZ"
@@ -72,22 +72,22 @@
                     Text="*"
                     ForeColor="Red">
             </asp:RequiredFieldValidator>  
-            <asp:TextBox CssClass="textbox caja" ID="FechaContrato" runat="server" TextMode="Date"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbcontrato" ID="FechaContrato" runat="server" TextMode="Date"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator8" 
                     runat="server" ControlToValidate ="FechaContrato"
                     ErrorMessage="Fecha Contrato requerido." 
                     Text="*"
                     ForeColor="Red"></asp:RequiredFieldValidator>    
 
-            <asp:TextBox CssClass="textbox caja" ID="Correo" runat="server"></asp:TextBox>
-            <asp:Label CssClass="labels etiqueta" ID="Label5" runat="server" Text="Correo (*):"></asp:Label>
+            <asp:TextBox CssClass="textbox tbcorreo" ID="Correo" runat="server"></asp:TextBox>
+            <asp:Label CssClass="labels correo" ID="Label5" runat="server" Text="Correo (*):"></asp:Label>
 
-            <asp:Label CssClass="labels etiqueta" ID="Label2" runat="server" Text="País (*):"></asp:Label>
-            <asp:Label CssClass="labels etiqueta" ID="Label4" runat="server" Text="Estado (*):"></asp:Label>
-            <asp:Label CssClass="labels etiqueta" ID="Label6" runat="server" Text="Ciudad (*):"></asp:Label>
-            <asp:Label CssClass="labels etiqueta" ID="Label10" runat="server" Text="Dirección (*):"></asp:Label>
+            <asp:Label CssClass="labels pais" ID="Label2" runat="server" Text="País (*):"></asp:Label>
+            <asp:Label CssClass="labels estado" ID="Label4" runat="server" Text="Estado (*):"></asp:Label>
+            <asp:Label CssClass="labels ciudad" ID="Label6" runat="server" Text="Ciudad (*):"></asp:Label>
+            <asp:Label CssClass="labels direccion" ID="Label10" runat="server" Text="Dirección (*):"></asp:Label>
 
-            <asp:DropDownList CssClass="textbox caja" ID="Pais" runat="server"></asp:DropDownList>
+            <asp:DropDownList CssClass="combo_box tbpais" ID="Pais" runat="server"></asp:DropDownList>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator3" runat="server" 
                     ControlToValidate="Pais" 
                     Text="*"
@@ -102,7 +102,7 @@
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
             <br />
-            <asp:DropDownList CssClass="textbox caja" ID="Estado" runat="server"></asp:DropDownList>
+            <asp:DropDownList CssClass="combo_box tbestado" ID="Estado" runat="server"></asp:DropDownList>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator1" runat="server" 
                     ControlToValidate="Estado" 
                     Text="*"
@@ -117,7 +117,7 @@
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
             <br />
-            <asp:DropDownList CssClass="textbox caja" ID="Ciudad" runat="server"></asp:DropDownList>
+            <asp:DropDownList CssClass="combo_box tbciudad" ID="Ciudad" runat="server"></asp:DropDownList>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator2" runat="server" 
                     ControlToValidate="Ciudad" 
                     Text="*"
@@ -133,7 +133,7 @@
             </asp:RequiredFieldValidator>
             <br />
            
-            <asp:TextBox CssClass="textbox caja" ID="Direccion" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbdireccion" ID="Direccion" runat="server"></asp:TextBox>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator5" runat="server" 
                     ControlToValidate="Direccion" 
                     Text="*"
@@ -148,8 +148,8 @@
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
 
-        <asp:Button CssClass="Boton margenBoton" ID="Button1" runat="server" Text="Aceptar"  OnClientClick="return confirm('Esta acción modificará el ítem en el sistema ¿desea continuar?')" OnClick="Button1_Click"/>
-        <asp:Button CssClass="Boton margenBoton" ID="Button2" runat="server" Text="Regresar" OnClick="Regresar_Click" CausesValidation="false"/>
+        <asp:Button CssClass="Boton botonaceptar" ID="Button1" runat="server" Text="Aceptar"  OnClientClick="return confirm('Esta acción modificará el ítem en el sistema ¿desea continuar?')" OnClick="Button1_Click"/>
+        <asp:Button CssClass="Boton botonregresar" ID="Button2" runat="server" Text="Regresar" OnClick="Regresar_Click" CausesValidation="false"/>
 
 
 
