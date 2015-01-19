@@ -27,8 +27,8 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
                 _presentador.cargarPaises();
                 _presentador.cargarEstados();
                 _presentador.cargarCiudades();
+                _presentador.EventoBotonConsultar(Convert.ToInt32(Request.QueryString["r"]));   
             }
-            _presentador.EventoBotonConsultar(Convert.ToInt32(Request.QueryString["r"]));   
         }
 
 
