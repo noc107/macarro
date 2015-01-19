@@ -9,7 +9,7 @@
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="middle_place_holder">
     <h2 class="centrar subtitulo">Agregar Proveedores</h2>
-    <asp:Label CssClass="avisomensaje" ID="Mensaje" runat="server"  Visible="False"></asp:Label>
+    <asp:Label CssClass="avisoMensaje MensajeExito" ID="Mensaje" runat="server"  Visible="False"></asp:Label>
     <div class="divArriba">
         
            <asp:Label CssClass="labels rif" ID="Label1" runat="server" Text="RIF (*):"></asp:Label>

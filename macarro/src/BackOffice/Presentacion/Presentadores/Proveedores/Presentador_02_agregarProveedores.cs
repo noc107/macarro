@@ -34,6 +34,8 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
                 Comando<Entidad, bool> comandoAgregarProveedor;
                 comandoAgregarProveedor = FabricaComando.ObtenerComandoAgregarProveedor();
                 comandoAgregarProveedor.Ejecutar(_proveedor);
+                _vista.LabelMensajeExito.Visible = true;
+                _vista.LabelMensajeExito.Text = "Exito";
             }
             catch(Exception e)
             {
