@@ -299,6 +299,11 @@ namespace BackOffice.LogicaNegocio.Fabrica
             return new ComandoModificarProveedor();
         }
 
+        public static Comando<int, List<string>> ObtenerComandoCargarItem()
+        {
+            return new ComandoCargarItem();
+        }
+
         #endregion
 
         #region ReportesFinancierosExportacion

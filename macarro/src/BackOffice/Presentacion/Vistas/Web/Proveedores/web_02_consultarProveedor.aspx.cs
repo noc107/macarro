@@ -29,6 +29,10 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
          
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                _presentador.cargarItems(Convert.ToInt32(Request.QueryString["r"]));
+            }
             _presentador.EventoBotonConsultar(Convert.ToInt32(Request.QueryString["r"]));
         }
 

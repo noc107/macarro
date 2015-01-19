@@ -16,7 +16,7 @@
 }
 .divArriba {
     margin:auto; 
-    height: 800px; 
+    height: 1300px; 
     width: 1300px;
 }
 .divIzquierdo {
@@ -147,19 +147,27 @@
 
 .item {
     position:absolute;
-    top: 320px;
-    left: 280px;
+    top: 405px;
+    left: 381px;
     height: 21px;
 }
 
 .item1 {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
     position:absolute;
-    top: 310px;
-    left: 361px;
+    top: 364px;
+    left: 491px;
+    padding:10px;
+    max-width: 250px;
+    max-height:100px;
+    height: 103px;
+    width: 132px;
 }
 
 .abajo {
     position:absolute;
-    top: 410px;
-    left: 485px;
+    top: 542px;
+    left: 506px;
 }

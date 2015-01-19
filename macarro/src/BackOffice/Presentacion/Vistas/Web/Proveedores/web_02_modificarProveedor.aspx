@@ -19,7 +19,7 @@
             <asp:Label CssClass="labels contrato" ID="Label11" runat="server" Text="Fecha Contrato (*):"></asp:Label>
         
       
-            <asp:TextBox CssClass="textbox tbrif" ID="Rif" runat="server" Enabled="False"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbrif" ID="Rif" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator1" 
                     runat="server" ControlToValidate ="Rif"
                     ErrorMessage="RIF requerido." 
@@ -27,7 +27,7 @@
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
             <br />
-            <asp:TextBox CssClass="textbox tbrazonsocial" ID="RazonS" runat="server" Enabled="False"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbrazonsocial" ID="RazonS" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator2" 
                     runat="server" ControlToValidate ="RazonS"
                     ErrorMessage="Razon Social requerido." 

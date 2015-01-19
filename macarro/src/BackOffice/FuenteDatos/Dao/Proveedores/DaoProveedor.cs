@@ -436,5 +436,37 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
         }
 
+        public List<string> CargarItemLt(int parametro)
+        {
+            List<string> items = new List<string>();
+            SqlDataReader reader;
+
+            try
+            {
+                SqlConnection _cn = IniciarConexion();
+                _cn.Open();
+                SqlCommand _comando = new SqlCommand("Procedure_cargarItemLT", _cn);
+                _comando.CommandType = System.Data.CommandType.StoredProcedure;
+                _comando.Parameters.Add(new SqlParameter("_provId", parametro));
+                reader = _comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    items.Add(reader.GetString(0).ToString());
+                }
+
+                return items;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
+
+
     }
     }

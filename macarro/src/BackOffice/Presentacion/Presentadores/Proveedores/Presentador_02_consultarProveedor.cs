@@ -45,6 +45,9 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
                     p = (Proveedor)_proveedor;
                     LlenarDatos(p);
                 }
+
+
+
             }
             catch (Exception ex)
             {
@@ -67,5 +70,19 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
                 _vista.Estado.Text = p.Status;
             }
         }
+
+
+        public void cargarItems(int idProveedor)
+        {            
+            List<string> items;
+            Comando<int, List<string>> comandoCargar;
+            comandoCargar = FabricaComando.ObtenerComandoCargarItem();
+            items = comandoCargar.Ejecutar(idProveedor);
+            foreach (string itemproveedor in items)
+            {
+                _vista.Items.Items.Add(itemproveedor);
+            }
+        }
+
     }
 }

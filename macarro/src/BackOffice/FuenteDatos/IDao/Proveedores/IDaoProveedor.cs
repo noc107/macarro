@@ -16,5 +16,6 @@ namespace BackOffice.FuenteDatos.IDao.Proveedores
         List<string> ConsultarTodosPaises(string parametro);
         List<string> ConsultarTodosEstados(string parametro);
         List<string> ConsultarTodasCiudades(string parametro);
+        List<string> CargarItemLt(int parametro);
     }
 }
