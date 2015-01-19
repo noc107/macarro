@@ -33,6 +33,8 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
                 Comando<Entidad, bool> comandoModificarProveedor;
                 comandoModificarProveedor = FabricaComando.ObtenerComandoModificarProveedor();
                 comandoModificarProveedor.Ejecutar(_proveedor);
+                _vista.LabelMensajeExito.Visible = true;
+                _vista.LabelMensajeError.Text = "Exito";
             }
             catch (Exception e)
             {
