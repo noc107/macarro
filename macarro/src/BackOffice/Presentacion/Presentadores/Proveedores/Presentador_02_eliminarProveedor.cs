@@ -10,7 +10,10 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
     {
 
         private IContrato_02_eliminarProveedor _vista;
-
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
+        /// <param name="laVistaDefault">Contrato que contiene la vista</param>
         public Presentador_02_eliminarProveedor(IContrato_02_eliminarProveedor laVistaDefault)
             :base(laVistaDefault)
         {

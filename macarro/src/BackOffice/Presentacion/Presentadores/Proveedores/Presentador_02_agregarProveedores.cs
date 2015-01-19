@@ -8,7 +8,9 @@ using BackOffice.Dominio;
 using BackOffice.Dominio.Fabrica;
 using BackOffice.LogicaNegocio.Fabrica;
 using BackOffice.Dominio.Entidades;
-
+using BackOffice.Excepciones.ExcepcionesComando.Proveedores;
+using BackOffice.Excepciones.ExcepcionesPresentacion.Proveedores;
+using BackOffice.Excepciones;
 
 namespace BackOffice.Presentacion.Presentadores.Proveedores
 {
@@ -16,30 +18,45 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
     {
         private IContrato_02_agregarProveedores _vista;
         
-
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
+        /// <param name="laVistaDefault">Contrato que contiene la vista</param>
         public Presentador_02_agregarProveedores(IContrato_02_agregarProveedores laVistaDefault)
             : base(laVistaDefault)
         {
             _vista = laVistaDefault;
             
         }
-
+        /// <summary>
+        /// Metodo que se utiliza para agregar un proveedor
+        /// </summary>
         public void EventoClickBotonAceptar() 
         {
-            try 
+            try
             {
                 Dominio.Entidad _proveedor;
-                _proveedor = FabricaEntidad.ObtenerProveedor(1,_vista.Rif.Text,_vista.RazonSocial.Text,_vista.Correo.Text,_vista.PaginaWeb.Text,_vista.FechaContrato.Text,
-                                                             _vista.Telefono.Text,_vista.Direccion.Text,_vista.Ciudad.Text);
+                _proveedor = FabricaEntidad.ObtenerProveedor(1, _vista.Rif.Text, _vista.RazonSocial.Text, _vista.Correo.Text, _vista.PaginaWeb.Text, _vista.FechaContrato.Text,
+                                                             _vista.Telefono.Text, _vista.Direccion.Text, _vista.Ciudad.Text);
                 Comando<Entidad, bool> comandoAgregarProveedor;
                 comandoAgregarProveedor = FabricaComando.ObtenerComandoAgregarProveedor();
                 comandoAgregarProveedor.Ejecutar(_proveedor);
                 _vista.LabelMensajeExito.Visible = true;
-                _vista.LabelMensajeExito.Text = "Exito";
+                _vista.LabelMensajeExito.Text = "El proveedor ha sido creado satisfactoriamente";
             }
-            catch(Exception e)
+            catch (ExcepcionComandoAgregarProveedor e)
             {
-            
+                _vista.LabelMensajeError.Visible = true;
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "El ítem no ha podido ser creado debido a que existen problemas con la base de datos", e);
+                Logger.EscribirEnLogger(Ex);
+                _vista.LabelMensajeError.Text = Ex.Mensaje;
+            }
+            catch (Exception e) 
+            {
+                _vista.LabelMensajeError.Visible = true;
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "El ítem no ha podido ser creado debido a que ocurrio un error ", e);
+                Logger.EscribirEnLogger(Ex);
+                _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
         
         }
@@ -48,67 +65,129 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
         {
         
         }
+        /// <summary>
+        /// Metodo que se usa para cargar los paises
+        /// </summary>
         public void cargarPaises() 
         {
             List<string> _paises;
             Comando<string, List<string>> comandoBuscarPaisesCompletos;
             comandoBuscarPaisesCompletos = FabricaComando.ObtenerComandoPaisesTodos();
-            _paises = comandoBuscarPaisesCompletos.Ejecutar("Paises");
-            foreach (string pais in _paises) 
+            try
             {
-                _vista.Pais.Items.Add(pais);
+                _paises = comandoBuscarPaisesCompletos.Ejecutar("Paises");
+                foreach (string pais in _paises)
+                {
+                    _vista.Pais.Items.Add(pais);
+                }
+            }
+            catch (Exception e) 
+            {
+                _vista.LabelMensajeError.Visible = true;
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "Ha ocurrido un error de Base de datos ", e);
+                Logger.EscribirEnLogger(Ex);
+                _vista.LabelMensajeError.Text = Ex.Mensaje; 
             }
         }
-
+        /// <summary>
+        /// Metodo que se usa para cargar los estados
+        /// </summary>
         public void cargarEstados() 
         {
             List<string> _estados;
             Comando<string, List<string>> comandoBuscarEstadosCompletos;
             comandoBuscarEstadosCompletos = FabricaComando.ObtenerComandoEstadosTodos();
-            _estados = comandoBuscarEstadosCompletos.Ejecutar("Estados");
-            foreach (string estado in _estados)
+            try
             {
-                _vista.Estado.Items.Add(estado);
+                _estados = comandoBuscarEstadosCompletos.Ejecutar("Estados");
+                foreach (string estado in _estados)
+                {
+                    _vista.Estado.Items.Add(estado);
+                }
+            }
+            catch (Exception e)
+            {
+                _vista.LabelMensajeError.Visible = true;
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "Ha ocurrido un error de Base de datos ", e);
+                Logger.EscribirEnLogger(Ex);
+                _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
         }
-
+        /// <summary>
+        /// Metodo que se usa para cargar las ciudades
+        /// </summary>
         public void cargarCiudades() 
         {
             List<string> _ciudades;
             Comando<string, List<string>> comandoBuscarCiudadesCompletos;
             comandoBuscarCiudadesCompletos = FabricaComando.ObtenerComandoCiudadesTodas();
-            _ciudades = comandoBuscarCiudadesCompletos.Ejecutar("Ciudades");
-            foreach (string ciudad in _ciudades)
+            try
             {
-                _vista.Ciudad.Items.Add(ciudad);
+                _ciudades = comandoBuscarCiudadesCompletos.Ejecutar("Ciudades");
+                foreach (string ciudad in _ciudades)
+                {
+                    _vista.Ciudad.Items.Add(ciudad);
+                }
+            }
+            catch (Exception e)
+            {
+                _vista.LabelMensajeError.Visible = true;
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "Ha ocurrido un error de Base de datos ", e);
+                Logger.EscribirEnLogger(Ex);
+                _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
         }
 
+        /// <summary>
+        /// Metodo que se utiliza para cargar los estados de un pais
+        /// </summary>
         public void EventoCambioPais()
         {
             List<string> _estados;
             string _nombrePais = _vista.Pais.SelectedItem.Text;
             Comando<string, List<string>> comandoBuscarEstados;
             comandoBuscarEstados = FabricaComando.ObtenerComandoEstadosDePais();
-            _estados = comandoBuscarEstados.Ejecutar(_nombrePais);
-            foreach(string estado in _estados)
+            try
             {
-                _vista.Estado.Items.Add(estado);
+                _estados = comandoBuscarEstados.Ejecutar(_nombrePais);
+                foreach (string estado in _estados)
+                {
+                    _vista.Estado.Items.Add(estado);
+                }
+            }
+            catch (Exception e)
+            {
+                _vista.LabelMensajeError.Visible = true;
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "Ha ocurrido un error de Base de datos ", e);
+                Logger.EscribirEnLogger(Ex);
+                _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
         }
 
+        /// <summary>
+        /// Metodo que se utiliza para obtener las ciudades de un estado
+        /// </summary>
         public void EventoCambioEstado() 
         {
             List<string> _ciudades;
             string _nombreEstado = _vista.Estado.SelectedItem.Text;
             Comando<string, List<string>> comandoBuscarCiudades;
             comandoBuscarCiudades = FabricaComando.ObtenerComandoCiudadesDeEstado();
-            _ciudades = comandoBuscarCiudades.Ejecutar(_nombreEstado);
-            foreach (string ciudad in _ciudades) 
+            try
             {
-                _vista.Ciudad.Items.Add(ciudad);
+                _ciudades = comandoBuscarCiudades.Ejecutar(_nombreEstado);
+                foreach (string ciudad in _ciudades)
+                {
+                    _vista.Ciudad.Items.Add(ciudad);
+                }
             }
-
+            catch (Exception e)
+            {
+                _vista.LabelMensajeError.Visible = true;
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "Ha ocurrido un error de Base de datos ", e);
+                Logger.EscribirEnLogger(Ex);
+                _vista.LabelMensajeError.Text = Ex.Mensaje;
+            }
         }
     }
 }

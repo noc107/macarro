@@ -31,7 +31,11 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             }
         }
 
-
+        /// <summary>
+        /// Metodo que redirecciona al menu de gestionar
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Evento</param>
         protected void Regresar_Click(object sender, EventArgs e)
         {
             Response.Redirect("web_02_gestionarProveedores.aspx");
@@ -128,7 +132,11 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             get { return Mensaje; }
             set { Mensaje = value; }
         }
-
+        /// <summary>
+        /// Metodo que ejecuta el presentador para modificar
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Evento</param>
         protected void Button1_Click(object sender, EventArgs e)
         {
             _presentador.EventoClickBotonAceptar();

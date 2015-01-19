@@ -8,6 +8,9 @@ using BackOffice.Dominio;
 using BackOffice.Dominio.Fabrica;
 using BackOffice.LogicaNegocio.Fabrica;
 using BackOffice.Dominio.Entidades;
+using BackOffice.Excepciones.ExcepcionesPresentacion.Proveedores;
+using BackOffice.Excepciones.ExcepcionesComando.Proveedores;
+using BackOffice.Excepciones;
 
 namespace BackOffice.Presentacion.Presentadores.Proveedores
 {
@@ -15,7 +18,10 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
     {
         private IContrato_02_consultarProveedor _vista;
         private Proveedor p;
-
+        /// <summary>
+        /// Constructor de la clase 
+        /// </summary>
+        /// <param name="laVistaDefault">Contrato que contiene la vista</param>
         public Presentador_02_consultarProveedor(IContrato_02_consultarProveedor laVistaDefault)
             : base(laVistaDefault)
         {
@@ -27,7 +33,10 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
         {
         
         }
-
+        /// <summary>
+        /// Metodo que se usa para consultar un proveedor
+        /// </summary>
+        /// <param name="idProveedor">Integer que contiene el id del proveedor</param>
         public void EventoBotonConsultar(int idProveedor)
         {
             try
@@ -49,12 +58,26 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
 
 
             }
-            catch (Exception ex)
+            catch (ExcepcionComandoConsultarProveedor ex)
             {
-                Console.WriteLine(ex.ToString());
+                _vista.LabelMensajeError.Visible = true;
+                ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor("RS_08_019", "Presentador Consultar", "Consultar", "No se han podido cargar los datos debido a que existio un error de base de datos ", ex);
+                Logger.EscribirEnLogger(Ex);
+                _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
+            catch (Exception e) 
+            {
+                _vista.LabelMensajeError.Visible = true;
+                ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor("RS_08_019", "Presentador Consultar", "Consultar", "No se han podido cargar los datos debido a que ocurrio un error", e);
+                Logger.EscribirEnLogger(Ex);
+                _vista.LabelMensajeError.Text = Ex.Mensaje;
+            }
+            
         }
-
+        /// <summary>
+        /// Metodo que carga los datos en la vista
+        /// </summary>
+        /// <param name="p">Proveedor con la informacion a mostrar</param>
         public void LlenarDatos(Proveedor p)
         {
             if (p != null)
@@ -71,16 +94,29 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             }
         }
 
-
+        /// <summary>
+        /// Metodo que se utiliza para cargar los items del proveedor
+        /// </summary>
+        /// <param name="idProveedor">Integer con el id del proveedor</param>
         public void cargarItems(int idProveedor)
         {            
             List<string> items;
             Comando<int, List<string>> comandoCargar;
             comandoCargar = FabricaComando.ObtenerComandoCargarItem();
-            items = comandoCargar.Ejecutar(idProveedor);
-            foreach (string itemproveedor in items)
+            try
             {
-                _vista.Items.Items.Add(itemproveedor);
+                items = comandoCargar.Ejecutar(idProveedor);
+                foreach (string itemproveedor in items)
+                {
+                    _vista.Items.Items.Add(itemproveedor);
+                }
+            }
+            catch (Exception e)
+            {
+                _vista.LabelMensajeError.Visible = true;
+                ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor("RS_08_019", "Presentador Consultar", "Consultar", "Ha ocurrido un error de Base de datos ", e);
+                Logger.EscribirEnLogger(Ex);
+                _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
         }
 

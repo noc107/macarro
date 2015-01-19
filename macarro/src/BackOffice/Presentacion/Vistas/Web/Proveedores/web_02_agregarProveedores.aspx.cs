@@ -41,7 +41,7 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             //LlenarDropDownList(_Pais);
         }
 
-        /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
+       
         /// <summary>
         /// Evento, le da funcionalidad al boton de regresar al hacer un click en el mismo
         /// </summary>

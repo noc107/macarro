@@ -25,8 +25,14 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 
         protected void Page_Load(object sender, EventArgs e)
         {
-                //Debe ir dentro de un try!!!
+            try
+            {
                 _presentador.BindGridProveedor();
+            }
+            catch (Exception ex) 
+            {
+            
+            }
         }
 
         protected void gvProveedores_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -76,7 +82,11 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             set { textboxBuscar = value; }
         }
 
-
+        /// <summary>
+        /// Metodo que se usa para cambiar la pagina del grid view
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Evento</param>
         protected void GVProveedores_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             //Falta try/ catch
@@ -84,7 +94,11 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             _presentador.BindGridProveedor();
             LabelMensajeError.Visible = false;
         }
-
+        /// <summary>
+        /// Metodo que agrega la data a la fila
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Event</param>
         protected void GVProveedores_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
                 if (e.Row.RowType == DataControlRowType.DataRow)
@@ -104,7 +118,11 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 
 
 
-
+        /// <summary>
+        /// Metodo que redirecciona al inicio
+        /// </summary>
+        /// <param name="sender">Objeto</param>
+        /// <param name="e">Evento</param>
         protected void Button1_Click(object sender, EventArgs e)
         {
             //Boton Regresar

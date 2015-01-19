@@ -151,7 +151,7 @@
         
         <asp:Label CssClass="labels status" ID="Label8" runat="server" Text="Status (*):"></asp:Label>
 
-        <asp:Button CssClass="Boton botonaceptar" ID="Button1" runat="server" Text="Aceptar"  OnClientClick="return confirm('Esta acción modificará el ítem en el sistema ¿desea continuar?')" OnClick="Button1_Click"/>
+        <asp:Button CssClass="Boton botonaceptar" ID="Button1" runat="server" Text="Aceptar"  OnClientClick="return confirm('Esta acción modificará el proveedor en el sistema ¿desea continuar?')" OnClick="Button1_Click"/>
         <asp:Button CssClass="Boton botonregresar" ID="Button2" runat="server" Text="Regresar" OnClick="Regresar_Click" CausesValidation="false"/>
 
         

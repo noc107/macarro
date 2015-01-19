@@ -19,7 +19,7 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             _presentador = new Presentador_02_consultarProveedor(this);
         }
 
-        /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
+         
         /// <summary>
         /// Metodo por defecto / estandar , se ejecuta al cargase la pagina
         /// </summary>
@@ -36,7 +36,7 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             _presentador.EventoBotonConsultar(Convert.ToInt32(Request.QueryString["r"]));
         }
 
-        /// <author> Grupo 2: OrianaSantana, GinaGonzález, JesúsGrazziani</author> 
+         
         /// <summary>
         /// Evento, cuya funcion se realiza al clickear el boton especificado
         /// Regresa al menu anterior 'Gestionar Proveedores'
