@@ -61,7 +61,7 @@
             <asp:Label CssClass="labels item" ID="Label13" runat="server" Text="Items: "></asp:Label>
 
 
-            <asp:ListBox ID="ListItem" runat="server" CssClass = "item1 list_box" ReadOnly="true"></asp:ListBox>
+            <asp:ListBox ID="ListItem" runat="server" CssClass = "item1" ReadOnly="true"></asp:ListBox>
 
 
             <asp:Button CssClass="Boton abajo" ID="Button1" runat="server" Text="Regresar" OnClick="Button1_Click"/>
