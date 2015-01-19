@@ -172,7 +172,7 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
                 proveedor.PagWeb = objetoBD.GetString(4).ToString();
                 proveedor.FechaContrato = objetoBD.GetDateTime(5).ToString().Remove(10);
                 proveedor.Telefono = objetoBD.GetString(6).ToString();
-                proveedor.estado = objetoBD.GetString(8).ToString();
+                proveedor.Status = objetoBD.GetString(8).ToString();
                 proveedor.IdLugar = (consultarDireccion(objetoBD.GetInt32(7)));                
             }
             catch (Exception ex)
@@ -195,7 +195,7 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
                 proveedor.PagWeb = objetoBD.GetString(4).ToString();
                 proveedor.FechaContrato = objetoBD.GetDateTime(5).ToString().Remove(10);
                 proveedor.Telefono = objetoBD.GetString(6).ToString();
-                proveedor.estado = objetoBD.GetString(8).ToString();
+                proveedor.Status = objetoBD.GetString(8).ToString();
                 proveedor.IdLugar = "";
             }
             catch (Exception ex)
@@ -219,7 +219,7 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             comando.Parameters.Add(new SqlParameter("_proFechaContrato", DateTime.Parse(_proveedor.FechaContrato)));
             comando.Parameters.Add(new SqlParameter("_proTelefono", _proveedor.Telefono));
             comando.Parameters.Add(new SqlParameter("_proDireccion", _proveedor.IdLugar));
-            comando.Parameters.Add(new SqlParameter("_proEstado", _proveedor.estado));
+            comando.Parameters.Add(new SqlParameter("_proCiudad", _proveedor.Ciudad));
             SqlDataReader _lectura;
 
             try
@@ -241,6 +241,7 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
 
         bool IDao.IDao<Entidad, bool, Entidad>.Modificar(Entidad parametro)
         {
+            int status = 1;
             Proveedor _proveedor = (Proveedor)parametro;
             SqlCommand comando = new SqlCommand("Procedure_modificarProveedor", IniciarConexion());
             comando.CommandType = CommandType.StoredProcedure;
@@ -251,7 +252,14 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             comando.Parameters.Add(new SqlParameter("_proFechaContrato", DateTime.Parse(_proveedor.FechaContrato)));
             comando.Parameters.Add(new SqlParameter("_proTelefono", _proveedor.Telefono));
             comando.Parameters.Add(new SqlParameter("_proDireccion", _proveedor.IdLugar));
-            comando.Parameters.Add(new SqlParameter("_proEstado", _proveedor.estado));
+            comando.Parameters.Add(new SqlParameter("_proCiudad", _proveedor.Ciudad));
+
+            if (_proveedor.Status == "Activado") 
+                status = 1;
+            if (_proveedor.Status == "Desactivado") 
+                status = 2;
+                
+            comando.Parameters.Add(new SqlParameter("_proStatus", status));
             SqlDataReader _lectura;
 
             try

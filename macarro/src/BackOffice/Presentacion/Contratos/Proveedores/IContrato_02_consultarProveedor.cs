@@ -20,7 +20,7 @@ namespace BackOffice.Presentacion.Contratos.Proveedores
         //Label Estado { get; set; }
         //Label Ciudad { get; set; }
         //Label Direccion { get; set; }
-        GridView Items { set; }
+        ListBox Items { set; get; }
 
         //Label Rif { get; set; }
         //Label RazonSocial { set; }

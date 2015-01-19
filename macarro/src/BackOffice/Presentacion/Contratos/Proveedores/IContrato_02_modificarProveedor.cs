@@ -18,6 +18,7 @@ namespace BackOffice.Presentacion.Contratos.Proveedores
         DropDownList Pais { get; set; }
         DropDownList Estado { get; set; }
         DropDownList Ciudad { get; set; }
+        DropDownList Status { get; set; }
         TextBox Direccion { get; set; }
 
     }

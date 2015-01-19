@@ -55,17 +55,17 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             {
                 if (_vista.comboEstado.SelectedValue == "Activado")
                 {
-                    if (r.estado == "Activado")
+                    if (r.Status == "Activado")
                     {
-                        mytable.Rows.Add(r.Id, r.Rif, r.RazonSocial, r.estado);
+                        mytable.Rows.Add(r.Id, r.Rif, r.RazonSocial, r.Status);
                         gridInactivos = false;
                     }
                 }
                 else
                 {
-                    if (r.estado == "Desactivado")
+                    if (r.Status == "Desactivado")
                     {
-                        mytable.Rows.Add(r.Id, r.Rif, r.RazonSocial, r.estado);
+                        mytable.Rows.Add(r.Id, r.Rif, r.RazonSocial, r.Status);
                         gridInactivos = true;
                     }
                 }

@@ -111,6 +111,12 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             set { Ciudad = value; }
         }
 
+        DropDownList IContrato_02_modificarProveedor.Status
+        {
+            get { return Status; }
+            set { Status = value; }
+        }
+
         public Label LabelMensajeExito
         {
             get { return Mensaje; }

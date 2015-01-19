@@ -25,8 +25,8 @@
 }
 .divArriba {
     margin:auto; 
-    height: 423px; 
-    width: 1100px;
+    height: 550px; 
+    width: 1300px;
 }
 .divIzquierdo {
     float: left; 
@@ -79,28 +79,29 @@
 
 .rif {
     position:absolute;
-    top: 169px;
+    top: 162px;
     left: 92px;
 }
 
 .razonsocial {
     position:absolute;
-    top: 227px;
-    left: 90px;
+    top: 215px;
+    left: 88px;
 }
 .correo {
     position:absolute;
-    top: 289px;
+    top: 273px;
     left: 89px;
+    height: 18px;
 }
 .paginaweb {
     position:absolute;
-    top: 351px;
-    left: 92px;
+    top: 327px;
+    left: 91px;
 }
 .telefono {
     position:absolute;
-    top: 410px;
+    top: 380px;
     left: 90px;
 }
 .contrato {
@@ -129,7 +130,7 @@
 
 .direccion {
     position:absolute;
-    top: 412px;
+    top: 418px;
     left: 551px;
 }
 
@@ -153,54 +154,66 @@
 
 .tbdireccion {
     position:absolute;
-    top: 393px;
+    top: 400px;
     left: 686px;
 }
 
 .botonaceptar {
     position:absolute;
-    top: 479px;
-    left: 432px;
+    top: 600px;
+    left: 392px;
 }
 
 .botonregresar {
     position:absolute;
-    top: 482px;
-    left: 609px;
+    top: 597px;
+    left: 568px;
 }
 
 .tbrif {
     position:absolute;
-    top: 150px;
+    top: 141px;
     left: 205px;
 }
 
 .tbrazonsocial {
     position:absolute;
-    top: 208px;
-    left: 207px;
+    top: 197px;
+    left: 208px;
 }
 
 .tbcorreo {
     position:absolute;
-    top: 270px;
-    left: 208px;
+    top: 251px;
+    left: 209px;
 }
 
 .tbpaginaweb {
     position:absolute;
-    top: 333px;
+    top: 308px;
     left: 210px;
 }
 
 .tbtelefono {
     position:absolute;
-    top: 391px;
-    left: 210px;
+    top: 362px;
+    left: 211px;
 }
 
 .tbcontrato {
     position:absolute;
     top: 150px;
     left: 683px;
+}
+
+.status {
+    position:absolute;
+    top: 431px;
+    left: 96px;
+}
+
+.tbstatus {
+    position:absolute;
+    top: 418px;
+    left: 213px;
 }

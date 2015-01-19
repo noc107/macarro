@@ -237,10 +237,17 @@ namespace BackOffice.Dominio.Fabrica
         }
 
         public static Entidad ObtenerProveedor(int id, string rif, string razonSocial,string correo, string paginaweb, string fechaContrato, string telefono,
-                                               string idLugar, string estado ) 
+                                               string idLugar, string ciudad ) 
         {
-            return new Proveedor(id,rif,razonSocial,correo,paginaweb,fechaContrato,telefono,idLugar,estado);
+            return new Proveedor(id,rif,razonSocial,correo,paginaweb,fechaContrato,telefono,idLugar,ciudad);
         }
+
+        public static Entidad ObtenerProveedor(int id, string rif, string razonSocial, string correo, string paginaweb, string fechaContrato, string telefono,
+                                       string idLugar, string ciudad, string status)
+        {
+            return new Proveedor(id, rif, razonSocial, correo, paginaweb, fechaContrato, telefono, idLugar, ciudad,status);
+        }
+
         public static Entidad ObtenerProveedor(int id, string rif, string nombre)
         {
             return new Proveedor(id, rif, nombre);

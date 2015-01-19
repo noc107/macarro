@@ -18,7 +18,8 @@ namespace BackOffice.Dominio.Entidades
         private string _fechaContrato;
         private string _telefono;
         private string _idLugar;
-        private string _estado;
+        private string _status;
+        private string _ciudad;
 
         #endregion
 
@@ -28,6 +29,12 @@ namespace BackOffice.Dominio.Entidades
         {
             get { return _id; }
             set { _id = value; }
+        }
+
+        public string Ciudad
+        {
+            get { return _ciudad; }
+            set { _ciudad = value; }
         }
 
         public string Rif
@@ -72,10 +79,10 @@ namespace BackOffice.Dominio.Entidades
             set { _idLugar = value; }
         }
 
-        public string estado
+        public string Status
         {
-            get { return _estado; }
-            set { _estado = value; }
+            get { return _status; }
+            set { _status = value; }
         }
 
         #endregion
@@ -95,9 +102,8 @@ namespace BackOffice.Dominio.Entidades
             _idLugar = idLugar;
         }
 
-        //con estado
         public Proveedor(int id, string rif, string razonSocial, string correo, string pagWeb,
-             string fechaContrato, string telefono, string idLugar, string estado)
+        string fechaContrato, string telefono, string idLugar, string ciudad)
         {
             _id = id;
             _rif = rif;
@@ -107,7 +113,24 @@ namespace BackOffice.Dominio.Entidades
             _fechaContrato = fechaContrato;
             _telefono = telefono;
             _idLugar = idLugar;
-            _estado = estado;
+            _ciudad = ciudad;
+        }
+
+
+        //con estado
+        public Proveedor(int id, string rif, string razonSocial, string correo, string pagWeb,
+             string fechaContrato, string telefono, string idLugar, string ciudad ,string status)
+        {
+            _id = id;
+            _rif = rif;
+            _razonSocial = razonSocial;
+            _correo = correo;
+            _paginaWeb = pagWeb;
+            _fechaContrato = fechaContrato;
+            _telefono = telefono;
+            _idLugar = idLugar;
+            _ciudad = ciudad;
+            _status = status;
         }
 
         //Sin pagina web

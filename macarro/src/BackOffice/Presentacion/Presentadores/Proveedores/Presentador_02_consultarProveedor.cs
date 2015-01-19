@@ -64,7 +64,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
                 _vista.PaginaWeb.Text = p.PagWeb;
                 _vista.FechaContrato.Text = p.FechaContrato;
                 _vista.Correo.Text = p.Correo;
-                _vista.Estado.Text = p.estado;
+                _vista.Estado.Text = p.Status;
             }
         }
     }

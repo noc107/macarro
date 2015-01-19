@@ -16,8 +16,8 @@
 }
 .divArriba {
     margin:auto; 
-    height: 350px; 
-    width: 1000px;
+    height: 800px; 
+    width: 1300px;
 }
 .divIzquierdo {
     float: left; 
@@ -98,13 +98,13 @@
 
 .estado {
     position:absolute;
-    top: 283px;
+    top: 274px;
     left: 276px;
 }
 
 .estado1 {
     position:absolute;
-    top: 284px;
+    top: 274px;
     left: 345px;
 }
 
@@ -143,4 +143,23 @@
     position:absolute;
     top: 228px;
     left: 678px;
+}
+
+.item {
+    position:absolute;
+    top: 320px;
+    left: 280px;
+    height: 21px;
+}
+
+.item1 {
+    position:absolute;
+    top: 310px;
+    left: 361px;
+}
+
+.abajo {
+    position:absolute;
+    top: 410px;
+    left: 485px;
 }

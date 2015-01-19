@@ -112,9 +112,10 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
         //    set { Ciudad = value; }
         //}
 
-        GridView IContrato_02_consultarProveedor.Items
+        ListBox IContrato_02_consultarProveedor.Items
         {
-            set { GridView1 = value; }
+            get { return ListItem; }
+            set { ListItem = value; }
         }
 
         public Label LabelMensajeExito

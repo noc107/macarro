@@ -29,7 +29,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             {
                 Dominio.Entidad _proveedor;
                 _proveedor = FabricaEntidad.ObtenerProveedor(1, _vista.Rif.Text, _vista.RazonS.Text, _vista.Correo.Text, _vista.PaginaWeb.Text, _vista.FechaContrato.Text,
-                                                             _vista.Telefono.Text, _vista.Direccion.Text, _vista.Estado.Text);
+                                                             _vista.Telefono.Text, _vista.Direccion.Text,_vista.Ciudad.Text,_vista.Status.Text);
                 Comando<Entidad, bool> comandoModificarProveedor;
                 comandoModificarProveedor = FabricaComando.ObtenerComandoModificarProveedor();
                 comandoModificarProveedor.Ejecutar(_proveedor);
@@ -77,7 +77,15 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
                 DateTime dt = Convert.ToDateTime(p.FechaContrato);
                 _vista.FechaContrato.Text = dt.ToString("yyyy/MM/dd");
                 _vista.Correo.Text = p.Correo;
-                _vista.Estado.Text = p.estado;
+
+                string[]  split = p.IdLugar.Split(':');
+                string[] split2 = split[1].Split(';');
+                _vista.Direccion.Text = split2[0] + '.';
+
+            
+                _vista.Status.Items.Add("Activado");
+                _vista.Status.Items.Add("Desactivado");
+                //_vista.Estado.Text = p.Status;
             }
         }
 

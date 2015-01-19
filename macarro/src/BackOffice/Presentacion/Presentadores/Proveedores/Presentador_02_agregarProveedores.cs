@@ -30,7 +30,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             {
                 Dominio.Entidad _proveedor;
                 _proveedor = FabricaEntidad.ObtenerProveedor(1,_vista.Rif.Text,_vista.RazonSocial.Text,_vista.Correo.Text,_vista.PaginaWeb.Text,_vista.FechaContrato.Text,
-                                                             _vista.Telefono.Text,_vista.Direccion.Text,_vista.Estado.Text);
+                                                             _vista.Telefono.Text,_vista.Direccion.Text,_vista.Ciudad.Text);
                 Comando<Entidad, bool> comandoAgregarProveedor;
                 comandoAgregarProveedor = FabricaComando.ObtenerComandoAgregarProveedor();
                 comandoAgregarProveedor.Ejecutar(_proveedor);

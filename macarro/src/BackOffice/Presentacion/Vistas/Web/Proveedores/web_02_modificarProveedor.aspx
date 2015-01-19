@@ -27,7 +27,7 @@
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
             <br />
-            <asp:TextBox CssClass="textbox tbrazonsocial" ID="RazonS" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbrazonsocial" ID="RazonS" runat="server" Enabled="False"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator2" 
                     runat="server" ControlToValidate ="RazonS"
                     ErrorMessage="Razon Social requerido." 
@@ -148,10 +148,14 @@
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
 
+        
+        <asp:Label CssClass="labels status" ID="Label8" runat="server" Text="Status (*):"></asp:Label>
+
         <asp:Button CssClass="Boton botonaceptar" ID="Button1" runat="server" Text="Aceptar"  OnClientClick="return confirm('Esta acción modificará el ítem en el sistema ¿desea continuar?')" OnClick="Button1_Click"/>
         <asp:Button CssClass="Boton botonregresar" ID="Button2" runat="server" Text="Regresar" OnClick="Regresar_Click" CausesValidation="false"/>
 
-
+        
+        <asp:DropDownList CssClass="combo_box tbstatus" ID="Status" runat="server"></asp:DropDownList>
 
     </div>
         <asp:ValidationSummary ID="ValidationSummary1"
