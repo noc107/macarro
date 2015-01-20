@@ -9,7 +9,8 @@
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="middle_place_holder">
     <h2 class="centrar subtitulo">Modificar Proveedor</h2>
-    <asp:Label CssClass="avisomensaje MensajeExito" ID="Mensaje" runat="server"  Visible="False"></asp:Label>
+    <asp:Label CssClass="avisoMensaje MensajeExito" ID="Mensaje" runat="server"  Visible="False"></asp:Label>
+    
     <div class="divArriba">
         
             <asp:Label CssClass="labels rif" ID="Label1" runat="server" Text="RIF (*):"></asp:Label>
@@ -19,7 +20,7 @@
             <asp:Label CssClass="labels contrato" ID="Label11" runat="server" Text="Fecha Contrato (*):"></asp:Label>
         
       
-            <asp:TextBox CssClass="textbox tbrif" ID="Rif" runat="server" Enabled="False"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbrif" ID="Rif" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator1" 
                     runat="server" ControlToValidate ="Rif"
                     ErrorMessage="RIF requerido." 

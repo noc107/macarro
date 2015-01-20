@@ -419,7 +419,14 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             {
                 IniciarConexion().Open();
                 _lectura = comando.ExecuteReader();
-                return true;
+                if (_lectura.FieldCount == 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
             catch (NullReferenceException ex)
             {
@@ -479,6 +486,7 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramTlf, _proveedor.Telefono));
             comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramDireccion, _proveedor.IdLugar));
             comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramCiudad, _proveedor.Ciudad));
+            comando.Parameters.Add(new SqlParameter("@_proARif", _proveedor.ARif));
 
             if (_proveedor.Status == RecursosDaoProveedores.Activado) 
                 status = 1;

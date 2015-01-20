@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content3" runat="server" contentplaceholderid="middle_place_holder">
     <h2 class="centrar subtitulo">Gestionar Proveedores</h2>
-    <asp:Label CssClass="avisomensaje" ID="Label13" runat="server"  Visible="False"></asp:Label>
+    <asp:Label CssClass="avisoMensaje MensajeExito" ID="Label13" runat="server"  Visible="False"></asp:Label>
     <div class="divPrincipal">
         <asp:TextBox ID="textboxBuscar" CssClass="textbox tbBuscar" runat="server" MaxLength="98" placeholder="Buscar..." />
         <asp:Label ID="labelEstado" runat="server" CssClass="labels labelEstado" Text="Estado:"></asp:Label>

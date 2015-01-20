@@ -61,7 +61,9 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             }
             catch (ExcepcionComandoConsultarProveedor ex)
             {
-                _vista.LabelMensajeError.Visible = true;
+                _vista.LabelMensajeExito.CssClass = "avisoMensaje MensajeError";
+                _vista.LabelMensajeExito.Visible = true;
+                 
                 ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor
                     (RecursosPresentadorProveedor.rs19,
                      RecursosPresentadorProveedor.PresentadorConsultar,
@@ -69,11 +71,13 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
                      RecursosPresentadorProveedor.ex19,
                      ex); 
                 Logger.EscribirEnLogger(Ex);
-                _vista.LabelMensajeError.Text = Ex.Mensaje;
+                _vista.LabelMensajeExito.Text = Ex.Mensaje;
             }
             catch (Exception e) 
             {
-                _vista.LabelMensajeError.Visible = true;
+                _vista.LabelMensajeExito.CssClass = "avisoMensaje MensajeError";
+                _vista.LabelMensajeExito.Visible = true;
+                 
                 ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor
                     (RecursosPresentadorProveedor.rs19,
                      RecursosPresentadorProveedor.PresentadorConsultar,
@@ -81,7 +85,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
                      RecursosPresentadorProveedor.ex199,
                      e);
                 Logger.EscribirEnLogger(Ex);
-                _vista.LabelMensajeError.Text = Ex.Mensaje;
+                _vista.LabelMensajeExito.Text = Ex.Mensaje;
             }
             
         }
@@ -124,7 +128,9 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             }
             catch (Exception e)
             {
-                _vista.LabelMensajeError.Visible = true;
+                _vista.LabelMensajeExito.CssClass = "avisoMensaje MensajeError";
+                _vista.LabelMensajeExito.Visible = true;
+                 
                 ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor
                     (RecursosPresentadorProveedor.rs19,
                      RecursosPresentadorProveedor.PresentadorConsultar,
@@ -132,7 +138,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
                      RecursosPresentadorProveedor.ex19,
                      e);
                 Logger.EscribirEnLogger(Ex);
-                _vista.LabelMensajeError.Text = Ex.Mensaje;
+                _vista.LabelMensajeExito.Text = Ex.Mensaje;
             }
         }
 

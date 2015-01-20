@@ -20,6 +20,7 @@ namespace BackOffice.Dominio.Entidades
         private string _idLugar;
         private string _status;
         private string _ciudad;
+        private string _anteriorrif;
 
         #endregion
 
@@ -36,6 +37,13 @@ namespace BackOffice.Dominio.Entidades
             get { return _ciudad; }
             set { _ciudad = value; }
         }
+
+        public string ARif
+        {
+            get { return _anteriorrif; }
+            set { _anteriorrif = value; }
+        }
+
 
         public string Rif
         {
@@ -132,6 +140,24 @@ namespace BackOffice.Dominio.Entidades
             _ciudad = ciudad;
             _status = status;
         }
+
+        //con estado
+        public Proveedor(int id, string rif, string razonSocial, string correo, string pagWeb,
+             string fechaContrato, string telefono, string idLugar, string ciudad, string status, string anteriorRif)
+        {
+            _id = id;
+            _rif = rif;
+            _razonSocial = razonSocial;
+            _correo = correo;
+            _paginaWeb = pagWeb;
+            _fechaContrato = fechaContrato;
+            _telefono = telefono;
+            _idLugar = idLugar;
+            _ciudad = ciudad;
+            _status = status;
+            _anteriorrif = anteriorRif;
+        }
+
 
         //Sin pagina web
         public Proveedor(int id, string rif, string razonSocial, string correo, string fechaContrato,
