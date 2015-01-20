@@ -9,6 +9,7 @@ using BackOffice.Excepciones.ExcepcionesDao;
 using BackOffice.Excepciones.ExcepcionesDao.Proveedores;
 using BackOffice.FuenteDatos.Fabrica;
 using BackOffice.FuenteDatos.IDao.Proveedores;
+using BackOffice.LogicaNegocio.Comandos.Proveedores.Recursos;
 
 
 namespace BackOffice.LogicaNegocio.Comandos.Proveedores
@@ -33,10 +34,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (NullReferenceException e)
             {
                 ExcepcionComandoCambioPais exComandoCambioPais = new ExcepcionComandoCambioPais
-                                         ("RS_08_002",
-                                          "Comando Cambio Pais",
-                                          "Trae Estados de Pais",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                                         (RecursosComandoProveedor.rs02,
+                                          RecursosComandoProveedor.CmdCambioPais,
+                                          RecursosComandoProveedor.TraeEstadosPais,
+                                          RecursosComandoProveedor.ex02,
                                           e);
                 Logger.EscribirEnLogger(exComandoCambioPais);
 
@@ -45,10 +46,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDaoProveedor e)
             {
                 ExcepcionComandoCambioPais exComandoCambioPais = new ExcepcionComandoCambioPais
-                                          ("RS_08_003",
-                                          "Comando Cambio Pais",
-                                          "Trae Estados de Pais",
-                                          "Error ocurrido en DaoProveedor",
+                                         (RecursosComandoProveedor.rs03,
+                                          RecursosComandoProveedor.CmdCambioPais,
+                                          RecursosComandoProveedor.TraeEstadosPais,
+                                          RecursosComandoProveedor.ex03,
                                           e);
                 Logger.EscribirEnLogger(exComandoCambioPais);
 
@@ -57,10 +58,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDao e)
             {
                 ExcepcionComandoCambioPais exComandoCambioPais = new ExcepcionComandoCambioPais
-                                         ("RS_08_004",
-                                          "Comando Cambio Pais",
-                                          "Trae Estados de Pais",
-                                          "No se han podido cargar los datos debido a un error en el sistema",
+                                         (RecursosComandoProveedor.rs04,
+                                          RecursosComandoProveedor.CmdCambioPais,
+                                          RecursosComandoProveedor.TraeEstadosPais,
+                                          RecursosComandoProveedor.ex04,
                                           e);
                 Logger.EscribirEnLogger(exComandoCambioPais);
 

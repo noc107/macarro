@@ -9,6 +9,7 @@ using BackOffice.Excepciones.ExcepcionesDao;
 using BackOffice.Excepciones.ExcepcionesDao.Proveedores;
 using BackOffice.FuenteDatos.Fabrica;
 using BackOffice.FuenteDatos.IDao.Proveedores;
+using BackOffice.LogicaNegocio.Comandos.Proveedores.Recursos;
 
 namespace BackOffice.LogicaNegocio.Comandos.Proveedores
 {
@@ -34,10 +35,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (NullReferenceException e)
             {
                 ExcepcionComandoObtenerTodosLosEstados exComandoObtenerEstados = new ExcepcionComandoObtenerTodosLosEstados
-                                         ("RS_08_002",
-                                          "Comando Obtener Todos Los Estados",
-                                          "Obtener Estados",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                                         (RecursosComandoProveedor.rs02,
+                                          RecursosComandoProveedor.CmdObtenerEstados,
+                                          RecursosComandoProveedor.ObtenerEstados,
+                                          RecursosComandoProveedor.ex02,
                                           e);
                 Logger.EscribirEnLogger(exComandoObtenerEstados);
 
@@ -46,10 +47,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDaoProveedor e)
             {
                 ExcepcionComandoObtenerTodosLosEstados exComandoObtenerEstados = new ExcepcionComandoObtenerTodosLosEstados
-                                          ("RS_08_003",
-                                          "Comando Obtener Todos Los Estados",
-                                          "Obtener Estados",
-                                          "Error ocurrido en DaoProveedor",
+                                          (RecursosComandoProveedor.rs03,
+                                          RecursosComandoProveedor.CmdObtenerEstados,
+                                          RecursosComandoProveedor.ObtenerEstados,
+                                          RecursosComandoProveedor.ex03,
                                           e);
                 Logger.EscribirEnLogger(exComandoObtenerEstados);
 
@@ -58,10 +59,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDao e)
             {
                 ExcepcionComandoObtenerTodosLosEstados exComandoObtenerEstados = new ExcepcionComandoObtenerTodosLosEstados
-                                         ("RS_08_004",
-                                          "Comando Obtener Todos Los Estados",
-                                          "Obtener Estados",
-                                          "No se han podido cargar los datos debido a un error en el sistema",
+                                         (RecursosComandoProveedor.rs04,
+                                          RecursosComandoProveedor.CmdObtenerEstados,
+                                          RecursosComandoProveedor.ObtenerEstados,
+                                          RecursosComandoProveedor.ex04,
                                           e);
                 Logger.EscribirEnLogger(exComandoObtenerEstados);
 

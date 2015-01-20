@@ -9,6 +9,7 @@ using BackOffice.Excepciones.ExcepcionesComando.Proveedores;
 using BackOffice.Excepciones;
 using BackOffice.Excepciones.ExcepcionesDao.Proveedores;
 using BackOffice.Excepciones.ExcepcionesDao;
+using BackOffice.LogicaNegocio.Comandos.Proveedores.Recursos;
 
 namespace BackOffice.LogicaNegocio.Comandos.Proveedores
 {
@@ -31,10 +32,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (NullReferenceException e)
             {
                 ExcepcionComandoConsultarProveedor exComandoConsultarProveedor = new ExcepcionComandoConsultarProveedor
-                                         ("RS_08_002",
-                                          "Comando Consultar Proveedor",
-                                          "Consulta Proveedor",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                                         (RecursosComandoProveedor.rs02,
+                                          RecursosComandoProveedor.CmdConsultarProv,
+                                          RecursosComandoProveedor.ConsultaProv,
+                                          RecursosComandoProveedor.ex02,
                                           e);
                 Logger.EscribirEnLogger(exComandoConsultarProveedor);
 
@@ -43,10 +44,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDaoProveedor e)
             {
                 ExcepcionComandoConsultarProveedor exComandoConsultarProveedor = new ExcepcionComandoConsultarProveedor
-                                          ("RS_08_003",
-                                          "Comando Consultar Proveedor",
-                                          "Consulta Proveedor",
-                                          "Error ocurrido en DaoProveedor",
+                                         (RecursosComandoProveedor.rs04,
+                                          RecursosComandoProveedor.CmdConsultarProv,
+                                          RecursosComandoProveedor.ConsultaProv,
+                                          RecursosComandoProveedor.ex04,
                                           e);
                 Logger.EscribirEnLogger(exComandoConsultarProveedor);
 
@@ -55,10 +56,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDao e)
             {
                 ExcepcionComandoConsultarProveedor exComandoConsultarProveedor = new ExcepcionComandoConsultarProveedor
-                                         ("RS_08_004",
-                                          "Comando Consultar Proveedor",
-                                          "Consulta Proveedor",
-                                          "No se han podido cargar los datos debido a un error en el sistema",
+                                         (RecursosComandoProveedor.rs04,
+                                          RecursosComandoProveedor.CmdConsultarProv,
+                                          RecursosComandoProveedor.ConsultaProv,
+                                          RecursosComandoProveedor.ex04,
                                           e);
                 Logger.EscribirEnLogger(exComandoConsultarProveedor);
 

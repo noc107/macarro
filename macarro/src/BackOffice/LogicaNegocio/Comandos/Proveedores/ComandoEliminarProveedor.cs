@@ -9,6 +9,7 @@ using BackOffice.Excepciones.ExcepcionesDao;
 using BackOffice.Excepciones.ExcepcionesComando.Proveedores;
 using BackOffice.Excepciones.ExcepcionesDao.Proveedores;
 using BackOffice.Excepciones;
+using BackOffice.LogicaNegocio.Comandos.Proveedores.Recursos;
 
 namespace BackOffice.LogicaNegocio.Comandos.Proveedores
 {
@@ -31,10 +32,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (NullReferenceException e)
             {
                 ExcepcionComandoEliminarProveedor exComandoEliminarProveedor = new ExcepcionComandoEliminarProveedor
-                                         ("RS_08_002",
-                                          "Comando Eliminar Proveedor",
-                                          "Eliminar Proveedor",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                                         (RecursosComandoProveedor.rs02,
+                                          RecursosComandoProveedor.CmdEliminarProv,
+                                          RecursosComandoProveedor.EliminarProv,
+                                          RecursosComandoProveedor.ex02,
                                           e);
                 Logger.EscribirEnLogger(exComandoEliminarProveedor);
 
@@ -43,10 +44,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDaoProveedor e)
             {
                 ExcepcionComandoEliminarProveedor exComandoEliminarProveedor = new ExcepcionComandoEliminarProveedor
-                                          ("RS_08_003",
-                                          "Comando Eliminar Proveedor",
-                                          "Eliminar Proveedor",
-                                          "Error ocurrido en DaoProveedor",
+                                         (RecursosComandoProveedor.rs03,
+                                          RecursosComandoProveedor.CmdEliminarProv,
+                                          RecursosComandoProveedor.EliminarProv,
+                                          RecursosComandoProveedor.ex03,
                                           e);
                 Logger.EscribirEnLogger(exComandoEliminarProveedor);
 
@@ -55,10 +56,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDao e)
             {
                 ExcepcionComandoEliminarProveedor exComandoEliminarProveedor = new ExcepcionComandoEliminarProveedor
-                                         ("RS_08_004",
-                                          "Comando Eliminar Proveedor",
-                                          "Eliminar Proveedor",
-                                          "No se han podido cargar los datos debido a un error en el sistema",
+                                         (RecursosComandoProveedor.rs04,
+                                          RecursosComandoProveedor.CmdEliminarProv,
+                                          RecursosComandoProveedor.EliminarProv,
+                                          RecursosComandoProveedor.ex04,
                                           e);
                 Logger.EscribirEnLogger(exComandoEliminarProveedor);
 

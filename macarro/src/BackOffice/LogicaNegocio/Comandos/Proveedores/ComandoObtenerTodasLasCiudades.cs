@@ -9,6 +9,7 @@ using BackOffice.Excepciones.ExcepcionesDao;
 using BackOffice.Excepciones.ExcepcionesDao.Proveedores;
 using BackOffice.FuenteDatos.Fabrica;
 using BackOffice.FuenteDatos.IDao.Proveedores;
+using BackOffice.LogicaNegocio.Comandos.Proveedores.Recursos;
 
 namespace BackOffice.LogicaNegocio.Comandos.Proveedores
 {
@@ -33,10 +34,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (NullReferenceException e)
             {
                 ExcepcionComandoObtenerTodasLasCiudades exComandoObtenerCiudades = new ExcepcionComandoObtenerTodasLasCiudades
-                                         ("RS_08_002",
-                                          "Comando Obtener Todas Las Ciudades",
-                                          "Obtener Ciudades",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                                         (RecursosComandoProveedor.rs02,
+                                          RecursosComandoProveedor.CmdObtenerCiudades,
+                                          RecursosComandoProveedor.ObtenerCiudades,
+                                          RecursosComandoProveedor.ex02,
                                           e);
                 Logger.EscribirEnLogger(exComandoObtenerCiudades);
 
@@ -45,10 +46,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDaoProveedor e)
             {
                 ExcepcionComandoObtenerTodasLasCiudades exComandoObtenerCiudades = new ExcepcionComandoObtenerTodasLasCiudades
-                                          ("RS_08_003",
-                                          "Comando Obtener Todas Las Ciudades",
-                                          "Obtener Ciudades",
-                                          "Error ocurrido en DaoProveedor",
+                                          (RecursosComandoProveedor.rs03,
+                                          RecursosComandoProveedor.CmdObtenerCiudades,
+                                          RecursosComandoProveedor.ObtenerCiudades,
+                                          RecursosComandoProveedor.ex03,
                                           e);
                 Logger.EscribirEnLogger(exComandoObtenerCiudades);
 
@@ -57,10 +58,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDao e)
             {
                 ExcepcionComandoObtenerTodasLasCiudades exComandoObtenerCiudades = new ExcepcionComandoObtenerTodasLasCiudades
-                                         ("RS_08_004",
-                                          "Comando Obtener Todas Las Ciudades",
-                                          "Obtener Ciudades",
-                                          "No se han podido cargar los datos debido a un error en el sistema",
+                                         (RecursosComandoProveedor.rs04,
+                                          RecursosComandoProveedor.CmdObtenerCiudades,
+                                          RecursosComandoProveedor.ObtenerCiudades,
+                                          RecursosComandoProveedor.ex04,
                                           e);
                 Logger.EscribirEnLogger(exComandoObtenerCiudades);
 

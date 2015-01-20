@@ -9,6 +9,7 @@ using BackOffice.Excepciones.ExcepcionesDao;
 using BackOffice.Excepciones.ExcepcionesDao.Proveedores;
 using BackOffice.FuenteDatos.Fabrica;
 using BackOffice.FuenteDatos.IDao.Proveedores;
+using BackOffice.LogicaNegocio.Comandos.Proveedores.Recursos;
 
 namespace BackOffice.LogicaNegocio.Comandos.Proveedores
 {
@@ -33,10 +34,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (NullReferenceException e)
             {
                 ExcepcionComandoCambioEstado exComandoCambioEstado = new ExcepcionComandoCambioEstado
-                                         ("RS_08_002",
-                                          "Comando Cambio Estado",
-                                          "Cambia Estados",
-                                          "Error ocurrido en DaoProveedor",
+                                         (RecursosComandoProveedor.rs02,
+                                          RecursosComandoProveedor.CmdCambioEstados,
+                                          RecursosComandoProveedor.CambioEstados,
+                                          RecursosComandoProveedor.ex02,
                                           e);
                 Logger.EscribirEnLogger(exComandoCambioEstado);
 
@@ -45,10 +46,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDaoProveedor e)
             {
                 ExcepcionComandoCambioEstado exComandoCambioEstado = new ExcepcionComandoCambioEstado
-                                          ("RS_08_003",
-                                          "Comando Cambio Estado",
-                                          "Cambia Estados",
-                                          "No se han podido cargar los datos debido a un error en el sistema",
+                                         (RecursosComandoProveedor.rs03,
+                                          RecursosComandoProveedor.CmdCambioEstados,
+                                          RecursosComandoProveedor.CambioEstados,
+                                          RecursosComandoProveedor.ex03,
                                           e);
                 Logger.EscribirEnLogger(exComandoCambioEstado);
 
@@ -57,10 +58,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDao e)
             {
                 ExcepcionComandoCambioEstado exComandoCambioEstado = new ExcepcionComandoCambioEstado
-                                         ("RS_08_004",
-                                          "Comando Cambio Estado",
-                                          "Cambia Estados",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                                         (RecursosComandoProveedor.rs04,
+                                          RecursosComandoProveedor.CmdCambioEstados,
+                                          RecursosComandoProveedor.CambioEstados,
+                                          RecursosComandoProveedor.ex04,
                                           e);
                 Logger.EscribirEnLogger(exComandoCambioEstado);
 

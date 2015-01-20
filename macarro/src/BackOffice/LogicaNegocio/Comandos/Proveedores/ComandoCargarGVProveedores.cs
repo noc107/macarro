@@ -9,6 +9,7 @@ using BackOffice.Excepciones.ExcepcionesComando.Proveedores;
 using BackOffice.Excepciones;
 using BackOffice.Excepciones.ExcepcionesDao.Proveedores;
 using BackOffice.Excepciones.ExcepcionesDao;
+using BackOffice.LogicaNegocio.Comandos.Proveedores.Recursos;
 
 namespace BackOffice.LogicaNegocio.Comandos.Proveedores
 {
@@ -31,10 +32,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (NullReferenceException e)
             {
                 ExcepcionComandoCargarGVProveedores exComandoCargarGVProveedores = new ExcepcionComandoCargarGVProveedores
-                                         ("RS_08_002",
-                                          "Comando Cargar GV Proveedores",
-                                          "Carga Datos en GV",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                                         (RecursosComandoProveedor.rs02,
+                                          RecursosComandoProveedor.CmdCargarGVProv,
+                                          RecursosComandoProveedor.CargarDatosGV,
+                                          RecursosComandoProveedor.ex02,
                                           e);
                 Logger.EscribirEnLogger(exComandoCargarGVProveedores);
 
@@ -43,10 +44,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDaoProveedor e)
             {
                 ExcepcionComandoCargarGVProveedores exComandoCargarGVProveedores = new ExcepcionComandoCargarGVProveedores
-                                          ("RS_08_003",
-                                          "Comando Cargar GV Proveedores",
-                                          "Carga Datos en GV",
-                                          "Error ocurrido en DaoProveedor",
+                                          (RecursosComandoProveedor.rs03,
+                                          RecursosComandoProveedor.CmdCargarGVProv,
+                                          RecursosComandoProveedor.CargarDatosGV,
+                                          RecursosComandoProveedor.ex03,
                                           e);
                 Logger.EscribirEnLogger(exComandoCargarGVProveedores);
 
@@ -55,10 +56,10 @@ namespace BackOffice.LogicaNegocio.Comandos.Proveedores
             catch (ExcepcionDao e)
             {
                 ExcepcionComandoCargarGVProveedores exComandoCargarGVProveedores = new ExcepcionComandoCargarGVProveedores
-                                         ("RS_08_004",
-                                          "Comando Cargar GV Proveedores",
-                                          "Carga Datos en GV",
-                                          "No se han podido cargar los datos debido a un error en el sistema",
+                                         (RecursosComandoProveedor.rs04,
+                                          RecursosComandoProveedor.CmdCargarGVProv,
+                                          RecursosComandoProveedor.CargarDatosGV,
+                                          RecursosComandoProveedor.ex04,
                                           e);
                 Logger.EscribirEnLogger(exComandoCargarGVProveedores);
 
