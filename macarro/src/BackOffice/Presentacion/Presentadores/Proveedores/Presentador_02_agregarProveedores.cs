@@ -11,6 +11,7 @@ using BackOffice.Dominio.Entidades;
 using BackOffice.Excepciones.ExcepcionesComando.Proveedores;
 using BackOffice.Excepciones.ExcepcionesPresentacion.Proveedores;
 using BackOffice.Excepciones;
+using BackOffice.Presentacion.Presentadores.Proveedores.Recursos;
 
 namespace BackOffice.Presentacion.Presentadores.Proveedores
 {
@@ -36,25 +37,36 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             try
             {
                 Dominio.Entidad _proveedor;
-                _proveedor = FabricaEntidad.ObtenerProveedor(1, _vista.Rif.Text, _vista.RazonSocial.Text, _vista.Correo.Text, _vista.PaginaWeb.Text, _vista.FechaContrato.Text,
-                                                             _vista.Telefono.Text, _vista.Direccion.Text, _vista.Ciudad.Text);
+                _proveedor = FabricaEntidad.ObtenerProveedor(1, _vista.Rif.Text, _vista.RazonSocial.Text, _vista.Correo.Text,
+                                                                _vista.PaginaWeb.Text, _vista.FechaContrato.Text,_vista.Telefono.Text,
+                                                                _vista.Direccion.Text, _vista.Ciudad.Text);
                 Comando<Entidad, bool> comandoAgregarProveedor;
                 comandoAgregarProveedor = FabricaComando.ObtenerComandoAgregarProveedor();
                 comandoAgregarProveedor.Ejecutar(_proveedor);
                 _vista.LabelMensajeExito.Visible = true;
-                _vista.LabelMensajeExito.Text = "El proveedor ha sido creado satisfactoriamente";
+                _vista.LabelMensajeExito.Text = RecursosPresentadorProveedor.ProvExito;
             }
             catch (ExcepcionComandoAgregarProveedor e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "El ítem no ha podido ser creado debido a que existen problemas con la base de datos", e);
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorAgregar,
+                     RecursosPresentadorProveedor.Agregar,
+                     RecursosPresentadorProveedor.ex19,
+                     e);
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
             catch (Exception e) 
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "El ítem no ha podido ser creado debido a que ocurrio un error ", e);
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorAgregar,
+                     RecursosPresentadorProveedor.Agregar,
+                     RecursosPresentadorProveedor.ex199,
+                     e); 
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
@@ -75,7 +87,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             comandoBuscarPaisesCompletos = FabricaComando.ObtenerComandoPaisesTodos();
             try
             {
-                _paises = comandoBuscarPaisesCompletos.Ejecutar("Paises");
+                _paises = comandoBuscarPaisesCompletos.Ejecutar(RecursosPresentadorProveedor.Paises);
                 foreach (string pais in _paises)
                 {
                     _vista.Pais.Items.Add(pais);
@@ -84,7 +96,12 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (Exception e) 
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "Ha ocurrido un error de Base de datos ", e);
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorAgregar,
+                     RecursosPresentadorProveedor.Agregar,
+                     RecursosPresentadorProveedor.ex199,
+                     e); 
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje; 
             }
@@ -99,7 +116,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             comandoBuscarEstadosCompletos = FabricaComando.ObtenerComandoEstadosTodos();
             try
             {
-                _estados = comandoBuscarEstadosCompletos.Ejecutar("Estados");
+                _estados = comandoBuscarEstadosCompletos.Ejecutar(RecursosPresentadorProveedor.Estados);
                 foreach (string estado in _estados)
                 {
                     _vista.Estado.Items.Add(estado);
@@ -108,7 +125,12 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (Exception e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "Ha ocurrido un error de Base de datos ", e);
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorAgregar,
+                     RecursosPresentadorProveedor.Agregar,
+                     RecursosPresentadorProveedor.ex19,
+                     e);
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
@@ -123,7 +145,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             comandoBuscarCiudadesCompletos = FabricaComando.ObtenerComandoCiudadesTodas();
             try
             {
-                _ciudades = comandoBuscarCiudadesCompletos.Ejecutar("Ciudades");
+                _ciudades = comandoBuscarCiudadesCompletos.Ejecutar(RecursosPresentadorProveedor.Ciudades);
                 foreach (string ciudad in _ciudades)
                 {
                     _vista.Ciudad.Items.Add(ciudad);
@@ -132,7 +154,12 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (Exception e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "Ha ocurrido un error de Base de datos ", e);
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorAgregar,
+                     RecursosPresentadorProveedor.Agregar,
+                     RecursosPresentadorProveedor.ex19,
+                     e); 
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
@@ -158,7 +185,12 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (Exception e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "Ha ocurrido un error de Base de datos ", e);
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorAgregar,
+                     RecursosPresentadorProveedor.Agregar,
+                     RecursosPresentadorProveedor.ex19,
+                     e); 
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
@@ -184,7 +216,12 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (Exception e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Agregar", "Agregar", "Ha ocurrido un error de Base de datos ", e);
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorAgregar,
+                     RecursosPresentadorProveedor.Agregar,
+                     RecursosPresentadorProveedor.ex19,
+                     e); 
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }

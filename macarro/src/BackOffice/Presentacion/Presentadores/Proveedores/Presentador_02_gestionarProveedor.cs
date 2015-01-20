@@ -13,6 +13,7 @@ using BackOffice.Dominio.Entidades;
 using BackOffice.Excepciones.ExcepcionesComando.Proveedores;
 using BackOffice.Excepciones.ExcepcionesPresentacion.Proveedores;
 using BackOffice.Excepciones;
+using BackOffice.Presentacion.Presentadores.Proveedores.Recursos;
 
 namespace BackOffice.Presentacion.Presentadores.Proveedores
 {
@@ -50,22 +51,22 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             {
                 List<Entidad> listaProveedores = ComandoLlenarGridProveedores.Ejecutar(_vista.textboxBuscar.Text);
 
-                tColumn = new System.Data.DataColumn("Id", System.Type.GetType("System.String"));
+                tColumn = new System.Data.DataColumn(RecursosPresentadorProveedor.Id, System.Type.GetType(RecursosPresentadorProveedor.SystemString));
                 mytable.Columns.Add(tColumn);
-                tColumn = new System.Data.DataColumn("Rif", System.Type.GetType("System.String"));
+                tColumn = new System.Data.DataColumn(RecursosPresentadorProveedor.Rif, System.Type.GetType(RecursosPresentadorProveedor.SystemString));
                 mytable.Columns.Add(tColumn);
-                tColumn = new System.Data.DataColumn("Nombre", System.Type.GetType("System.String"));
+                tColumn = new System.Data.DataColumn(RecursosPresentadorProveedor.Nombre, System.Type.GetType(RecursosPresentadorProveedor.SystemString));
                 mytable.Columns.Add(tColumn);
-                tColumn = new System.Data.DataColumn("Estado", System.Type.GetType("System.String"));
+                tColumn = new System.Data.DataColumn(RecursosPresentadorProveedor.Estado, System.Type.GetType(RecursosPresentadorProveedor.SystemString));
                 mytable.Columns.Add(tColumn);
-                tColumn = new System.Data.DataColumn("Acciones", System.Type.GetType("System.String"));
+                tColumn = new System.Data.DataColumn(RecursosPresentadorProveedor.Acciones, System.Type.GetType(RecursosPresentadorProveedor.SystemString));
                 mytable.Columns.Add(tColumn);
 
                 foreach (Proveedor r in listaProveedores)
                 {
-                    if (_vista.comboEstado.SelectedValue == "Activado")
+                    if (_vista.comboEstado.SelectedValue == RecursosPresentadorProveedor.Activado)
                     {
-                        if (r.Status == "Activado")
+                        if (r.Status == RecursosPresentadorProveedor.Activado)
                         {
                             mytable.Rows.Add(r.Id, r.Rif, r.RazonSocial, r.Status);
                             gridInactivos = false;
@@ -73,7 +74,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
                     }
                     else
                     {
-                        if (r.Status == "Desactivado")
+                        if (r.Status == RecursosPresentadorProveedor.Desactivado)
                         {
                             mytable.Rows.Add(r.Id, r.Rif, r.RazonSocial, r.Status);
                             gridInactivos = true;
@@ -87,15 +88,24 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (ExcepcionComandoCargarGVProveedores e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Gestionar", "Gestionar", "No se ha podido cargar los datos debido a un error en la base de datos ", e);
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorGestionar,
+                     RecursosPresentadorProveedor.Gestionar,
+                     RecursosPresentadorProveedor.ex19,
+                     e); 
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
             catch (Exception e) 
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor("RS_08_019", "Presentador Gestionar", "Gestionar", "No se han podido cargar los datos debido a que ha ocurrido un error", e);
-                Logger.EscribirEnLogger(Ex);
+                ExcepcionPresentacionAgregarProveedor Ex = new ExcepcionPresentacionAgregarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorGestionar,
+                     RecursosPresentadorProveedor.Gestionar,
+                     RecursosPresentadorProveedor.ex199,
+                     e); Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
         }
@@ -106,11 +116,11 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
         public ImageButton Consultar()
         {
             ImageButton consultar = new ImageButton();
-            consultar.ID = "bConsultar";
-            consultar.ImageUrl = "../../../../comun/resources/img/View-128.png";
+            consultar.ID = RecursosPresentadorProveedor.bConsultar;
+            consultar.ImageUrl = RecursosPresentadorProveedor.consImg;
             consultar.Height = 60;
             consultar.Width = 60;
-            consultar.CommandName = "Consultar";
+            consultar.CommandName = RecursosPresentadorProveedor.Consultar;
             return consultar;
         }
         /// <summary>
@@ -120,11 +130,11 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
         public ImageButton Editar()
         {
             ImageButton editar = new ImageButton();
-            editar.ID = "bEditar";
-            editar.ImageUrl = "../../../../comun/resources/img/Data-Edit-128.png";
+            editar.ID = RecursosPresentadorProveedor.bEditar;
+            editar.ImageUrl = RecursosPresentadorProveedor.edImg;
             editar.Height = 60;
             editar.Width = 60;
-            editar.CommandName = "Modificar";
+            editar.CommandName = RecursosPresentadorProveedor.Modificar;
             return editar;
         }
 
@@ -135,15 +145,15 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
         public ImageButton Eliminar()
         {
             ImageButton eliminar = new ImageButton();
-            eliminar.ID = "bEliminar";
-            eliminar.ImageUrl = "../../../../comun/resources/img/Garbage-Closed-128.png";
+            eliminar.ID = RecursosPresentadorProveedor.bEliminar;
+            eliminar.ImageUrl = RecursosPresentadorProveedor.elImg;
             eliminar.Height = 60;
             eliminar.Width = 60;
-            eliminar.CommandName = "Eliminar";
+            eliminar.CommandName = RecursosPresentadorProveedor.Eliminar;
             if (!gridInactivos)
-            eliminar.OnClientClick = "return confirm('Esta acción eliminará el ítem permanentemente del sistema. ¿Desea continuar?')";
+            eliminar.OnClientClick = RecursosPresentadorProveedor.elimClient1;
             else
-                eliminar.OnClientClick = "return alert('El proveedor se encuentra desactivado. Puede cambiar su estado en la opcion modificar')";
+                eliminar.OnClientClick = RecursosPresentadorProveedor.elimClient2;
             return eliminar;
         }
         /// <summary>
@@ -169,21 +179,6 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             int idProveedor = Convert.ToInt32(_vista.GVProveedores.DataKeys[index].Value.ToString());
         }
 
-        //public int EventoConsultarBtn_Click(object sender)
-        //{
-        //    ImageButton b = (ImageButton)sender;
-        //    GridViewRow row = (GridViewRow)b.Parent.Parent;
-        //    return row.DataItemIndex;
-        //}
-
-        //public void EventoEliminarBtn_Click(object sender)
-        //{
-        //    Comando<int, bool> ComandoEliminarRol;
-        //    ComandoEliminarRol = FabricaComando.ObtenerComandoEliminarRol();
-        //   // ComandoEliminarRol.Ejecutar(EventoConsultarBtn_Click(sender));
-        //    BindGridProveedor();
-        //}
-
         /// <summary>
         /// Metodo que se utiliza para eliminar un proveedor
         /// </summary>
@@ -200,14 +195,24 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (ExcepcionComandoEliminarProveedor ex)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionGestionarProveedor Ex = new ExcepcionPresentacionGestionarProveedor("RS_08_019", "Presentador Gestionar", "Gestionar", "No se ha podido eliminar debido a que existio un error de base de datos ", ex);
+                ExcepcionPresentacionGestionarProveedor Ex = new ExcepcionPresentacionGestionarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorGestionar,
+                     RecursosPresentadorProveedor.Gestionar,
+                     RecursosPresentadorProveedor.ex19,
+                     ex);                
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
             catch (Exception e) 
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionGestionarProveedor Ex = new ExcepcionPresentacionGestionarProveedor("RS_08_019", "Presentador Gestionar", "Gestionar", "No se ha podido eliminar debido a que ocurrio un error ", e);
+                ExcepcionPresentacionGestionarProveedor Ex = new ExcepcionPresentacionGestionarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorGestionar,
+                     RecursosPresentadorProveedor.Gestionar,
+                     RecursosPresentadorProveedor.ex199,
+                     e);                 
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }

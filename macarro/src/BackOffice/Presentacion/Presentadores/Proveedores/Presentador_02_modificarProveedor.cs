@@ -11,6 +11,7 @@ using BackOffice.Presentacion.Contratos.Proveedores;
 using BackOffice.Excepciones.ExcepcionesComando.Proveedores;
 using BackOffice.Excepciones.ExcepcionesPresentacion.Proveedores;
 using BackOffice.Excepciones;
+using BackOffice.Presentacion.Presentadores.Proveedores.Recursos;
 
 namespace BackOffice.Presentacion.Presentadores.Proveedores
 {
@@ -37,12 +38,17 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
                 comandoModificarProveedor = FabricaComando.ObtenerComandoModificarProveedor();
                 comandoModificarProveedor.Ejecutar(_proveedor);
                 _vista.LabelMensajeExito.Visible = true;
-                _vista.LabelMensajeError.Text = "El ítem ha sido modificado satisfactoriamente";
+                _vista.LabelMensajeError.Text = RecursosPresentadorProveedor.ItemModificado;
             }
             catch (ExcepcionComandoModificarProveedor e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor("RS_08_019", "Presentador Modificar", "Modificar", "No se han podido modificar los datos debido a que ocurrio un error en base de datos ", e);
+                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorModificar,
+                     RecursosPresentadorProveedor.Modificar,
+                     RecursosPresentadorProveedor.ex19,
+                     e); 
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
 
@@ -50,7 +56,12 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (Exception e) 
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor("RS_08_019", "Presentador Modificar", "Modificar", "No se han podido modificar los datos debido a que ocurrio un error ", e);
+                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorModificar,
+                     RecursosPresentadorProveedor.Modificar,
+                     RecursosPresentadorProveedor.ex199,
+                     e);
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
@@ -77,15 +88,23 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (ExcepcionComandoConsultarProveedor e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor("RS_08_019", "Presentador Modificar", "Modificar", "No se han podido cargar los datos debido a que ocurrio un error de base de datos ", e);
-                Logger.EscribirEnLogger(Ex);
+                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorModificar,
+                     RecursosPresentadorProveedor.Modificar,
+                     RecursosPresentadorProveedor.ex19,
+                     e); Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
             catch (Exception e) 
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor("RS_08_019", "Presentador Modificar", "Modificar", "No se han podido cargar los datos debido a que ocurrio un error ", e);
-                Logger.EscribirEnLogger(Ex);
+                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorModificar,
+                     RecursosPresentadorProveedor.Modificar,
+                     RecursosPresentadorProveedor.ex199,
+                     e); Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
         }
@@ -101,24 +120,23 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
                 _vista.Telefono.Text = p.Telefono;
                 _vista.PaginaWeb.Text = p.PagWeb;
                 DateTime dt = Convert.ToDateTime(p.FechaContrato);
-                _vista.FechaContrato.Text = dt.ToString("yyyy/MM/dd");
+                _vista.FechaContrato.Text = dt.ToString(RecursosPresentadorProveedor.yyymmdd);
                 _vista.Correo.Text = p.Correo;
 
-                string[]  split = p.IdLugar.Split(':');
-                string[] split2 = split[1].Split(';');
+                string[]  split = p.IdLugar.Split(RecursosPresentadorProveedor.dospuntos.ToCharArray());
+                string[] split2 = split[1].Split(RecursosPresentadorProveedor.puntoycoma.ToCharArray());
                 _vista.Direccion.Text = split2[0];
 
-                if (p.Status == "Activado")
+                if (p.Status == RecursosPresentadorProveedor.Activado)
                 {
-                    _vista.Status.Items.Add("Activado");
-                    _vista.Status.Items.Add("Desactivado");
+                    _vista.Status.Items.Add(RecursosPresentadorProveedor.Activado);
+                    _vista.Status.Items.Add(RecursosPresentadorProveedor.Desactivado);
                 }
                 else
                 {
-                    _vista.Status.Items.Add("Desactivado");
-                    _vista.Status.Items.Add("Activado");                   
-                }
-                //_vista.Estado.Text = p.Status;    
+                    _vista.Status.Items.Add(RecursosPresentadorProveedor.Desactivado);
+                    _vista.Status.Items.Add(RecursosPresentadorProveedor.Activado);                   
+                }   
             }
         }
 
@@ -135,7 +153,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             comandoBuscarPaisesCompletos = FabricaComando.ObtenerComandoPaisesTodos();
             try
             {
-                _paises = comandoBuscarPaisesCompletos.Ejecutar("Paises");
+                _paises = comandoBuscarPaisesCompletos.Ejecutar(RecursosPresentadorProveedor.Paises);
                 foreach (string pais in _paises)
                 {
                     _vista.Pais.Items.Add(pais);
@@ -144,32 +162,29 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (ExcepcionComandoObtenerPaisesTodos e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor("RS_08_019", "Presentador Modificar", "Modificar", "No se ha podido cargar los datos debido a que ocurrio un error en base de datos ", e);
+                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorModificar,
+                     RecursosPresentadorProveedor.Modificar,
+                     RecursosPresentadorProveedor.ex19,
+                     e);                
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
             catch (Exception e) 
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor("RS_08_019", "Presentador Modificar", "Modificar", "No se ha podido cargar los datos debido a que ocurrio un error", e);
+                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorModificar,
+                     RecursosPresentadorProveedor.Modificar,
+                     RecursosPresentadorProveedor.ex199,
+                     e); 
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
         }
 
-
-        //public void EventoCambioPais()
-        //{
-        //    List<string> _estados;
-        //    string _nombrePais = _vista.Pais.SelectedItem.Text;
-        //    Comando<string, List<string>> comandoBuscarEstados;
-        //    comandoBuscarEstados = FabricaComando.ObtenerComandoEstadosDePais();
-        //    _estados = comandoBuscarEstados.Ejecutar(_nombrePais);
-        //    foreach (string estado in _estados)
-        //    {
-        //        _vista.Estado.Items.Add(estado);
-        //    }
-        //}
 
         public void cargarCiudades()
         {
@@ -178,7 +193,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             comandoBuscarCiudadesCompletos = FabricaComando.ObtenerComandoCiudadesTodas();
             try
             {
-                _ciudades = comandoBuscarCiudadesCompletos.Ejecutar("Ciudades");
+                _ciudades = comandoBuscarCiudadesCompletos.Ejecutar(RecursosPresentadorProveedor.Ciudades);
                 foreach (string ciudad in _ciudades)
                 {
                     _vista.Ciudad.Items.Add(ciudad);
@@ -187,14 +202,24 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (ExcepcionComandoObtenerTodasLasCiudades e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor("RS_08_019", "Presentador Modificar", "Modificar", "No se ha podido cargar los datos debido a que ocurrio un error en base de datos ", e);
+                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorModificar,
+                     RecursosPresentadorProveedor.Modificar,
+                     RecursosPresentadorProveedor.ex19,
+                     e);                
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
             catch (Exception e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor("RS_08_019", "Presentador Modificar", "Modificar", "No se ha podido cargar los datos debido a que ocurrio un error", e);
+                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorModificar,
+                     RecursosPresentadorProveedor.Modificar,
+                     RecursosPresentadorProveedor.ex199,
+                     e);                
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
@@ -208,7 +233,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             comandoBuscarEstadosCompletos = FabricaComando.ObtenerComandoEstadosTodos();
             try
             {
-                _estados = comandoBuscarEstadosCompletos.Ejecutar("Estados");
+                _estados = comandoBuscarEstadosCompletos.Ejecutar(RecursosPresentadorProveedor.Estados);
                 foreach (string estado in _estados)
                 {
                     _vista.Estado.Items.Add(estado);
@@ -217,34 +242,27 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (ExcepcionComandoObtenerTodosLosEstados e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor("RS_08_019", "Presentador Modificar", "Modificar", "No se ha podido cargar los datos debido a que ocurrio un error en base de datos ", e);
+                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorModificar,
+                     RecursosPresentadorProveedor.Modificar,
+                     RecursosPresentadorProveedor.ex19,
+                     e);                
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
             catch (Exception e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor("RS_08_019", "Presentador Modificar", "Modificar", "No se ha podido cargar los datos debido a que ocurrio un error", e);
+                ExcepcionPresentacionModificarProveedor Ex = new ExcepcionPresentacionModificarProveedor(RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorModificar,
+                     RecursosPresentadorProveedor.Modificar,
+                     RecursosPresentadorProveedor.ex199,
+                     e); 
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
         }
-
-
-        //public void EventoCambioEstado()
-        //{
-        //    List<string> _ciudades;
-        //    string _nombreEstado = _vista.Estado.SelectedItem.Text;
-        //    Comando<string, List<string>> comandoBuscarCiudades;
-        //    comandoBuscarCiudades = FabricaComando.ObtenerComandoCiudadesDeEstado();
-        //    _ciudades = comandoBuscarCiudades.Ejecutar(_nombreEstado);
-        //    foreach (string ciudad in _ciudades)
-        //    {
-        //        _vista.Ciudad.Items.Add(ciudad);
-        //    }
-
-        //}
-
 
     }
 }

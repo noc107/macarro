@@ -11,6 +11,7 @@ using BackOffice.Dominio.Entidades;
 using BackOffice.Excepciones.ExcepcionesPresentacion.Proveedores;
 using BackOffice.Excepciones.ExcepcionesComando.Proveedores;
 using BackOffice.Excepciones;
+using BackOffice.Presentacion.Presentadores.Proveedores.Recursos;
 
 namespace BackOffice.Presentacion.Presentadores.Proveedores
 {
@@ -61,14 +62,24 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (ExcepcionComandoConsultarProveedor ex)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor("RS_08_019", "Presentador Consultar", "Consultar", "No se han podido cargar los datos debido a que existio un error de base de datos ", ex);
+                ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorConsultar,
+                     RecursosPresentadorProveedor.Consultar,
+                     RecursosPresentadorProveedor.ex19,
+                     ex); 
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
             catch (Exception e) 
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor("RS_08_019", "Presentador Consultar", "Consultar", "No se han podido cargar los datos debido a que ocurrio un error", e);
+                ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorConsultar,
+                     RecursosPresentadorProveedor.Consultar,
+                     RecursosPresentadorProveedor.ex199,
+                     e);
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }
@@ -114,7 +125,12 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             catch (Exception e)
             {
                 _vista.LabelMensajeError.Visible = true;
-                ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor("RS_08_019", "Presentador Consultar", "Consultar", "Ha ocurrido un error de Base de datos ", e);
+                ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor
+                    (RecursosPresentadorProveedor.rs19,
+                     RecursosPresentadorProveedor.PresentadorConsultar,
+                     RecursosPresentadorProveedor.Consultar,
+                     RecursosPresentadorProveedor.ex19,
+                     e);
                 Logger.EscribirEnLogger(Ex);
                 _vista.LabelMensajeError.Text = Ex.Mensaje;
             }

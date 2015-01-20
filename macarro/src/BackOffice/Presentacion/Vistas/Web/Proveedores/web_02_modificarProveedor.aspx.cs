@@ -8,6 +8,7 @@ using System.Data;
 using BackOffice.Presentacion.Contratos;
 using BackOffice.Presentacion.Contratos.Proveedores;
 using BackOffice.Presentacion.Presentadores.Proveedores;
+using BackOffice.Presentacion.Vistas.Web.Proveedores.Recursos;
 
 namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 {
@@ -27,7 +28,7 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
                 _presentador.cargarPaises();
                 _presentador.cargarEstados();
                 _presentador.cargarCiudades();
-                _presentador.EventoBotonConsultar(Convert.ToInt32(Request.QueryString["r"]));   
+                _presentador.EventoBotonConsultar(Convert.ToInt32(Request.QueryString[RecursosVistaProveedor.r]));   
             }
         }
 
@@ -38,21 +39,19 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
         /// <param name="e">Evento</param>
         protected void Regresar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("web_02_gestionarProveedores.aspx");
+            Response.Redirect(RecursosVistaProveedor.webGestionarProv);
         }
 
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
-            //TomarValoresGridviewAgregar();
+
         }
 
 
         protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
         {
-           //Eliminar items seleccionados de la lista de items del proveedor
-           //TomarValoresGridviewEliminar();
-           //Mensaje de aviso
+
         }
 
         TextBox IContrato_02_modificarProveedor.Rif
@@ -132,6 +131,8 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             get { return Mensaje; }
             set { Mensaje = value; }
         }
+
+
         /// <summary>
         /// Metodo que ejecuta el presentador para modificar
         /// </summary>
@@ -141,23 +142,6 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
         {
             _presentador.EventoClickBotonAceptar();
         }
-
-
-        //protected void _Pais_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    _presentador.EventoCambioPais();
-        //}
-
-        //protected void _Ciudad_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    _presentador.EventoCambioCiudad();
-        //}
-
-        //protected void _Estado_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    _presentador.EventoCambioEstado();
-        //}
-
 
     }
 }

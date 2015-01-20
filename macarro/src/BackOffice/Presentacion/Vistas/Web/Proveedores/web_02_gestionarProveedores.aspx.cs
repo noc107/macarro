@@ -9,6 +9,7 @@ using BackOffice.Presentacion.Presentadores.Proveedores;
 using BackOffice.Presentacion.Contratos;
 using BackOffice.Presentacion.Contratos.Proveedores;
 using System.Data.SqlClient;
+using BackOffice.Presentacion.Vistas.Web.Proveedores.Recursos;
 
 namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 {
@@ -25,27 +26,20 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
                 _presentador.BindGridProveedor();
-            }
-            catch (Exception ex) 
-            {
-            
-            }
         }
 
         protected void gvProveedores_RowCommand(object sender, GridViewCommandEventArgs e)
 	        {
-	            if (e.CommandName == "Consultar")
+	            if (e.CommandName == RecursosVistaProveedor.Consultar)
 	            {
-	                Response.Redirect("web_02_consultarProveedor.aspx?r="+ _presentador.ObtenerIdProveedorSeleccionado_Click(e));
+	                Response.Redirect(RecursosVistaProveedor.webConsultarProv + _presentador.ObtenerIdProveedorSeleccionado_Click(e));
 	            }
-	            if (e.CommandName == "Modificar")
+	            if (e.CommandName == RecursosVistaProveedor.Modificar)
 	            {
-                    Response.Redirect("web_02_modificarProveedor.aspx?r=" + _presentador.ObtenerIdProveedorSeleccionado_Click(e));
+                    Response.Redirect(RecursosVistaProveedor.webModificarProv + _presentador.ObtenerIdProveedorSeleccionado_Click(e));
 	            }
-	            if (e.CommandName == "Eliminar")
+	            if (e.CommandName == RecursosVistaProveedor.Eliminar)
 	            {
                     _presentador.EventoBotonEliminar(_presentador.ObtenerIdProveedorSeleccionado_Click(e));
 	            }
@@ -126,7 +120,7 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
         protected void Button1_Click(object sender, EventArgs e)
         {
             //Boton Regresar
-            Response.Redirect("../inicio.aspx");
+            Response.Redirect(RecursosVistaProveedor.webInicio);
         }
 
     }

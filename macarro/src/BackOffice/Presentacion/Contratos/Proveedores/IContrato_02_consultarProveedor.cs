@@ -17,21 +17,7 @@ namespace BackOffice.Presentacion.Contratos.Proveedores
         Label FechaContrato { get; set; }
         Label Pais { get; set; }
         Label Estado { get; set; }
-        //Label Estado { get; set; }
-        //Label Ciudad { get; set; }
-        //Label Direccion { get; set; }
         ListBox Items { set; get; }
 
-        //Label Rif { get; set; }
-        //Label RazonSocial { set; }
-        //Label Correo { set; }
-        //Label PaginaWeb { set; }
-        //Label Telefono { set; }
-        //Label FechaContrato { set; }
-        //Label Pais { set; }
-        //Label Estado { set; }
-        //Label Ciudad { set; }
-        //Label Direccion { set; }
-        //GridView Items { set; }
     }
 }

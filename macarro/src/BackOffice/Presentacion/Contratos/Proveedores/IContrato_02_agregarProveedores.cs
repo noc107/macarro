@@ -19,6 +19,5 @@ namespace BackOffice.Presentacion.Contratos.Proveedores
         DropDownList Estado { get; }
         DropDownList Ciudad { get; }
         TextBox Direccion { get; }
-        //GridView Items { get; }
     }
 }
