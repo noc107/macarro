@@ -10,6 +10,7 @@ using System.Linq;
 using System.Web;
 using BackOffice.Excepciones.ExcepcionesDao.Proveedores;
 using BackOffice.Excepciones;
+using BackOffice.FuenteDatos.Dao.Proveedores.Recursos;
 
 namespace BackOffice.FuenteDatos.Dao.Proveedores
 {
@@ -23,9 +24,9 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
         /// <returns>Un objeto de tipo proveedor</returns>
         public Dominio.Entidad ConsultarXId(int id)
         {
-            SqlCommand comando = new SqlCommand("Procedure_consultarProveedorGeneral", IniciarConexion());
+            SqlCommand comando = new SqlCommand(RecursosDaoProveedores.PcdConsultarProv, IniciarConexion());
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.Add(new SqlParameter("_proId", id));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramProId, id));
 
             SqlDataReader _lectura;
 
@@ -44,10 +45,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (NullReferenceException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_002",
-                                          "DaoProveedor",
-                                          "Consultar",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs02,
+                                          RecursosDaoProveedores.DaoProv,
+                                          RecursosDaoProveedores.Consultar,
+                                          RecursosDaoProveedores.ex02,
                                           ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -55,10 +56,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (SqlException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_003",
-                                                           "DaoProvedor",
-                                                           "Consultar",
-                                                           "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs03,
+                                                           RecursosDaoProveedores.DaoProv,
+                                                           RecursosDaoProveedores.Consultar,
+                                                           RecursosDaoProveedores.ex03,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -66,10 +67,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex) 
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Consultar",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.Consultar,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -94,9 +95,9 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             {
                 SqlConnection _cn = IniciarConexion();
                 _cn.Open();
-                SqlCommand _comando = new SqlCommand("Procedure_llenarGVProveedores", _cn);
+                SqlCommand _comando = new SqlCommand(RecursosDaoProveedores.PcdLlenarGV, _cn);
                 _comando.CommandType = System.Data.CommandType.StoredProcedure;
-                _comando.Parameters.Add(new SqlParameter("_paramBusq", ""));
+                _comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramBusq, RecursosDaoProveedores.Vacio));
                 reader = _comando.ExecuteReader();
 
                 while (reader.Read())
@@ -108,10 +109,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (NullReferenceException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_002",
-                                          "DaoProveedor",
-                                          "Consultar todos los proveedores",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs02,
+                                          RecursosDaoProveedores.DaoProv,
+                                          RecursosDaoProveedores.ConsultarTodosProv,
+                                          RecursosDaoProveedores.ex02,
                                           ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -119,10 +120,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (SqlException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_003",
-                                                           "DaoProvedor",
-                                                           "Consultar todos los proveedores",
-                                                           "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs03,
+                                                           RecursosDaoProveedores.DaoProv,
+                                                           RecursosDaoProveedores.ConsultarTodosProv,
+                                                           RecursosDaoProveedores.ex03,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -130,10 +131,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Consultar todos los proveedores",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.ConsultarTodosProv,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -158,9 +159,9 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             {
                 SqlConnection _cn = IniciarConexion();
                 _cn.Open();
-                SqlCommand _comando = new SqlCommand("Procedure_llenarGVProveedores", _cn);
+                SqlCommand _comando = new SqlCommand(RecursosDaoProveedores.PcdLlenarGV, _cn);
                 _comando.CommandType = System.Data.CommandType.StoredProcedure;
-                _comando.Parameters.Add(new SqlParameter("_paramBusq", busqueda));
+                _comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramBusq, busqueda));
                 reader = _comando.ExecuteReader();
 
                 while (reader.Read())
@@ -172,10 +173,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (NullReferenceException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_002",
-                                          "DaoProveedor",
-                                          "Consultar Busqueda",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs02,
+                                          RecursosDaoProveedores.DaoProv,
+                                          RecursosDaoProveedores.ConsultarBusq,
+                                          RecursosDaoProveedores.ex02,
                                           ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -183,10 +184,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (SqlException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_003",
-                                                           "DaoProvedor",
-                                                           "Consultar Busqueda",
-                                                           "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs03,
+                                                           RecursosDaoProveedores.DaoProv,
+                                                           RecursosDaoProveedores.ConsultarBusq,
+                                                           RecursosDaoProveedores.ex03,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -194,10 +195,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Consultar Busqueda",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.ConsultarBusq,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -215,9 +216,9 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
         /// <returns>Devuelve un boolean: True en caso de eliminar el proveedor</returns>
         public bool eliminarProveedor(int id)
         {
-            SqlCommand comando = new SqlCommand("Procedure_eliminarProveedor", IniciarConexion());
+            SqlCommand comando = new SqlCommand(RecursosDaoProveedores.PcdEliminarProv, IniciarConexion());
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.Add(new SqlParameter("_proId", id));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramProId, id));
 
             SqlDataReader _lectura;
 
@@ -229,10 +230,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (NullReferenceException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_002",
-                                          "DaoProveedor",
-                                          "Eliminar",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs02,
+                                          RecursosDaoProveedores.DaoProv,
+                                          RecursosDaoProveedores.Eliminar,
+                                          RecursosDaoProveedores.ex02,
                                           ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -240,10 +241,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (SqlException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_003",
-                                                           "DaoProvedor",
-                                                           "Eliminar",
-                                                           "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs03,
+                                                           RecursosDaoProveedores.DaoProv,
+                                                           RecursosDaoProveedores.Eliminar,
+                                                           RecursosDaoProveedores.ex03,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -251,10 +252,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Eliminar",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.Eliminar,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -274,9 +275,9 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
         public string consultarDireccion(int fklugar)
         {
             CerrarConexion();
-            SqlCommand comando = new SqlCommand("Procedure_consultarDireccionProveedor", IniciarConexion());
+            SqlCommand comando = new SqlCommand(RecursosDaoProveedores.PcdConsDireccion, IniciarConexion());
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.Add(new SqlParameter("idDireccion", fklugar));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramIdDireccion, fklugar));
 
             SqlDataReader _lectura;
 
@@ -292,10 +293,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (NullReferenceException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_002",
-                                          "DaoProveedor",
-                                          "Consultar Direccion",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs02,
+                                          RecursosDaoProveedores.DaoProv,
+                                          RecursosDaoProveedores.ConsultarDireccion,
+                                          RecursosDaoProveedores.ex02,
                                           ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -303,10 +304,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (SqlException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_003",
-                                                           "DaoProvedor",
-                                                           "Consultar Direccion",
-                                                           "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs03,
+                                                           RecursosDaoProveedores.DaoProv,
+                                                           RecursosDaoProveedores.ConsultarDireccion,
+                                                           RecursosDaoProveedores.ex03,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -314,10 +315,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Consultar Direccion",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.ConsultarDireccion,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -347,10 +348,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Consultar Direccion",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.ConsultarDireccion,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -381,10 +382,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Consultar Direccion",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.ConsultarDireccion,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -402,16 +403,16 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
         bool IDao.IDao<Entidad, bool, Entidad>.Agregar(Entidad parametro)
         {
             Proveedor _proveedor = (Proveedor)parametro;
-            SqlCommand comando = new SqlCommand("Procedure_AlmacenarProveedor", IniciarConexion());
+            SqlCommand comando = new SqlCommand(RecursosDaoProveedores.PcdAlmacenarProv, IniciarConexion());
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.Add(new SqlParameter("_proRif", _proveedor.Rif));
-            comando.Parameters.Add(new SqlParameter("_proRazonSocial", _proveedor.RazonSocial));
-            comando.Parameters.Add(new SqlParameter("_proCorreo", _proveedor.Correo));
-            comando.Parameters.Add(new SqlParameter("_proPaginaWeb", _proveedor.PagWeb));
-            comando.Parameters.Add(new SqlParameter("_proFechaContrato", DateTime.Parse(_proveedor.FechaContrato)));
-            comando.Parameters.Add(new SqlParameter("_proTelefono", _proveedor.Telefono));
-            comando.Parameters.Add(new SqlParameter("_proDireccion", _proveedor.IdLugar));
-            comando.Parameters.Add(new SqlParameter("_proCiudad", _proveedor.Ciudad));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramRif, _proveedor.Rif));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramRazonSocial, _proveedor.RazonSocial));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramCorreo, _proveedor.Correo));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramWeb, _proveedor.PagWeb));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramFechaContrato, DateTime.Parse(_proveedor.FechaContrato)));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramTlf, _proveedor.Telefono));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramDireccion, _proveedor.IdLugar));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramCiudad, _proveedor.Ciudad));
             SqlDataReader _lectura;
 
             try
@@ -422,10 +423,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (NullReferenceException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_002",
-                                          "DaoProveedor",
-                                          "Agregar",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs02,
+                                          RecursosDaoProveedores.DaoProv,
+                                          RecursosDaoProveedores.Agregar,
+                                          RecursosDaoProveedores.ex02,
                                           ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -433,10 +434,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (SqlException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_003",
-                                                           "DaoProvedor",
-                                                           "Agregar",
-                                                           "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs03,
+                                                           RecursosDaoProveedores.DaoProv,
+                                                           RecursosDaoProveedores.Agregar,
+                                                           RecursosDaoProveedores.ex03,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -444,10 +445,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Agregar",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.Agregar,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -468,23 +469,23 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
         {
             int status = 1;
             Proveedor _proveedor = (Proveedor)parametro;
-            SqlCommand comando = new SqlCommand("Procedure_modificarProveedor", IniciarConexion());
+            SqlCommand comando = new SqlCommand(RecursosDaoProveedores.PcdModificarProv, IniciarConexion());
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.Add(new SqlParameter("_proRif", _proveedor.Rif));
-            comando.Parameters.Add(new SqlParameter("_proRazonSocial", _proveedor.RazonSocial));
-            comando.Parameters.Add(new SqlParameter("_proCorreo", _proveedor.Correo));
-            comando.Parameters.Add(new SqlParameter("_proPaginaWeb", _proveedor.PagWeb));
-            comando.Parameters.Add(new SqlParameter("_proFechaContrato", DateTime.Parse(_proveedor.FechaContrato)));
-            comando.Parameters.Add(new SqlParameter("_proTelefono", _proveedor.Telefono));
-            comando.Parameters.Add(new SqlParameter("_proDireccion", _proveedor.IdLugar));
-            comando.Parameters.Add(new SqlParameter("_proCiudad", _proveedor.Ciudad));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramRif, _proveedor.Rif));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramRazonSocial, _proveedor.RazonSocial));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramCorreo, _proveedor.Correo));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramWeb, _proveedor.PagWeb));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramFechaContrato, DateTime.Parse(_proveedor.FechaContrato)));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramTlf, _proveedor.Telefono));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramDireccion, _proveedor.IdLugar));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramCiudad, _proveedor.Ciudad));
 
-            if (_proveedor.Status == "Activado") 
+            if (_proveedor.Status == RecursosDaoProveedores.Activado) 
                 status = 1;
-            if (_proveedor.Status == "Desactivado") 
+            if (_proveedor.Status == RecursosDaoProveedores.Desactivado) 
                 status = 2;
                 
-            comando.Parameters.Add(new SqlParameter("_proStatus", status));
+            comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramStatus, status));
             SqlDataReader _lectura;
 
             try
@@ -495,10 +496,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (NullReferenceException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_002",
-                                          "DaoProveedor",
-                                          "Modificar",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs02,
+                                          RecursosDaoProveedores.DaoProv,
+                                          RecursosDaoProveedores.Modificar,
+                                          RecursosDaoProveedores.ex02,
                                           ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -506,10 +507,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (SqlException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_003",
-                                                           "DaoProvedor",
-                                                           "Modificar",
-                                                           "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs03,
+                                                           RecursosDaoProveedores.DaoProv,
+                                                           RecursosDaoProveedores.Modificar,
+                                                           RecursosDaoProveedores.ex03,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -517,10 +518,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Modificar",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.Modificar,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -546,9 +547,9 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             {
                 SqlConnection _cn = IniciarConexion();
                 _cn.Open();
-                SqlCommand _comando = new SqlCommand("Procedure_ObtenerEstadosPais", _cn);
+                SqlCommand _comando = new SqlCommand(RecursosDaoProveedores.PcdObtenerEstadosPais, _cn);
                 _comando.CommandType = System.Data.CommandType.StoredProcedure;
-                _comando.Parameters.Add(new SqlParameter("_paramBusq", parametro));
+                _comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramBusq, parametro));
                 reader = _comando.ExecuteReader();
 
                 while (reader.Read())
@@ -560,10 +561,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (NullReferenceException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_002",
-                                          "DaoProveedor",
-                                          "Consultar Estados De Pais",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs02,
+                                          RecursosDaoProveedores.DaoProv,
+                                          RecursosDaoProveedores.ConsultarEstadosPais,
+                                          RecursosDaoProveedores.ex02,
                                           ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -571,10 +572,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (SqlException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_003",
-                                                           "DaoProvedor",
-                                                           "Consultar Estados De Pais",
-                                                           "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs03,
+                                                           RecursosDaoProveedores.DaoProv,
+                                                           RecursosDaoProveedores.ConsultarEstadosPais,
+                                                           RecursosDaoProveedores.ex03,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -582,10 +583,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Consultar Estados De Pais",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.ConsultarEstadosPais,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -610,9 +611,9 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             {
                 SqlConnection _cn = IniciarConexion();
                 _cn.Open();
-                SqlCommand _comando = new SqlCommand("Procedure_ObtenerCiudadesEstado", _cn);
+                SqlCommand _comando = new SqlCommand(RecursosDaoProveedores.PcdObtenerCiudadesEstado, _cn);
                 _comando.CommandType = System.Data.CommandType.StoredProcedure;
-                _comando.Parameters.Add(new SqlParameter("_paramBusq", parametro));
+                _comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramBusq, parametro));
                 reader = _comando.ExecuteReader();
 
                 while (reader.Read())
@@ -624,10 +625,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (NullReferenceException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_002",
-                                          "DaoProveedor",
-                                          "Ciudades de Estado",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs02,
+                                          RecursosDaoProveedores.DaoProv,
+                                          RecursosDaoProveedores.CiudadesDeEstados,
+                                          RecursosDaoProveedores.ex02,
                                           ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -635,10 +636,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (SqlException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_003",
-                                                           "DaoProvedor",
-                                                           "Ciudades de Estado",
-                                                           "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs03,
+                                                           RecursosDaoProveedores.DaoProv,
+                                                           RecursosDaoProveedores.CiudadesDeEstados,
+                                                           RecursosDaoProveedores.ex03,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -646,10 +647,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Ciudades de Estado",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.CiudadesDeEstados,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -674,7 +675,7 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             {
                 SqlConnection _cn = IniciarConexion();
                 _cn.Open();
-                SqlCommand _comando = new SqlCommand("Procedure_ObtenerTodosLosPaises", _cn);
+                SqlCommand _comando = new SqlCommand(RecursosDaoProveedores.PcdObtenerTodosPaises, _cn);
                 _comando.CommandType = System.Data.CommandType.StoredProcedure;
                 reader = _comando.ExecuteReader();
               
@@ -688,10 +689,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (NullReferenceException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_002",
-                                          "DaoProveedor",
-                                          "Consultar Paises",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs02,
+                                          RecursosDaoProveedores.DaoProv,
+                                          RecursosDaoProveedores.ConsultarPaises,
+                                          RecursosDaoProveedores.ex02,
                                           ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -699,10 +700,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (SqlException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_003",
-                                                           "DaoProvedor",
-                                                           "Consultar Paises",
-                                                           "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs03,
+                                                           RecursosDaoProveedores.DaoProv,
+                                                           RecursosDaoProveedores.ConsultarPaises,
+                                                           RecursosDaoProveedores.ex03,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -710,10 +711,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Consultar Paises",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.ConsultarPaises,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -739,7 +740,7 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             {
                 SqlConnection _cn = IniciarConexion();
                 _cn.Open();
-                SqlCommand _comando = new SqlCommand("Procedure_ObtenerTodosLosEstados", _cn);
+                SqlCommand _comando = new SqlCommand(RecursosDaoProveedores.PcdObtenerTodosEstados, _cn);
                 _comando.CommandType = System.Data.CommandType.StoredProcedure;
                 reader = _comando.ExecuteReader();
                 // int i = 0;
@@ -753,10 +754,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (NullReferenceException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_002",
-                                          "DaoProveedor",
-                                          "Consultar Estados",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs02,
+                                          RecursosDaoProveedores.DaoProv,
+                                          RecursosDaoProveedores.ConsultarEstados,
+                                          RecursosDaoProveedores.ex02,
                                           ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -764,10 +765,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (SqlException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_003",
-                                                           "DaoProvedor",
-                                                           "Consultar Estados",
-                                                           "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs03,
+                                                           RecursosDaoProveedores.DaoProv,
+                                                           RecursosDaoProveedores.ConsultarEstados,
+                                                           RecursosDaoProveedores.ex03,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -775,10 +776,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Consultar Estados",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.ConsultarEstados,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -804,7 +805,7 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             {
                 SqlConnection _cn = IniciarConexion();
                 _cn.Open();
-                SqlCommand _comando = new SqlCommand("Procedure_ObtenerTodosLasCiudades", _cn);
+                SqlCommand _comando = new SqlCommand(RecursosDaoProveedores.PcdObtenerTodosCiudades, _cn);
                 _comando.CommandType = System.Data.CommandType.StoredProcedure;
                 reader = _comando.ExecuteReader();
                 // int i = 0;
@@ -818,10 +819,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (NullReferenceException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_002",
-                                          "DaoProveedor",
-                                          "Consultar Ciudades",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs02,
+                                          RecursosDaoProveedores.DaoProv,
+                                          RecursosDaoProveedores.ConsultarCiudades,
+                                          RecursosDaoProveedores.ex02,
                                           ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -829,10 +830,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (SqlException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_003",
-                                                           "DaoProvedor",
-                                                           "Consultar Ciudades",
-                                                           "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs03,
+                                                           RecursosDaoProveedores.DaoProv,
+                                                           RecursosDaoProveedores.ConsultarCiudades,
+                                                           RecursosDaoProveedores.ex03,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -840,10 +841,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Consultar Ciudades",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.ConsultarCiudades,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -868,9 +869,9 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             {
                 SqlConnection _cn = IniciarConexion();
                 _cn.Open();
-                SqlCommand _comando = new SqlCommand("Procedure_cargarItemLT", _cn);
+                SqlCommand _comando = new SqlCommand(RecursosDaoProveedores.PcdCargarItemLT, _cn);
                 _comando.CommandType = System.Data.CommandType.StoredProcedure;
-                _comando.Parameters.Add(new SqlParameter("_provId", parametro));
+                _comando.Parameters.Add(new SqlParameter(RecursosDaoProveedores.paramProvId, parametro));
                 reader = _comando.ExecuteReader();
 
                 while (reader.Read())
@@ -882,10 +883,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (NullReferenceException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_002",
-                                          "DaoProveedor",
-                                          "Items de Proveedor",
-                                          "No se han podido cargar los datos debido a que hay una referencia nula",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs02,
+                                          RecursosDaoProveedores.DaoProv,
+                                          RecursosDaoProveedores.ItemsProv,
+                                          RecursosDaoProveedores.ex02,
                                           ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -893,10 +894,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (SqlException ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_003",
-                                                           "DaoProvedor",
-                                                           "Items de Proveedor",
-                                                           "No se han podido cargar los datos debido a que existe un conflicto con la conexión a la base de datos",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs03,
+                                                           RecursosDaoProveedores.DaoProv,
+                                                           RecursosDaoProveedores.ItemsProv,
+                                                           RecursosDaoProveedores.ex03,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());
@@ -904,10 +905,10 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores
             }
             catch (Exception ex)
             {
-                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor("RS_08_004",
-                                                            "DaoProveedor",
-                                                            "Items de Proveedor",
-                                                            "No se han podido cargar los datos debido a un error en el sistema",
+                ExcepcionDaoProveedor exDaoProveedor = new ExcepcionDaoProveedor(RecursosDaoProveedores.rs04,
+                                                            RecursosDaoProveedores.DaoProv,
+                                                            RecursosDaoProveedores.ItemsProv,
+                                                            RecursosDaoProveedores.ex04,
                                                             ex);
                 Logger.EscribirEnLogger(exDaoProveedor);
                 Console.WriteLine(ex.ToString());

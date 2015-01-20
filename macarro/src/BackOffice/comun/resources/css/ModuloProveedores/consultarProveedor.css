@@ -148,7 +148,7 @@
 .item {
     position:absolute;
     top: 405px;
-    left: 381px;
+    left: 365px;
     height: 21px;
 }
 
@@ -158,12 +158,12 @@
     border-width: medium;
     position:absolute;
     top: 364px;
-    left: 491px;
+    left: 457px;
     padding:10px;
     max-width: 250px;
     max-height:100px;
     height: 103px;
-    width: 132px;
+    width: 212px;
 }
 
 .abajo {
