@@ -217,12 +217,21 @@
     <value>Rif</value>
   </data>
   <data name="rs19" xml:space="preserve">
-    <value>RS_08_019</value>
+    <value>P_10_005</value>
   </data>
   <data name="SystemString" xml:space="preserve">
     <value>System.String</value>
   </data>
   <data name="yyymmdd" xml:space="preserve">
     <value>yyyy/MM/dd</value>
+  </data>
+  <data name="AvMenErr" xml:space="preserve">
+    <value>avisoMensaje MensajeError</value>
+  </data>
+  <data name="AvMenEx" xml:space="preserve">
+    <value>avisoMensaje MensajeExito</value>
+  </data>
+  <data name="ProvRegErr" xml:space="preserve">
+    <value>El proveedor ya esta registrado en el sistema</value>
   </data>
 </root>
