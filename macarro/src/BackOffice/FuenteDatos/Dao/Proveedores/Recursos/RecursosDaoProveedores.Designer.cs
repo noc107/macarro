@@ -457,7 +457,7 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores.Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RS_08_002.
+        ///   Looks up a localized string similar to P_10_002.
         /// </summary>
         internal static string rs02 {
             get {
@@ -466,7 +466,7 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores.Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RS_08_003.
+        ///   Looks up a localized string similar to P_10_003.
         /// </summary>
         internal static string rs03 {
             get {
@@ -475,7 +475,7 @@ namespace BackOffice.FuenteDatos.Dao.Proveedores.Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RS_08_004.
+        ///   Looks up a localized string similar to P_10_004.
         /// </summary>
         internal static string rs04 {
             get {

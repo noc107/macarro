@@ -79,29 +79,29 @@
 
 .rif {
     position:absolute;
-    top: 162px;
-    left: 92px;
+    top: 172px;
+    left: 107px;
 }
 
 .razonsocial {
     position:absolute;
-    top: 215px;
-    left: 88px;
+    top: 232px;
+    left: 76px;
 }
 .correo {
     position:absolute;
-    top: 273px;
-    left: 89px;
+    top: 291px;
+    left: 95px;
     height: 18px;
 }
 .paginaweb {
     position:absolute;
-    top: 327px;
+    top: 356px;
     left: 91px;
 }
 .telefono {
     position:absolute;
-    top: 380px;
+    top: 419px;
     left: 90px;
 }
 .contrato {
@@ -172,32 +172,32 @@
 
 .tbrif {
     position:absolute;
-    top: 141px;
-    left: 205px;
+    top: 149px;
+    left: 202px;
 }
 
 .tbrazonsocial {
     position:absolute;
-    top: 197px;
-    left: 208px;
+    top: 210px;
+    left: 204px;
 }
 
 .tbcorreo {
     position:absolute;
-    top: 251px;
-    left: 209px;
+    top: 272px;
+    left: 204px;
 }
 
 .tbpaginaweb {
     position:absolute;
-    top: 308px;
-    left: 210px;
+    top: 335px;
+    left: 205px;
 }
 
 .tbtelefono {
     position:absolute;
-    top: 362px;
-    left: 211px;
+    top: 398px;
+    left: 206px;
 }
 
 .tbcontrato {
@@ -215,5 +215,5 @@
 .tbstatus {
     position:absolute;
     top: 418px;
-    left: 213px;
+    left: 204px;
 }

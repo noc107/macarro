@@ -190,13 +190,13 @@
     <value>Obtener Paises</value>
   </data>
   <data name="rs02" xml:space="preserve">
-    <value>RS_08_002</value>
+    <value>P_10_002</value>
   </data>
   <data name="rs03" xml:space="preserve">
-    <value>RS_08_003</value>
+    <value>P_10_003</value>
   </data>
   <data name="rs04" xml:space="preserve">
-    <value>RS_08_004</value>
+    <value>P_10_004</value>
   </data>
   <data name="TraeEstadosPais" xml:space="preserve">
     <value>Obtener Estados De Un Pais</value>

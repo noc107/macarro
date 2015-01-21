@@ -20,19 +20,19 @@
             <asp:Label CssClass="labels contrato" ID="Label11" runat="server" Text="Fecha Contrato (*):"></asp:Label>
         
         
-            <asp:TextBox CssClass="textbox tbrif" ID="Rif" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbrif" MaxLength="49" ID="Rif" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator1" 
                     runat="server" ControlToValidate ="Rif"
                     ErrorMessage="RIF requerido." 
                     Text="*"
                     ForeColor="Red"> </asp:RequiredFieldValidator>
-            <asp:TextBox CssClass="textbox tbrazonsocial" ID="RazonSocial" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbrazonsocial" MaxLength="70" ID="RazonSocial" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator2" 
                     runat="server" ControlToValidate ="RazonSocial"
                     ErrorMessage="Razon Social requerido." 
                     Text="*"
                     ForeColor="Red"> </asp:RequiredFieldValidator>
-            <asp:TextBox CssClass="textbox tbcorreo" ID="Correo" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbcorreo" ID="Correo" MaxLength="70" runat="server"></asp:TextBox>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="remail" 
                     runat="server" ControlToValidate="Correo" 
                     ErrorMessage="Formato de correo invalido."
@@ -44,14 +44,14 @@
                     ErrorMessage="Correo requerido." 
                     Text="*"
                     ForeColor="Red"> </asp:RequiredFieldValidator>
-            <asp:TextBox CssClass="textbox tbpaginaweb" ID="PaginaWeb" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbpaginaweb" MaxLength="90" ID="PaginaWeb" runat="server"></asp:TextBox>
             <asp:regularexpressionvalidator CssClass="asterisco" ID="revEmail" runat="server"
 	                ControlToValidate="PaginaWeb" 
                     ErrorMessage="Formato de pagina web no valido" 	
                     Text="*" 
                     ForeColor= "Red"
                     ValidationExpression="(http(s)?://)?([\w-]+\.)+[\w-]+(/[\w- ;,./?%&=]*)?"> </asp:regularexpressionvalidator>
-            <asp:TextBox CssClass="textbox tbtelefono" ID="Telefono" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbtelefono" MaxLength="30" ID="Telefono" runat="server"></asp:TextBox>
             <asp:regularexpressionvalidator CssClass="asterisco" ID="RegularExpressionValidator11" runat="server" 
                     ControlToValidate= "Telefono" 
                     ErrorMessage="Formato de teléfono no valido: (XX)-YYY-ZZZZZZZ"
@@ -86,7 +86,7 @@
             <asp:DropDownList ID="_Ciudad" runat="server"  OnSelectedIndexChanged="_Ciudad_SelectedIndexChanged" CssClass="combo_box tbciudad"></asp:DropDownList>
           
             <br /> 
-            <asp:TextBox CssClass="textbox tbdireccion" ID="Direccion" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbdireccion" MaxLength="95" ID="Direccion" runat="server"></asp:TextBox>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator5" runat="server" 
                     ControlToValidate="Direccion" 
                     Text="*"
@@ -97,24 +97,23 @@
                     runat="server" ControlToValidate ="Direccion"
                     ErrorMessage="Dirección requerido." 
                     Text="*"
-                    ForeColor="Red"> </asp:RequiredFieldValidator>
-             
-       
-    
- 
-    
-        
-    
+                    ForeColor="Red"> </asp:RequiredFieldValidator>    
     
         <asp:Button CssClass="Boton botonaceptar" ID="Aceptar" runat="server" Text="Aceptar" OnClick="Aceptar_Click"/>
         <asp:Button CssClass="Boton botonregresar" ID="Regresar" runat="server" Text="Regresar" OnClick="Regresar_Click" CausesValidation="false"/>
     </div>
-    <asp:ValidationSummary ID="ValidationSummary1"
-                HeaderText=""
-                DisplayMode="BulletList"
-                EnableClientScript="true"
-                runat="server" 
-                ForeColor="Red"/>
+        <asp:Table ID="TableMensajes" runat="server" HorizontalAlign="Center">
+        <asp:TableRow>
+            <asp:TableCell>
+                 <asp:ValidationSummary ID="ValidationSummary1"
+                 CssClass="avisoMensajeBot MensajeError"
+                 HeaderText=""
+                 DisplayMode="BulletList"
+                 EnableClientScript="true"
+                 runat="server"/>
+           </asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
 </asp:Content>
 
 

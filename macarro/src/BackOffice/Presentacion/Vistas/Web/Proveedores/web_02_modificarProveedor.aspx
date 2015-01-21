@@ -20,7 +20,7 @@
             <asp:Label CssClass="labels contrato" ID="Label11" runat="server" Text="Fecha Contrato (*):"></asp:Label>
         
       
-            <asp:TextBox CssClass="textbox tbrif" ID="Rif" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbrif" MaxLength="49" ID="Rif" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator1" 
                     runat="server" ControlToValidate ="Rif"
                     ErrorMessage="RIF requerido." 
@@ -28,7 +28,7 @@
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
             <br />
-            <asp:TextBox CssClass="textbox tbrazonsocial" ID="RazonS" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbrazonsocial" MaxLength="70" ID="RazonS" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator2" 
                     runat="server" ControlToValidate ="RazonS"
                     ErrorMessage="Razon Social requerido." 
@@ -57,9 +57,9 @@
                     ForeColor= "Red"
                     ValidationExpression="(http(s)?://)?([\w-]+\.)+[\w-]+(/[\w- ;,./?%&=]*)?">
             </asp:regularexpressionvalidator>
-            <asp:TextBox CssClass="textbox tbpaginaweb" ID="PaginaWeb" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbpaginaweb" MaxLength="90" ID="PaginaWeb" runat="server"></asp:TextBox>
             <br />
-            <asp:TextBox CssClass="textbox tbtelefono" ID="Telefono" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbtelefono" MaxLength="30" ID="Telefono" runat="server"></asp:TextBox>
             <asp:regularexpressionvalidator CssClass="asterisco" ID="RegularExpressionValidator11" runat="server" 
                     ControlToValidate= "Telefono" 
                     ErrorMessage="Formato de teléfono no valido: (XX)-YYY-ZZZZZZZ"
@@ -78,9 +78,10 @@
                     runat="server" ControlToValidate ="FechaContrato"
                     ErrorMessage="Fecha Contrato requerido." 
                     Text="*"
-                    ForeColor="Red"></asp:RequiredFieldValidator>    
+                    ForeColor="Red">
+            </asp:RequiredFieldValidator>    
 
-            <asp:TextBox CssClass="textbox tbcorreo" ID="Correo" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbcorreo" MaxLength="70" ID="Correo" runat="server"></asp:TextBox>
             <asp:Label CssClass="labels correo" ID="Label5" runat="server" Text="Correo (*):"></asp:Label>
 
             <asp:Label CssClass="labels pais" ID="Label2" runat="server" Text="País (*):"></asp:Label>
@@ -134,7 +135,7 @@
             </asp:RequiredFieldValidator>
             <br />
            
-            <asp:TextBox CssClass="textbox tbdireccion" ID="Direccion" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbdireccion" MaxLength="95" ID="Direccion" runat="server"></asp:TextBox>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator5" runat="server" 
                     ControlToValidate="Direccion" 
                     Text="*"
@@ -142,6 +143,9 @@
                     ForeColor="Red" 
                     ValidationExpression="^([0-9a-zA-Z]? ?)*$">
             </asp:RegularExpressionValidator>
+
+
+
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator9" 
                     runat="server" ControlToValidate ="Direccion"
                     ErrorMessage="Dirección requerido." 
@@ -152,19 +156,25 @@
         
         <asp:Label CssClass="labels status" ID="Label8" runat="server" Text="Status (*):"></asp:Label>
 
-        <asp:Button CssClass="Boton botonaceptar" ID="Button1" runat="server" Text="Aceptar"  OnClientClick="return confirm('Esta acción modificará el proveedor en el sistema ¿desea continuar?')" OnClick="Button1_Click"/>
+        <asp:Button CssClass="Boton botonaceptar" ID="Button1" runat="server" Text="Aceptar"  
+             OnClientClick="if(Page_ClientValidate()) return confirm('Esta acción modificará el item en el sistema ¿Desea continuar?'); else return false;" OnClick="Button1_Click"/>
         <asp:Button CssClass="Boton botonregresar" ID="Button2" runat="server" Text="Regresar" OnClick="Regresar_Click" CausesValidation="false"/>
 
         
         <asp:DropDownList CssClass="combo_box tbstatus" ID="Status" runat="server"></asp:DropDownList>
 
     </div>
-        <asp:ValidationSummary ID="ValidationSummary1"
-                HeaderText=""
-                DisplayMode="BulletList"
-                EnableClientScript="true"
-                runat="server" 
-                ForeColor="Red"/>
-    
+     <asp:Table ID="TableMensajes" runat="server" HorizontalAlign="Center">
+        <asp:TableRow>
+            <asp:TableCell>
+                 <asp:ValidationSummary ID="ValidationSummary1"
+                 CssClass="avisoMensajeBot MensajeError"
+                 HeaderText=""
+                 DisplayMode="BulletList"
+                 EnableClientScript="true"
+                 runat="server"/>
+           </asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>   
 
 </asp:Content>

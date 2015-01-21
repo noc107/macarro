@@ -61,7 +61,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             }
             catch (ExcepcionComandoConsultarProveedor ex)
             {
-                _vista.LabelMensajeExito.CssClass = "avisoMensaje MensajeError";
+                _vista.LabelMensajeExito.CssClass = RecursosPresentadorProveedor.AvMenErr;
                 _vista.LabelMensajeExito.Visible = true;
                  
                 ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor
@@ -75,7 +75,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             }
             catch (Exception e) 
             {
-                _vista.LabelMensajeExito.CssClass = "avisoMensaje MensajeError";
+                _vista.LabelMensajeExito.CssClass = RecursosPresentadorProveedor.AvMenErr;
                 _vista.LabelMensajeExito.Visible = true;
                  
                 ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor
@@ -128,7 +128,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores
             }
             catch (Exception e)
             {
-                _vista.LabelMensajeExito.CssClass = "avisoMensaje MensajeError";
+                _vista.LabelMensajeExito.CssClass = RecursosPresentadorProveedor.AvMenErr;
                 _vista.LabelMensajeExito.Visible = true;
                  
                 ExcepcionPresentacionConsultarProveedor Ex = new ExcepcionPresentacionConsultarProveedor

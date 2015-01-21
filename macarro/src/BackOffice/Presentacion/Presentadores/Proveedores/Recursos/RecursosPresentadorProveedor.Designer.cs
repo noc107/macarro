@@ -89,6 +89,24 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores.Recursos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to avisoMensaje MensajeError.
+        /// </summary>
+        internal static string AvMenErr {
+            get {
+                return ResourceManager.GetString("AvMenErr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to avisoMensaje MensajeExito.
+        /// </summary>
+        internal static string AvMenEx {
+            get {
+                return ResourceManager.GetString("AvMenEx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to bConsultar.
         /// </summary>
         internal static string bConsultar {
@@ -341,6 +359,15 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores.Recursos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El proveedor ya esta registrado en el sistema.
+        /// </summary>
+        internal static string ProvRegErr {
+            get {
+                return ResourceManager.GetString("ProvRegErr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ;.
         /// </summary>
         internal static string puntoycoma {
@@ -359,7 +386,7 @@ namespace BackOffice.Presentacion.Presentadores.Proveedores.Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RS_08_019.
+        ///   Looks up a localized string similar to P_10_005.
         /// </summary>
         internal static string rs19 {
             get {
