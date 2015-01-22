@@ -48,69 +48,69 @@
 
 .rif {
     position:absolute;
-    top: 122px;
+    top: 174px;
     left: 275px;
 }
 
 .rif1 {
     position:absolute;
-    top: 122px;
+    top: 172px;
     left: 319px;
 }
 
 .nombre {
     position:absolute;
-    top: 174px;
+    top: 217px;
     left: 275px;
     height: 18px;
 }
 
 .nombre1 {
     position:absolute;
-    top: 174px;
+    top: 217px;
     left: 382px;
 }
 
 .pagweb {
     position:absolute;
-    top: 172px;
+    top: 217px;
     left: 595px;
 }
 
 .pagweb1 {
     position:absolute;
-    top: 171px;
+    top: 218px;
     left: 700px;
 }
 
 .contrato {
     position:absolute;
-    top: 228px;
+    top: 259px;
     left: 276px;
 }
 
 .contrato1 {
     position:absolute;
-    top: 229px;
+    top: 260px;
     left: 404px;
 }
 
 
 .estado {
     position:absolute;
-    top: 274px;
+    top: 304px;
     left: 276px;
 }
 
 .estado1 {
     position:absolute;
-    top: 274px;
+    top: 304px;
     left: 345px;
 }
 
 .direccion {
     position:absolute;
-    top: 281px;
+    top: 303px;
     left: 596px;
     width:360px
 }
@@ -123,25 +123,25 @@
 
 .correo {
     position:absolute;
-    top: 120px;
+    top: 175px;
     left: 595px;
 }
 
 .correo1 {
     position:absolute;
-    top: 120px;
+    top: 175px;
     left: 669px;
 }
 
 .telefono {
     position:absolute;
-    top: 227px;
+    top: 261px;
     left: 595px;
 }
 
 .telefono1 {
     position:absolute;
-    top: 228px;
+    top: 261px;
     left: 678px;
 }
 

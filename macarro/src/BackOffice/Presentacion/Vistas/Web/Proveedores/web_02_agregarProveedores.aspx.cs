@@ -38,17 +38,6 @@ namespace BackOffice.Presentacion.Vistas.Web.Proveedores
             }
         }
 
-       
-        /// <summary>
-        /// Evento, le da funcionalidad al boton de regresar al hacer un click en el mismo
-        /// </summary>
-        /// <param name= sender> Objeto </param>
-        /// <param name= e> Argumento </param>
-
-        protected void Regresar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect(RecursosVistaProveedor.webGestionarProv);
-        }
 
 
         /// <summary>

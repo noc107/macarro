@@ -20,22 +20,31 @@
             <asp:Label CssClass="labels contrato" ID="Label11" runat="server" Text="Fecha Contrato (*):"></asp:Label>
         
       
-            <asp:TextBox CssClass="textbox tbrif" MaxLength="49" ID="Rif" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbrif" MaxLength="20" ID="Rif" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator1" 
                     runat="server" ControlToValidate ="Rif"
                     ErrorMessage="RIF requerido." 
                     Text="*"
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
-            <br />
-            <asp:TextBox CssClass="textbox tbrazonsocial" MaxLength="70" ID="RazonS" runat="server"></asp:TextBox>
+            
+            <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator20" runat="server" 
+                    ControlToValidate="Rif" 
+                    Text="*"
+                    ErrorMessage="Rif no debe contener caracteres especiales" 
+                    ForeColor="Red" 
+                    ValidationExpression="^([A-Za-z0-9\-\ ]+)$">
+            </asp:RegularExpressionValidator>
+            
+    
+            <asp:TextBox CssClass="textbox tbrazonsocial" MaxLength="40" ID="RazonS" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator2" 
                     runat="server" ControlToValidate ="RazonS"
                     ErrorMessage="Razon Social requerido." 
                     Text="*"
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
-            <br />
+
             <asp:RegularExpressionValidator CssClass="asterisco" ID="remail" 
                     runat="server" ControlToValidate="Correo" 
                     ErrorMessage="Formato de correo invalido."
@@ -49,7 +58,7 @@
                     Text="*"
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
-            <br />
+           
             <asp:regularexpressionvalidator CssClass="asterisco" ID="revEmail" runat="server"
 	                ControlToValidate="PaginaWeb" 
                     ErrorMessage="Formato de pagina web no valido" 	
@@ -57,15 +66,15 @@
                     ForeColor= "Red"
                     ValidationExpression="(http(s)?://)?([\w-]+\.)+[\w-]+(/[\w- ;,./?%&=]*)?">
             </asp:regularexpressionvalidator>
-            <asp:TextBox CssClass="textbox tbpaginaweb" MaxLength="90" ID="PaginaWeb" runat="server"></asp:TextBox>
-            <br />
-            <asp:TextBox CssClass="textbox tbtelefono" MaxLength="30" ID="Telefono" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbpaginaweb" MaxLength="99" ID="PaginaWeb" runat="server"></asp:TextBox>
+            
+            <asp:TextBox CssClass="textbox tbtelefono" MaxLength="13" ID="Telefono" runat="server"></asp:TextBox>
             <asp:regularexpressionvalidator CssClass="asterisco" ID="RegularExpressionValidator11" runat="server" 
                     ControlToValidate= "Telefono" 
-                    ErrorMessage="Formato de teléfono no valido: (XX)-YYY-ZZZZZZZ"
+                    ErrorMessage="Formato de teléfono no valido: XXXX-YYY-ZZZZ"
                     Text="*" 
                     ForeColor= "Red"
-                    ValidationExpression="\(\d{2}\)\-\d{3}\-\d{7}">
+                    ValidationExpression="\d{4}\-\d{3}\-\d{4}">
             </asp:regularexpressionvalidator>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator4" 
                     runat="server" ControlToValidate ="Telefono"
@@ -73,6 +82,8 @@
                     Text="*"
                     ForeColor="Red">
             </asp:RequiredFieldValidator>  
+
+
             <asp:TextBox CssClass="textbox tbcontrato" ID="FechaContrato" runat="server" TextMode="Date"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="asterisco" ID="RequiredFieldValidator8" 
                     runat="server" ControlToValidate ="FechaContrato"
@@ -81,7 +92,7 @@
                     ForeColor="Red">
             </asp:RequiredFieldValidator>    
 
-            <asp:TextBox CssClass="textbox tbcorreo" MaxLength="70" ID="Correo" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbcorreo" MaxLength="99" ID="Correo" runat="server"></asp:TextBox>
             <asp:Label CssClass="labels correo" ID="Label5" runat="server" Text="Correo (*):"></asp:Label>
 
             <asp:Label CssClass="labels pais" ID="Label2" runat="server" Text="País (*):"></asp:Label>
@@ -103,7 +114,7 @@
                     Text="*"
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
-            <br />
+            
             <asp:DropDownList CssClass="combo_box tbestado" ID="Estado" runat="server"></asp:DropDownList>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator1" runat="server" 
                     ControlToValidate="Estado" 
@@ -118,7 +129,7 @@
                     Text="*"
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
-            <br />
+            
             <asp:DropDownList CssClass="combo_box tbciudad" ID="Ciudad" runat="server"></asp:DropDownList>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator2" runat="server" 
                     ControlToValidate="Ciudad" 
@@ -133,15 +144,15 @@
                     Text="*"
                     ForeColor="Red">
             </asp:RequiredFieldValidator>
-            <br />
+            
            
-            <asp:TextBox CssClass="textbox tbdireccion" MaxLength="95" ID="Direccion" runat="server"></asp:TextBox>
+            <asp:TextBox CssClass="textbox tbdireccion" height="150" MaxLength="99" ID="Direccion" runat="server" TextMode="multiline" Rows="5"> </asp:TextBox>
             <asp:RegularExpressionValidator CssClass="asterisco" ID="RegularExpressionValidator5" runat="server" 
                     ControlToValidate="Direccion" 
                     Text="*"
                     ErrorMessage="Dirección no debe contener caracteres especiales" 
                     ForeColor="Red" 
-                    ValidationExpression="^([0-9a-zA-Z]? ?)*$">
+                    ValidationExpression="^([A-Za-zÑñáéíóúÁÉÍÓÚ0-9,.:\-\ ]+)$">
             </asp:RegularExpressionValidator>
 
 
