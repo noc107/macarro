@@ -94,20 +94,55 @@
     left: 95px;
     height: 18px;
 }
+.asteriscocorreo {
+    position:absolute;
+    top: 291px;
+    left:471px;
+}
+.asteriscocorreo1 {
+    position:absolute;
+    top: 291px;
+    left:478px;
+}
 .paginaweb {
     position:absolute;
     top: 356px;
     left: 91px;
+}
+asteriscopagina {
+    position:absolute;
+    top: 356px;
+    left:471px;
+}
+.asteriscopagina1 {
+    position:absolute;
+    top: 356px;
+    left:478px;
 }
 .telefono {
     position:absolute;
     top: 419px;
     left: 90px;
 }
+.asteriscotelefono {
+    position:absolute;
+    top: 419px;
+    left:471px;
+}
+.asteriscotelefono1 {
+    position:absolute;
+    top: 419px;
+    left:478px;
+}
 .contrato {
     position:absolute;
     top: 170px;
     left: 540px;
+}
+.asteriscocontrato {
+    position:absolute;
+    top: 170px;
+    left:950px;
 }
 
 .pais {
@@ -133,7 +168,16 @@
     top: 418px;
     left: 551px;
 }
-
+.asteriscodireccion {
+    position:absolute;
+    top: 418px;
+    left:950px;
+}
+.asteriscodireccion1 {
+    position:absolute;
+    top: 418px;
+    left:958px;
+}
 .tbpais {
     position:absolute;
     top: 218px;
@@ -175,13 +219,31 @@
     top: 149px;
     left: 202px;
 }
-
+.asteriscorif {
+    position:absolute;
+    top: 172px;
+    left:471px;
+}
+.asteriscorif1 {
+    position:absolute;
+    top: 172px;
+    left:477px;
+}
 .tbrazonsocial {
     position:absolute;
     top: 210px;
     left: 204px;
 }
-
+.asteriscorazonsocial {
+    position:absolute;
+    top: 233px;
+    left:471px;
+}
+.asteriscorazonsocial1 {
+    position:absolute;
+    top: 234px;
+    left:478px;
+}
 .tbcorreo {
     position:absolute;
     top: 272px;
